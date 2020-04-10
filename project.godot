@@ -19,6 +19,13 @@ config/name="IzoHeroes"
 run/main_scene="res://src/02_scenes/03_Locations/Dungeon.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=1024
+window/size/test_height=600
+
 [importer_defaults]
 
 texture={

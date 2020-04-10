@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/01_assets/03_Tiles/dungeon_tile.png" type="Texture" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/Dungeon.gd" type="Script" id=2]
+
+[sub_resource type="ParticlesMaterial" id=2]
+trail_divisor = 2
+emission_shape = 2
+emission_box_extents = Vector3( 320, 180, 1 )
+flag_disable_z = true
+gravity = Vector3( -30, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
 
 [sub_resource type="TileSet" id=1]
 0/name = "dungeon"
@@ -37,6 +46,15 @@ color = Color( 0.141176, 0.113725, 0.184314, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Particles2D" type="Particles2D" parent="Background"]
+position = Vector2( 320, 176 )
+amount = 250
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 1.69
+randomness = 1.0
+process_material = SubResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
