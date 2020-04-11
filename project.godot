@@ -19,6 +19,10 @@ config/name="IzoHeroes"
 run/main_scene="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01/Dungeon_1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Lists="*res://src/03_global_scripts/Lists.gd"
+
 [display]
 
 window/size/width=640
