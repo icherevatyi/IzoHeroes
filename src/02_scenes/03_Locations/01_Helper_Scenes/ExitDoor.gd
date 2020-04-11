@@ -25,12 +25,12 @@ func _load_next_lvl(player) -> void:
 		var _change_msg = get_tree().change_scene(lvl_list[next_lvl])
 
 
-func _on_ExitTrigger_body_entered(body: Node2D):
+func _on_ExitTrigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		_load_next_lvl(body)
 
 
-func _connect_signal(signal_title: String, target_node: Node2D, target_function_title: String):
+func _connect_signal(signal_title: String, target_node: Node2D, target_function_title: String) -> void:
 	match is_connected(signal_title, target_node, target_function_title):
 		false:
 			var connection_msg: int = connect(signal_title, target_node, target_function_title)

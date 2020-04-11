@@ -26,7 +26,7 @@ func _on_MessageTrigger_body_entered(body: Node2D) -> void:
 		emit_signal("_message_sent", _message)
 
 
-func _connect_signal(signal_title: String, target_node: Node2D, target_function_title: String):
+func _connect_signal(signal_title: String, target_node: Node2D, target_function_title: String) -> void:
 	match is_connected(signal_title, target_node, target_function_title):
 		false:
 			var connection_msg: int = connect(signal_title, target_node, target_function_title)
