@@ -10,6 +10,9 @@ enum STATE_VALUES {
 }
 
 var state_machine
+var prev_state: int
+
+onready var player: KinematicBody2D = get_node("../../")
 
 
 func _ready() -> void:
@@ -33,6 +36,15 @@ func set_state(state) -> void:
 			state_machine.travel("death")
 
 
+func monitor_states() -> void:
+	if player.movement == Vector2.ZERO:
+		set_state(STATE_VALUES.IDLE_1)
+	if player.movement != Vector2.ZERO:
+		set_state(STATE_VALUES.WALK)
+	if player.health_is_damaged == true:
+		set_state(STATE_VALUES.RECEIVE_DAMAGE)
+	if player.health_scripts.health_current == 0:
+		set_state(STATE_VALUES.DEATH)
 
 
 func _on_state_changed(state) -> void:
