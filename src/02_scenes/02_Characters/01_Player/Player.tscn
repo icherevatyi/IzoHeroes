@@ -1,17 +1,22 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
+[ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/States.gd" type="Script" id=3]
+[ext_resource path="res://src/02_scenes/01_UI/HUD.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 192, 128 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 radius = 4.0
 
-[sub_resource type="Animation" id=5]
-resource_name = "death"
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="Animation" id=4]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -26,8 +31,7 @@ tracks/0/keys = {
 "values": [ 20, 21, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "idle_1"
+[sub_resource type="Animation" id=5]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -43,8 +47,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "idle_2"
+[sub_resource type="Animation" id=6]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -59,10 +62,8 @@ tracks/0/keys = {
 "values": [ 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "receive_damage"
+[sub_resource type="Animation" id=7]
 length = 0.5
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -76,9 +77,9 @@ tracks/0/keys = {
 "values": [ 15, 16, 17, 18, 19 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "walk"
+[sub_resource type="Animation" id=8]
 length = 0.6
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -92,9 +93,54 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12, 13, 14 ]
 }
 
-[sub_resource type="AnimationNodeStateMachine" id=2]
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "death"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "idle_1"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "idle_2"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "receive_damage"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/death/node = SubResource( 12 )
+states/death/position = Vector2( 813, 309 )
+states/idle_1/node = SubResource( 13 )
+states/idle_1/position = Vector2( 298, 102 )
+states/idle_2/node = SubResource( 14 )
+states/idle_2/position = Vector2( 476, 102 )
+states/receive_damage/node = SubResource( 15 )
+states/receive_damage/position = Vector2( 553, 309 )
+states/walk/node = SubResource( 16 )
+states/walk/position = Vector2( 298, 309 )
+transitions = [ "idle_1", "idle_2", SubResource( 17 ), "idle_1", "walk", SubResource( 18 ), "idle_2", "idle_1", SubResource( 19 ), "walk", "idle_1", SubResource( 20 ), "idle_1", "receive_damage", SubResource( 21 ), "receive_damage", "death", SubResource( 22 ), "receive_damage", "idle_1", SubResource( 23 ) ]
+start_node = "idle_1"
+end_node = "death"
+graph_offset = Vector2( -59, 130 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -105,28 +151,44 @@ script = ExtResource( 1 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 23
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 6 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 5 )
-anims/idle_1 = SubResource( 6 )
-anims/idle_2 = SubResource( 7 )
-anims/receive_damage = SubResource( 8 )
-anims/walk = SubResource( 9 )
+anims/death = SubResource( 4 )
+anims/idle_1 = SubResource( 5 )
+anims/idle_2 = SubResource( 6 )
+anims/receive_damage = SubResource( 7 )
+anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 2 )
+tree_root = SubResource( 11 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 3 )
+parameters/playback = SubResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="IdleTimer" type="Timer" parent="Timers"]
+wait_time = 20.0
+one_shot = true
+
+[node name="AdditionalScripts" type="Node2D" parent="."]
+
+[node name="StateManagement" type="Node2D" parent="AdditionalScripts"]
+script = ExtResource( 3 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
