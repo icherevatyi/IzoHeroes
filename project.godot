@@ -25,10 +25,12 @@ Lists="*res://src/03_global_scripts/Lists.gd"
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/width=384
+window/size/height=216
 window/size/test_width=1024
 window/size/test_height=600
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 
