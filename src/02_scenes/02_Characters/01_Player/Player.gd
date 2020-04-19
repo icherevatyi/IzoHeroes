@@ -4,11 +4,13 @@ export var health_is_damaged: bool = false
 export var speed: int = 120
 
 var movement: Vector2 = Vector2(0, 0)
+var is_bored: bool = false
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
 
 onready var HUD = $HUD
+onready var idle_timer: Timer = $Timers/IdleTimer
 
 signal damage_receive(dmg)
 signal damage_heal(dmg)
@@ -18,7 +20,6 @@ func _ready() -> void:
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
 	_connect_signal("damage_heal", HUD, "_on_healing_displayed")
-
 
 func _physics_process(_delta) -> void:
 	_move_player()
@@ -41,12 +42,26 @@ func _input(event) -> void:
 	if event.is_action_pressed("ui_accept"):
 		_damage_taken(2)
 
+
+	if event.is_pressed() == false:
+		match idle_timer.is_stopped():
+			true:
+				idle_timer.start()
+	if event.is_pressed() == true:
+		idle_timer.stop()
+		is_bored = false
+
+
 func _on_message_received(msg: String) -> void:
 	print(msg)
 
 
-func _damage_taken(damage: int):
+func _damage_taken(damage: int) -> void:
 	emit_signal("damage_receive", damage)
+
+
+func _on_IdleTimer_timeout() -> void:
+	is_bored = true
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

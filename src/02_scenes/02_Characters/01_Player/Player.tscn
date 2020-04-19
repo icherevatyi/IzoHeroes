@@ -106,61 +106,61 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12, 13, 14 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "death"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle_1"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "idle_2"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "receive_damage"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "walk"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
-priority = 2
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
-switch_mode = 2
-auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
-
-[sub_resource type="AnimationNodeStateMachine" id=11]
-states/death/node = SubResource( 12 )
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/death/node = SubResource( 9 )
 states/death/position = Vector2( 813, 309 )
-states/idle_1/node = SubResource( 13 )
+states/idle_1/node = SubResource( 10 )
 states/idle_1/position = Vector2( 298, 102 )
-states/idle_2/node = SubResource( 14 )
+states/idle_2/node = SubResource( 11 )
 states/idle_2/position = Vector2( 476, 102 )
-states/receive_damage/node = SubResource( 15 )
+states/receive_damage/node = SubResource( 12 )
 states/receive_damage/position = Vector2( 553, 309 )
-states/walk/node = SubResource( 16 )
+states/walk/node = SubResource( 13 )
 states/walk/position = Vector2( 298, 309 )
-transitions = [ "idle_1", "idle_2", SubResource( 17 ), "idle_1", "walk", SubResource( 18 ), "idle_2", "idle_1", SubResource( 19 ), "walk", "idle_1", SubResource( 20 ), "idle_1", "receive_damage", SubResource( 21 ), "receive_damage", "death", SubResource( 22 ), "receive_damage", "idle_1", SubResource( 23 ), "walk", "receive_damage", SubResource( 24 ), "receive_damage", "walk", SubResource( 25 ) ]
+transitions = [ "idle_1", "idle_2", SubResource( 14 ), "idle_1", "walk", SubResource( 15 ), "idle_2", "idle_1", SubResource( 16 ), "walk", "idle_1", SubResource( 17 ), "idle_1", "receive_damage", SubResource( 18 ), "receive_damage", "death", SubResource( 19 ), "receive_damage", "idle_1", SubResource( 20 ), "walk", "receive_damage", SubResource( 21 ), "receive_damage", "walk", SubResource( 22 ) ]
 start_node = "idle_1"
 end_node = "death"
-graph_offset = Vector2( -103, 190 )
+graph_offset = Vector2( -178, 30 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -171,7 +171,7 @@ script = ExtResource( 1 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 23
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 6 )
@@ -192,10 +192,10 @@ anims/receive_damage = SubResource( 7 )
 anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 11 )
+tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 10 )
+parameters/playback = SubResource( 24 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -203,7 +203,7 @@ current = true
 [node name="Timers" type="Node2D" parent="."]
 
 [node name="IdleTimer" type="Timer" parent="Timers"]
-wait_time = 20.0
+wait_time = 8.0
 one_shot = true
 
 [node name="AdditionalScripts" type="Node2D" parent="."]
@@ -215,3 +215,4 @@ script = ExtResource( 3 )
 script = ExtResource( 5 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
+[connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
