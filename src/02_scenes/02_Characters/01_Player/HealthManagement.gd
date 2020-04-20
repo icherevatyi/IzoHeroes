@@ -17,3 +17,4 @@ func _on_damage_taken(damage) -> void:
 
 func player_died() -> void:
 	player.health_is_damaged = false
+	player.is_dead = true

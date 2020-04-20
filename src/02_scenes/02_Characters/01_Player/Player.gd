@@ -3,8 +3,10 @@ extends KinematicBody2D
 export var health_is_damaged: bool = false
 export var speed: int = 120
 
+
 var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
+var is_dead:  bool = false
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
@@ -23,6 +25,7 @@ func _ready() -> void:
 
 func _physics_process(_delta) -> void:
 	_move_player()
+	_check_mouse_position()
 	state_scripts.monitor_states()
 
 
@@ -33,15 +36,9 @@ func _move_player() ->  void:
 	movement = move_and_slide(movement, Vector2(0, 0))
 
 
-func _input(event) -> void:
-	if event.is_action_pressed("move_left"):
-		$Sprite.flip_h = true
-	if event.is_action_pressed("move_right"):
-		$Sprite.flip_h = false
-
+func _input(event) -> void:		
 	if event.is_action_pressed("ui_accept"):
 		_damage_taken(2)
-
 
 	if event.is_pressed() == false:
 		match idle_timer.is_stopped():
@@ -51,6 +48,17 @@ func _input(event) -> void:
 		idle_timer.stop()
 		is_bored = false
 
+
+func _check_mouse_position() -> void:
+	var min_mouse_distance: int = $CollisionShape2D.get_shape().radius
+	var distance_to_player: int = int(get_global_mouse_position().x - get_global_position().x)
+	
+	if is_dead == false and is_bored == false:
+		if distance_to_player > min_mouse_distance:
+			$Sprite.flip_h = false
+		if distance_to_player < min_mouse_distance:
+			$Sprite.flip_h = true
+		
 
 func _on_message_received(msg: String) -> void:
 	print(msg)

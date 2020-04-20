@@ -37,15 +37,16 @@ func set_state(state) -> void:
 
 
 func monitor_states() -> void:
-	if player.movement == Vector2.ZERO and player.is_bored == false:
-		set_state(STATE_VALUES.IDLE_1)
-	if player.movement == Vector2.ZERO and player.is_bored == true:
-		set_state(STATE_VALUES.IDLE_2)
-	if player.movement != Vector2.ZERO:
-		set_state(STATE_VALUES.WALK)
-	if player.health_is_damaged == true:
-		set_state(STATE_VALUES.RECEIVE_DAMAGE)
-	if player.health_scripts.health_current == 0:
+	if player.is_dead == false:
+		if player.movement == Vector2.ZERO and player.is_bored == false:
+			set_state(STATE_VALUES.IDLE_1)
+		if player.movement == Vector2.ZERO and player.is_bored == true:
+			set_state(STATE_VALUES.IDLE_2)
+		if player.movement != Vector2.ZERO:
+			set_state(STATE_VALUES.WALK)
+		if player.health_is_damaged == true:
+			set_state(STATE_VALUES.RECEIVE_DAMAGE)
+	if player.is_dead == true:
 		set_state(STATE_VALUES.DEATH)
 
 
