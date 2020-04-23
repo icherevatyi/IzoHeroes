@@ -43,7 +43,7 @@ func _check_swing_limits() -> void:
 
 func _weapon_swing() -> void:
 	_change_weapon_collision()
-	tween.interpolate_method(sword, "look_at", start_swing_point, final_swing_point, 0.05, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_method(sword, "look_at", start_swing_point, final_swing_point, 0.45, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	tween.start()
 	
 	match starting_sword_position:
