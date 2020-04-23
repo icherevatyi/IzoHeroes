@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01/Dungeon_1.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ParticlesMaterial" id=1]
 trail_divisor = 2
@@ -16,6 +17,8 @@ orbit_velocity_random = 0.0
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -49,3 +52,6 @@ position = Vector2( 24, 312 )
 
 [node name="ExitDoor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 840, 56 )
+
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 56, 224 )

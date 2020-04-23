@@ -16,7 +16,6 @@ onready var left_point: Position2D = get_node('../../Weapon/SwordItem/SwingRadiu
 onready var right_point: Position2D = get_node('../../Weapon/SwordItem/SwingRadius/RightPosition')
 
 
-
 func _ready() -> void:
 	set_physics_process(true)
 	starting_sword_position = SWORD_POSITIONS.LEFT

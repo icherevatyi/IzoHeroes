@@ -20,6 +20,8 @@ texture = SubResource( 1 )
 [node name="HitBox" type="Area2D" parent="Sword"]
 visible = false
 position = Vector2( 24, 0 )
+collision_layer = 16
+collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Sword/HitBox"]
 shape = SubResource( 2 )
