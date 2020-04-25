@@ -14,6 +14,9 @@ onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
 onready var HUD = $HUD
 onready var idle_timer: Timer = $Timers/IdleTimer
 
+onready var weapon: Node2D  = $Weapon/SwordItem
+
+signal weapon_swing
 signal damage_receive(dmg)
 signal damage_heal(dmg)
 
@@ -22,11 +25,14 @@ func _ready() -> void:
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
 	_connect_signal("damage_heal", HUD, "_on_healing_displayed")
+	_connect_signal("weapon_swing", weapon, "_on_weapon_swing_started")
+
 
 func _physics_process(_delta) -> void:
 	_move_player()
 	_check_mouse_position()
 	state_scripts.monitor_states()
+	weapon.look_at(get_global_mouse_position())
 
 
 func _move_player() ->  void:
@@ -39,7 +45,9 @@ func _move_player() ->  void:
 func _input(event) -> void:		
 	if event.is_action_pressed("ui_accept"):
 		_damage_taken(2)
-
+	if event.is_action_pressed("attack"):
+		emit_signal("weapon_swing")
+		
 	if event.is_pressed() == false:
 		match idle_timer.is_stopped():
 			true:

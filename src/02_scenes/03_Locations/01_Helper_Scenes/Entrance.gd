@@ -6,17 +6,20 @@ onready var spawn_point: Position2D = $SpawnPoint
 onready var _current_lvl: Node2D = get_parent()
 onready var player: PackedScene = preload("res://src/02_scenes/02_Characters/01_Player/Player.tscn")
 
+var spawn_node: YSort
+
 signal _message_sent(msg)
 
 
 func _ready() -> void:
+	spawn_node = _current_lvl.get_node("YSort")
 	_spawn_player()
 
 
 func _spawn_player() -> void:
 	var p_instance: KinematicBody2D = player.instance()
 	p_instance.set_global_position(spawn_point.get_global_position())
-	_current_lvl.call_deferred("add_child", p_instance)
+	spawn_node.call_deferred("add_child", p_instance)
 
 	_connect_signal("_message_sent", p_instance, "_on_message_received")
 

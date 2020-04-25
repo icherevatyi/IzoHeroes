@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://src/02_scenes/01_UI/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/HealthManagement.gd" type="Script" id=5]
 [ext_resource path="res://src/02_scenes/04_Items/01_Weapons/Sword.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/WeaponManagement.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -173,7 +172,7 @@ script = ExtResource( 1 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 4
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 6 )
@@ -219,9 +218,6 @@ script = ExtResource( 3 )
 
 [node name="HealthManagement" type="Node2D" parent="AdditionalScripts"]
 script = ExtResource( 5 )
-
-[node name="WeaponManagement" type="Node2D" parent="AdditionalScripts"]
-script = ExtResource( 7 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
