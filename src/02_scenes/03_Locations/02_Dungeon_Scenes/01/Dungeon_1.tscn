@@ -4,7 +4,7 @@
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01/Dungeon_1.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_Skeleton/Skeleton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/02_Skeleton/Skeleton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ParticlesMaterial" id=1]
 trail_divisor = 2

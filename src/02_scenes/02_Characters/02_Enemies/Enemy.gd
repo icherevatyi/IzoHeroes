@@ -5,6 +5,8 @@ var health_current: int
 var health_max: int
 var damage: int
 
+onready var movement_scripts: Node2D = $AdditionalScripts/MovementManagement
+onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
 
 signal initiate_healthpool(health_maximum)
@@ -15,7 +17,11 @@ func _ready() -> void:
 	_connect_signal("manage_healthbar_change", health_bars, "_on_healthbar_updated")
 	_connect_signal("initiate_healthpool", health_bars, "_on_healthbar_initiated")
 	emit_signal("initiate_healthpool", health_max)
-	
+
+
+func _physics_process(_delta):
+	movement_scripts.move_enemy()
+	var _movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
 
 
 func _get_stats(enemy_type: String) -> void:

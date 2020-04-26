@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/01_UI/health.png" type="Texture" id=2]
-[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/HurtBox.gd" type="Script" id=3]
-[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/HealthBars.gd" type="Script" id=4]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/HurtBox.gd" type="Script" id=3]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/HealthBars.gd" type="Script" id=4]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/MovementManagement.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -122,6 +123,9 @@ shape = SubResource( 21 )
 
 [node name="Timers" type="Node2D" parent="."]
 
+[node name="MovementChangeTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="HealthBars" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
@@ -153,5 +157,8 @@ __meta__ = {
 [node name="AdditionalScripts" type="Node2D" parent="."]
 
 [node name="MovementManagement" type="Node2D" parent="AdditionalScripts"]
+script = ExtResource( 5 )
+speed = 30
 
 [node name="StatesManagement" type="Node2D" parent="AdditionalScripts"]
+[connection signal="timeout" from="Timers/MovementChangeTimer" to="AdditionalScripts/MovementManagement" method="_on_MovementChangeTimer_timeout"]

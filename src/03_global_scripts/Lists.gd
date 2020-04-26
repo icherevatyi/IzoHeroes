@@ -10,7 +10,7 @@ var lvl_list: Dictionary = {
 
 var enemy_list: Dictionary = {
 	1: {
-		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/01_Skeleton/Skeleton.tscn"),
+		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/02_Skeleton/Skeleton.tscn"),
 		"type": "Skeleton",
 		"health_max": 100,
 		"damage": 1
