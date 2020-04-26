@@ -10,11 +10,11 @@ var is_dead:  bool = false
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
-
 onready var HUD = $HUD
 onready var idle_timer: Timer = $Timers/IdleTimer
+onready var weapon_container: Node2D = $Weapon
+onready var current_weapon: Area2D = $Weapon/Sword
 
-onready var weapon: Node2D  = $Weapon/SwordItem
 
 signal weapon_swing
 signal damage_receive(dmg)
@@ -25,14 +25,14 @@ func _ready() -> void:
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
 	_connect_signal("damage_heal", HUD, "_on_healing_displayed")
-	_connect_signal("weapon_swing", weapon, "_on_weapon_swing_started")
+	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 
 
 func _physics_process(_delta) -> void:
 	_move_player()
 	_check_mouse_position()
 	state_scripts.monitor_states()
-	weapon.look_at(get_global_mouse_position())
+	weapon_container.look_at(get_global_mouse_position())
 
 
 func _move_player() ->  void:

@@ -14,6 +14,7 @@ signal manage_healthbar_change(hp_before_damage, hp_after_damage)
 func _ready() -> void:
 	_connect_signal("manage_healthbar_change", health_bars, "_on_healthbar_updated")
 	_connect_signal("initiate_healthpool", health_bars, "_on_healthbar_initiated")
+	emit_signal("initiate_healthpool", health_max)
 	
 
 
@@ -27,10 +28,10 @@ func _get_stats(enemy_type: String) -> void:
 			damage = enemies[enemy].damage
 
 
-func receive_damage(damage) -> void:
+func receive_damage(damage_received) -> void:
 	var health_prev = health_current
-	health_current -= damage
-	health_current = max(0, health_current)
+	health_current -= damage_received
+	health_current = int(max(0, health_current))
 	
 	emit_signal("manage_healthbar_change", health_prev, health_current)
 	yield(get_tree().create_timer(0.35), "timeout")
