@@ -31,7 +31,6 @@ func _set_state(state) -> void:
 			state_machine.travel("receive_damage")
 		STATE_VALUES.DEATH:
 			state_machine.travel("death")
-	print(enemy.movement)
 
 
 func monitor_states() -> void:

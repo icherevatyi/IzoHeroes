@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/01_UI/health.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/HealthBars.gd" type="Script" id=4]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/MovementManagement.gd" type="Script" id=5]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/StatesManagement.gd" type="Script" id=6]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/AttackManagement.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -108,6 +109,15 @@ region = Rect2( 1, 13, 26, 6 )
 atlas = ExtResource( 2 )
 region = Rect2( 1, 19, 26, 6 )
 
+[sub_resource type="CircleShape2D" id=29]
+radius = 72.0
+
+[sub_resource type="CircleShape2D" id=30]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 27, 10 )
+
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 19
@@ -179,8 +189,34 @@ __meta__ = {
 
 [node name="MovementManagement" type="Node2D" parent="AdditionalScripts"]
 script = ExtResource( 5 )
-speed = 30
 
 [node name="StatesManagement" type="Node2D" parent="AdditionalScripts"]
 script = ExtResource( 6 )
+
+[node name="AttackManagement" type="Node2D" parent="AdditionalScripts"]
+script = ExtResource( 7 )
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource( 29 )
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource( 30 )
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( 20, 0 )
+shape = SubResource( 31 )
+disabled = true
 [connection signal="timeout" from="Timers/MovementChangeTimer" to="AdditionalScripts/MovementManagement" method="_on_MovementChangeTimer_timeout"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_DetectionRange_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_DetectionRange_body_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_AttackRange_body_exited"]
+[connection signal="area_entered" from="HitBox" to="AdditionalScripts/AttackManagement" method="_on_HitBox_area_entered"]

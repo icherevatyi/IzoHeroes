@@ -7,6 +7,8 @@ var health_max: int
 var damage: int
 var is_dead: bool = false
 
+onready var detection_range: Area2D = $DetectionRange
+onready var attack_scripts: Node2D = $AdditionalScripts/AttackManagement
 onready var movement_scripts: Node2D = $AdditionalScripts/MovementManagement
 onready var state_scripts: Node2D = $AdditionalScripts/StatesManagement
 onready var movement_timer: Timer = $Timers/MovementChangeTimer
@@ -28,7 +30,18 @@ func _ready() -> void:
 
 func _physics_process(_delta):
 	if is_dead == false:
-		movement_scripts.move_enemy()
+		match is_chasing:
+			false:
+				movement_scripts.move_enemy()
+			true:
+				for body in detection_range.get_overlapping_bodies():
+					if body.name == "Player":
+						match is_attacking:
+							false:
+								movement_scripts.chase_player(body.get_global_position())
+							true:
+								movement_scripts.enemy_stop(body.get_global_position())
+								attack_scripts._face_player(body.get_global_position())
 		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
 	state_scripts.monitor_states()
 
@@ -61,6 +74,29 @@ func _death() -> void:
 	is_dead = true
 	$CollisionShape2D.disabled = true
 	health_bars.visible = false
+
+
+func _on_DetectionRange_body_entered(body):
+	if body.name == "Player":
+		is_chasing = true
+
+
+func _on_DetectionRange_body_exited(body):
+	if body.name == "Player":
+		is_chasing = false
+
+
+
+func _on_AttackRange_body_entered(body):
+	if body.name == "Player":
+		is_attacking = true
+		print(is_attacking)
+
+
+func _on_AttackRange_body_exited(body):
+	if body.name == "Player":
+		is_attacking = false
+		print(is_attacking)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
