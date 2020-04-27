@@ -2,7 +2,9 @@ extends Area2D
 
 var is_monitored: bool
 var damage: int = 35
+
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var player_sprite: KinematicBody2D = get_node("../../Sprite")
 
 signal do_damage(damage)
 
@@ -14,9 +16,9 @@ func _ready() -> void:
 
 func _on_weapon_swing() -> void:
 	var current_position = int(rotation_degrees)
-	if current_position < 0:
+	if player_sprite.flip_h == false:
 		animation_player.play("swing")
-	if current_position > 0:
+	if player_sprite.flip_h == true:
 		animation_player.play_backwards("swing")
 
 

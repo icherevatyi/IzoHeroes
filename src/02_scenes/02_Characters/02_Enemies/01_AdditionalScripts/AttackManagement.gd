@@ -16,7 +16,6 @@ func _on_HitBox_area_entered(area):
 		if area.name == "HurtBox":
 			_connect_signal("attack", area.get_parent(), "_damage_taken")
 			emit_signal("attack", parent.damage)
-		
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

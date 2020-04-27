@@ -29,10 +29,11 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
-	_move_player()
-	_check_mouse_position()
+	if is_dead == false:
+		_move_player()
+		_check_mouse_position()
+		weapon_container.look_at(get_global_mouse_position())
 	state_scripts.monitor_states()
-	weapon_container.look_at(get_global_mouse_position())
 
 
 func _move_player() ->  void:
@@ -43,18 +44,17 @@ func _move_player() ->  void:
 
 
 func _input(event) -> void:		
-	if event.is_action_pressed("ui_accept"):
-		_damage_taken(2)
-	if event.is_action_pressed("attack"):
-		emit_signal("weapon_swing")
+	if is_dead == false:
+		if event.is_action_pressed("attack"):
+			emit_signal("weapon_swing")
 		
-	if event.is_pressed() == false:
-		match idle_timer.is_stopped():
-			true:
-				idle_timer.start()
-	if event.is_pressed() == true:
-		idle_timer.stop()
-		is_bored = false
+		if event.is_pressed() == false:
+			match idle_timer.is_stopped():
+				true:
+					idle_timer.start()
+		if event.is_pressed() == true:
+			idle_timer.stop()
+			is_bored = false
 
 
 func _check_mouse_position() -> void:

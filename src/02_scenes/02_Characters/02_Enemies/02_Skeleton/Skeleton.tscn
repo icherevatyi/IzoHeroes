@@ -3,7 +3,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/02_Enemies/skeleton.png" type="Texture" id=3]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends \"res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd\"
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 	emit_signal(\"initiate_healthpool\", health_max)
 "
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
 uniform float hit_opacity = 0;
@@ -23,8 +23,8 @@ void fragment() {
 	COLOR.a = texture(TEXTURE, UV).a;
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/hit_opacity = 0.0
 
 [sub_resource type="AtlasTexture" id=4]
@@ -165,10 +165,10 @@ tracks/0/keys = {
 [sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
 [node name="Skeleton" instance=ExtResource( 1 )]
-script = SubResource( 3 )
+script = SubResource( 1 )
 
 [node name="Sprite" parent="." index="0"]
-material = SubResource( 2 )
+material = SubResource( 3 )
 texture = SubResource( 4 )
 vframes = 6
 hframes = 6
@@ -183,18 +183,3 @@ anims/walk = SubResource( 10 )
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 11 )
-
-[node name="HurtBox" parent="." index="4"]
-visible = false
-
-[node name="DetectionRange" parent="." index="9"]
-visible = false
-
-[node name="AttackRange" parent="." index="10"]
-visible = false
-
-[node name="HitBox" parent="." index="11"]
-visible = false
-
-[node name="CollisionShape2D" parent="HitBox" index="0"]
-disabled = false
