@@ -15,7 +15,6 @@ func _ready() -> void:
 
 
 func _on_weapon_swing() -> void:
-	var current_position = int(rotation_degrees)
 	if player_sprite.flip_h == false:
 		animation_player.play("swing")
 	if player_sprite.flip_h == true:
