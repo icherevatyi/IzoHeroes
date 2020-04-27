@@ -9,14 +9,15 @@ signal do_damage(damage)
 
 func _ready() -> void:
 	is_monitored = monitoring
+	animation_player.playback_speed = 3
 
 
 func _on_weapon_swing() -> void:
 	var current_position = int(rotation_degrees)
 	if current_position < 0:
-			animation_player.play("swing")
+		animation_player.play("swing")
 	if current_position > 0:
-			animation_player.play_backwards("swing")
+		animation_player.play_backwards("swing")
 
 
 func _on_Weapon_area_entered(area) -> void:
