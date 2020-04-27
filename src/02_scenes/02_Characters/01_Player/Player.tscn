@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/02_scenes/01_UI/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/HealthManagement.gd" type="Script" id=5]
 [ext_resource path="res://src/02_scenes/04_Items/01_Weapons/01_Sword/Sword.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/01_assets/07_Shaders/DamageBlinkShader.tres" type="Material" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -90,6 +91,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material:shader_param/hit_opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.6
@@ -169,10 +182,13 @@ collision_mask = 13
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 1
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 6 )

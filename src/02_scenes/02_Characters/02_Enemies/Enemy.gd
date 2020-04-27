@@ -90,13 +90,11 @@ func _on_DetectionRange_body_exited(body):
 func _on_AttackRange_body_entered(body):
 	if body.name == "Player":
 		is_attacking = true
-		print(is_attacking)
 
 
 func _on_AttackRange_body_exited(body):
 	if body.name == "Player":
 		is_attacking = false
-		print(is_attacking)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

@@ -12,9 +12,10 @@ func _face_player(player_pos):
 
 
 func _on_HitBox_area_entered(area):
-	if area.name == "HurtBox":
-		_connect_signal("attack", area.get_parent(), "_damage_taken")
-		emit_signal("attack", parent.damage)
+	if parent.is_dead == false:
+		if area.name == "HurtBox":
+			_connect_signal("attack", area.get_parent(), "_damage_taken")
+			emit_signal("attack", parent.damage)
 		
 
 
