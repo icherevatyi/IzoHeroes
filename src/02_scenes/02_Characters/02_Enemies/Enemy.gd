@@ -1,13 +1,20 @@
 extends KinematicBody2D
 
+export var is_taking_damage: bool = false
 var type: String
 var health_current: int
 var health_max: int
 var damage: int
+var is_dead: bool = false
 
 onready var movement_scripts: Node2D = $AdditionalScripts/MovementManagement
+onready var state_scripts: Node2D = $AdditionalScripts/StatesManagement
 onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
+
+var movement
+var is_chasing: bool = false
+var is_attacking: bool = false
 
 signal initiate_healthpool(health_maximum)
 signal manage_healthbar_change(hp_before_damage, hp_after_damage)
@@ -20,8 +27,10 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
-	movement_scripts.move_enemy()
-	var _movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
+	if is_dead == false:
+		movement_scripts.move_enemy()
+		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
+	state_scripts.monitor_states()
 
 
 func _get_stats(enemy_type: String) -> void:
@@ -39,6 +48,7 @@ func receive_damage(damage_received) -> void:
 	health_current -= damage_received
 	health_current = int(max(0, health_current))
 	
+	is_taking_damage = true
 	emit_signal("manage_healthbar_change", health_prev, health_current)
 	yield(get_tree().create_timer(0.35), "timeout")
 	
@@ -48,8 +58,9 @@ func receive_damage(damage_received) -> void:
 
 
 func _death() -> void:
-	print("Skeleton dies")
-	call_deferred("queue_free")
+	is_dead = true
+	$CollisionShape2D.disabled = true
+	health_bars.visible = false
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

@@ -1,51 +1,58 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/01_UI/health.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/HurtBox.gd" type="Script" id=3]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/HealthBars.gd" type="Script" id=4]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/MovementManagement.gd" type="Script" id=5]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/StatesManagement.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
+length = 0.6
+step = 0.05
 
 [sub_resource type="Animation" id=3]
-resource_name = "death"
+resource_name = "chase"
 
 [sub_resource type="Animation" id=4]
-resource_name = "idle"
+length = 0.75
+step = 0.05
 
 [sub_resource type="Animation" id=5]
-resource_name = "receive_damage"
+length = 0.1
 
 [sub_resource type="Animation" id=6]
-resource_name = "walk"
+length = 0.6
 
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "attack"
+[sub_resource type="Animation" id=7]
+length = 0.9
+loop = true
 
 [sub_resource type="AnimationNodeAnimation" id=8]
-animation = "death"
+animation = "attack"
 
 [sub_resource type="AnimationNodeAnimation" id=9]
-animation = "idle"
+animation = "chase"
 
 [sub_resource type="AnimationNodeAnimation" id=10]
-animation = "receive_damage"
+animation = "death"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "receive_damage"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 switch_mode = 2
 auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
@@ -54,37 +61,50 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=19]
-states/attack/node = SubResource( 7 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/attack/node = SubResource( 8 )
 states/attack/position = Vector2( 278, 224 )
-states/death/node = SubResource( 8 )
+states/chase/node = SubResource( 9 )
+states/chase/position = Vector2( 101, 56 )
+states/death/node = SubResource( 10 )
 states/death/position = Vector2( 822, 224 )
-states/idle/node = SubResource( 9 )
+states/idle/node = SubResource( 11 )
 states/idle/position = Vector2( 278, 56 )
-states/receive_damage/node = SubResource( 10 )
+states/receive_damage/node = SubResource( 12 )
 states/receive_damage/position = Vector2( 548, 224 )
-states/walk/node = SubResource( 11 )
+states/walk/node = SubResource( 13 )
 states/walk/position = Vector2( 548, 56 )
-transitions = [ "receive_damage", "death", SubResource( 12 ), "idle", "walk", SubResource( 13 ), "idle", "attack", SubResource( 14 ), "attack", "idle", SubResource( 15 ), "walk", "idle", SubResource( 16 ), "idle", "receive_damage", SubResource( 17 ), "receive_damage", "idle", SubResource( 18 ) ]
-graph_offset = Vector2( -28, -18 )
+transitions = [ "receive_damage", "death", SubResource( 14 ), "idle", "walk", SubResource( 15 ), "idle", "attack", SubResource( 16 ), "attack", "idle", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "idle", "receive_damage", SubResource( 19 ), "receive_damage", "idle", SubResource( 20 ), "idle", "chase", SubResource( 21 ), "chase", "idle", SubResource( 22 ) ]
+start_node = "idle"
+end_node = "death"
+graph_offset = Vector2( -74, -46 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
-[sub_resource type="CapsuleShape2D" id=21]
+[sub_resource type="CapsuleShape2D" id=25]
 radius = 7.0
 height = 10.0
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 2 )
 region = Rect2( 1, 23, 26, 6 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 2 )
 region = Rect2( 1, 13, 26, 6 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 2 )
 region = Rect2( 1, 19, 26, 6 )
 
@@ -101,16 +121,17 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
-anims/death = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/receive_damage = SubResource( 5 )
-anims/walk = SubResource( 6 )
+anims/chase = SubResource( 3 )
+anims/death = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/receive_damage = SubResource( 6 )
+anims/walk = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 19 )
+tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 20 )
+parameters/playback = SubResource( 24 )
 
 [node name="HurtBox" type="Area2D" parent="."]
 priority = 1.0
@@ -119,7 +140,7 @@ collision_mask = 16
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource( 21 )
+shape = SubResource( 25 )
 
 [node name="Timers" type="Node2D" parent="."]
 
@@ -134,7 +155,7 @@ margin_left = -13.0
 margin_top = -21.0
 margin_right = 13.0
 margin_bottom = -15.0
-texture_progress = SubResource( 22 )
+texture_progress = SubResource( 26 )
 tint_progress = Color( 0.937255, 0.662745, 0.0156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -146,8 +167,8 @@ margin_top = -21.0
 margin_right = 13.0
 margin_bottom = -15.0
 value = 60.0
-texture_under = SubResource( 23 )
-texture_progress = SubResource( 24 )
+texture_under = SubResource( 27 )
+texture_progress = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -161,4 +182,5 @@ script = ExtResource( 5 )
 speed = 30
 
 [node name="StatesManagement" type="Node2D" parent="AdditionalScripts"]
+script = ExtResource( 6 )
 [connection signal="timeout" from="Timers/MovementChangeTimer" to="AdditionalScripts/MovementManagement" method="_on_MovementChangeTimer_timeout"]

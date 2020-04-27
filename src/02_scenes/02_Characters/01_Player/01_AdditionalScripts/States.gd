@@ -10,7 +10,6 @@ enum STATE_VALUES {
 }
 
 var state_machine
-var prev_state: int
 
 onready var player: KinematicBody2D = get_node("../../")
 
