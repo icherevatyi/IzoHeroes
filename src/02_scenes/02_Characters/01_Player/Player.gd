@@ -66,7 +66,7 @@ func _check_mouse_position() -> void:
 			$Sprite.flip_h = false
 		if distance_to_player < min_mouse_distance:
 			$Sprite.flip_h = true
-		
+
 
 func _on_message_received(msg: String) -> void:
 	print(msg)

@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Global="*res://src/03_global_scripts/Global.gd"
 Lists="*res://src/03_global_scripts/Lists.gd"
 
 [display]

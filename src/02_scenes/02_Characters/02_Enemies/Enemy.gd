@@ -28,7 +28,7 @@ func _ready() -> void:
 	emit_signal("initiate_healthpool", health_max)
 
 
-func _physics_process(_delta):
+func _physics_process(_delta) -> void:
 	if is_dead == false:
 		match is_chasing:
 			false:
@@ -76,23 +76,23 @@ func _death() -> void:
 	health_bars.visible = false
 
 
-func _on_DetectionRange_body_entered(body):
+func _on_DetectionRange_body_entered(body) -> void:
 	if body.name == "Player":
 		is_chasing = true
 
 
-func _on_DetectionRange_body_exited(body):
+func _on_DetectionRange_body_exited(body) -> void:
 	if body.name == "Player":
 		is_chasing = false
 
 
 
-func _on_AttackRange_body_entered(body):
+func _on_AttackRange_body_entered(body) -> void:
 	if body.name == "Player":
 		is_attacking = true
 
 
-func _on_AttackRange_body_exited(body):
+func _on_AttackRange_body_exited(body) -> void:
 	if body.name == "Player":
 		is_attacking = false
 

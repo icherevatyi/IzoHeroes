@@ -7,11 +7,11 @@ onready var hitbox: Area2D = parent.get_node("HitBox")
 signal attack(dmg)
 
 
-func _face_player(player_pos):
+func _face_player(player_pos) -> void:
 	hitbox.look_at(player_pos)
 
 
-func _on_HitBox_area_entered(area):
+func _on_HitBox_area_entered(area) -> void:
 	if parent.is_dead == false:
 		if area.name == "HurtBox":
 			_connect_signal("attack", area.get_parent(), "_damage_taken")
