@@ -24,3 +24,4 @@ texture = SubResource( 1 )
 position = Vector2( 0, -2 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="MessageTrigger" to="." method="_on_MessageTrigger_body_entered"]
+[connection signal="body_exited" from="MessageTrigger" to="." method="_on_MessageTrigger_body_exited"]

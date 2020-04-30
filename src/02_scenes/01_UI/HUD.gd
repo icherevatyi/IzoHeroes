@@ -2,11 +2,24 @@ extends CanvasLayer
 
 var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/Heart.tscn")
 
-onready var healthbar = $Control/HealthBar
+onready var healthbar: HBoxContainer = $Control/HealthBar
+onready var dialog_box: PopupPanel = $Control/DialogBox
 
 
 func _ready() -> void:
 	_on_healing_displayed(4)
+
+
+func _on_message_shown(msg) -> void:
+	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
+	textarea.set_text(msg)
+	dialog_box.popup()
+
+
+func _on_message_hidden() -> void:
+	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
+	textarea.clear()
+	dialog_box.visible = false
 
 
 func _on_healing_displayed(amount: int) -> void:

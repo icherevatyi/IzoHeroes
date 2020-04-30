@@ -9,7 +9,7 @@ onready var player: PackedScene = preload("res://src/02_scenes/02_Characters/01_
 var spawn_node: YSort
 
 signal _message_sent(msg)
-
+signal _message_removed
 
 func _ready() -> void:
 	spawn_node = _current_lvl.get_node("YSort")
@@ -22,11 +22,17 @@ func _spawn_player() -> void:
 	spawn_node.call_deferred("add_child", p_instance)
 
 	_connect_signal("_message_sent", p_instance, "_on_message_received")
+	_connect_signal("_message_removed", p_instance, "_on_message_removed")
 
 
 func _on_MessageTrigger_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
 		emit_signal("_message_sent", _message)
+
+
+func _on_MessageTrigger_body_exited(body):
+	if body.name == 'Player':
+		emit_signal("_message_removed")
 
 
 func _connect_signal(signal_title: String, target_node: Node2D, target_function_title: String) -> void:
@@ -37,3 +43,4 @@ func _connect_signal(signal_title: String, target_node: Node2D, target_function_
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+
