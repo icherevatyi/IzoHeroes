@@ -3,7 +3,7 @@ extends Node2D
 var _message: String = "Iron bar closed behind you. Door is tightly sealed and the only way to leave this place is to move forward."
 
 onready var spawn_point: Position2D = $SpawnPoint
-onready var _current_lvl: Node2D = get_parent()
+onready var dungeon_lvl: Node2D = get_parent()
 onready var player: PackedScene = preload("res://src/02_scenes/02_Characters/01_Player/Player.tscn")
 
 var spawn_node: YSort
@@ -11,8 +11,9 @@ var spawn_node: YSort
 signal _message_sent(msg)
 signal _message_removed
 
+
 func _ready() -> void:
-	spawn_node = _current_lvl.get_node("YSort")
+	spawn_node = dungeon_lvl.get_node("YSort")
 	_spawn_player()
 
 

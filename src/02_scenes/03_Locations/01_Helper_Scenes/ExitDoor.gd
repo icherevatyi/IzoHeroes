@@ -3,7 +3,10 @@ extends Node2D
 var lvl_list: Dictionary = Lists.lvl_list
 var _message: String = "You reached end of this demo, thank you for playing!"
 
+onready var dungeon_lvl: Node2D = get_parent()
+
 signal message_sent(msg)
+
 
 func _get_current_lvl() -> int:
 	var _current_lvl: String = get_parent().filename
@@ -22,6 +25,8 @@ func _load_next_lvl(player) -> void:
 		# Here should be code to call a backdrop and load message instead of next lvl
 	else:
 		# Here should be code to call a backdrop and load next lvl
+		Backdrop.fade_in()
+		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 		var _change_msg = get_tree().change_scene(lvl_list[next_lvl])
 
 

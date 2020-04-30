@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/Heart.tscn")
+var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/01_PlayerHealthIcon/Heart.tscn")
 
 onready var healthbar: HBoxContainer = $Control/HealthBar
 onready var dialog_box: PopupPanel = $Control/DialogBox

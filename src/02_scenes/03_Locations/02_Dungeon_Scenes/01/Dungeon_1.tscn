@@ -51,6 +51,9 @@ position = Vector2( 24, 312 )
 [node name="ExitDoor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 840, 56 )
 
+[node name="ExitDoor2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 24, 184 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Skeleton" parent="YSort" instance=ExtResource( 5 )]
