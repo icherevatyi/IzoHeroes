@@ -5,7 +5,7 @@ var _message: String = "You reached end of this demo, thank you for playing!"
 
 onready var dungeon_lvl: Node2D = get_parent()
 
-signal message_sent(msg)
+signal endgame_message_sent(msg)
 
 
 func _get_current_lvl() -> int:
@@ -16,15 +16,15 @@ func _get_current_lvl() -> int:
 	return 0
 
 
-func _load_next_lvl(player) -> void:
+func _load_next_lvl() -> void:
 	var next_lvl = _get_current_lvl() + 1
 	if int(lvl_list.size()) < next_lvl:
-		_connect_signal("message_sent", player, "_on_message_received")
-		emit_signal("message_sent", _message)
-		
-		# Here should be code to call a backdrop and load message instead of next lvl
+		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
+		Backdrop.fade_in()
+		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
+		print("signal emitted")
+		emit_signal("endgame_message_sent", _message)
 	else:
-		# Here should be code to call a backdrop and load next lvl
 		Backdrop.fade_in()
 		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 		var _change_msg = get_tree().change_scene(lvl_list[next_lvl])
@@ -32,10 +32,10 @@ func _load_next_lvl(player) -> void:
 
 func _on_ExitTrigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		_load_next_lvl(body)
+		_load_next_lvl()
 
 
-func _connect_signal(signal_title: String, target_node: Node2D, target_function_title: String) -> void:
+func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
 	match is_connected(signal_title, target_node, target_function_title):
 		false:
 			var connection_msg: int = connect(signal_title, target_node, target_function_title)

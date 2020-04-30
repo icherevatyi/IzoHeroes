@@ -23,7 +23,8 @@ config/icon="res://icon.png"
 
 Global="*res://src/03_global_scripts/Global.gd"
 Lists="*res://src/03_global_scripts/Lists.gd"
-Backdrop="*res://src/02_scenes/01_UI/01_Elements/Backdrop/Backdrop.tscn"
+Backdrop="*res://src/02_scenes/01_UI/01_Elements/03_Backdrop/Backdrop.tscn"
+LvlSummary="*res://src/02_scenes/01_UI/01_Elements/04_LvlSummary/LvlSummary.tscn"
 
 [display]
 

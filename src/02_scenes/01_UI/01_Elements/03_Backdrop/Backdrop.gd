@@ -6,7 +6,6 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var color_box: ColorRect = $ColorRect
 
 
-
 func fade_in() -> void:
 	animation_player.play("fade_in")
 
