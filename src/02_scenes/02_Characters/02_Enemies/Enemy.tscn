@@ -52,7 +52,6 @@ animation = "receive_damage"
 animation = "walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
-switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
@@ -89,7 +88,7 @@ states/walk/position = Vector2( 548, 56 )
 transitions = [ "receive_damage", "death", SubResource( 14 ), "idle", "walk", SubResource( 15 ), "idle", "attack", SubResource( 16 ), "attack", "idle", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "idle", "receive_damage", SubResource( 19 ), "receive_damage", "idle", SubResource( 20 ), "idle", "chase", SubResource( 21 ), "chase", "idle", SubResource( 22 ) ]
 start_node = "idle"
 end_node = "death"
-graph_offset = Vector2( -74, -46 )
+graph_offset = Vector2( -60, 70 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
