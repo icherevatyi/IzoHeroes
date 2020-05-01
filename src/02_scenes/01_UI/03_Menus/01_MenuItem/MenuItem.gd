@@ -20,6 +20,6 @@ func _on_MenuItem_pressed():
 		"SHOW_OPTIONS":
 			Global.call_main_menu()
 		"QTM":
-			Global.call_main_menu()
+			Global.exit_to_menu()
 		"QTD":
 			Global.exit_game()

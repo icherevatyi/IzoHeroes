@@ -34,25 +34,31 @@ func toggle_pause_menu() -> void:
 					dungeon.add_child(menu_instance)
 					is_paused = true
 				true:
-					dungeon.get_node("Menu").queue_free()
+					if dungeon.has_node("Menu"):
+						dungeon.get_node("Menu").queue_free()
 					is_paused = false
 
 
 func start_game() -> void:
-	_scene_change_value = get_tree().change_scene(Lists.lvl_list[1])
 	is_game_started = true
+	is_paused = false
+	get_tree().paused = false
+	_scene_change_value = get_tree().change_scene(Lists.lvl_list[1])
 
 
 func load_game() -> void:
+	is_game_started = true
+	is_paused = false
+	get_tree().paused = false
 	_scene_change_value = get_tree().change_scene(Lists.lvl_list[4])
-	toggle_pause_menu()
 
 
 func exit_to_menu() -> void:
-	toggle_pause_menu()
 	is_game_started = false
+	is_paused = false
+	get_tree().paused = false
 	_scene_change_value = get_tree().change_scene("res://src/02_scenes/01_UI/03_Menus/Menu.tscn")
-
+	
 
 func exit_game() -> void:
 	get_tree().quit()
