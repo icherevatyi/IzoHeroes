@@ -3,7 +3,7 @@
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02/Dungeon_2.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.tscn" type="PackedScene" id=2]
 
-[node name="Dungeon_2" instance=ExtResource( 2 )]
+[node name="Dungeon" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 
 [node name="Map" parent="." index="1"]
