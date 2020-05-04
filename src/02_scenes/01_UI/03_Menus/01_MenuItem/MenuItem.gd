@@ -1,4 +1,4 @@
-extends LinkButton
+extends Button
 
 var button_action: String
 var _func_response_value

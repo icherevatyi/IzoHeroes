@@ -18,17 +18,20 @@ func _ready() -> void:
 
 func _start_main_menu() -> void:
 	for item_index in Lists.main_menu_list:
-		var item_instance: LinkButton = menu_item.instance()
+		var item_instance: Button = menu_item.instance()
 		var item_title: String = Lists.main_menu_list[item_index].title
 		var item_action = Lists.main_menu_list[item_index].action
 		
 		items_container.add_child(item_instance)
 		item_instance.item_init(item_title, item_action)
-
+		
+		if item_action == "LOAD_GAME":
+			if ResourceStorage.saved_lvl == 1:
+				item_instance.disabled = true
 
 func _start_pause_menu() ->  void:
 	for item_index in Lists.pause_game_list:
-		var item_instance: LinkButton = menu_item.instance()
+		var item_instance: Button = menu_item.instance()
 		var item_title: String = Lists.pause_game_list[item_index].title
 		var item_action = Lists.pause_game_list[item_index].action
 		

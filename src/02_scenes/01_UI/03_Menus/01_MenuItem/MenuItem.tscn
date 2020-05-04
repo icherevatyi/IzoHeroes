@@ -3,13 +3,13 @@
 [ext_resource path="res://src/02_scenes/01_UI/03_Menus/01_MenuItem/MenuItem.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 
-[node name="MenuItem" type="LinkButton"]
+[node name="MenuItem" type="Button"]
 margin_right = 56.0
 margin_bottom = 17.0
 theme = ExtResource( 2 )
+shortcut_in_tooltip = false
 action_mode = 0
+flat = true
+align = 0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="pressed" from="." to="." method="_on_MenuItem_pressed"]
