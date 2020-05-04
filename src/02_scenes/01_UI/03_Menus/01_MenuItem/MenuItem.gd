@@ -4,12 +4,12 @@ var button_action: String
 var _func_response_value
 
 
-func item_init(title, action):
+func item_init(title, action) -> void:
 	set_text(title)
 	button_action = action
 
 
-func _on_MenuItem_pressed():
+func _on_MenuItem_pressed() -> void:
 	match button_action:
 		"START_GAME":
 			Global.start_game()

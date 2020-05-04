@@ -1,11 +1,17 @@
 extends Node2D
 
 # Health Section
-var health_current: int = 4
-var health_max: int = 8
-var health_min: int = 0
+var health_current: int
+var health_max: int
+var health_min: int
 
 onready var player: KinematicBody2D = get_node("../../")
+
+
+func _ready() -> void:
+	health_current = ResourceStorage.player_data.health_current
+	health_max = ResourceStorage.player_data.health_max
+	health_min = 0
 
 
 func _on_damage_taken(damage) -> void:

@@ -22,6 +22,7 @@ signal damage_heal(dmg)
 signal show_message(msg)
 signal hide_message
 
+
 func _ready() -> void:
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
@@ -85,6 +86,10 @@ func _damage_taken(damage: int) -> void:
 
 func _on_IdleTimer_timeout() -> void:
 	is_bored = true
+
+
+func _on_data_request_received() -> void:
+	ResourceStorage.player_data.health_current = health_scripts.health_current
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

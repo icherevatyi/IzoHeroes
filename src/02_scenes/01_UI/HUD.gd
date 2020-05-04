@@ -7,7 +7,7 @@ onready var dialog_box: PopupPanel = $Control/DialogBox
 
 
 func _ready() -> void:
-	_on_healing_displayed(4)
+	_on_healing_displayed(ResourceStorage.player_data.health_current)
 
 
 func _on_message_shown(msg) -> void:

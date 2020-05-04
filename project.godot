@@ -21,8 +21,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://src/03_global_scripts/Global.gd"
 Lists="*res://src/03_global_scripts/Lists.gd"
+SaveLoad="*res://src/03_global_scripts/SaveLoad.gd"
+ResourceStorage="*res://src/03_global_scripts/ResourceStorage.gd"
+Global="*res://src/03_global_scripts/Global.gd"
 Backdrop="*res://src/02_scenes/01_UI/01_Elements/03_Backdrop/Backdrop.tscn"
 LvlSummary="*res://src/02_scenes/01_UI/01_Elements/04_LvlSummary/LvlSummary.tscn"
 

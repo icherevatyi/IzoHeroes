@@ -21,7 +21,7 @@ func _input(event) -> void:
 
 
 func call_main_menu() -> void:
-	get_tree().change_scene_to(menu)
+	_scene_change_value = get_tree().change_scene_to(menu)
 
 
 func toggle_pause_menu() -> void:
@@ -50,17 +50,20 @@ func load_game() -> void:
 	is_game_started = true
 	is_paused = false
 	get_tree().paused = false
-	_scene_change_value = get_tree().change_scene(Lists.lvl_list[4])
+	SaveLoad.load_game()
+	_scene_change_value = get_tree().change_scene(Lists.lvl_list[ResourceStorage.saved_lvl])
 
 
 func exit_to_menu() -> void:
 	is_game_started = false
 	is_paused = false
 	get_tree().paused = false
+	SaveLoad.save_game()
 	_scene_change_value = get_tree().change_scene("res://src/02_scenes/01_UI/03_Menus/Menu.tscn")
 	
 
 func exit_game() -> void:
+	SaveLoad.save_game()
 	get_tree().quit()
 
 

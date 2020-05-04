@@ -5,7 +5,9 @@ var _message: String = "You reached end of this demo, thank you for playing!"
 
 onready var dungeon_lvl: Node2D = get_parent()
 
+
 signal endgame_message_sent(msg)
+signal collect_player_data
 
 
 func _get_current_lvl() -> int:
@@ -22,9 +24,9 @@ func _load_next_lvl() -> void:
 		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
 		Backdrop.fade_in()
 		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
-		print("signal emitted")
 		emit_signal("endgame_message_sent", _message)
 	else:
+		ResourceStorage.saved_lvl = next_lvl
 		Backdrop.fade_in()
 		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 		var _change_msg = get_tree().change_scene(lvl_list[next_lvl])
@@ -32,6 +34,12 @@ func _load_next_lvl() -> void:
 
 func _on_ExitTrigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		_connect_signal("collect_player_data", body, "_on_data_request_received")
+		emit_signal("collect_player_data")
+		
+		print("player Resources: ", ResourceStorage.player_data)
+		print("current lvl: ", ResourceStorage.saved_lvl)
+		
 		_load_next_lvl()
 
 
