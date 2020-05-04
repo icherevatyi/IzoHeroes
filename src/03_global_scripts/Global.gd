@@ -40,6 +40,7 @@ func toggle_pause_menu() -> void:
 
 
 func start_game() -> void:
+	ResourceStorage.player_data =  ResourceStorage.player_original_data
 	is_game_started = true
 	is_paused = false
 	get_tree().paused = false

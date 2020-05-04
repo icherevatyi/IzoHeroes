@@ -26,7 +26,6 @@ func _load_next_lvl() -> void:
 		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 		emit_signal("endgame_message_sent", _message)
 	else:
-		ResourceStorage.saved_lvl = next_lvl
 		Backdrop.fade_in()
 		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 		var _change_msg = get_tree().change_scene(lvl_list[next_lvl])

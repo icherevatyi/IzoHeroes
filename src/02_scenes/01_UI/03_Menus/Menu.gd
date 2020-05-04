@@ -24,10 +24,7 @@ func _start_main_menu() -> void:
 		
 		items_container.add_child(item_instance)
 		item_instance.item_init(item_title, item_action)
-		
-		if item_action == "LOAD_GAME":
-			if ResourceStorage.saved_lvl == 1:
-				item_instance.disabled = true
+
 
 func _start_pause_menu() ->  void:
 	for item_index in Lists.pause_game_list:
