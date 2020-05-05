@@ -14,6 +14,9 @@ onready var state_scripts: Node2D = $AdditionalScripts/StatesManagement
 onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
 
+var loot_generator: Script = preload("res://src/02_scenes/02_Characters/02_Enemies/LootGenerator.gd")
+var loot = loot_generator.new()
+
 var movement
 var is_chasing: bool = false
 var is_attacking: bool = false
@@ -23,6 +26,7 @@ signal manage_healthbar_change(hp_before_damage, hp_after_damage)
 
 
 func _ready() -> void:
+	
 	_connect_signal("manage_healthbar_change", health_bars, "_on_healthbar_updated")
 	_connect_signal("initiate_healthpool", health_bars, "_on_healthbar_initiated")
 	emit_signal("initiate_healthpool", health_max)
@@ -71,6 +75,7 @@ func receive_damage(damage_received) -> void:
 
 
 func _death() -> void:
+	loot.generate_loot()
 	is_dead = true
 	$CollisionShape2D.disabled = true
 	health_bars.visible = false

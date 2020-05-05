@@ -11,6 +11,7 @@ func _ready():
 	_get_stats(type)
 	
 	emit_signal(\"initiate_healthpool\", health_max)
+	loot.get_loot_table(type)
 "
 
 [sub_resource type="Shader" id=2]
@@ -167,6 +168,7 @@ tracks/0/keys = {
 
 [node name="Skeleton" instance=ExtResource( 1 )]
 script = SubResource( 1 )
+is_taking_damage = null
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 3 )

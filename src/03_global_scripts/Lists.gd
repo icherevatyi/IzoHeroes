@@ -63,6 +63,32 @@ var enemy_list: Dictionary = {
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/02_Skeleton/Skeleton.tscn"),
 		"type": "Skeleton",
 		"health_max": 100,
-		"damage": 1
+		"damage": 1,
+		"loot": {
+			1: {
+				"chance": 50,
+				"type": "healing_bottle"
+			},
+			2: {
+				"chance": 85,
+				"type": "gold_coins"
+			}
+		}
+	}
+}
+
+
+var loot_list: Dictionary = {
+	1: {
+		"title": "Healing Bottle",
+		"type": "healing_bottle",
+		"scene": "scene",
+		"value": 1
+	},
+	2: {
+		"title": "Gold Coins",
+		"type": "gold_coins",
+		"scene": "scene",
+		"value": 3
 	}
 }
