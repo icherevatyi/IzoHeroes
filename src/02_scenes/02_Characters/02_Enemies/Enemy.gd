@@ -11,11 +11,10 @@ onready var detection_range: Area2D = $DetectionRange
 onready var attack_scripts: Node2D = $AdditionalScripts/AttackManagement
 onready var movement_scripts: Node2D = $AdditionalScripts/MovementManagement
 onready var state_scripts: Node2D = $AdditionalScripts/StatesManagement
+onready var loot_scripts: Node2D = $AdditionalScripts/LootManagement
 onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
 
-var loot_generator: Script = preload("res://src/02_scenes/02_Characters/02_Enemies/LootGenerator.gd")
-var loot = loot_generator.new()
 
 var movement
 var is_chasing: bool = false
@@ -75,7 +74,6 @@ func receive_damage(damage_received) -> void:
 
 
 func _death() -> void:
-	loot.generate_loot()
 	is_dead = true
 	$CollisionShape2D.disabled = true
 	health_bars.visible = false

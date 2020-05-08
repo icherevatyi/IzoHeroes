@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/02_DialogBox/DialogBox.tscn" type="PackedScene" id=2]
-
+[ext_resource path="res://src/02_scenes/01_UI/01_Elements/05_PlayerItems/Coins.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/02_scenes/01_UI/01_Elements/05_PlayerItems/PlayerStoredPotions.tscn" type="PackedScene" id=4]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -26,3 +27,13 @@ __meta__ = {
 }
 
 [node name="DialogBox" parent="Control" instance=ExtResource( 2 )]
+
+[node name="Coins" parent="Control" instance=ExtResource( 3 )]
+margin_top = 24.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="PlayerStoredPotions" parent="Control" instance=ExtResource( 4 )]
+margin_top = 40.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )

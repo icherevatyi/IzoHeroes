@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/HealthManagement.gd" type="Script" id=5]
 [ext_resource path="res://src/02_scenes/04_Items/01_Weapons/01_Sword/Sword.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/01_assets/07_Shaders/DamageBlinkShader.tres" type="Material" id=7]
+[ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/LootManagement.gd" type="Script" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -176,9 +177,12 @@ graph_offset = Vector2( -178, 30 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
+[sub_resource type="CircleShape2D" id=25]
+radius = 8.0
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 5
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -186,7 +190,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 4
+frame = 2
 __meta__ = {
 "_editor_description_": ""
 }
@@ -238,7 +242,18 @@ script = ExtResource( 3 )
 [node name="HealthManagement" type="Node2D" parent="AdditionalScripts"]
 script = ExtResource( 5 )
 
+[node name="LootManagement" type="Node2D" parent="AdditionalScripts"]
+script = ExtResource( 8 )
+
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="PickupDetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetectionRange"]
+shape = SubResource( 25 )
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
+[connection signal="body_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_body_entered"]

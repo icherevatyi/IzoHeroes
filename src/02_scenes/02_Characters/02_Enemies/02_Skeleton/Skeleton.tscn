@@ -11,7 +11,7 @@ func _ready():
 	_get_stats(type)
 	
 	emit_signal(\"initiate_healthpool\", health_max)
-	loot.get_loot_table(type)
+	loot_scripts.get_loot_table(type)
 "
 
 [sub_resource type="Shader" id=2]
@@ -93,6 +93,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 24, 25, 26, 27, 28, 29, 30 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("AdditionalScripts/LootManagement")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "generate_loot"
+} ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.1
@@ -168,7 +182,6 @@ tracks/0/keys = {
 
 [node name="Skeleton" instance=ExtResource( 1 )]
 script = SubResource( 1 )
-is_taking_damage = null
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 3 )

@@ -79,16 +79,17 @@ var enemy_list: Dictionary = {
 
 
 var loot_list: Dictionary = {
-	1: {
-		"title": "Healing Bottle",
-		"type": "healing_bottle",
-		"scene": "scene",
-		"value": 1
-	},
-	2: {
-		"title": "Gold Coins",
+	"gold_coins": {
+		"scene": preload("res://src/02_scenes/04_Items/02_Loot/01_Gold/Gold.tscn"),
 		"type": "gold_coins",
-		"scene": "scene",
-		"value": 3
-	}
+		"title": "Gold Coins",
+		"min_value": 1,
+		"max_value": 5,
+	},
+	"healing_bottle": {
+		"scene": preload("res://src/02_scenes/04_Items/02_Loot/02_HealthPotion/HealthPotion.tscn"),
+		"type": "healing_bottle",
+		"title": "Healing Bottle",
+		"max_value": 1,
+	},
 }

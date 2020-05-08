@@ -4,6 +4,8 @@ var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/01
 
 onready var healthbar: HBoxContainer = $Control/HealthBar
 onready var dialog_box: PopupPanel = $Control/DialogBox
+onready var gold_coins: HBoxContainer = $Control/Coins
+onready var healing_bottle: HBoxContainer = $Control/PlayerStoredPotions
 
 
 func _ready() -> void:
@@ -36,3 +38,10 @@ func _on_damage_displayed(dmg_taken: int) -> void:
 	else:
 		dmg_taken = _health_pool.size()
 		_on_damage_displayed(dmg_taken)
+
+
+func _on_item_picked_up(type, value):
+	if type == "gold_coins":
+		gold_coins.get_node("Count").text = "x " + str(value)
+	if type == "healing_bottle":
+		healing_bottle.get_node("Count").text = "x " + str(value)

@@ -10,11 +10,12 @@ var is_dead:  bool = false
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
+onready var loot_management: Node2D = $AdditionalScripts/LootManagement
 onready var HUD = $HUD
 onready var idle_timer: Timer = $Timers/IdleTimer
 onready var weapon_container: Node2D = $Weapon
 onready var current_weapon: Area2D = $Weapon/Sword
-
+onready var pickup_detection_range: Area2D = $PickupDetectionRange
 
 signal weapon_swing
 signal damage_receive(dmg)
@@ -37,6 +38,7 @@ func _physics_process(_delta) -> void:
 		_move_player()
 		_check_mouse_position()
 		weapon_container.look_at(get_global_mouse_position())
+
 	state_scripts.monitor_states()
 
 
@@ -90,6 +92,10 @@ func _on_IdleTimer_timeout() -> void:
 
 func _on_data_request_received() -> void:
 	ResourceStorage.player_data.health_current = health_scripts.health_current
+
+
+func _on_item_data_received(data) -> void:
+	loot_management.process_received_loot_data(data)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
