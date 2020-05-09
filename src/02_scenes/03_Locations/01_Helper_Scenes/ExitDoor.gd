@@ -37,7 +37,6 @@ func _on_ExitTrigger_body_entered(body: Node2D) -> void:
 		emit_signal("collect_player_data")
 		
 		print("player Resources: ", ResourceStorage.player_data)
-		print("current lvl: ", ResourceStorage.saved_lvl)
 		
 		_load_next_lvl()
 

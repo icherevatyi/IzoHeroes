@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/02_DialogBox/DialogBox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/02_scenes/01_UI/01_Elements/05_PlayerItems/Coins.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/02_scenes/01_UI/01_Elements/05_PlayerItems/PlayerStoredPotions.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/01_assets/01_UI/icons.png" type="Texture" id=3]
+[ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 28, 1, 17, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 28, 22, 17, 16 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -28,12 +36,44 @@ __meta__ = {
 
 [node name="DialogBox" parent="Control" instance=ExtResource( 2 )]
 
-[node name="Coins" parent="Control" instance=ExtResource( 3 )]
+[node name="Coins" type="HBoxContainer" parent="Control"]
 margin_top = 24.0
+margin_right = 40.0
 margin_bottom = 40.0
 rect_scale = Vector2( 0.6, 0.6 )
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="PlayerStoredPotions" parent="Control" instance=ExtResource( 4 )]
+[node name="CoinIcons" type="TextureRect" parent="Control/Coins"]
+margin_right = 17.0
+margin_bottom = 16.0
+texture = SubResource( 1 )
+
+[node name="Count" type="Label" parent="Control/Coins"]
+margin_left = 21.0
+margin_right = 40.0
+margin_bottom = 15.0
+text = "x 0"
+
+[node name="PlayerStoredPotions" type="HBoxContainer" parent="Control"]
 margin_top = 40.0
+margin_right = 40.0
 margin_bottom = 56.0
 rect_scale = Vector2( 0.6, 0.6 )
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PotionsIcon" type="TextureRect" parent="Control/PlayerStoredPotions"]
+margin_right = 17.0
+margin_bottom = 16.0
+texture = SubResource( 2 )
+
+[node name="Count" type="Label" parent="Control/PlayerStoredPotions"]
+margin_left = 21.0
+margin_right = 40.0
+margin_bottom = 15.0
+text = "x 0"

@@ -55,4 +55,3 @@ func _connect_signal(signal_title: String, target_node: Node2D, target_function_
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
-

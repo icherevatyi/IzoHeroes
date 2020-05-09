@@ -1,15 +1,7 @@
 extends Node2D
 
-var stored_items: Dictionary = {
-	1: {
-		"loot_item_type": "gold_coins",
-		"amount": 0,
-	},
-	2: {
-		"loot_item_type": "healing_bottle",
-		"amount": 0,
-	}
-}
+var gold_coins: int
+var healing_bottle: int
 
 onready var HUD: CanvasLayer = get_node("../../HUD")
 
@@ -18,6 +10,9 @@ signal _on_pickup_HUD_update(type, value)
 
 
 func  _ready() -> void:
+	gold_coins = ResourceStorage.player_data.coins_count
+	healing_bottle = ResourceStorage.player_data.healing_pots_count
+	print(gold_coins)
 	_connect_signal("_on_pickup_HUD_update", HUD, "_on_item_picked_up")
 
 
@@ -28,11 +23,14 @@ func _on_PickupDetectionRange_body_entered(body) -> void:
 
 
 func process_received_loot_data(data) -> void:
-	for index in stored_items:
-		if stored_items[index].loot_item_type == data.item_type:
-			stored_items[index].amount += data.amount
+	match data.item_type:
+		"gold_coins":
+			gold_coins +=data.amount
+			emit_signal("_on_pickup_HUD_update", "gold_coins", gold_coins)
+		"healing_bottle":
+			healing_bottle +=data.amount
+			emit_signal("_on_pickup_HUD_update", "healing_bottle", healing_bottle)
 			
-			emit_signal("_on_pickup_HUD_update", stored_items[index].loot_item_type, stored_items[index].amount)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

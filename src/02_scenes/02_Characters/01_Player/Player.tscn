@@ -4,7 +4,7 @@
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/States.gd" type="Script" id=3]
 [ext_resource path="res://src/02_scenes/01_UI/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/02_scenes/02_Characters/01_Player/HealthManagement.gd" type="Script" id=5]
+[ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/HealthManagement.gd" type="Script" id=5]
 [ext_resource path="res://src/02_scenes/04_Items/01_Weapons/01_Sword/Sword.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/01_assets/07_Shaders/DamageBlinkShader.tres" type="Material" id=7]
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/LootManagement.gd" type="Script" id=8]
@@ -190,7 +190,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 2
+frame = 4
 __meta__ = {
 "_editor_description_": ""
 }

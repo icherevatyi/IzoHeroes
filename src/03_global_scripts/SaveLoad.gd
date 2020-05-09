@@ -8,6 +8,8 @@ var _load_response: int
 
 func save_game() -> void:
 	config.set_value("Player", "HealthCurrent", ResourceStorage.player_data.health_current)
+	config.set_value("Player", "CoinsCurrent", ResourceStorage.player_data.coins_count)
+	config.set_value("Player", "PotionsCurrent", ResourceStorage.player_data.healing_pots_count)
 	config.set_value("Dungeon", "SavedLvl", ResourceStorage.saved_lvl)
 	_save_response = config.save(save_path)
 
@@ -15,5 +17,7 @@ func save_game() -> void:
 func load_game() -> void:
 	_load_response = config.load(save_path)
 	ResourceStorage.player_data.health_current = config.get_value("Player", "HealthCurrent", ResourceStorage.player_data.health_current)
+	ResourceStorage.player_data.coins_count = config.get_value("Player", "CoinsCurrent", ResourceStorage.player_data.coins_count)
+	ResourceStorage.player_data.healing_pots_count = config.get_value("Player", "PotionsCurrent", ResourceStorage.player_data.healing_pots_count)
 	ResourceStorage.saved_lvl = config.get_value("Dungeon", "SavedLvl", ResourceStorage.saved_lvl)
 

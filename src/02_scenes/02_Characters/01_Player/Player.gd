@@ -92,6 +92,8 @@ func _on_IdleTimer_timeout() -> void:
 
 func _on_data_request_received() -> void:
 	ResourceStorage.player_data.health_current = health_scripts.health_current
+	ResourceStorage.player_data.coins_count = loot_management.gold_coins
+	ResourceStorage.player_data.healing_pots_count = loot_management.healing_bottle
 
 
 func _on_item_data_received(data) -> void:

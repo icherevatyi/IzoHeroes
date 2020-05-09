@@ -9,6 +9,7 @@ var _scene_change_value
 var is_game_started: bool = false
 var is_paused: bool = false
 
+
 func _ready() -> void:
 	set_pause_mode(2)
 	Input.set_custom_mouse_cursor(cursor_passive, Input.CURSOR_ARROW)
