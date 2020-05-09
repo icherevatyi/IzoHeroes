@@ -22,6 +22,11 @@ func _on_damage_taken(damage) -> void:
 	health_current = int(max(0, health_current))
 
 
+func _on_damage_healed(damage) -> void:
+	health_current += damage
+	health_current = int(min(health_current, health_max))
+
+
 func player_died() -> void:
 	player.health_is_damaged = false
 	player.is_dead = true

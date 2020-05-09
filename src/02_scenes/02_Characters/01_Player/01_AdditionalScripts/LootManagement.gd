@@ -30,7 +30,10 @@ func process_received_loot_data(data) -> void:
 		"healing_bottle":
 			healing_bottle +=data.amount
 			emit_signal("_on_pickup_HUD_update", "healing_bottle", healing_bottle)
-			
+
+
+func _on_bottle_used() -> void:
+	healing_bottle -= 1
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

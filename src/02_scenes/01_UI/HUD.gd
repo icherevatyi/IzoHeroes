@@ -7,6 +7,7 @@ onready var dialog_box: PopupPanel = $Control/DialogBox
 onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
 
+var bottle_amount: int
 
 func _ready() -> void:
 	_on_healing_displayed(ResourceStorage.player_data.health_current)
@@ -46,4 +47,10 @@ func _on_item_picked_up(type, value):
 	if type == "gold_coins":
 		gold_coins_counter.set_text("x " + str(value))
 	if type == "healing_bottle":
-		healing_bottle_counter.text = "x " + str(value)
+		bottle_amount = value
+		healing_bottle_counter.text = "x " + str(bottle_amount)
+
+
+func _on_bottle_used() -> void:
+	bottle_amount -= 1
+	healing_bottle_counter.text = "x " + str(bottle_amount)

@@ -21,15 +21,19 @@ signal weapon_swing
 signal damage_receive(dmg)
 signal damage_heal(dmg)
 signal show_message(msg)
+signal use_bottle
 signal hide_message
 
 
 func _ready() -> void:
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
+	_connect_signal("damage_heal", health_scripts, "_on_damage_healed")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
 	_connect_signal("damage_heal", HUD, "_on_healing_displayed")
 	_connect_signal("show_message", HUD, "_on_message_shown")
 	_connect_signal("hide_message", HUD, "_on_message_hidden")
+	_connect_signal("use_bottle", HUD, "_on_bottle_used")
+	_connect_signal("use_bottle", loot_management, "_on_bottle_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 
 
@@ -61,6 +65,14 @@ func _input(event) -> void:
 		if event.is_pressed() == true:
 			idle_timer.stop()
 			is_bored = false
+			
+		if health_scripts.health_current < health_scripts.health_max:
+			if event.is_action_pressed("use_item"):
+				if loot_management.healing_bottle > 0:
+					emit_signal("damage_heal", 1)
+					emit_signal("use_bottle")
+					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
+				
 
 
 func _check_mouse_position() -> void:
