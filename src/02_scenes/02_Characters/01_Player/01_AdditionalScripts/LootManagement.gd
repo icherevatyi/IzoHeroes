@@ -12,7 +12,6 @@ signal _on_pickup_HUD_update(type, value)
 func  _ready() -> void:
 	gold_coins = ResourceStorage.player_data.coins_count
 	healing_bottle = ResourceStorage.player_data.healing_pots_count
-	print(gold_coins)
 	_connect_signal("_on_pickup_HUD_update", HUD, "_on_item_picked_up")
 
 
@@ -26,10 +25,10 @@ func process_received_loot_data(data) -> void:
 	match data.item_type:
 		"gold_coins":
 			gold_coins +=data.amount
-			emit_signal("_on_pickup_HUD_update", "gold_coins", gold_coins)
+			emit_signal("_on_pickup_HUD_update", "gold_coins", data.amount)
 		"healing_bottle":
 			healing_bottle +=data.amount
-			emit_signal("_on_pickup_HUD_update", "healing_bottle", healing_bottle)
+			emit_signal("_on_pickup_HUD_update", "healing_bottle", data.amount)
 
 
 func _on_bottle_used() -> void:
