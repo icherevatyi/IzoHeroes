@@ -68,6 +68,7 @@ func _input(event) -> void:
 			
 		if health_scripts.health_current < health_scripts.health_max:
 			if event.is_action_pressed("use_item"):
+				print(get_position())
 				if loot_management.healing_bottle > 0:
 					emit_signal("damage_heal", 1)
 					emit_signal("use_bottle")

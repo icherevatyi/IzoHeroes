@@ -23,3 +23,5 @@ func _on_MenuItem_pressed() -> void:
 			Global.exit_to_menu()
 		"QTD":
 			Global.exit_game()
+		"DUNGEON_GENERATOR":
+			Global.show_map_generator()

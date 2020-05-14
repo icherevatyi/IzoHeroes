@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Dungeon.tres" type="TileSet" id=1]
+[ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/DungeonGenerator.gd" type="Script" id=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 150, 150, 150 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Dungeon" type="Node2D"]
+z_index = 10
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="CanvasLayer"]
+amount = 120
+process_material = SubResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="YSort" type="YSort" parent="."]

@@ -18,6 +18,10 @@ var main_menu_list: Dictionary = {
 		"title": "Exit to Desktop",
 		"action": "QTD"
 	},
+	5: {
+		"title": "Show Generator",
+		"action": "DUNGEON_GENERATOR"
+	},
 }
 
 
@@ -42,6 +46,10 @@ var pause_game_list: Dictionary = {
 		"title": "Exit to Desktop",
 		"action": "QTD"
 	},
+	6: {
+		"title": "Show Generator",
+		"action": "DUNGEON_GENERATOR"
+	},
 }
 
 
@@ -55,6 +63,8 @@ var lvl_list: Dictionary = {
 	2: "res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02/Dungeon_2.tscn",
 	3: "res://src/02_scenes/03_Locations/02_Dungeon_Scenes/03/Dungeon_3.tscn",
 	4: "res://src/02_scenes/03_Locations/02_Dungeon_Scenes/04/Dungeon_4.tscn",
+	
+	5: "res://src/02_scenes/03_Locations/02_Dungeon_Scenes/DungeonGenerator.tscn"
 }
 
 
