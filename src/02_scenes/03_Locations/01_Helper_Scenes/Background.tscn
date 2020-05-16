@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+trail_divisor = 2
+emission_shape = 2
+emission_box_extents = Vector3( 320, 180, 1 )
+flag_disable_z = true
+gravity = Vector3( -30, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Background" type="CanvasLayer"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.141176, 0.113725, 0.184314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 320, 176 )
+amount = 250
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 1.69
+randomness = 1.0
+process_material = SubResource( 1 )

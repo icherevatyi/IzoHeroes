@@ -4,38 +4,12 @@
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.tscn" type="PackedScene" id=4]
-
-[sub_resource type="ParticlesMaterial" id=1]
-trail_divisor = 2
-emission_shape = 2
-emission_box_extents = Vector3( 320, 180, 1 )
-flag_disable_z = true
-gravity = Vector3( -30, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
+[ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Background.tscn" type="PackedScene" id=5]
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.141176, 0.113725, 0.184314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Particles2D" type="Particles2D" parent="Background"]
-position = Vector2( 320, 176 )
-amount = 250
-lifetime = 2.0
-preprocess = 2.0
-speed_scale = 1.69
-randomness = 1.0
-process_material = SubResource( 1 )
+[node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="Map" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

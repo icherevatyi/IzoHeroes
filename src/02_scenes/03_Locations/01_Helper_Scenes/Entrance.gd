@@ -6,7 +6,7 @@ var lvl_list: Dictionary = Lists.lvl_list
 var _message: String = "Iron bar closed behind you. Door is tightly sealed and the only way to leave this place is to move forward."
 
 onready var spawn_point: Position2D = $SpawnPoint
-onready var dungeon_lvl: Node2D = get_parent()
+onready var dungeon_lvl: Node2D = get_node("/root/Dungeon")
 onready var player: PackedScene = preload("res://src/02_scenes/02_Characters/01_Player/Player.tscn")
 
 

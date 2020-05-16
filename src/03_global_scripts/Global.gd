@@ -69,14 +69,6 @@ func exit_game() -> void:
 	get_tree().quit()
 
 
-func show_map_generator() -> void:
-	is_game_started = true
-	is_paused = false
-	get_tree().paused = false
-	_scene_change_value = get_tree().change_scene(Lists.lvl_list[5])
-	
-
-
 func set_cursor_active() -> void:
 	Input.set_custom_mouse_cursor(cursor_active)
 
