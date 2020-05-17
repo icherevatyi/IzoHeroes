@@ -2,7 +2,6 @@ extends Node2D
 
 
 var spawn_node: YSort
-var lvl_list: Dictionary = Lists.lvl_list
 var _message: String = "Iron bar closed behind you. Door is tightly sealed and the only way to leave this place is to move forward."
 
 onready var spawn_point: Position2D = $SpawnPoint
@@ -23,10 +22,8 @@ func _ready() -> void:
 
 
 func _get_current_lvl() -> void:
-	var _current_lvl: String = get_parent().filename
-	for lvl in lvl_list:
-		if lvl_list[lvl] == _current_lvl:
-			ResourceStorage.saved_lvl = lvl
+	var _current_lvl: int = 1
+	ResourceStorage.saved_lvl = _current_lvl
 
 
 func _spawn_player() -> void:

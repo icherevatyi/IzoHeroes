@@ -1,26 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.gd" type="Script" id=2]
-[ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Background.tscn" type="PackedScene" id=5]
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
-
-[node name="Map" type="TileMap" parent="."]
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( 262200, 1, 0, 524342, 1, 0, 589879, 1, 0, 589881, 1, 0, 655416, 1, 0 )
-
-[node name="Entrance" parent="." instance=ExtResource( 3 )]
-position = Vector2( 24, -24 )
-
-[node name="ExitDoor" parent="." instance=ExtResource( 4 )]
-position = Vector2( 48, -36 )
 
 [node name="YSort" type="YSort" parent="."]

@@ -45,7 +45,7 @@ func start_game() -> void:
 	is_game_started = true
 	is_paused = false
 	get_tree().paused = false
-	_scene_change_value = get_tree().change_scene(Lists.lvl_list[1])
+	_scene_change_value = get_tree().change_scene("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.tscn")
 
 
 func load_game() -> void:
@@ -53,7 +53,7 @@ func load_game() -> void:
 	is_paused = false
 	get_tree().paused = false
 	SaveLoad.load_game()
-	_scene_change_value = get_tree().change_scene(Lists.lvl_list[ResourceStorage.saved_lvl])
+	_scene_change_value = get_tree().change_scene("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.tscn")
 
 
 func exit_to_menu() -> void:
