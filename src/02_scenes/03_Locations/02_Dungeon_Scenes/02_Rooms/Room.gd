@@ -5,9 +5,9 @@ onready var available_corridors: Dictionary = {
 		"available": false,
 		"position": $Corridors/TopCorridor.get_global_position()
 	},
-	"Bottom":  {
+	"bottom": {
 		"available": false,
-		"position": null
+		"position": $Corridors/BottomCorridor.get_global_position()
 	},
 	"left":  {
 		"available": false,
@@ -23,12 +23,12 @@ onready var dungeon: Node2D = get_node("/root/Dungeon")
 
 signal send_available_path(path)
 
-
 func _ready() -> void:
 	_connect_signal("send_available_path", dungeon, "_on_corridors_received")
 
 
-func _on_corridors_asked(_prev_direction) -> void:
+func _on_corridors_asked(prev_direction) -> void:
+	available_corridors[prev_direction].available = false
 	var corridors: Dictionary = {}
 	for i in available_corridors.keys():
 		if available_corridors[i].available == true:

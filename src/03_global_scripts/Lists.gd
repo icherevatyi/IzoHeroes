@@ -50,13 +50,31 @@ var options_list: Dictionary = {
 }
 
 
-var start_room: Dictionary = {
-	1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01_DungeonStart/StartRoom.tscn")
-}
-
-
-var bottom_room: Dictionary = {
-	1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_BottomRoom/Room.tscn")
+var rooms_list: Dictionary = {
+	"START": {
+		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01_DungeonStart/01/StartRoom1.tscn"),
+		2: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01_DungeonStart/02/StartRoom2.tscn"),
+		3: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01_DungeonStart/03/StartRoom3.tscn"),
+	},
+	"LEFT_ENTRANCE": {
+		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/02/Room2.tscn"),
+		2: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04/Room4.tscn")
+	},
+	"RIGHT_ENTRANCE": {
+		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01/Room1.tscn"),
+		2: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/03/Room3.tscn"),
+		3: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04/Room4.tscn")
+	},
+	"TOP_ENTRANCE": {
+		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/03/Room3.tscn"),
+		2: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04/Room4.tscn")
+	},
+	"BOTTOM_ENTRANCE": {
+		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01/Room1.tscn"),
+		2: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/02/Room2.tscn"),
+		3: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/03/Room3.tscn")
+	},
+	"END": {}
 }
 
 
