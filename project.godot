@@ -107,6 +107,7 @@ use_item={
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Pickups"
 2d_physics/layer_5="PlayerWeapon"
+2d_physics/layer_6="RoomSpawnPoints"
 
 [rendering]
 
