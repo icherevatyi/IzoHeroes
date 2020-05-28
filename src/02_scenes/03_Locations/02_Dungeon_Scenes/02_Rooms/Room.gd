@@ -1,5 +1,6 @@
 extends TileMap
 
+onready var entrance: String
 onready var available_corridors: Dictionary = {
 	"top": {
 		"available": false,
@@ -23,8 +24,10 @@ onready var dungeon: Node2D = get_node("/root/Dungeon")
 
 signal send_available_path(path)
 
+
 func _ready() -> void:
 	_connect_signal("send_available_path", dungeon, "_on_corridors_received")
+	add_to_group("Created")
 
 
 func _on_corridors_asked(prev_direction) -> void:

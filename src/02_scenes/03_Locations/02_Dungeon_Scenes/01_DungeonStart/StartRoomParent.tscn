@@ -19,6 +19,8 @@ position = Vector2( -9, 104 )
 
 [node name="TopCorridor" type="Position2D" parent="Corridors"]
 
+[node name="BottomCorridor" type="Position2D" parent="Corridors"]
+
 [node name="LeftCorridor" type="Position2D" parent="Corridors"]
 position = Vector2( -111, 48 )
 
