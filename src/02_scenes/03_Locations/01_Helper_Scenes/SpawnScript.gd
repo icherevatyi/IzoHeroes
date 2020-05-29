@@ -6,6 +6,10 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 onready var rooms: Node2D = get_node("/root/Dungeon/Rooms")
 
 
+func _ready() -> void:
+	add_to_group("SPAWN_POINT")
+
+
 func _spawn() -> void:
 	if spawned == false:
 		if opening_direction == 1 : # spawn top room with bottom door
@@ -41,8 +45,10 @@ func _get_random_room(toom_type: String) -> int:
 
 
 func _on_SpawnPoint_area_entered(area: Area2D) -> void:
-	if area.name == "RoomSpawnPoint":
-		queue_free()
+	if area.is_in_group("SPAWN_POINT"):
+		if area.spawned == false and spawned == false:
+			queue_free()
+		spawned = true
 
 
 func _on_Timer_timeout():
