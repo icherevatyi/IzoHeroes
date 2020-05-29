@@ -50,45 +50,8 @@ var options_list: Dictionary = {
 }
 
 
-#var rooms_list: Dictionary = {
-#
-#	"START": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01_DungeonStart/01/StartRoom1.tscn"),
-#	},
-#	"BOTTOM": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01_B/Room1.tscn")
-#	},
-#	"BOTTOM_LEFT": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/02_BL/Room1.tscn")
-#	},
-#	"BOTTOM_RIGHT": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/03_BR/Room1.tscn")
-#	},
-#	"TOP": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04_T/Room1.tscn")
-#	},
-#	"TOP_LEFT": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/06_TL/Room1.tscn")
-#	},
-#	"TOP_RIGHT": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/06_TR/Room1.tscn")
-#	},
-#	"TOP_BOTTOM": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/05_TB/Room1.tscn")
-#	},
-#	"LEFT": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/08_L/Room1.tscn")
-#	},
-#	"LEFT_RIGHT": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/09_LR/Room1.tscn")
-#	},
-#	"RIGHT": {
-#		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/10_R/Room1.tscn")
-#	},
-#}
-
-
 var rooms: Dictionary = {
+	"CLOSED_ROOM": preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/00_CLOSED/Room.tscn"),
 	"TOP_ROOMS": {
 		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04_T/Room1.tscn"),
 		2: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/05_TB/Room1.tscn"),
@@ -98,7 +61,6 @@ var rooms: Dictionary = {
 		# Additional closing room to decrease dungeon size
 		5: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04_T/Room1.tscn"),
 		6: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04_T/Room1.tscn"),
-		7: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/04_T/Room1.tscn"),
 	},
 	"BOTTOM_ROOMS": {
 		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01_B/Room1.tscn"),
@@ -109,7 +71,6 @@ var rooms: Dictionary = {
 		# Additional closing room to decrease dungeon size
 		5: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01_B/Room1.tscn"),
 		6: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01_B/Room1.tscn"),
-		7: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01_B/Room1.tscn"),
 	},
 	"LEFT_ROOMS": {
 		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/08_L/Room1.tscn"),
@@ -120,7 +81,6 @@ var rooms: Dictionary = {
 		# Additional closing room to decrease dungeon size
 		5: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/08_L/Room1.tscn"),
 		6: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/08_L/Room1.tscn"),
-		7: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/08_L/Room1.tscn"),
 	},
 	"RIGHT_ROOMS": {
 		1: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/10_R/Room1.tscn"),
@@ -131,7 +91,6 @@ var rooms: Dictionary = {
 		# Additional closing room to decrease dungeon size
 		5: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/10_R/Room1.tscn"),
 		6: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/10_R/Room1.tscn"),
-		7: preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/10_R/Room1.tscn"),
 	},
 }
 
