@@ -66,12 +66,16 @@ func _on_SpawnPoint_area_entered(area: Area2D) -> void:
 		spawned = true
 
 
-func _on_Timer_timeout():
+func _on_Timer_timeout() -> void:
 	_spawn()
 
 
-func _on_ClosedRoomTimer_timeout():
+func _on_ClosedRoomTimer_timeout() -> void:
 	var room_instance: TileMap = Lists.closing_rooms[closed_room_sequence].instance()
 	room_instance.set_global_position(get_global_position())
 	rooms.add_child(room_instance)
+	queue_free()
+
+
+func _on_DestructionTImer_timeout() -> void:
 	queue_free()
