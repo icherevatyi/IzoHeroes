@@ -190,7 +190,6 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 2
 __meta__ = {
 "_editor_description_": ""
 }
@@ -227,7 +226,6 @@ parameters/playback = SubResource( 24 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
 
 [node name="Timers" type="Node2D" parent="."]
 
