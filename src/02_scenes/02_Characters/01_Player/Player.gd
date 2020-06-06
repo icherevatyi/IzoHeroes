@@ -7,6 +7,9 @@ export var speed: int = 120
 var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
+var has_lvl_key: bool = false
+var can_open: bool = false
+var door_scene: Node2D = null
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
@@ -23,7 +26,7 @@ signal damage_heal(dmg)
 signal show_message(msg)
 signal use_bottle
 signal hide_message
-
+signal open_door
 
 func _ready() -> void:
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
@@ -66,6 +69,10 @@ func _input(event) -> void:
 			idle_timer.stop()
 			is_bored = false
 			
+		if event.is_action_pressed("interract"):
+			if can_open == true:
+				emit_signal("open_door")
+		
 		if health_scripts.health_current < health_scripts.health_max:
 			if event.is_action_pressed("use_item"):
 				print(get_position())
@@ -111,6 +118,20 @@ func _on_data_request_received() -> void:
 
 func _on_item_data_received(data) -> void:
 	loot_management.process_received_loot_data(data)
+
+
+
+func _on_DoorOpeningRange_area_entered(area):
+	if area.name == "ExitTrigger":
+		_connect_signal("open_door", area.get_parent(), "_on_gate_opened")
+		can_open = true
+
+
+func _on_DoorOpeningRange_area_exited(area):
+	if area.name == "ExitTrigger":
+		door_scene = null
+		var _message_placeholder = disconnect("open_door", area.get_parent(), "_on_gate_opened")
+		can_open = false
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

@@ -1,16 +1,28 @@
 extends Node2D
 
+var gate_opened: bool = false
 var _message: String = "You reached end of this demo, thank you for playing!"
 
 onready var dungeon_lvl: Node2D = get_parent()
-
+onready var sprite: AnimatedSprite = $Sprite
 
 signal endgame_message_sent(msg)
 signal collect_player_data
 
 
+func _ready() -> void:
+	sprite.play("closed")
+
+
 func _get_current_lvl() -> int:
 	return 1
+
+
+func _on_gate_opened() -> void:
+	sprite.play("opening")
+	gate_opened = true
+	
+
 
 
 func _load_next_lvl() -> void:
@@ -28,10 +40,12 @@ func _load_next_lvl() -> void:
 
 func _on_ExitTrigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		_connect_signal("collect_player_data", body, "_on_data_request_received")
-		emit_signal("collect_player_data")
+		print("gate opened: ", gate_opened)
+		if gate_opened == true:
+			_connect_signal("collect_player_data", body, "_on_data_request_received")
+			emit_signal("collect_player_data")
 		
-		_load_next_lvl()
+			_load_next_lvl()
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
@@ -42,3 +56,7 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+
+
+func _on_Sprite_animation_finished():
+	pass # Replace with function body.

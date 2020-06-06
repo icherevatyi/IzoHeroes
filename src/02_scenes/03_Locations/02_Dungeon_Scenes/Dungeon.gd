@@ -17,10 +17,11 @@ func _ready() -> void:
 func _select_random_room() -> void:
 	var rooms = room_container.get_children()
 	var selected_child
-	rng.randomize()
 	if rooms.size() > 4:
+		rng.randomize()
 		selected_child = rng.randi_range(3, rooms.size() - 1)
 	else:
+		rng.randomize()
 		selected_child = rooms.size()
 	_connect_signal("_create_exit", rooms[selected_child], "_on_create_exit_command_received")
 

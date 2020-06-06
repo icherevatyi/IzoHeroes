@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -180,6 +180,9 @@ graph_offset = Vector2( -178, 30 )
 [sub_resource type="CircleShape2D" id=25]
 radius = 8.0
 
+[sub_resource type="CircleShape2D" id=26]
+radius = 15.3496
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -190,6 +193,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
+frame = 3
 __meta__ = {
 "_editor_description_": ""
 }
@@ -254,5 +258,12 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetectionRange"]
 shape = SubResource( 25 )
+
+[node name="DoorOpeningRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpeningRange"]
+shape = SubResource( 26 )
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="body_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_body_entered"]
+[connection signal="area_entered" from="DoorOpeningRange" to="." method="_on_DoorOpeningRange_area_entered"]
+[connection signal="area_exited" from="DoorOpeningRange" to="." method="_on_DoorOpeningRange_area_exited"]
