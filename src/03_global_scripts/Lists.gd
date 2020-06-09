@@ -139,3 +139,9 @@ var loot_list: Dictionary = {
 		"max_value": 1,
 	},
 }
+
+
+var lvl_modifiers: Dictionary = {
+	"damage": 1.25,
+	"max_health": 1.5,
+}

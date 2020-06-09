@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/01_UI/health.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/StatesManagement.gd" type="Script" id=6]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/AttackManagement.gd" type="Script" id=7]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/LootGenerator.gd" type="Script" id=8]
-[ext_resource path="res://src/01_assets/01_UI/icons.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -103,11 +102,11 @@ atlas = ExtResource( 2 )
 region = Rect2( 1, 23, 26, 6 )
 
 [sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 2 )
 region = Rect2( 1, 13, 26, 6 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 2 )
 region = Rect2( 1, 19, 26, 6 )
 
 [sub_resource type="CircleShape2D" id=29]

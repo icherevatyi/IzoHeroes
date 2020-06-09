@@ -14,28 +14,23 @@ func _ready() -> void:
 	sprite.play("closed")
 
 
-func _get_current_lvl() -> int:
-	return 1
-
-
 func _on_gate_opened() -> void:
 	sprite.play("opening")
 	gate_opened = true
-	
-
 
 
 func _load_next_lvl() -> void:
-	var next_lvl = _get_current_lvl() + 1
-#	if int(lvl_list.size()) < next_lvl:
-#		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
-#		Backdrop.fade_in()
-#		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
-#		emit_signal("endgame_message_sent", _message)
-#	else:
-	Backdrop.fade_in()
-	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
-#	var _change_msg = get_tree().change_scene(lvl_list[next_lvl])
+	var next_lvl = Global.current_lvl + 1
+	if next_lvl > 3:
+		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
+		Backdrop.fade_in()
+		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
+		emit_signal("endgame_message_sent", _message)
+	else:
+		Backdrop.fade_in()
+		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
+		var _change_msg = get_tree().reload_current_scene()
+		Global.current_lvl += 1
 
 
 func _on_ExitTrigger_body_entered(body: Node2D) -> void:

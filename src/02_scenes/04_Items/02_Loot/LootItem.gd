@@ -20,15 +20,16 @@ onready var info_trigger_area: Area2D = $InfoTriggerArea
 
 signal transfer_item_data(data)
 
+
 func _ready() -> void:
 	item_local_data.item_type = item_info.type
 	_generate_item_amount()
-	
 	apply_central_impulse(_select_direction())
-	yield(get_tree().create_timer(0.1), "timeout")
+
+
+func _on_Timer_timeout():
 	sleeping = true
 	set_collision_layer_bit(3, true)
-	
 
 
 
@@ -66,3 +67,4 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+

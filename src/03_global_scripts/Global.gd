@@ -4,6 +4,7 @@ var menu: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/Menu.tscn")
 
 var cursor_passive = load("res://src/01_assets/01_UI/cursor_passive.png")
 var cursor_active = load("res://src/01_assets/01_UI/cursor_active.png")
+var current_lvl: int = 1
 
 var _scene_change_value
 var is_game_started: bool = false

@@ -9,9 +9,6 @@ signal _create_exit
 
 func _ready() -> void:
 	Backdrop.fade_out()
-	yield(get_tree().create_timer(2),"timeout")
-	_select_random_room()
-	emit_signal("_create_exit")
 
 
 func _select_random_room() -> void:
@@ -24,6 +21,11 @@ func _select_random_room() -> void:
 		rng.randomize()
 		selected_child = rooms.size()
 	_connect_signal("_create_exit", rooms[selected_child], "_on_create_exit_command_received")
+
+
+func _on_CreateExitTimer_timeout():
+	_select_random_room()
+	emit_signal("_create_exit")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

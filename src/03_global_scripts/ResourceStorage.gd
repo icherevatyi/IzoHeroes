@@ -16,5 +16,3 @@ var player_data: Dictionary = {
 	"coins_count": 0,
 	"healing_pots_count": 0,
 }
-
-var saved_lvl: int = 1

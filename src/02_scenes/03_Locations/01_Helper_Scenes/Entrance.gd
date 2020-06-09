@@ -22,8 +22,7 @@ func _ready() -> void:
 
 
 func _get_current_lvl() -> void:
-	var _current_lvl: int = 1
-	ResourceStorage.saved_lvl = _current_lvl
+	print("lvl ", Global.current_lvl)
 
 
 func _spawn_player() -> void:

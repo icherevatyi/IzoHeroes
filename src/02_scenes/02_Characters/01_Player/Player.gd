@@ -7,9 +7,8 @@ export var speed: int = 120
 var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
-var has_lvl_key: bool = false
 var can_open: bool = false
-var has_key: bool = false
+var has_key: bool = true
 var door_scene: Node2D = null
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
