@@ -9,6 +9,7 @@ onready var healthbar: HBoxContainer = $Control/HealthBar
 onready var dialog_box: PopupPanel = $Control/DialogBox
 onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
+onready var key_item: TextureRect = $Control/KeyItem
 
 var coins_amount: int
 var bottle_amount: int
@@ -76,3 +77,7 @@ func _on_item_picked_up(type, value) -> void:
 func _on_bottle_used() -> void:
 	bottle_amount -= 1
 	healing_bottle_counter.text = "x " + str(bottle_amount)
+
+
+func _on_key_received() -> void:
+	key_item.visible = true

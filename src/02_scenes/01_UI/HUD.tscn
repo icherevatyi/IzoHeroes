@@ -83,6 +83,7 @@ margin_bottom = 15.0
 text = "x 0"
 
 [node name="KeyItem" type="TextureRect" parent="Control"]
+visible = false
 margin_left = 2.0
 margin_top = 57.0
 margin_right = 13.0

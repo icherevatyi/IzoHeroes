@@ -9,6 +9,7 @@ var is_bored: bool = false
 var is_dead:  bool = false
 var has_lvl_key: bool = false
 var can_open: bool = false
+var has_key: bool = false
 var door_scene: Node2D = null
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
@@ -26,6 +27,7 @@ signal damage_heal(dmg)
 signal show_message(msg)
 signal use_bottle
 signal hide_message
+signal aquired_key
 signal open_door
 
 func _ready() -> void:
@@ -36,6 +38,7 @@ func _ready() -> void:
 	_connect_signal("show_message", HUD, "_on_message_shown")
 	_connect_signal("hide_message", HUD, "_on_message_hidden")
 	_connect_signal("use_bottle", HUD, "_on_bottle_used")
+	_connect_signal("aquired_key", HUD, "_on_key_received")
 	_connect_signal("use_bottle", loot_management, "_on_bottle_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 
@@ -70,7 +73,7 @@ func _input(event) -> void:
 			is_bored = false
 			
 		if event.is_action_pressed("interract"):
-			if can_open == true:
+			if can_open == true and has_key == true:
 				emit_signal("open_door")
 		
 		if health_scripts.health_current < health_scripts.health_max:
