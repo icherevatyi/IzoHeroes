@@ -38,8 +38,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogBox" parent="Control" instance=ExtResource( 2 )]
-
 [node name="Coins" type="HBoxContainer" parent="Control"]
 margin_top = 24.0
 margin_right = 40.0
@@ -108,3 +106,26 @@ alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DialogBox" parent="Control" instance=ExtResource( 2 )]
+margin_top = -63.0
+margin_bottom = 69.0
+
+[node name="VBoxContainer" parent="Control/DialogBox" index="0"]
+margin_left = 12.0
+margin_right = -12.0
+
+[node name="TextArea" parent="Control/DialogBox/VBoxContainer" index="0"]
+margin_right = 296.0
+
+[node name="Buttons" parent="Control/DialogBox/VBoxContainer" index="1"]
+margin_right = 296.0
+
+[node name="BtnAccept" parent="Control/DialogBox/VBoxContainer/Buttons" index="0"]
+margin_right = 146.0
+
+[node name="BtnDecline" parent="Control/DialogBox/VBoxContainer/Buttons" index="1"]
+margin_left = 150.0
+margin_right = 296.0
+
+[editable path="Control/DialogBox"]

@@ -26,14 +26,15 @@ func notify_pickup(item, amount) -> void:
 	notif_instance.set_scale(Vector2(0.4, 0.4))
 	notif_instance.text = "Picked up " + str(amount) + " " + item + "!"
 
+
 func _on_message_shown(msg) -> void:
-	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
+	var textarea: RichTextLabel = dialog_box.get_node("VBoxContainer/TextArea")
 	textarea.set_text(msg)
 	dialog_box.popup()
 
 
 func _on_message_hidden() -> void:
-	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
+	var textarea: RichTextLabel = dialog_box.get_node("VBoxContainer/TextArea")
 	textarea.clear()
 	dialog_box.visible = false
 
