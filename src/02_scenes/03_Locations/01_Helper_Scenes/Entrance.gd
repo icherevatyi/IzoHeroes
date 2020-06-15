@@ -17,12 +17,7 @@ signal _message_removed
 func _ready() -> void:
 	spawn_node = dungeon_lvl.get_node("YSort")
 	_spawn_player()
-	_get_current_lvl()
 	SaveLoad.save_game()
-
-
-func _get_current_lvl() -> void:
-	print("lvl ", Global.current_lvl)
 
 
 func _spawn_player() -> void:

@@ -32,7 +32,6 @@ func _on_Timer_timeout():
 	set_collision_layer_bit(3, true)
 
 
-
 func _generate_item_amount() -> void:
 	if item_info.max_value != 1:
 		rng.randomize()

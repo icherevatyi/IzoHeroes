@@ -2,6 +2,7 @@ extends Node2D
 
 var gold_coins: int
 var healing_bottle: int
+var has_key: bool = false
 
 onready var HUD: CanvasLayer = get_node("../../HUD")
 
@@ -29,10 +30,17 @@ func process_received_loot_data(data) -> void:
 		"healing_bottle":
 			healing_bottle +=data.amount
 			emit_signal("_on_pickup_HUD_update", "healing_bottle", data.amount)
+		"key":
+			has_key = true
+			emit_signal("_on_pickup_HUD_update", "key", 1)
 
 
 func _on_bottle_used() -> void:
 	healing_bottle -= 1
+
+
+func _on_key_used() -> void:
+	has_key = false
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

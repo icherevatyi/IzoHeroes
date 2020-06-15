@@ -12,6 +12,9 @@ func get_loot_table(enemy_type) -> void:
 	for index in Lists.enemy_list:
 		if enemy_type == Lists.enemy_list[index].type:
 			loot_table = Lists.enemy_list[index].loot
+	if parent.drops_key == true:
+		loot_table[loot_table.size() + 1] = Lists.boss_loot_list["key"]
+		print(loot_table)
 
 
 func generate_loot() -> void:
@@ -26,5 +29,11 @@ func generate_loot() -> void:
 				item_instance.item_info = Lists.loot_list[dropped_item]
 				item_instance.set_global_position(parent.get_global_position())
 				dungeon.add_child(item_instance)
-				
+
+		if parent.drops_key == true:
+			var key_instance: RigidBody2D = Lists.boss_loot_list["key"].scene.instance()
+			key_instance.item_info = Lists.boss_loot_list["key"]
+			key_instance.set_global_position(parent.get_global_position())
+			dungeon.add_child(key_instance)
+
 		is_generated = true

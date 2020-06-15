@@ -70,7 +70,13 @@ func _on_item_picked_up(type, value) -> void:
 	if type == "healing_bottle":
 		bottle_amount += value
 		healing_bottle_counter.text = "x " + str(bottle_amount)
-	var item_name = Lists.loot_list[type].title
+	if type == "key":
+		key_item.visible = true
+	var item_name	
+	if Lists.loot_list.has(type):
+		item_name = Lists.loot_list[type].title
+	else:
+		item_name = Lists.boss_loot_list[type].title
 	notify_pickup(item_name, value)
 
 
@@ -81,3 +87,7 @@ func _on_bottle_used() -> void:
 
 func _on_key_received() -> void:
 	key_item.visible = true
+
+
+func _on_key_used() -> void:
+	key_item.visible = false

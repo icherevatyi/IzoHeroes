@@ -7,6 +7,8 @@ var health_max: int
 var damage: int
 var is_dead: bool = false
 
+var drops_key: bool = false
+
 onready var detection_range: Area2D = $DetectionRange
 onready var attack_scripts: Node2D = $AdditionalScripts/AttackManagement
 onready var movement_scripts: Node2D = $AdditionalScripts/MovementManagement
@@ -25,7 +27,7 @@ signal manage_healthbar_change(hp_before_damage, hp_after_damage)
 
 
 func _ready() -> void:
-	
+	add_to_group("Enemies")
 	_connect_signal("manage_healthbar_change", health_bars, "_on_healthbar_updated")
 	_connect_signal("initiate_healthpool", health_bars, "_on_healthbar_initiated")
 	emit_signal("initiate_healthpool", health_max)
@@ -70,7 +72,10 @@ func receive_damage(damage_received) -> void:
 	
 	if health_current == 0:
 		_death()
-		
+
+
+func _on_keydrop_added() -> void:
+	drops_key = true
 
 
 func _death() -> void:

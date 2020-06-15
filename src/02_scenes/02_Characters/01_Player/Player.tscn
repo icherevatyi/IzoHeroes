@@ -262,6 +262,7 @@ shape = SubResource( 25 )
 [node name="DoorOpeningRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpeningRange"]
+position = Vector2( 0, -0.110184 )
 shape = SubResource( 26 )
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="body_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_body_entered"]

@@ -107,7 +107,7 @@ var rooms: Dictionary = {
 var enemy_list: Dictionary = {
 	1: {
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/02_Skeleton/Skeleton.tscn"),
-		"type": "Skeleton",
+		"type": "skeleton",
 		"health_max": 100,
 		"damage": 1,
 		"loot": {
@@ -121,6 +121,27 @@ var enemy_list: Dictionary = {
 			}
 		}
 	}
+}
+
+var boss_list: Dictionary = {
+	1: {
+		"type": "Skeleton_Warlord",
+		"title": "Skeleton Warlord",
+		"health_max": 100,
+		"damage": 1,
+		"loot": {
+			1: {
+				"chance": 50,
+				"type": "healing_bottle"
+			},
+			2: {
+				"chance": 85,
+				"type": "gold_coins"
+			}
+		}
+	},
+	2: {},
+	3: {},
 }
 
 
@@ -139,6 +160,17 @@ var loot_list: Dictionary = {
 		"max_value": 1,
 	},
 }
+
+
+var boss_loot_list: Dictionary = {
+	"key": {
+		"scene": preload("res://src/02_scenes/04_Items/02_Loot/03_DungeonKey/DungeonKey.tscn"),
+		"type": "key",
+		"title": "Door Key",
+		"max_value": 1
+	}
+} 
+
 
 
 var lvl_modifiers: Dictionary = {

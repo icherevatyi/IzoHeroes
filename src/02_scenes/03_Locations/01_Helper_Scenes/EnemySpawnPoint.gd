@@ -4,7 +4,7 @@ onready var spawn_container = get_node("/root/Dungeon/YSort")
 
 
 func _ready() -> void:
-	spawn_enemy("Skeleton")
+	spawn_enemy("skeleton")
 
 
 func spawn_enemy(type) -> void:

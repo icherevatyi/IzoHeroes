@@ -8,7 +8,6 @@ var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
 var can_open: bool = false
-var has_key: bool = true
 var door_scene: Node2D = null
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
@@ -26,7 +25,7 @@ signal damage_heal(dmg)
 signal show_message(msg)
 signal use_bottle
 signal hide_message
-signal aquired_key
+signal use_key
 signal open_door
 
 func _ready() -> void:
@@ -37,8 +36,9 @@ func _ready() -> void:
 	_connect_signal("show_message", HUD, "_on_message_shown")
 	_connect_signal("hide_message", HUD, "_on_message_hidden")
 	_connect_signal("use_bottle", HUD, "_on_bottle_used")
-	_connect_signal("aquired_key", HUD, "_on_key_received")
+	_connect_signal("use_key", HUD, "_on_key_used")
 	_connect_signal("use_bottle", loot_management, "_on_bottle_used")
+	_connect_signal("use_key", loot_management, "_on_key_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 
 
@@ -72,12 +72,12 @@ func _input(event) -> void:
 			is_bored = false
 			
 		if event.is_action_pressed("interract"):
-			if can_open == true and has_key == true:
+			if can_open == true and loot_management.has_key == true:
 				emit_signal("open_door")
+				emit_signal("use_key")
 		
 		if health_scripts.health_current < health_scripts.health_max:
 			if event.is_action_pressed("use_item"):
-				print(get_position())
 				if loot_management.healing_bottle > 0:
 					emit_signal("damage_heal", 1)
 					emit_signal("use_bottle")
@@ -132,7 +132,6 @@ func _on_DoorOpeningRange_area_entered(area):
 func _on_DoorOpeningRange_area_exited(area):
 	if area.name == "ExitTrigger":
 		door_scene = null
-		var _message_placeholder = disconnect("open_door", area.get_parent(), "_on_gate_opened")
 		can_open = false
 
 
