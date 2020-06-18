@@ -193,7 +193,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 3
+frame = 1
 __meta__ = {
 "_editor_description_": ""
 }
@@ -266,5 +266,5 @@ collision_layer = 2
 position = Vector2( 0, 5 )
 shape = SubResource( 26 )
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
-[connection signal="body_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_body_entered"]
+[connection signal="area_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_area_entered"]
 [connection signal="area_entered" from="DoorOpener" to="." method="_on_DoorOpener_area_entered"]

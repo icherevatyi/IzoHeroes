@@ -131,7 +131,6 @@ func _on_item_data_received(data) -> void:
 	loot_management.process_received_loot_data(data)
 
 
-
 func _on_DoorOpener_area_entered(area) -> void:
 	if area.get_parent().name == "ExitDoor":
 		print(area.get_parent().name)

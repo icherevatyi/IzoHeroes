@@ -3,7 +3,7 @@
 [ext_resource path="res://src/02_scenes/04_Items/02_Loot/LootItem.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 7.83392 )
+extents = Vector2( 16, 16 )
 
 [node name="LootItem" type="RigidBody2D" groups=[
 "loot",

@@ -16,9 +16,9 @@ func  _ready() -> void:
 	_connect_signal("_on_pickup_HUD_update", HUD, "_on_item_picked_up")
 
 
-func _on_PickupDetectionRange_body_entered(body) -> void:
-	if body.is_in_group("loot"):
-		_connect_signal("pick_item", body, "_on_item_picked_up")
+func _on_PickupDetectionRange_area_entered(area):
+	if area.get_parent().is_in_group("loot"):
+		_connect_signal("pick_item", area.get_parent(), "_on_item_picked_up")
 		emit_signal("pick_item")
 
 

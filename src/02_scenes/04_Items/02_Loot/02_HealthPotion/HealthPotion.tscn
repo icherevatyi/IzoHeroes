@@ -8,7 +8,7 @@ atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 9, 11 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 8 )
+extents = Vector2( 8, 8 )
 
 [node name="HealthPotion" instance=ExtResource( 1 )]
 

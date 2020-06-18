@@ -41,26 +41,23 @@ func _on_BtnDecline_pressed() -> void:
 
 func _on_DialogBox_mouse_entered() -> void:
 	parent.can_attack = false
-	print("entered")
 
 
 func _on_DialogBox_mouse_exited() -> void:
 	parent.can_attack = true
-	print("exited")
 
 
-
-func _on_BtnAccept_mouse_entered():
+func _on_BtnAccept_mouse_entered() -> void:
 	parent.can_attack = false
 
 
-func _on_BtnAccept_mouse_exited():
+func _on_BtnAccept_mouse_exited() -> void:
 	parent.can_attack = true
 
 
-func _on_BtnDecline_mouse_entered():
+func _on_BtnDecline_mouse_entered() -> void:
 	parent.can_attack = false
 
 
-func _on_BtnDecline_mouse_exited():
+func _on_BtnDecline_mouse_exited() -> void:
 	parent.can_attack = true
