@@ -4,6 +4,7 @@ var menu: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/Menu.tscn")
 
 var cursor_passive = load("res://src/01_assets/01_UI/cursor_passive.png")
 var cursor_active = load("res://src/01_assets/01_UI/cursor_active.png")
+var cursor = load("res://src/01_assets/01_UI/cursor.png")
 var current_lvl: int = 1
 
 var _scene_change_value
@@ -13,7 +14,7 @@ var is_paused: bool = false
 
 func _ready() -> void:
 	set_pause_mode(2)
-	Input.set_custom_mouse_cursor(cursor_passive, Input.CURSOR_ARROW)
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
 	Input.set_custom_mouse_cursor(cursor_active, Input.CURSOR_POINTING_HAND)
 
 

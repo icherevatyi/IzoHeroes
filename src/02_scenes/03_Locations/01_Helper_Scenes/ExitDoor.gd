@@ -9,7 +9,6 @@ onready var sprite: AnimatedSprite = $Sprite
 signal endgame_message_sent(msg)
 signal _message_sent(msg, type)
 signal _message_removed
-signal collect_player_data
 
 
 func _ready() -> void:
@@ -19,6 +18,8 @@ func _ready() -> void:
 func _on_gate_opened() -> void:
 	sprite.play("opening")
 	gate_opened = true
+	yield(get_tree().create_timer(1), "timeout")
+	_load_next_lvl()
 
 
 func _load_next_lvl() -> void:
@@ -46,21 +47,13 @@ func _on_MessageTrigger_body_entered(body) -> void:
 				emit_signal("_message_sent", Lists.level_messages["have_key"], 2)
 			false:
 				if gate_opened == false:
-					emit_signal("_message_sent", Lists.level_messages["have_key"], 1)
+					emit_signal("_message_sent", Lists.level_messages["no_key"], 1)
 
 
 func _on_MessageTrigger_body_exited(body) -> void:
 	if body.name == 'Player':
 		body.can_open = false
 		emit_signal("_message_removed")
-
-
-func _on_ExitTrigger_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		if gate_opened == true:
-			_connect_signal("collect_player_data", body, "_on_data_request_received")
-			emit_signal("collect_player_data")
-			_load_next_lvl()
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

@@ -38,7 +38,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Hints"]
-margin_right = 170.0
+margin_right = 171.0
 margin_bottom = 15.0
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
@@ -46,7 +46,7 @@ text = "W, A, S, D - Move"
 
 [node name="Label2" type="Label" parent="Hints"]
 margin_top = 19.0
-margin_right = 170.0
+margin_right = 171.0
 margin_bottom = 34.0
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
@@ -54,7 +54,7 @@ text = "Q - Heal"
 
 [node name="Label3" type="Label" parent="Hints"]
 margin_top = 38.0
-margin_right = 170.0
+margin_right = 171.0
 margin_bottom = 53.0
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )

@@ -99,9 +99,9 @@ func _check_mouse_position() -> void:
 
 func open_gate() -> void:
 	if can_open == true and loot_management.has_key == true:
-		
 		emit_signal("open_gate")
 		emit_signal("use_key")
+		_on_data_request_received()
 	
 
 
@@ -133,7 +133,6 @@ func _on_item_data_received(data) -> void:
 
 func _on_DoorOpener_area_entered(area) -> void:
 	if area.get_parent().name == "ExitDoor":
-		print(area.get_parent().name)
 		_connect_signal("open_gate", area.get_parent(), "_on_gate_opened")
 
 
