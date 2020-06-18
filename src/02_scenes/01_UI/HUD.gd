@@ -3,10 +3,11 @@ extends CanvasLayer
 var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/01_PlayerHealthIcon/Heart.tscn")
 var notification_message: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/Notification/PickupNotification.tscn")
 
+onready var player: KinematicBody2D = get_node("../")
 onready var ui_parent: Control = $Control
 onready var notification_container: VBoxContainer = $Control/NotificationContainer
 onready var healthbar: HBoxContainer = $Control/HealthBar
-onready var dialog_box: PopupPanel = $Control/DialogBox
+onready var dialog_box: Control = $Control/DialogBox
 onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
 onready var key_item: TextureRect = $Control/KeyItem
@@ -27,16 +28,18 @@ func notify_pickup(item, amount) -> void:
 	notif_instance.text = "Picked up " + str(amount) + " " + item + "!"
 
 
-func _on_message_shown(msg) -> void:
-	var textarea: RichTextLabel = dialog_box.get_node("VBoxContainer/TextArea")
+func _on_message_shown(msg, dialog_type) -> void:
+	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
 	textarea.set_text(msg)
-	dialog_box.popup()
+	dialog_box.visible = true
+	dialog_box.set_type(dialog_type)
 
 
 func _on_message_hidden() -> void:
-	var textarea: RichTextLabel = dialog_box.get_node("VBoxContainer/TextArea")
+	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
 	textarea.clear()
 	dialog_box.visible = false
+	player.can_attack = true
 
 
 func _on_healing_displayed(amount: int) -> void:

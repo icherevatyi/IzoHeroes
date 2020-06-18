@@ -1,12 +1,14 @@
 extends Node2D
 
 var gate_opened: bool = false
-var _message: String = "You reached end of this demo, thank you for playing!"
+var _message: String
 
 onready var dungeon_lvl: Node2D = get_parent()
 onready var sprite: AnimatedSprite = $Sprite
 
 signal endgame_message_sent(msg)
+signal _message_sent(msg, type)
+signal _message_removed
 signal collect_player_data
 
 
@@ -22,6 +24,7 @@ func _on_gate_opened() -> void:
 func _load_next_lvl() -> void:
 	var next_lvl = Global.current_lvl + 1
 	if next_lvl > 3:
+		_message = Lists.level_messages["demo_end"]
 		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
 		Backdrop.fade_in()
 		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
@@ -33,13 +36,30 @@ func _load_next_lvl() -> void:
 		Global.current_lvl += 1
 
 
+func _on_MessageTrigger_body_entered(body) -> void:
+	if body.name == 'Player':
+		_connect_signal("_message_sent", body, "_on_message_received")
+		_connect_signal("_message_removed", body, "_on_message_removed")
+		body.can_open = true
+		match body.loot_management.has_key:
+			true:
+				emit_signal("_message_sent", Lists.level_messages["have_key"], 2)
+			false:
+				if gate_opened == false:
+					emit_signal("_message_sent", Lists.level_messages["have_key"], 1)
+
+
+func _on_MessageTrigger_body_exited(body) -> void:
+	if body.name == 'Player':
+		body.can_open = false
+		emit_signal("_message_removed")
+
+
 func _on_ExitTrigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print("gate opened: ", gate_opened)
 		if gate_opened == true:
 			_connect_signal("collect_player_data", body, "_on_data_request_received")
 			emit_signal("collect_player_data")
-		
 			_load_next_lvl()
 
 
@@ -52,6 +72,3 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 			else:
 				print("Signal connection error: ", connection_msg)
 
-
-func _on_Sprite_animation_finished():
-	pass # Replace with function body.

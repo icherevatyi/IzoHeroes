@@ -1,6 +1,13 @@
 extends Node
 
 
+var level_messages: Dictionary = {
+	"entrance_closed": "Rusty gate closed behind you. It is tightly sealed and the only way to leave this place is to move forward.",
+	"no_key": "You need a key, it should be carried by someone here.",
+	"have_key": "Old key is laying in your pocket, picked from and ugly abomination of foul magic. Are you sure you want to open the gate lock?",
+	"demo_end": "You reached end of this demo, thank you for playing!"
+}
+
 var main_menu_list: Dictionary = {
 	1: {
 		"title": "New Game",

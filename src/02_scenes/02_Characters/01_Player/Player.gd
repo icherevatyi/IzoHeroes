@@ -8,7 +8,9 @@ var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
 var can_open: bool = false
-var door_scene: Node2D = null
+var can_attack: bool = true
+var door: Node2D = null
+var is_door_opened: bool = false
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
@@ -22,11 +24,12 @@ onready var pickup_detection_range: Area2D = $PickupDetectionRange
 signal weapon_swing
 signal damage_receive(dmg)
 signal damage_heal(dmg)
-signal show_message(msg)
+signal show_message(msg, type)
 signal use_bottle
 signal hide_message
 signal use_key
-signal open_door
+signal open_gate
+
 
 func _ready() -> void:
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
@@ -61,7 +64,10 @@ func _move_player() ->  void:
 func _input(event) -> void:		
 	if is_dead == false:
 		if event.is_action_pressed("attack"):
-			emit_signal("weapon_swing")
+			if can_attack == true:
+				emit_signal("weapon_swing")
+			else:
+				pass
 		
 		if event.is_pressed() == false:
 			match idle_timer.is_stopped():
@@ -70,11 +76,6 @@ func _input(event) -> void:
 		if event.is_pressed() == true:
 			idle_timer.stop()
 			is_bored = false
-			
-		if event.is_action_pressed("interract"):
-			if can_open == true and loot_management.has_key == true:
-				emit_signal("open_door")
-				emit_signal("use_key")
 		
 		if health_scripts.health_current < health_scripts.health_max:
 			if event.is_action_pressed("use_item"):
@@ -96,8 +97,16 @@ func _check_mouse_position() -> void:
 			$Sprite.flip_h = true
 
 
-func _on_message_received(msg: String) -> void:
-	emit_signal("show_message", msg)
+func open_gate() -> void:
+	if can_open == true and loot_management.has_key == true:
+		
+		emit_signal("open_gate")
+		emit_signal("use_key")
+	
+
+
+func _on_message_received(msg: String, type: int) -> void:
+	emit_signal("show_message", msg, type)
 
 
 func _on_message_removed() -> void:
@@ -123,16 +132,10 @@ func _on_item_data_received(data) -> void:
 
 
 
-func _on_DoorOpeningRange_area_entered(area):
-	if area.name == "ExitTrigger":
-		_connect_signal("open_door", area.get_parent(), "_on_gate_opened")
-		can_open = true
-
-
-func _on_DoorOpeningRange_area_exited(area):
-	if area.name == "ExitTrigger":
-		door_scene = null
-		can_open = false
+func _on_DoorOpener_area_entered(area) -> void:
+	if area.get_parent().name == "ExitDoor":
+		print(area.get_parent().name)
+		_connect_signal("open_gate", area.get_parent(), "_on_gate_opened")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
@@ -143,3 +146,4 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+
