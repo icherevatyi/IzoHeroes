@@ -6,13 +6,14 @@ var dialog_type: int = 1
 # 2 - CONFIRMATION
 
 onready var parent: KinematicBody2D = get_node("../../../")
-onready var btn_accept: Button = $Buttons/BtnAccept
-onready var btn_decline: Button = $Buttons/BtnDecline
+onready var btn_accept: Button = $VBoxContainer/Buttons/BtnAccept
+onready var btn_decline: Button = $VBoxContainer/Buttons/BtnDecline
 
 
 func _ready() -> void:
 	set_visible(false)
 	btn_decline.visible = false
+	btn_decline.get_node("LinkShadow").text = "Cancel"
 
 
 func set_type(d_type: int) -> void:
@@ -20,9 +21,11 @@ func set_type(d_type: int) -> void:
 	match dialog_type:
 		1:
 			btn_accept.text = "Continue"
+			btn_accept.get_node("LinkShadow").text = "Continue"
 			btn_decline.visible = false
 		2:
 			btn_accept.text = "Yes"
+			btn_accept.get_node("LinkShadow").text = "Yes"
 			btn_decline.visible = true
 
 

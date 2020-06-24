@@ -104,6 +104,5 @@ __meta__ = {
 }
 
 [node name="DialogBox" parent="Control" instance=ExtResource( 2 )]
-visible = true
 margin_top = -71.0
 margin_bottom = 61.0

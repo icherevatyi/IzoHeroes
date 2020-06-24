@@ -29,14 +29,14 @@ func notify_pickup(item, amount) -> void:
 
 
 func _on_message_shown(msg, dialog_type) -> void:
-	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
+	var textarea: RichTextLabel = dialog_box.get_node("VBoxContainer/TextArea")
 	textarea.set_text(msg)
 	dialog_box.visible = true
 	dialog_box.set_type(dialog_type)
 
 
 func _on_message_hidden() -> void:
-	var textarea: RichTextLabel = dialog_box.get_node("TextArea")
+	var textarea: RichTextLabel = dialog_box.get_node("VBoxContainer/TextArea")
 	textarea.clear()
 	dialog_box.visible = false
 	player.can_attack = true

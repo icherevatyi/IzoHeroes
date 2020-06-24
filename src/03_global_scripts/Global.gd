@@ -15,7 +15,7 @@ var is_paused: bool = false
 func _ready() -> void:
 	set_pause_mode(2)
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
-	Input.set_custom_mouse_cursor(cursor_active, Input.CURSOR_POINTING_HAND)
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_POINTING_HAND)
 
 
 func _input(event) -> void:
