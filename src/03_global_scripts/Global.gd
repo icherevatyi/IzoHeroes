@@ -6,6 +6,7 @@ var cursor_passive = load("res://src/01_assets/01_UI/cursor_passive.png")
 var cursor_active = load("res://src/01_assets/01_UI/cursor_active.png")
 var cursor = load("res://src/01_assets/01_UI/cursor.png")
 var current_lvl: int = 1
+var hp_modifier: float
 
 var _scene_change_value
 var is_game_started: bool = false
@@ -16,6 +17,14 @@ func _ready() -> void:
 	set_pause_mode(2)
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_POINTING_HAND)
+	_check_modifier_active()
+
+
+func _check_modifier_active() -> void:
+	if current_lvl == 1:
+		hp_modifier = 1
+	else:
+		hp_modifier *= 1.3
 
 
 func _input(event) -> void:

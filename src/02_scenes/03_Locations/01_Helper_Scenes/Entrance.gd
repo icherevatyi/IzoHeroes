@@ -15,6 +15,7 @@ signal _message_removed
 
 
 func _ready() -> void:
+	Global._check_modifier_active()
 	_message = Lists.level_messages["entrance_closed"]
 	spawn_node = dungeon_lvl.get_node("YSort")
 	_spawn_player()

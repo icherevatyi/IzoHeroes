@@ -18,7 +18,7 @@ func _ready() -> void:
 func _on_gate_opened() -> void:
 	sprite.play("opening")
 	gate_opened = true
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.6), "timeout")
 	_load_next_lvl()
 
 

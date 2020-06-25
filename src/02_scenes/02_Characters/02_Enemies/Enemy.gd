@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 export var is_taking_damage: bool = false
 var type: String
-var health_current: int
-var health_max: int
+var health_current: float
+var health_max: float
 var damage: int
 var is_dead: bool = false
 
@@ -56,9 +56,12 @@ func _get_stats(enemy_type: String) -> void:
 	
 	for enemy in enemies:
 		if enemies[enemy].type == enemy_type:
-			health_max = enemies[enemy].health_max
+			health_max = enemies[enemy].health_max * Global.hp_modifier
 			health_current = health_max
 			damage = enemies[enemy].damage
+	
+	print("health maximum: ", health_max)
+	print("Health modifier ", Global.hp_modifier)
 
 
 func receive_damage(damage_received) -> void:
