@@ -1,11 +1,12 @@
-extends Button
+extends TextureButton
 
 var button_action: String
 var _func_response_value
 
+onready var btn_text: Label = $BtnText
 
 func item_init(title, action) -> void:
-	set_text(title)
+	btn_text.set_text(title)
 	button_action = action
 
 

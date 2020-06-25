@@ -3,7 +3,7 @@ extends CanvasLayer
 var menu_item: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/01_MenuItem/MenuItem.tscn")
 
 onready var background: ColorRect = $Background
-onready var items_container: VBoxContainer = $ItemsContainer
+onready var items_container: VBoxContainer = $MenuBg/ItemsContainer
 
 
 func _ready() -> void:
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _start_main_menu() -> void:
 	for item_index in Lists.main_menu_list:
-		var item_instance: Button = menu_item.instance()
+		var item_instance: TextureButton = menu_item.instance()
 		var item_title: String = Lists.main_menu_list[item_index].title
 		var item_action = Lists.main_menu_list[item_index].action
 		
@@ -28,7 +28,7 @@ func _start_main_menu() -> void:
 
 func _start_pause_menu() ->  void:
 	for item_index in Lists.pause_game_list:
-		var item_instance: Button = menu_item.instance()
+		var item_instance: TextureButton = menu_item.instance()
 		var item_title: String = Lists.pause_game_list[item_index].title
 		var item_action = Lists.pause_game_list[item_index].action
 		

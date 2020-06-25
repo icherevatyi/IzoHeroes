@@ -2,8 +2,6 @@ extends Node
 
 var menu: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/Menu.tscn")
 
-var cursor_passive = load("res://src/01_assets/01_UI/cursor_passive.png")
-var cursor_active = load("res://src/01_assets/01_UI/cursor_active.png")
 var cursor = load("res://src/01_assets/01_UI/cursor.png")
 var current_lvl: int = 1
 var hp_modifier: float
@@ -78,11 +76,3 @@ func exit_to_menu() -> void:
 func exit_game() -> void:
 	SaveLoad.save_game()
 	get_tree().quit()
-
-
-func set_cursor_active() -> void:
-	Input.set_custom_mouse_cursor(cursor_active)
-
-
-func set_cursor_passive() -> void:
-	Input.set_custom_mouse_cursor(cursor_passive)
