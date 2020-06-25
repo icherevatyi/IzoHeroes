@@ -57,6 +57,7 @@ margin_bottom = 15.0
 size_flags_horizontal = 7
 shortcut_in_tooltip = false
 text = "Ok"
+underline = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,6 +77,7 @@ margin_bottom = 34.0
 size_flags_horizontal = 3
 shortcut_in_tooltip = false
 text = "Cancel"
+underline = 2
 
 [node name="LinkShadow" type="Label" parent="VBoxContainer/Buttons/BtnDecline"]
 show_behind_parent = true

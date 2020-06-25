@@ -42,10 +42,11 @@ func _select_timer_timeout() -> void:
 
 
 func _select_direction() -> void:
-	rng.randomize()
-	var rand_dir = rng.randi_range(0, 4)
-	movement_dir = movement_dir_dict[rand_dir]
-	_match_facing()
+	if parent.is_dead == false:
+		rng.randomize()
+		var rand_dir = rng.randi_range(0, 4)
+		movement_dir = movement_dir_dict[rand_dir]
+		_match_facing()
 
 
 func _match_facing() -> void:

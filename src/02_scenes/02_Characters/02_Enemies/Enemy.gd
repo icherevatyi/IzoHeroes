@@ -59,9 +59,6 @@ func _get_stats(enemy_type: String) -> void:
 			health_max = enemies[enemy].health_max * Global.hp_modifier
 			health_current = health_max
 			damage = enemies[enemy].damage
-	
-	print("health maximum: ", health_max)
-	print("Health modifier ", Global.hp_modifier)
 
 
 func receive_damage(damage_received) -> void:
