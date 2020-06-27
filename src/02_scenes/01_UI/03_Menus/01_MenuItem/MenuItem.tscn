@@ -6,17 +6,18 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 142, 21 )
+region = Rect2( 0, 0, 101, 22 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 22, 142, 20 )
+region = Rect2( 0, 23, 101, 22 )
 
 [node name="MenuItem" type="TextureButton"]
-margin_right = 128.0
-margin_bottom = 21.0
+margin_right = 101.0
+margin_bottom = 22.0
 theme = ExtResource( 2 )
 shortcut_in_tooltip = false
+keep_pressed_outside = true
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
 script = ExtResource( 1 )
@@ -30,16 +31,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -53.0
-margin_top = -7.5
+margin_top = -8.5
 margin_right = 81.0
-margin_bottom = 7.5
+margin_bottom = 6.5
 rect_scale = Vector2( 0.8, 0.8 )
-custom_colors/font_color = Color( 0.239216, 0.337255, 0.368627, 1 )
+custom_colors/font_color = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color_shadow = Color( 0.596078, 0.713726, 0.678431, 1 )
+custom_constants/shadow_offset_x = -1
 text = "asdasdasd"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="button_down" from="." to="." method="_on_MenuItem_button_down"]
+[connection signal="button_up" from="." to="." method="_on_MenuItem_button_up"]
 [connection signal="pressed" from="." to="." method="_on_MenuItem_pressed"]

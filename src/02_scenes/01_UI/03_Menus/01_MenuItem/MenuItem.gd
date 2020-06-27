@@ -11,6 +11,7 @@ func item_init(title, action) -> void:
 
 
 func _on_MenuItem_pressed() -> void:
+	btn_text._set_position(Vector2(-1, 5.5))
 	match button_action:
 		"START_GAME":
 			Global.start_game()
@@ -24,3 +25,11 @@ func _on_MenuItem_pressed() -> void:
 			Global.exit_to_menu()
 		"QTD":
 			Global.exit_game()
+
+
+func _on_MenuItem_button_down():
+	btn_text._set_position(Vector2(-1, 5.5))
+
+
+func _on_MenuItem_button_up():
+	btn_text._set_position(Vector2(-1, 2.5))

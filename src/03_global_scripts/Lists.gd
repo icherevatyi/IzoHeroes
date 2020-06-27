@@ -14,7 +14,7 @@ var main_menu_list: Dictionary = {
 		"action": "START_GAME"
 	},
 	2: {
-		"title": "Continue Game",
+		"title": "Continue",
 		"action": "LOAD_GAME"
 	},
 	3: {
@@ -34,7 +34,7 @@ var pause_game_list: Dictionary = {
 		"action": "RETURN_TO_GAME"
 	},
 	2: {
-		"title": "Load from Checkpoint",
+		"title": "Load Checkpoint",
 		"action": "LOAD_GAME"
 	},
 	3: {
@@ -42,7 +42,7 @@ var pause_game_list: Dictionary = {
 		"action": "SHOW_OPTIONS"
 	},
 	4: {
-		"title": "Exit to Main Menu",
+		"title": "Exit to Menu",
 		"action": "QTM"
 	},
 	5: {
