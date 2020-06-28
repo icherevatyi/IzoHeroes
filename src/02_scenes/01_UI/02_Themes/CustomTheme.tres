@@ -1,6 +1,5 @@
 [gd_resource type="Theme" load_steps=12 format=2]
 
-[ext_resource path="res://src/01_assets/01_UI/UI.png" type="Texture" id=1]
 [ext_resource path="res://src/01_assets/01_UI/dialog_frame.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
@@ -10,15 +9,17 @@ font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 size = 14
 font_data = SubResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 1 )
+[sub_resource type="StreamTexture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = SubResource( 3 )
 region_rect = Rect2( 0, 0, 64, 64 )
 margin_left = 8.0
 margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 206, 108 )
 margin_left = 15.0
@@ -26,35 +27,35 @@ margin_right = 15.0
 margin_top = 15.0
 margin_bottom = 15.0
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=6]
 content_margin_left = 12.0
 content_margin_right = 12.0
 content_margin_top = 10.0
 content_margin_bottom = 10.0
-texture = ExtResource( 1 )
+texture = SubResource( 3 )
 region_rect = Rect2( 0, 0, 64, 64 )
 margin_left = 8.0
 margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="DynamicFontData" id=6]
+[sub_resource type="DynamicFontData" id=7]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 13
 extra_spacing_space = 1
-font_data = SubResource( 6 )
+font_data = SubResource( 7 )
 
-[sub_resource type="DynamicFontData" id=8]
+[sub_resource type="DynamicFontData" id=9]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=10]
 size = 14
-font_data = SubResource( 8 )
+font_data = SubResource( 9 )
 
 [resource]
-default_font = SubResource( 9 )
+default_font = SubResource( 10 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.333333, 0.333333, 0.333333, 1 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -83,9 +84,9 @@ LinkButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 LinkButton/constants/underline_spacing = 2
 LinkButton/fonts/font = null
 LinkButton/styles/focus = null
-Panel/styles/panel = SubResource( 3 )
-PopupDialog/styles/panel = SubResource( 4 )
-PopupPanel/styles/panel = SubResource( 5 )
+Panel/styles/panel = SubResource( 4 )
+PopupDialog/styles/panel = SubResource( 5 )
+PopupPanel/styles/panel = SubResource( 6 )
 RichTextLabel/colors/default_color = Color( 0.647059, 0.701961, 0.717647, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
 RichTextLabel/colors/font_color_shadow = Color( 0.286275, 0.321569, 0.439216, 1 )
@@ -100,6 +101,6 @@ RichTextLabel/fonts/bold_font = null
 RichTextLabel/fonts/bold_italics_font = null
 RichTextLabel/fonts/italics_font = null
 RichTextLabel/fonts/mono_font = null
-RichTextLabel/fonts/normal_font = SubResource( 7 )
+RichTextLabel/fonts/normal_font = SubResource( 8 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null

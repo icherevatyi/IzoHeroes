@@ -12,6 +12,7 @@ func _on_create_exit_command_received() -> void:
 
 func _select_random_wall_tile() -> Vector2:
 	var possible_placement_options = get_used_cells_by_id(02)
+	
 	var viable_placement_options = possible_placement_options.slice(1, possible_placement_options.size() - 2)
 	rng.randomize()
 	var placement = rng.randi_range(0, viable_placement_options.size() - 1)
