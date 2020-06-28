@@ -1,14 +1,15 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Dungeon.tres" type="TileSet" id=1]
+[ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Dungeon_lg.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/Room.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/SpawnPoint.tscn" type="PackedScene" id=3]
 
 [node name="Room" type="TileMap"]
 tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
+cell_size = Vector2( 32, 32 )
 collision_mask = 14
 format = 1
+tile_data = PoolIntArray( -1310620, 8, 0, -1245084, 8, 0 )
 script = ExtResource( 2 )
 
 [node name="Corridors" type="Node2D" parent="."]

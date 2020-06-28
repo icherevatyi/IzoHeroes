@@ -20,7 +20,7 @@ func _select_random_wall_tile() -> Vector2:
 
 func _create_exit(placement_position: Vector2) -> void:
 	var exit_instance: Node2D = exit_door.instance()
-	exit_instance.set_global_position(placement_position * Vector2(16, 16))
+	exit_instance.set_global_position(placement_position * Vector2(32, 32))
 	add_child(exit_instance)
 
 

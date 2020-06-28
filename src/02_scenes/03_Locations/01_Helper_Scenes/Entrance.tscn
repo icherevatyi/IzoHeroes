@@ -1,19 +1,20 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/01_assets/03_Tiles/dungeon_tile.png" type="Texture" id=1]
+[ext_resource path="res://src/01_assets/03_Tiles/dungeon_tile_1.png" type="Texture" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 48, 16, 16 )
+region = Rect2( 0, 96, 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
 
 [node name="Entrance" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="SpawnPoint" type="Position2D" parent="."]
-position = Vector2( 0, -24 )
+position = Vector2( 0, -40 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )
@@ -21,7 +22,6 @@ texture = SubResource( 1 )
 [node name="MessageTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MessageTrigger"]
-position = Vector2( 0, -2 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="MessageTrigger" to="." method="_on_MessageTrigger_body_entered"]
 [connection signal="body_exited" from="MessageTrigger" to="." method="_on_MessageTrigger_body_exited"]
