@@ -18,10 +18,11 @@ __meta__ = {
 
 [node name="MenuBg" type="TextureRect" parent="."]
 margin_left = 5.0
-margin_top = 5.0
+margin_top = 8.0
 margin_right = 161.0
-margin_bottom = 211.0
+margin_bottom = 216.0
 texture = ExtResource( 3 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
