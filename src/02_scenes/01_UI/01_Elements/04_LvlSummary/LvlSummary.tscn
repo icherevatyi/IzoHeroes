@@ -23,3 +23,75 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LvlEndScreen" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SummaryTitle" type="TextureRect" parent="LvlEndScreen"]
+margin_right = 400.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+expand = true
+
+[node name="TitleBody" type="Label" parent="LvlEndScreen/SummaryTitle"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Please Choose Perk"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PerkContainer" type="HBoxContainer" parent="LvlEndScreen"]
+margin_top = 34.0
+margin_right = 400.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PekrDescription" type="TextureRect" parent="LvlEndScreen"]
+margin_top = 114.0
+margin_right = 400.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+
+[node name="DescriptionBody" type="RichTextLabel" parent="LvlEndScreen/PekrDescription"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="LvlEndScreen"]
+margin_top = 194.0
+margin_right = 400.0
+margin_bottom = 225.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LvlEndScreen/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Continue"
+align = 1
+valign = 1
+[connection signal="button_down" from="LvlEndScreen/Button" to="." method="_on_TextureButton_button_down"]
+[connection signal="button_up" from="LvlEndScreen/Button" to="." method="_on_TextureButton_button_up"]

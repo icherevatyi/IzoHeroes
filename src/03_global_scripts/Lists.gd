@@ -8,6 +8,43 @@ var level_messages: Dictionary = {
 	"demo_end": "You reached end of this demo, thank you for playing!"
 }
 
+
+var perk_list: Dictionary = {
+	1: {
+		"title": "Strike Power",
+		"type": "attack_damage",
+		"description": "You became stronger, your attack is now 15% more devastating.",
+		"value": 0.15,
+	},
+	2: {
+		"title": "Swing Speed",
+		"type": "attack_speed",
+		"description": "Using new technicks, you can strike faster, slising enemies to salad. Attack speed increased by 10%",
+		"value": 0.1,
+	},
+	3: {
+		"title": "Light Footed",
+		"type": "movement_speed",
+		"description": "Light footed means alive. Movement speed is increased by 5%",
+		"value": 0.05,
+		
+	},
+	4: {
+		"title": "Combat Luck",
+		"type": "evasion_chance",
+		"description": "Your combat experience allows you to avoid enemy damage. Chance to evade any incoming attack is increased by 3%",
+		"value": 0.03,
+	},
+	5: {
+		"title": "Hawk Eyes",
+		"type": "crit_chance",
+		"description": "Your eyes are catching enemy weak points. Chance to immediately kill any monster (excluding bosses) is increased by 3%",
+		"value": 0.03,
+	}
+}
+
+
+
 var main_menu_list: Dictionary = {
 	1: {
 		"title": "New Game",

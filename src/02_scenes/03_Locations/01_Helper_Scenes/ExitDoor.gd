@@ -7,12 +7,14 @@ onready var dungeon_lvl: Node2D = get_parent()
 onready var sprite: AnimatedSprite = $Sprite
 
 signal endgame_message_sent(msg)
+signal floor_cleared
 signal _message_sent(msg, type)
 signal _message_removed
 
 
 func _ready() -> void:
 	sprite.play("closed")
+	_connect_signal("floor_cleared", LvlSummary, "_on_lvl_ended")
 
 
 func _on_gate_opened() -> void:
@@ -33,8 +35,7 @@ func _load_next_lvl() -> void:
 	else:
 		Backdrop.fade_in()
 		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
-		var _change_msg = get_tree().reload_current_scene()
-		Global.current_lvl += 1
+		emit_signal("floor_cleared")
 
 
 func _on_MessageTrigger_body_entered(body) -> void:
