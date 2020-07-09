@@ -1,8 +1,9 @@
-extends TextureButton
+extends Control
 
 var index: int
 
 onready var btn_text: Label = $BtnText
+onready var btn_texture: TextureButton = $Texture
 
 signal return_type(index)
 signal clear_type
@@ -14,11 +15,11 @@ func item_init(perk_title, perk_index) -> void:
 	index = perk_index
 
 
-func _on_PerkButton_mouse_entered():
+func _on_Button_mouse_entered():
 	emit_signal("return_type", index)
 
 
-func _on_PerkButton_mouse_exited():
+func _on_Button_mouse_exited():
 	emit_signal("clear_type")
 
 
@@ -30,3 +31,5 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+
+

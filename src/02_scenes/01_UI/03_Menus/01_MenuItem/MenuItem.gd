@@ -32,4 +32,4 @@ func _on_MenuItem_button_down():
 
 
 func _on_MenuItem_button_up():
-	btn_text._set_position(Vector2(-1, 2.5))
+	btn_text._set_position(Vector2(-1, 3.5))

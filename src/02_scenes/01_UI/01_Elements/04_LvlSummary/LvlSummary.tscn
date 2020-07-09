@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/04_LvlSummary/LvlSummary.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
+[ext_resource path="res://src/01_assets/01_UI/menu_btn.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 101.062, 21.9553 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 22, 101, 22 )
 
 [node name="LvlSummary" type="CanvasLayer"]
 layer = 4
@@ -33,10 +42,11 @@ __meta__ = {
 
 [node name="SummaryTitle" type="TextureRect" parent="LvlEndScreen"]
 margin_right = 400.0
-margin_bottom = 30.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.3
+theme = ExtResource( 2 )
 expand = true
 
 [node name="TitleBody" type="Label" parent="LvlEndScreen/SummaryTitle"]
@@ -50,19 +60,20 @@ __meta__ = {
 }
 
 [node name="PerkContainer" type="HBoxContainer" parent="LvlEndScreen"]
-margin_top = 34.0
+margin_top = 31.0
 margin_right = 400.0
-margin_bottom = 110.0
+margin_bottom = 123.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="PekrDescription" type="TextureRect" parent="LvlEndScreen"]
-margin_top = 114.0
+margin_top = 127.0
 margin_right = 400.0
-margin_bottom = 190.0
+margin_bottom = 182.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
 expand = true
 
 [node name="DescriptionBody" type="RichTextLabel" parent="LvlEndScreen/PekrDescription"]
@@ -72,17 +83,27 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -8.0
+text = "asdasdasdsad"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="TextureButton" parent="LvlEndScreen"]
-margin_top = 194.0
+margin_top = 186.0
 margin_right = 400.0
 margin_bottom = 225.0
-size_flags_horizontal = 3
+focus_mode = 0
+size_flags_horizontal = 5
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
+theme = ExtResource( 2 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 2 )
+expand = true
+stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -90,8 +111,18 @@ __meta__ = {
 [node name="Label" type="Label" parent="LvlEndScreen/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 160.0
+margin_top = 3.0
+margin_right = -140.0
+margin_bottom = 3.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_colors/font_color = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color_shadow = Color( 0.596078, 0.713726, 0.678431, 1 )
 text = "Continue"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_down" from="LvlEndScreen/Button" to="." method="_on_TextureButton_button_down"]
 [connection signal="button_up" from="LvlEndScreen/Button" to="." method="_on_TextureButton_button_up"]

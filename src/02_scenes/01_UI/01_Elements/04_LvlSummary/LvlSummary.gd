@@ -10,6 +10,7 @@ onready var textarea: RichTextLabel = $RichTextLabel
 onready var lvl_end_screen: VBoxContainer = $LvlEndScreen
 onready var perk_container: HBoxContainer = $LvlEndScreen/PerkContainer
 onready var perk_description: RichTextLabel = $LvlEndScreen/PekrDescription/DescriptionBody
+onready var button_label: Label = $LvlEndScreen/Button/Label
 
 func _ready() -> void:
 	lvl_end_screen.visible = false
@@ -41,7 +42,7 @@ func _assign_perks() -> void:
 	for i in perk_index_list.size():
 		perk_index = perk_index_list[i]
 		perk = available_perks[perk_index]
-		var perk_instance: TextureButton = perk_item.instance()
+		var perk_instance: Control = perk_item.instance()
 		perk_container.add_child(perk_instance)
 		perk_instance.item_init(perk.title, perk_index)
 		
@@ -63,12 +64,13 @@ func _get_random_perk() -> int:
 
 
 func _on_TextureButton_button_down() -> void:
-	pass # Replace with function body.
+	button_label.set_position(Vector2(160, 6))
 
 
 func _on_TextureButton_button_up() -> void:
 	_toggle_screen_msg()
 	var _lvl_change_msg = get_tree().reload_current_scene()
+	button_label.set_position(Vector2(160, 3))
 
 
 func _on_perk_type_received(index: int) -> void:
