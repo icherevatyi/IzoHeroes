@@ -28,6 +28,9 @@ func _check_modifier_active() -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		toggle_pause_menu()
+	if event.is_action_pressed("console"):
+		Console.toggle_console()
+		get_tree().paused = !get_tree().paused
 
 
 func call_main_menu() -> void:

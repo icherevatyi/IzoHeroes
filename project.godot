@@ -27,6 +27,7 @@ ResourceStorage="*res://src/03_global_scripts/ResourceStorage.gd"
 Global="*res://src/03_global_scripts/Global.gd"
 Backdrop="*res://src/02_scenes/01_UI/01_Elements/03_Backdrop/Backdrop.tscn"
 LvlSummary="*res://src/02_scenes/01_UI/01_Elements/04_LvlSummary/LvlSummary.tscn"
+Console="*res://src/02_scenes/01_UI/04_Console/Console.tscn"
 
 [display]
 
@@ -99,6 +100,11 @@ interract={
 use_item={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+console={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":96,"unicode":0,"echo":false,"script":null)
  ]
 }
 
