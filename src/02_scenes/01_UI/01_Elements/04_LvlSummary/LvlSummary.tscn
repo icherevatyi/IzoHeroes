@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/04_LvlSummary/LvlSummary.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 [ext_resource path="res://src/01_assets/01_UI/menu_btn.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = SubResource( 3 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -83,7 +90,10 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -8.0
-text = "asdasdasdsad"
+theme = ExtResource( 2 )
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Here Goes Perk Description"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -69,6 +69,9 @@ func _input(event) -> void:
 			else:
 				pass
 		
+		if event.is_action_pressed("view_stats"):
+			HUD.toggle_stat_screen()
+		
 		if event.is_pressed() == false:
 			match idle_timer.is_stopped():
 				true:
