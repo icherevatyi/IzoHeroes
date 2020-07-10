@@ -19,6 +19,10 @@ var command_list: Dictionary = {
 	2: {
 		"command": "lvl_next",
 		"arguments": [] 
+	},
+	3: {
+		"command": "lvl_change_to",
+		"arguments": [ARG_INT] 
 	}
 }
 
@@ -38,6 +42,16 @@ func lvl_next() -> void:
 			if item_element.name == "ExitDoor":
 				item_element._load_next_lvl()
 
+
+func lvl_change_to(argument: String) -> void:
+	var arg = int(argument)
+	Global.current_lvl = arg - 1
+	var rooms = get_node("/root/Dungeon/Rooms").get_children()
+	for room_item in rooms:
+		for item_element in room_item.get_children():
+			if item_element.name == "ExitDoor":
+				item_element._load_next_lvl()
+		
 
 func add_potion() -> void:
 	pass
