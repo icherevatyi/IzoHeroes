@@ -1,6 +1,7 @@
 extends Node
 
 var menu: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/Menu.tscn")
+var console: PackedScene = preload("res://src/02_scenes/01_UI/04_Console/Console.tscn")
 
 var cursor = load("res://src/01_assets/01_UI/cursor.png")
 var current_lvl: int = 1
@@ -9,6 +10,8 @@ var hp_modifier: float
 var _scene_change_value
 var is_game_started: bool = false
 var is_paused: bool = false
+
+onready var root_node = get_node("/root/")
 
 
 func _ready() -> void:
@@ -29,8 +32,16 @@ func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		toggle_pause_menu()
 	if event.is_action_pressed("console"):
-		Console.toggle_console()
+		toggle_console()
 		get_tree().paused = !get_tree().paused
+
+
+func toggle_console() -> void:
+	if root_node.has_node("Console"):
+		root_node.remove_child(get_node("/root/Console"))
+	else:
+		root_node.add_child(console.instance())
+
 
 
 func call_main_menu() -> void:
