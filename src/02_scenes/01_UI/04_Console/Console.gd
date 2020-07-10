@@ -38,7 +38,7 @@ func process_command(text: String) -> void:
 			if not Global.is_game_started:
 				output_text("Game is not loaded yet, please descent into the dungeon first.")
 				return
-			command_handler.callv(command_word, words)
+			output_text(command_handler.callv(command_word, words))
 			return
 	output_text(str("Command ", command_word, " doesn't exist"))
 

@@ -9,65 +9,71 @@ enum {
 
 var command_list: Dictionary = {
 	0: {
-		"command": "add_key",
-		"arguments": [] 
+		"command": "add_item",
+		"arguments": [ARG_STRING, ARG_INT]
 	},
 	1: {
-		"command": "add_potion",
-		"arguments": [ARG_INT] 
+		"command": "show_items",
+		"arguments": [] 
 	},
-	2: {
-		"command": "add_gold",
-		"arguments": [ARG_INT] 
-	},
-	3: {
+	2:{
 		"command": "lvl_next",
 		"arguments": [] 
 	},
-	4: {
+	3: {
 		"command": "lvl_change_to",
 		"arguments": [ARG_INT] 
-	}
+	},
 }
 
 
-func add_key() -> void:
+func add_item(item_type: String, item_amount: String) -> String:
 	var spawn_position: Vector2 = get_node("/root/Dungeon/YSort/Player").get_global_position()
-	var item_instance = Lists.boss_loot_list["key"].scene.instance()
-	item_instance.item_info = Lists.boss_loot_list["key"]
-	item_instance.set_global_position(spawn_position)
-	get_node("/root/Dungeon").add_child(item_instance)
-
-
-func add_potion(argument) -> void:
-	var spawn_position: Vector2 = get_node("/root/Dungeon/YSort/Player").get_global_position()
-	var arg = int(argument)
-	for _i in range(0, arg):
-		var item_instance = Lists.loot_list["healing_bottle"].scene.instance()
-		item_instance.item_info = Lists.loot_list["healing_bottle"]
+	if Lists.loot_list.has(item_type):
+		var item_instance = Lists.loot_list[item_type].scene.instance()
+		item_instance.item_info = Lists.loot_list[item_type]
 		item_instance.set_global_position(spawn_position)
+		
 		get_node("/root/Dungeon").add_child(item_instance)
+		
+		item_instance.item_local_data.amount = int(item_amount)
+		
+		return str("Item '", Lists.loot_list[item_type].title, "' was added to the world in quantity of ", item_amount)
+		
+	elif Lists.boss_loot_list.has(item_type):
+		var item_instance = Lists.boss_loot_list[item_type].scene.instance()
+		item_instance.item_info = Lists.boss_loot_list[item_type]
+		item_instance.set_global_position(spawn_position)
+		
+		get_node("/root/Dungeon").add_child(item_instance)
+		
+		item_instance.item_local_data.amount = int(item_amount)
+		
+		return str("Item '", Lists.boss_loot_list[item_type].title, "' was added to the world in quantity of ", item_amount)
+		
+	else:
+		return str("Failed to execute command, '", item_type, "' not found.")
 
 
-func add_gold(argument) -> void:
-	var spawn_position: Vector2 = get_node("/root/Dungeon/YSort/Player").get_global_position()
-	var item_instance = Lists.loot_list["gold_coins"].scene.instance()
-	item_instance.item_info = Lists.loot_list["gold_coins"]
-	item_instance.set_global_position(spawn_position)
-	get_node("/root/Dungeon").add_child(item_instance)
-	item_instance.item_local_data.amount = int(argument)
+func show_items() -> String:
+	var result: String
+	var items_array = Lists.loot_list.keys() + Lists.boss_loot_list.keys()
+	for i in items_array.size():
+		result = result + "     " + items_array[i] + "\n"
+	
+	return str("Available items: \n", result)
 
 
-
-func lvl_next() -> void:
+func lvl_next() -> String:
 	var rooms = get_node("/root/Dungeon/Rooms").get_children()
 	for room_item in rooms:
 		for item_element in room_item.get_children():
 			if item_element.name == "ExitDoor":
 				item_element._load_next_lvl()
+	return "Changing level, please wait"
 
 
-func lvl_change_to(argument: String) -> void:
+func lvl_change_to(argument: String) -> String:
 	var arg = int(argument)
 	Global.current_lvl = arg - 1
 	var rooms = get_node("/root/Dungeon/Rooms").get_children()
@@ -75,4 +81,5 @@ func lvl_change_to(argument: String) -> void:
 		for item_element in room_item.get_children():
 			if item_element.name == "ExitDoor":
 				item_element._load_next_lvl()
+	return str("Changing dungeon level to ", argument)
 		
