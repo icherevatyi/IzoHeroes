@@ -35,6 +35,9 @@ func process_command(text: String) -> void:
 				if not _check_type(words[word_item], command_item.arguments[word_item]):
 					output_text(str("Execution of '", command_word, "' failed. Parameter (", words[word_item], ") is of the wrong type."))
 					return
+			if not Global.is_game_started:
+				output_text("Game is not loaded yet, please descent into the dungeon first.")
+				return
 			command_handler.callv(command_word, words)
 			return
 	output_text(str("Command ", command_word, " doesn't exist"))

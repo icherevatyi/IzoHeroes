@@ -33,6 +33,8 @@ func _input(event) -> void:
 		toggle_pause_menu()
 	if event.is_action_pressed("console"):
 		toggle_console()
+		if is_paused:
+			return
 		get_tree().paused = !get_tree().paused
 
 

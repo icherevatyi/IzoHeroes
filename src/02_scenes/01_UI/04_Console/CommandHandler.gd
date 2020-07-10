@@ -7,9 +7,6 @@ enum {
 	ARG_FLOAT
 }
 
-onready var dungeon = get_node("/root/Dungeon")
-onready var player = get_node("/root/Dungeon/YSort/Player")
-
 var command_list: Dictionary = {
 	0: {
 		"command": "add_key",
@@ -23,11 +20,11 @@ var command_list: Dictionary = {
 
 
 func add_key() -> void:
-	var spawn_position: Vector2 = player.get_global_position()
+	var spawn_position: Vector2 = get_node("/root/Dungeon/YSort/Player").get_global_position()
 	var item_instance = Lists.boss_loot_list["key"].scene.instance()
 	item_instance.item_info = Lists.boss_loot_list["key"]
 	item_instance.set_global_position(spawn_position)
-	dungeon.add_child(item_instance)
+	get_node("/root/Dungeon").add_child(item_instance)
 
 
 func add_potion() -> void:
