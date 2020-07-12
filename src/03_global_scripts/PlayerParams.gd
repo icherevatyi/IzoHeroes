@@ -7,7 +7,7 @@ var param_list: Dictionary = {
 	},
 	"attack_speed": {
 		"title": "Atk. Speed",
-		"value": 3,
+		"value": 30,
 	},
 	"attack_power": {
 		"title": "Atk. Power",

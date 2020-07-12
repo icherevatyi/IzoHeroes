@@ -11,7 +11,7 @@ signal do_damage(damage)
 
 func _ready() -> void:
 	is_monitored = monitoring
-	animation_player.playback_speed = 3
+	animation_player.playback_speed = PlayerParams.param_list["attack_speed"].value / 10
 
 
 func _on_weapon_swing() -> void:
