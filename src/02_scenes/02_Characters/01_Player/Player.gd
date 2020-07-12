@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
-export var health_is_damaged: bool = false
-export var speed: int = 120
+var health_is_damaged: bool = false
+
+var speed: int = PlayerParams.param_list["movement_speed"].value
 
 
 var movement: Vector2 = Vector2(0, 0)
@@ -105,7 +106,6 @@ func open_gate() -> void:
 		emit_signal("open_gate")
 		emit_signal("use_key")
 		_on_data_request_received()
-	
 
 
 func _on_message_received(msg: String, type: int) -> void:

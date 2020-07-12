@@ -1,34 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=1]
-
-[sub_resource type="DynamicFontData" id=5]
-font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
-
-[sub_resource type="DynamicFont" id=6]
-size = 12
-font_data = SubResource( 5 )
+[ext_resource path="res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
 [sub_resource type="DynamicFont" id=2]
-size = 11
+size = 12
 font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
 [sub_resource type="DynamicFont" id=4]
-size = 11
-font_data = SubResource( 3 )
-
-[sub_resource type="DynamicFontData" id=7]
-font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
-
-[sub_resource type="DynamicFont" id=8]
 size = 10
-font_data = SubResource( 7 )
+font_data = SubResource( 3 )
 
 [node name="CharacterSheet" type="Control"]
 anchor_left = 0.5
@@ -40,13 +27,23 @@ margin_top = -96.0
 margin_right = 168.0
 margin_bottom = 96.0
 theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.313726, 0.333333, 0.380392, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 15.0
+margin_top = 4.0
+margin_bottom = 19.0
 text = "Character Screen"
 align = 1
 valign = 1
@@ -95,11 +92,11 @@ margin_right = 154.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 5
+columns = 3
 
 [node name="PerkItem" type="Control" parent="SheetConainer/StatsPanel/Perks/PerkGrid"]
-margin_right = 27.0
-margin_bottom = 25.0
+margin_right = 48.0
+margin_bottom = 10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -125,10 +122,12 @@ __meta__ = {
 }
 
 [node name="PerkLvl" type="Label" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem"]
-margin_left = 5.0
-margin_top = 20.0
-margin_right = 29.0
-margin_bottom = 36.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -16.0
 text = "0"
 align = 2
 valign = 1
@@ -137,9 +136,9 @@ __meta__ = {
 }
 
 [node name="PerkItem2" type="Control" parent="SheetConainer/StatsPanel/Perks/PerkGrid"]
-margin_left = 31.0
-margin_right = 58.0
-margin_bottom = 25.0
+margin_left = 52.0
+margin_right = 100.0
+margin_bottom = 10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -165,10 +164,12 @@ __meta__ = {
 }
 
 [node name="PerkLvl" type="Label" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem2"]
-margin_left = 5.0
-margin_top = 20.0
-margin_right = 29.0
-margin_bottom = 36.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -16.0
 text = "0"
 align = 2
 valign = 1
@@ -177,9 +178,9 @@ __meta__ = {
 }
 
 [node name="PerkItem3" type="Control" parent="SheetConainer/StatsPanel/Perks/PerkGrid"]
-margin_left = 62.0
-margin_right = 89.0
-margin_bottom = 25.0
+margin_left = 104.0
+margin_right = 152.0
+margin_bottom = 10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -205,10 +206,12 @@ __meta__ = {
 }
 
 [node name="PerkLvl" type="Label" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem3"]
-margin_left = 5.0
-margin_top = 20.0
-margin_right = 29.0
-margin_bottom = 36.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -16.0
 text = "0"
 align = 2
 valign = 1
@@ -217,9 +220,9 @@ __meta__ = {
 }
 
 [node name="PerkItem4" type="Control" parent="SheetConainer/StatsPanel/Perks/PerkGrid"]
-margin_left = 93.0
-margin_right = 120.0
-margin_bottom = 25.0
+margin_top = 14.0
+margin_right = 48.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -245,10 +248,12 @@ __meta__ = {
 }
 
 [node name="PerkLvl" type="Label" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem4"]
-margin_left = 5.0
-margin_top = 20.0
-margin_right = 29.0
-margin_bottom = 36.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -16.0
 text = "0"
 align = 2
 valign = 1
@@ -257,9 +262,10 @@ __meta__ = {
 }
 
 [node name="PerkItem5" type="Control" parent="SheetConainer/StatsPanel/Perks/PerkGrid"]
-margin_left = 124.0
-margin_right = 151.0
-margin_bottom = 25.0
+margin_left = 52.0
+margin_top = 14.0
+margin_right = 100.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -285,10 +291,12 @@ __meta__ = {
 }
 
 [node name="PerkLvl" type="Label" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem5"]
-margin_left = 5.0
-margin_top = 20.0
-margin_right = 29.0
-margin_bottom = 36.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -16.0
 text = "0"
 align = 2
 valign = 1
@@ -296,7 +304,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stats" type="VBoxContainer" parent="SheetConainer/StatsPanel"]
+[node name="PerkItem6" type="Control" parent="SheetConainer/StatsPanel/Perks/PerkGrid"]
+margin_left = 104.0
+margin_top = 14.0
+margin_right = 152.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PerkTooltip" type="Label" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem6"]
+visible = false
+margin_left = 16.0
+margin_top = -12.0
+margin_right = 79.0
+margin_bottom = 3.0
+text = "Perk Title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.411765, 0.54902, 0.847059, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PerkLvl" type="Label" parent="SheetConainer/StatsPanel/Perks/PerkGrid/PerkItem6"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -16.0
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Params" type="VBoxContainer" parent="SheetConainer/StatsPanel"]
 margin_top = 48.0
 margin_right = 154.0
 margin_bottom = 161.0
@@ -304,105 +355,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="SheetConainer/StatsPanel/Stats"]
-margin_top = 18.0
-margin_right = 154.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 6 )
-text = "Player Stats"
-align = 1
-valign = 1
-
-[node name="StatItem" type="HBoxContainer" parent="SheetConainer/StatsPanel/Stats"]
-margin_top = 35.0
-margin_right = 154.0
-margin_bottom = 47.0
-
-[node name="StatTitle" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem"]
-margin_right = 75.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
-text = "Strength"
-valign = 1
-
-[node name="StatValue" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem"]
-margin_left = 79.0
-margin_right = 154.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
-text = "10"
-align = 2
-valign = 1
-
-[node name="StatItem2" type="HBoxContainer" parent="SheetConainer/StatsPanel/Stats"]
-margin_top = 51.0
+[node name="Label" type="Label" parent="SheetConainer/StatsPanel/Params"]
+margin_top = 50.0
 margin_right = 154.0
 margin_bottom = 63.0
-
-[node name="StatTitle" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem2"]
-margin_right = 75.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
-text = "Strength"
-valign = 1
-
-[node name="StatValue" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem2"]
-margin_left = 79.0
-margin_right = 154.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
-text = "10"
-align = 2
-valign = 1
-
-[node name="StatItem3" type="HBoxContainer" parent="SheetConainer/StatsPanel/Stats"]
-margin_top = 67.0
-margin_right = 154.0
-margin_bottom = 79.0
-
-[node name="StatTitle" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem3"]
-margin_right = 75.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
-text = "Strength"
-valign = 1
-
-[node name="StatValue" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem3"]
-margin_left = 79.0
-margin_right = 154.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
-text = "10"
-align = 2
-valign = 1
-
-[node name="StatItem4" type="HBoxContainer" parent="SheetConainer/StatsPanel/Stats"]
-margin_top = 83.0
-margin_right = 154.0
-margin_bottom = 95.0
-
-[node name="StatTitle" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem4"]
-margin_right = 75.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
-text = "Strength"
-valign = 1
-
-[node name="StatValue" type="Label" parent="SheetConainer/StatsPanel/Stats/StatItem4"]
-margin_left = 79.0
-margin_right = 154.0
-margin_bottom = 12.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
-text = "10"
-align = 2
+text = "Player Params"
+align = 1
 valign = 1
 
 [node name="Description" type="VBoxContainer" parent="SheetConainer"]
@@ -425,6 +384,6 @@ margin_right = 154.0
 margin_bottom = 161.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "This is perk description. Here you will be able to see all the info about stat or aquired perk!"

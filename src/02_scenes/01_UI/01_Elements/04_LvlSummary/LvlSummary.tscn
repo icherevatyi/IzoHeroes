@@ -4,18 +4,18 @@
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 [ext_resource path="res://src/01_assets/01_UI/menu_btn.png" type="Texture" id=3]
 
-[sub_resource type="DynamicFontData" id=3]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 12
-font_data = SubResource( 3 )
+font_data = SubResource( 1 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 101.062, 21.9553 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 22, 101, 22 )
 
@@ -91,7 +91,7 @@ margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -8.0
 theme = ExtResource( 2 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "Here Goes Perk Description"
 __meta__ = {
@@ -110,8 +110,8 @@ theme = ExtResource( 2 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 keep_pressed_outside = true
-texture_normal = SubResource( 1 )
-texture_pressed = SubResource( 2 )
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 4 )
 expand = true
 stretch_mode = 3
 __meta__ = {

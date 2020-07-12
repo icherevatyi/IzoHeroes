@@ -1,7 +1,7 @@
 extends Area2D
 
 var is_monitored: bool
-var damage: int = 35
+var damage: int = PlayerParams.param_list["attack_power"].value
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: KinematicBody2D = get_node("../../Sprite")

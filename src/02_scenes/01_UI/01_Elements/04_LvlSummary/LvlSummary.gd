@@ -14,7 +14,7 @@ onready var button_label: Label = $LvlEndScreen/Button/Label
 
 func _ready() -> void:
 	lvl_end_screen.visible = false
-	available_perks =  Lists.perk_list
+	available_perks =  PlayerParams.perk_list
 	_get_perks_index()
 	_assign_perks()
 
@@ -41,7 +41,7 @@ func _assign_perks() -> void:
 	var perk: Dictionary
 	for i in perk_index_list.size():
 		perk_index = perk_index_list[i]
-		perk = available_perks[perk_index]
+		perk = available_perks[perk_index - 1]
 		var perk_instance: Control = perk_item.instance()
 		perk_container.add_child(perk_instance)
 		perk_instance.item_init(perk.title, perk_index)
