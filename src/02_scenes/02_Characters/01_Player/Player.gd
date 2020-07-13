@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var health_is_damaged: bool = false
 
-var speed: int = PlayerParams.param_list["movement_speed"].value
+var speed: int
 
 
 var movement: Vector2 = Vector2(0, 0)
@@ -33,6 +33,7 @@ signal open_gate
 
 
 func _ready() -> void:
+	speed = _get_param_value("movement_speed")
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_heal", health_scripts, "_on_damage_healed")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
@@ -45,6 +46,12 @@ func _ready() -> void:
 	_connect_signal("use_key", loot_management, "_on_key_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 
+
+func _get_param_value(param: String) -> int:
+	for key in PlayerParams.param_list.keys():
+		if PlayerParams.param_list[key].type == param:
+			return PlayerParams.param_list[key].value
+	return 0
 
 func _physics_process(_delta) -> void:
 	if is_dead == false:
@@ -71,7 +78,7 @@ func _input(event) -> void:
 				pass
 		
 		if event.is_action_pressed("view_stats"):
-			HUD.toggle_stat_screen()
+			CharacterSheet.get_node("CharacterSheetBody").visible = !CharacterSheet.get_node("CharacterSheetBody").visible
 		
 		if event.is_pressed() == false:
 			match idle_timer.is_stopped():

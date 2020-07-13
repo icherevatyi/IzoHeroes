@@ -18,9 +18,9 @@ size = 6
 font_data = SubResource( 3 )
 
 [node name="ParamItem" type="HBoxContainer"]
-margin_top = 35.0
 margin_right = 154.0
-margin_bottom = 47.0
+margin_bottom = 12.0
+mouse_filter = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,3 +45,5 @@ theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 4 )
 align = 2
 valign = 1
+[connection signal="mouse_entered" from="." to="." method="_on_ParamItem_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_ParamItem_mouse_exited"]

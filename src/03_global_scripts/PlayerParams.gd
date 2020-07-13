@@ -1,33 +1,45 @@
 extends Node
 
 var param_list: Dictionary = {
-	"max_health": {
+	0: {
+		"type": "max_health",
 		"title": "Max. Health",
+		"description": "0",
 		"base_value": 0,
 		"value": 4,
 	},
-	"attack_speed": {
+	1: {
+		"type": "attack_speed",
 		"title": "Atk. Speed",
+		"description": "1",
 		"base_value": 30,
 		"value": 30,
 	},
-	"attack_power": {
+	2: {
+		"type": "attack_power",
 		"title": "Atk. Power",
+		"description": "2",
 		"base_value": 35.0,
 		"value": 35.0,
 	},
-	"dodge_chance": {
+	3: {
+		"type": "dodge_chance",
 		"title": "Dodge Chance",
+		"description": "3",
 		"base_value": 0.05,
 		"value": 0.05,
 	},
-	"instakill_chance": {
+	4: {
+		"type": "instakill_chance",
 		"title": "Fatal Blow",
+		"description": "4",
 		"base_value":  0.01,
 		"value": 0.01,
 	},
-	"movement_speed": {
+	5: {
+		"type": "movement_speed",
 		"title": "Move Speed",
+		"description": "5",
 		"base_value": 120.0,
 		"value": 120.0,
 	},
@@ -37,7 +49,7 @@ var perk_list: Dictionary = {
 	0: {
 		"title": "Fortitude",
 		"type": "max_health",
-		"description": "Your adventures made you stronger, from now on foes will have much harder time killing you. Increased maximum health by 1.",
+		"description": "Your adventures made you sturdier, from now on foes will have much harder time killing you. Increased maximum health by 1.",
 		"value": 1,
 		"perk_lvl": 0,
 	},
@@ -79,7 +91,7 @@ var perk_list: Dictionary = {
 	}
 }
 
-func update_param(type: String) -> void:
-	var modifier: float = perk_list[type].value * param_list[type].base_value
-	param_list[type].value += modifier
-	perk_list[type].perk_lvl += 1
+#func update_param(type: String) -> void:
+#	var modifier: float = perk_list[type].value * param_list[type].base_value
+#	param_list[type].value += modifier
+#	perk_list[type].perk_lvl += 1

@@ -1,7 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
+[ext_resource path="res://src/01_assets/01_UI/menu_btn.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 113, 68, 62, 64 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 6
+font_data = SubResource( 4 )
 
 [node name="PerkItem" type="Control"]
 margin_right = 48.0
@@ -13,38 +32,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PerkTooltip" type="Label" parent="."]
-margin_left = 16.0
-margin_top = -12.0
-margin_right = 79.0
-margin_bottom = 3.0
-theme = ExtResource( 2 )
-text = "Perk Title"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Texture" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+focus_mode = 2
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color( 0.160784, 0.301961, 0.603922, 1 )
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PerkLvl" type="Label" parent="."]
+[node name="PerkLvl" type="Label" parent="Texture"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -24.0
-margin_top = -16.0
+margin_left = -29.0
+margin_top = -18.0
+margin_right = -5.0
+margin_bottom = -2.0
 theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 2
-valign = 1
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PerkTooltip" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -31.5
+margin_top = -8.0
+margin_right = 31.5
+margin_bottom = -1.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 5 )
+text = "Perk Title"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="." to="." method="_on_PerkItem_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_PerkItem_mouse_exited"]

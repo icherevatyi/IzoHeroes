@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var param_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
 var perk_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.tscn")
@@ -7,11 +7,13 @@ var perk_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterShe
 var params: Dictionary = PlayerParams.param_list
 var perks: Dictionary = PlayerParams.perk_list
 
-onready var params_container: VBoxContainer = $StatsPanel/BottomSection/Params
-onready var perk_container: GridContainer = $StatsPanel/Perks/PerkGrid
-
+onready var body: Control = $CharacterSheetBody
+onready var params_container: VBoxContainer = $CharacterSheetBody/StatsPanel/BottomSection/Params
+onready var perk_container: GridContainer = $CharacterSheetBody/StatsPanel/Perks/PerkGrid
+onready var description_box: RichTextLabel = $CharacterSheetBody/StatsPanel/BottomSection/Description/DescriptionBox
 
 func _ready() -> void:
+	body.set_visible(false)
 	load_param_sheet()
 	load_perk_grid()
 
@@ -20,7 +22,7 @@ func load_param_sheet() -> void:
 	var param_instance
 	for param in params.keys():
 		param_instance = param_scene.instance()
-		param_instance.init(params[param].title, params[param].value)
+		param_instance.init(params[param].title, params[param].value, int(param))
 		params_container.add_child(param_instance)
 
 
@@ -28,8 +30,20 @@ func load_perk_grid() -> void:
 	var perk_instance
 	for perk in perks.keys():
 		perk_instance = perk_scene.instance()
-		perk_instance.init(perks[perk].title, perks[perk].perk_lvl)
+		perk_instance.init(perks[perk].title, perks[perk].perk_lvl, int(perk))
 		perk_container.add_child(perk_instance)
+
+
+func _on_perk_id_received(perk_id: int) -> void:
+	description_box.set_text(perks[perk_id].description)
+	
+	
+func _on_param_id_received(param_id: int) -> void:
+	description_box.set_text(params[param_id].description)
+
+
+func _on_item_id_cleared() -> void:
+	description_box.clear()
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

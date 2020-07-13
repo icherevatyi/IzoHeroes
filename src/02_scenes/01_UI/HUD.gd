@@ -2,7 +2,6 @@ extends CanvasLayer
 
 var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/01_PlayerHealthIcon/Heart.tscn")
 var notification_message: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/Notification/PickupNotification.tscn")
-var char_sheet: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.tscn")
 
 var is_stat_screen_shown: bool = false
 
@@ -23,16 +22,6 @@ func _ready() -> void:
 	_on_healing_displayed(ResourceStorage.player_data.health_current)
 	_display_starting_amount("gold_coins", ResourceStorage.player_data.coins_count)
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
-
-
-func toggle_stat_screen() -> void:
-	match is_stat_screen_shown:
-		false:
-			ui_parent.add_child(char_sheet.instance())
-			is_stat_screen_shown = true
-		true:
-			ui_parent.remove_child(ui_parent.get_node("CharacterSheet"))
-			is_stat_screen_shown = false
 
 
 

@@ -1,7 +1,7 @@
 extends Area2D
 
 var is_monitored: bool
-var damage: int = PlayerParams.param_list["attack_power"].value
+var damage: int
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: KinematicBody2D = get_node("../../Sprite")
@@ -10,8 +10,16 @@ signal do_damage(damage)
 
 
 func _ready() -> void:
+	damage = get_param_value("attack_power")
 	is_monitored = monitoring
-	animation_player.playback_speed = PlayerParams.param_list["attack_speed"].value / 10
+	animation_player.playback_speed = int(get_param_value("attack_speed")) / 10
+
+
+func get_param_value(param: String) -> int:
+	for key in PlayerParams.param_list.keys():
+		if PlayerParams.param_list[key].type == param:
+			return PlayerParams.param_list[key].value
+	return 0
 
 
 func _on_weapon_swing() -> void:

@@ -20,7 +20,6 @@ func _ready() -> void:
 
 
 func _end_demo_reached(message: String) -> void:
-	print("signal received")
 	textarea.bbcode_enabled = true
 	var formatted_text = "[color=white][center]" + message + "[/center][/color]"
 	textarea.set_bbcode(formatted_text)
@@ -39,12 +38,8 @@ func _get_perks_index() -> void:
 func _assign_perks() -> void:
 	var perk_index: int
 	var perk: Dictionary
-	print(perk_index_list.size(), " - list_size")
-	print(perk_index_list, " - list itself")
 	for i in perk_index_list.size():
-		print(i, " - index")
 		perk_index = perk_index_list[i]
-		print(perk_index)
 		perk = available_perks[perk_index]
 		var perk_instance: Control = perk_item.instance()
 		perk_container.add_child(perk_instance)
@@ -63,7 +58,7 @@ func _toggle_screen_msg() -> void:
 
 func _get_random_perk() -> int:
 	rng.randomize()
-	var result: int = rng.randi_range(1, available_perks.size())
+	var result: int = rng.randi_range(0, available_perks.size() - 1)
 	return result
 
 

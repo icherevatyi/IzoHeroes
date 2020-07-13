@@ -1,14 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 10
-font_data = SubResource( 5 )
+font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
@@ -17,14 +17,27 @@ font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 size = 10
 font_data = SubResource( 3 )
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=5]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=6]
 size = 8
-font_data = SubResource( 1 )
+font_data = SubResource( 5 )
 
-[node name="CharacterSheet" type="Control"]
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 6
+use_mipmaps = true
+extra_spacing_char = 1
+font_data = SubResource( 7 )
+
+[node name="CharacterSheet" type="CanvasLayer"]
+layer = 4
+script = ExtResource( 2 )
+
+[node name="CharacterSheetBody" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -33,13 +46,13 @@ margin_left = -112.0
 margin_top = -76.0
 margin_right = 112.0
 margin_bottom = 76.0
+mouse_filter = 1
 theme = ExtResource( 1 )
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="CharacterSheetBody"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.313726, 0.333333, 0.380392, 1 )
@@ -47,28 +60,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CharacterSheetBody"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -104.0
 margin_right = 104.0
 margin_bottom = 15.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Character Screen"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatsPanel" type="VBoxContainer" parent="."]
+[node name="StatsPanel" type="VBoxContainer" parent="CharacterSheetBody"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -104.0
-margin_top = -132.0
+margin_top = -137.0
 margin_right = 104.0
-margin_bottom = -9.0
+margin_bottom = -5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
@@ -76,58 +89,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Perks" type="VBoxContainer" parent="StatsPanel"]
+[node name="Perks" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel"]
 margin_right = 208.0
-margin_bottom = 51.0
+margin_bottom = 55.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.8
 
-[node name="PerksTitle" type="Label" parent="StatsPanel/Perks"]
+[node name="PerksTitle" type="Label" parent="CharacterSheetBody/StatsPanel/Perks"]
 margin_right = 208.0
-margin_bottom = 11.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
-size_flags_vertical = 5
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
 custom_fonts/font = SubResource( 4 )
 text = "Perks"
 align = 1
-valign = 1
 
-[node name="PerkGrid" type="GridContainer" parent="StatsPanel/Perks"]
-margin_top = 15.0
+[node name="PerkGrid" type="GridContainer" parent="CharacterSheetBody/StatsPanel/Perks"]
+margin_top = 26.0
 margin_right = 208.0
-margin_bottom = 51.0
+margin_bottom = 55.0
 grow_horizontal = 2
-size_flags_horizontal = 5
+size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 6
 
-[node name="BottomSection" type="HBoxContainer" parent="StatsPanel"]
-margin_top = 59.0
+[node name="BottomSection" type="HBoxContainer" parent="CharacterSheetBody/StatsPanel"]
+margin_top = 63.0
 margin_right = 208.0
-margin_bottom = 123.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Params" type="VBoxContainer" parent="StatsPanel/BottomSection"]
+[node name="Params" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel/BottomSection"]
 margin_right = 102.0
-margin_bottom = 64.0
+margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="StatsPanel/BottomSection/Params"]
-margin_top = 27.0
+[node name="Label" type="Label" parent="CharacterSheetBody/StatsPanel/BottomSection/Params"]
+margin_top = 30.0
 margin_right = 102.0
-margin_bottom = 36.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 6 )
 text = "Player Params"
 align = 1
 valign = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/BottomSection"]
+[node name="Description" type="Control" parent="CharacterSheetBody/StatsPanel/BottomSection"]
 margin_left = 106.0
 margin_right = 208.0
-margin_bottom = 64.0
+margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="DescriptionBox" type="RichTextLabel" parent="CharacterSheetBody/StatsPanel/BottomSection/Description"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 10.0
+margin_right = -8.0
+margin_bottom = -3.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 8 )
+custom_colors/default_color = Color( 0.890196, 0.890196, 0.890196, 1 )
+text = "asdasdassd asd  asd asd asd  a"
+__meta__ = {
+"_edit_use_anchors_": false
+}
