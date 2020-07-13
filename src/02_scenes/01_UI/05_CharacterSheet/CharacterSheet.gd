@@ -7,8 +7,8 @@ var perk_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterShe
 var params: Dictionary = PlayerParams.param_list
 var perks: Dictionary = PlayerParams.perk_list
 
-onready var params_container: VBoxContainer = $SheetConainer/StatsPanel/Params
-onready var perk_container: GridContainer = $SheetConainer/StatsPanel/Perks/PerkGrid
+onready var params_container: VBoxContainer = $StatsPanel/BottomSection/Params
+onready var perk_container: GridContainer = $StatsPanel/Perks/PerkGrid
 
 
 func _ready() -> void:
@@ -27,7 +27,7 @@ func load_param_sheet() -> void:
 func load_perk_grid() -> void:
 	var perk_instance
 	for perk in perks.keys():
-		perk_instance = param_scene.instance()
+		perk_instance = perk_scene.instance()
 		perk_instance.init(perks[perk].title, perks[perk].perk_lvl)
 		perk_container.add_child(perk_instance)
 

@@ -1,14 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=5]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
-[sub_resource type="DynamicFont" id=2]
-size = 12
-font_data = SubResource( 1 )
+[sub_resource type="DynamicFont" id=6]
+size = 10
+font_data = SubResource( 5 )
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
@@ -17,15 +17,22 @@ font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 size = 10
 font_data = SubResource( 3 )
 
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = SubResource( 1 )
+
 [node name="CharacterSheet" type="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -168.0
-margin_top = -96.0
-margin_right = 168.0
-margin_bottom = 96.0
+margin_left = -112.0
+margin_top = -76.0
+margin_right = 112.0
+margin_bottom = 76.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -41,96 +48,86 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-anchor_right = 1.0
-margin_top = 4.0
-margin_bottom = 19.0
-text = "Character Screen"
-align = 1
-valign = 1
-
-[node name="SheetConainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = -72.0
-margin_right = 160.0
-margin_bottom = 89.0
-custom_constants/separation = 12
-alignment = 1
+margin_left = -104.0
+margin_right = 104.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 6 )
+text = "Character Screen"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatsPanel" type="VBoxContainer" parent="SheetConainer"]
-margin_right = 154.0
-margin_bottom = 161.0
+[node name="StatsPanel" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = -132.0
+margin_right = 104.0
+margin_bottom = -9.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Perks" type="VBoxContainer" parent="SheetConainer/StatsPanel"]
-margin_right = 154.0
-margin_bottom = 44.0
+[node name="Perks" type="VBoxContainer" parent="StatsPanel"]
+margin_right = 208.0
+margin_bottom = 51.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.8
 
-[node name="PerksTitle" type="Label" parent="SheetConainer/StatsPanel/Perks"]
-margin_right = 154.0
-margin_bottom = 15.0
+[node name="PerksTitle" type="Label" parent="StatsPanel/Perks"]
+margin_right = 208.0
+margin_bottom = 11.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.6
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 4 )
 text = "Perks"
 align = 1
 valign = 1
 
-[node name="PerkGrid" type="GridContainer" parent="SheetConainer/StatsPanel/Perks"]
-margin_top = 19.0
-margin_right = 154.0
-margin_bottom = 44.0
+[node name="PerkGrid" type="GridContainer" parent="StatsPanel/Perks"]
+margin_top = 15.0
+margin_right = 208.0
+margin_bottom = 51.0
+grow_horizontal = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+columns = 6
+
+[node name="BottomSection" type="HBoxContainer" parent="StatsPanel"]
+margin_top = 59.0
+margin_right = 208.0
+margin_bottom = 123.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 3
 
-[node name="Params" type="VBoxContainer" parent="SheetConainer/StatsPanel"]
-margin_top = 48.0
-margin_right = 154.0
-margin_bottom = 161.0
+[node name="Params" type="VBoxContainer" parent="StatsPanel/BottomSection"]
+margin_right = 102.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="SheetConainer/StatsPanel/Params"]
-margin_top = 50.0
-margin_right = 154.0
-margin_bottom = 63.0
+[node name="Label" type="Label" parent="StatsPanel/BottomSection/Params"]
+margin_top = 27.0
+margin_right = 102.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 2 )
 text = "Player Params"
 align = 1
 valign = 1
 
-[node name="Description" type="VBoxContainer" parent="SheetConainer"]
-margin_left = 166.0
-margin_right = 320.0
-margin_bottom = 161.0
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/BottomSection"]
+margin_left = 106.0
+margin_right = 208.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="DescriptionBoxTitle" type="Label" parent="SheetConainer/Description"]
-margin_right = 154.0
-margin_bottom = 15.0
-text = "Info window"
-align = 1
-valign = 1
-
-[node name="DescriptionWindow" type="RichTextLabel" parent="SheetConainer/Description"]
-margin_top = 19.0
-margin_right = 154.0
-margin_bottom = 161.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 4 )
-custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "This is perk description. Here you will be able to see all the info about stat or aquired perk!"

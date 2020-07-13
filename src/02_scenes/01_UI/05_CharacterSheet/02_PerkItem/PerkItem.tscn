@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.gd" type="Script" id=1]
+[ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 
 [node name="PerkItem" type="Control"]
 margin_right = 48.0
-margin_bottom = 10.0
+margin_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -13,11 +14,11 @@ __meta__ = {
 }
 
 [node name="PerkTooltip" type="Label" parent="."]
-visible = false
 margin_left = 16.0
 margin_top = -12.0
 margin_right = 79.0
 margin_bottom = 3.0
+theme = ExtResource( 2 )
 text = "Perk Title"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -28,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color( 0.411765, 0.54902, 0.847059, 1 )
+color = Color( 0.160784, 0.301961, 0.603922, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -24.0
 margin_top = -16.0
+theme = ExtResource( 2 )
 text = "0"
 align = 2
 valign = 1
