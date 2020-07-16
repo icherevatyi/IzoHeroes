@@ -122,21 +122,28 @@ margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Params" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel/BottomSection"]
+[node name="LeftSide" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel/BottomSection"]
 margin_right = 102.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="CharacterSheetBody/StatsPanel/BottomSection/Params"]
-margin_top = 30.0
+[node name="Label" type="Label" parent="CharacterSheetBody/StatsPanel/BottomSection/LeftSide"]
 margin_right = 102.0
-margin_bottom = 39.0
+margin_bottom = 9.0
 custom_fonts/font = SubResource( 6 )
 text = "Player Params"
 align = 1
 valign = 1
+
+[node name="Params" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel/BottomSection/LeftSide"]
+margin_top = 13.0
+margin_right = 102.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
 [node name="Description" type="Control" parent="CharacterSheetBody/StatsPanel/BottomSection"]
 margin_left = 106.0

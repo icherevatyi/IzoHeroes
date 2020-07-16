@@ -12,7 +12,7 @@ signal do_damage(damage)
 func _ready() -> void:
 	damage = get_param_value("attack_power")
 	is_monitored = monitoring
-	animation_player.playback_speed = int(get_param_value("attack_speed")) / 10
+	animation_player.playback_speed = get_param_value("attack_speed") / 10
 
 
 func get_param_value(param: String) -> int:

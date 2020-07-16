@@ -8,7 +8,7 @@ var params: Dictionary = PlayerParams.param_list
 var perks: Dictionary = PlayerParams.perk_list
 
 onready var body: Control = $CharacterSheetBody
-onready var params_container: VBoxContainer = $CharacterSheetBody/StatsPanel/BottomSection/Params
+onready var params_container: VBoxContainer = $CharacterSheetBody/StatsPanel/BottomSection/LeftSide/Params
 onready var perk_container: GridContainer = $CharacterSheetBody/StatsPanel/Perks/PerkGrid
 onready var description_box: RichTextLabel = $CharacterSheetBody/StatsPanel/BottomSection/Description/DescriptionBox
 
@@ -18,15 +18,26 @@ func _ready() -> void:
 	load_perk_grid()
 
 
+func _clear_children(node_var) -> bool:
+	for child in node_var.get_children():
+		child.queue_free()
+	if node_var.get_children().size() == 0:
+		return true
+	else:
+		return false
+
+
 func load_param_sheet() -> void:
+	var _response_value = _clear_children(params_container)
 	var param_instance
 	for param in params.keys():
 		param_instance = param_scene.instance()
-		param_instance.init(params[param].title, params[param].value, int(param))
+		param_instance.init(params[param].title, str(params[param].value), int(param))
 		params_container.add_child(param_instance)
 
 
 func load_perk_grid() -> void:
+	var _response_value = _clear_children(perk_container)
 	var perk_instance
 	for perk in perks.keys():
 		perk_instance = perk_scene.instance()

@@ -5,7 +5,7 @@ var param_list: Dictionary = {
 		"type": "max_health",
 		"title": "Max. Health",
 		"description": "0",
-		"base_value": 0,
+		"base_value": 4,
 		"value": 4,
 	},
 	1: {
@@ -22,26 +22,26 @@ var param_list: Dictionary = {
 		"base_value": 35.0,
 		"value": 35.0,
 	},
-	3: {
-		"type": "dodge_chance",
-		"title": "Dodge Chance",
-		"description": "3",
-		"base_value": 0.05,
-		"value": 0.05,
-	},
-	4: {
-		"type": "instakill_chance",
-		"title": "Fatal Blow",
-		"description": "4",
-		"base_value":  0.01,
-		"value": 0.01,
-	},
 	5: {
 		"type": "movement_speed",
 		"title": "Move Speed",
 		"description": "5",
 		"base_value": 120.0,
 		"value": 120.0,
+	},
+	3: {
+		"type": "dodge_chance",
+		"title": "Dodge Chance",
+		"description": "3",
+		"base_value": 5.0,
+		"value": 5.0,
+	},
+	4: {
+		"type": "instakill_chance",
+		"title": "Fatal Blow",
+		"description": "4",
+		"base_value":  8.0,
+		"value": 8.0,
 	},
 }
 
@@ -78,20 +78,30 @@ var perk_list: Dictionary = {
 	4: {
 		"title": "Combat Luck",
 		"type": "dodge_chance",
-		"description": "Your combat experience allows you to avoid enemy damage. Chance to evade any incoming attack is increased by 3%",
-		"value": 0.03,
+		"description": "Your combat experience allows you to avoid enemy damage. Chance to evade any incoming attack is increased by 15%",
+		"value": 0.15,
 		"perk_lvl": 0,
 	},
 	5: {
 		"title": "Hawk Eyes",
 		"type": "instakill_chance",
-		"description": "Your eyes are catching enemy weak points. Chance to immediately kill any monster (excluding bosses) is increased by 3%",
-		"value": 0.03,
+		"description": "Your eyes are catching enemy weak points. Chance to immediately kill any monster (excluding bosses) is increased by 8%",
+		"value": 0.08,
 		"perk_lvl": 0,
 	}
 }
 
-#func update_param(type: String) -> void:
-#	var modifier: float = perk_list[type].value * param_list[type].base_value
-#	param_list[type].value += modifier
-#	perk_list[type].perk_lvl += 1
+
+func update_param(index: int) -> void:
+	for list_item in param_list:
+		if param_list[list_item].type == perk_list[index].type:
+			if param_list[list_item].type == "max_health":
+				param_list[list_item].value += 1
+			else:
+				param_list[list_item].value += int(round((param_list[list_item].base_value * perk_list[index].value)))
+
+	perk_list[index].perk_lvl += 1
+	
+	CharacterSheet.load_param_sheet()
+	CharacterSheet.load_perk_grid()
+

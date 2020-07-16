@@ -23,6 +23,11 @@ func _on_Button_mouse_exited():
 	emit_signal("clear_type")
 
 
+func _on_Texture_pressed():
+	PlayerParams.update_param(index)
+	LvlSummary._on_lvl_proceed()
+
+
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
 	match is_connected(signal_title, target_node, target_function_title):
 		false:
@@ -31,5 +36,3 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
-
-
