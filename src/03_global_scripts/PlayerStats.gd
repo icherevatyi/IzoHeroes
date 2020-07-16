@@ -85,8 +85,8 @@ var perk_list: Dictionary = {
 	5: {
 		"title": "Hawk Eyes",
 		"type": "instakill_chance",
-		"description": "Your eyes are catching enemy weak points. Chance to immediately kill any monster (excluding bosses) is increased by 8%",
-		"value": 0.08,
+		"description": "Your eyes are catching enemy weak points. Chance to immediately kill any monster (excluding bosses) is increased by 12%",
+		"value": 0.12,
 		"perk_lvl": 0,
 	}
 }
@@ -101,7 +101,4 @@ func update_stat(index: int) -> void:
 				stats_list[list_item].value += int(round((stats_list[list_item].base_value * perk_list[index].value)))
 
 	perk_list[index].perk_lvl += 1
-	
-	CharacterSheet.load_param_sheet()
-	CharacterSheet.load_perk_grid()
 

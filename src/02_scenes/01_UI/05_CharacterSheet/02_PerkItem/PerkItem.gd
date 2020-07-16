@@ -2,13 +2,15 @@ extends Control
 
 var perk_id: int
 
+onready var sheet: Control = get_node("../../../../../")
+
 signal send_item_id(id)
 signal clear_item_id
 
 
 func _ready() -> void:
-	_connect_signal("send_item_id", CharacterSheet, "_on_perk_id_received")
-	_connect_signal("clear_item_id", CharacterSheet, "_on_item_id_cleared")
+	_connect_signal("send_item_id", sheet, "_on_perk_id_received")
+	_connect_signal("clear_item_id", sheet, "_on_item_id_cleared")
 
 
 func init(title: String, perk_lvl: int, id: int) -> void:

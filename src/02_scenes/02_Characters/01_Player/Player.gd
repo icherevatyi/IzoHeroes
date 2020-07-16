@@ -78,7 +78,7 @@ func _input(event) -> void:
 				pass
 		
 		if event.is_action_pressed("view_stats"):
-			CharacterSheet.get_node("CharacterSheetBody").visible = !CharacterSheet.get_node("CharacterSheetBody").visible
+			HUD.toggle_char_sheet()
 		
 		if event.is_pressed() == false:
 			match idle_timer.is_stopped():

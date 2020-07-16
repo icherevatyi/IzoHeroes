@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 var param_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
 var perk_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.tscn")
@@ -13,31 +13,22 @@ onready var perk_container: GridContainer = $CharacterSheetBody/StatsPanel/Perks
 onready var description_box: RichTextLabel = $CharacterSheetBody/StatsPanel/BottomSection/Description/DescriptionBox
 
 func _ready() -> void:
-	body.set_visible(false)
 	load_param_sheet()
 	load_perk_grid()
 
 
-func _clear_children(node_var) -> bool:
-	for child in node_var.get_children():
-		child.queue_free()
-	if node_var.get_children().size() == 0:
-		return true
-	else:
-		return false
-
 
 func load_param_sheet() -> void:
-	var _response_value = _clear_children(params_container)
 	var param_instance
 	for param in params.keys():
 		param_instance = param_scene.instance()
 		param_instance.init(params[param].title, str(params[param].value), int(param))
 		params_container.add_child(param_instance)
+#
+#		print(params[param].title, ": ", params[param].value)
 
 
 func load_perk_grid() -> void:
-	var _response_value = _clear_children(perk_container)
 	var perk_instance
 	for perk in perks.keys():
 		perk_instance = perk_scene.instance()

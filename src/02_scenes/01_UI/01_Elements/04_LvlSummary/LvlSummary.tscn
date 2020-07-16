@@ -11,6 +11,7 @@ size = 12
 font_data = SubResource( 1 )
 
 [node name="LvlSummary" type="CanvasLayer"]
+pause_mode = 2
 layer = 4
 script = ExtResource( 1 )
 
@@ -24,6 +25,7 @@ margin_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = false
+mouse_filter = 2
 theme = ExtResource( 2 )
 bbcode_enabled = true
 scroll_active = false
@@ -34,6 +36,7 @@ __meta__ = {
 [node name="LvlEndScreen" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,6 +64,7 @@ __meta__ = {
 margin_top = 38.0
 margin_right = 400.0
 margin_bottom = 152.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
