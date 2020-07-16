@@ -13,7 +13,7 @@ onready var perk_description: RichTextLabel = $LvlEndScreen/PekrDescription/Desc
 
 func _ready() -> void:
 	lvl_end_screen.visible = false
-	available_perks =  PlayerParams.perk_list
+	available_perks =  PlayerStats.perk_list
 	_get_perks_index()
 	_assign_perks()
 

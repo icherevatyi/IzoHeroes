@@ -24,7 +24,7 @@ func _on_Button_mouse_exited():
 
 
 func _on_Texture_pressed():
-	PlayerParams.update_param(index)
+	PlayerStats.update_stat(index)
 	LvlSummary._on_lvl_proceed()
 
 

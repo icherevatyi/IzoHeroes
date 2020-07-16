@@ -33,7 +33,7 @@ signal open_gate
 
 
 func _ready() -> void:
-	speed = _get_param_value("movement_speed")
+	speed = _get_stat_value("movement_speed")
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_heal", health_scripts, "_on_damage_healed")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
@@ -47,10 +47,10 @@ func _ready() -> void:
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 
 
-func _get_param_value(param: String) -> int:
-	for key in PlayerParams.param_list.keys():
-		if PlayerParams.param_list[key].type == param:
-			return PlayerParams.param_list[key].value
+func _get_stat_value(param: String) -> int:
+	for key in PlayerStats.stats_list.keys():
+		if PlayerStats.stats_list[key].type == param:
+			return PlayerStats.stats_list[key].value
 	return 0
 
 func _physics_process(_delta) -> void:

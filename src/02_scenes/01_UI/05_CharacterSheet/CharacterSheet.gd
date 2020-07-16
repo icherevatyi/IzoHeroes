@@ -4,8 +4,8 @@ var param_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSh
 var perk_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.tscn")
 
 
-var params: Dictionary = PlayerParams.param_list
-var perks: Dictionary = PlayerParams.perk_list
+var params: Dictionary = PlayerStats.stats_list
+var perks: Dictionary = PlayerStats.perk_list
 
 onready var body: Control = $CharacterSheetBody
 onready var params_container: VBoxContainer = $CharacterSheetBody/StatsPanel/BottomSection/LeftSide/Params

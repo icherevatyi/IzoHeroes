@@ -16,9 +16,9 @@ func _ready() -> void:
 
 
 func get_param_value(param: String) -> int:
-	for key in PlayerParams.param_list.keys():
-		if PlayerParams.param_list[key].type == param:
-			return PlayerParams.param_list[key].value
+	for key in PlayerStats.stats_list.keys():
+		if PlayerStats.stats_list[key].type == param:
+			return PlayerStats.stats_list[key].value
 	return 0
 
 
