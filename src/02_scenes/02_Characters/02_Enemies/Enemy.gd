@@ -5,6 +5,7 @@ var type: String
 var health_current: float
 var health_max: float
 var damage: int
+var _damage_multiplier: int = 1
 var is_dead: bool = false
 
 var drops_key: bool = false
@@ -52,14 +53,11 @@ func _physics_process(_delta) -> void:
 
 
 func _get_stats(enemy_type: String) -> void:
-	var enemies = Lists.enemy_list
-	
-	for enemy in enemies:
-		if enemies[enemy].type == enemy_type:
-			health_max = enemies[enemy].health_max * Global.hp_modifier
+	for enemy in Lists.enemy_list:
+		if Lists.enemy_list[enemy].type == enemy_type:
+			health_max = Lists.enemy_list[enemy].health_max * Global.hp_modifier
 			health_current = health_max
-			damage = enemies[enemy].damage
-
+			damage = Lists.enemy_list[enemy].damage
 
 func receive_damage(damage_received) -> void:
 	var health_prev = health_current
@@ -74,8 +72,14 @@ func receive_damage(damage_received) -> void:
 		_death()
 
 
-func _on_keydrop_added() -> void:
+func _on_miniboss_created() -> void:
 	drops_key = true
+	health_max = health_max * 1.8
+	health_current = health_max
+	damage *= 2
+	
+	set_scale(Vector2(1.3, 1.3))
+	emit_signal("initiate_healthpool", health_max)
 
 
 func _death() -> void:
