@@ -131,7 +131,6 @@ func _damage_taken(damage: int) -> void:
 	var result: int = rng.randi_range(0, 100)
 	if result > dodge_chance:
 		emit_signal("damage_receive", damage)
-	print(dodge_chance)
 
 
 func _on_IdleTimer_timeout() -> void:

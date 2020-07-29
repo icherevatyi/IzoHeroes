@@ -70,8 +70,6 @@ func receive_damage(damage_received) -> void:
 				var result = rng.randi_range(0, 100)
 				if result <= instadeath_chance:
 					damage_received = health_current
-				print(result)
-				print(instadeath_chance)
 
 	health_current -= damage_received
 	health_current = int(max(0, health_current))
