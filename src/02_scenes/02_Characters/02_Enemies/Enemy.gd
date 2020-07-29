@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var is_taking_damage: bool = false
+var is_boss: bool = false
 var type: String
 var health_current: float
 var health_max: float
@@ -18,7 +19,7 @@ onready var loot_scripts: Node2D = $AdditionalScripts/LootManagement
 onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
 
-
+var rng = RandomNumberGenerator.new()
 var movement
 var is_chasing: bool = false
 var is_attacking: bool = false
@@ -61,6 +62,17 @@ func _get_stats(enemy_type: String) -> void:
 
 func receive_damage(damage_received) -> void:
 	var health_prev = health_current
+	if is_boss == false:
+		for stat in PlayerStats.stats_list:
+			if PlayerStats.stats_list[stat].type == "instakill_chance":
+				var instadeath_chance: float = PlayerStats.stats_list[stat].value
+				rng.randomize()
+				var result = rng.randi_range(0, 100)
+				if result <= instadeath_chance:
+					damage_received = health_current
+				print(result)
+				print(instadeath_chance)
+
 	health_current -= damage_received
 	health_current = int(max(0, health_current))
 	
@@ -73,6 +85,7 @@ func receive_damage(damage_received) -> void:
 
 
 func _on_miniboss_created() -> void:
+	is_boss = true
 	drops_key = true
 	health_max = health_max * 1.8
 	health_current = health_max

@@ -2,9 +2,8 @@ extends KinematicBody2D
 
 var health_is_damaged: bool = false
 
+var rng = RandomNumberGenerator.new()
 var speed: int
-
-
 var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
@@ -124,7 +123,15 @@ func _on_message_removed() -> void:
 	
 
 func _damage_taken(damage: int) -> void:
-	emit_signal("damage_receive", damage)
+	rng.randomize()
+	var dodge_chance = 0
+	for stat in PlayerStats.stats_list:
+		if PlayerStats.stats_list[stat].type == "dodge_chance":
+			dodge_chance = PlayerStats.stats_list[stat].value
+	var result: int = rng.randi_range(0, 100)
+	if result > dodge_chance:
+		emit_signal("damage_receive", damage)
+	print(dodge_chance)
 
 
 func _on_IdleTimer_timeout() -> void:
