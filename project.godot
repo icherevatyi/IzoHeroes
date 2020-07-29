@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Lists="*res://src/03_global_scripts/Lists.gd"
+PlayerStats="*res://src/03_global_scripts/PlayerStats.gd"
 SaveLoad="*res://src/03_global_scripts/SaveLoad.gd"
 ResourceStorage="*res://src/03_global_scripts/ResourceStorage.gd"
 Global="*res://src/03_global_scripts/Global.gd"
