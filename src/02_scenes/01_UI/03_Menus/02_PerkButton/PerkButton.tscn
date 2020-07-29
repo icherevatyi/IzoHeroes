@@ -15,6 +15,7 @@ region = Rect2( 111, 66, 66, 66 )
 [node name="PerkButton" type="VBoxContainer"]
 margin_right = 96.0
 margin_bottom = 120.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 2 )
@@ -45,6 +46,7 @@ margin_bottom = 120.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+shortcut_in_tooltip = false
 enabled_focus_mode = 0
 keep_pressed_outside = true
 texture_normal = SubResource( 1 )
@@ -56,3 +58,4 @@ __meta__ = {
 }
 [connection signal="mouse_entered" from="Texture" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Texture" to="." method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Texture" to="." method="_on_Texture_pressed"]

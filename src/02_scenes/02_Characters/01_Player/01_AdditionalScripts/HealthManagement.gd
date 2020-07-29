@@ -10,7 +10,7 @@ onready var player: KinematicBody2D = get_node("../../")
 
 func _ready() -> void:
 	health_current = ResourceStorage.player_data.health_current
-	health_max = ResourceStorage.player_data.health_max
+	health_max = PlayerStats.stats_list[0].value
 	health_min = 0
 
 

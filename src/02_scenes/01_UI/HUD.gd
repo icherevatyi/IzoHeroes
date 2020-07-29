@@ -25,15 +25,11 @@ func _ready() -> void:
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
 
 
-func toggle_stat_screen() -> void:
-	match is_stat_screen_shown:
-		false:
-			ui_parent.add_child(char_sheet.instance())
-			is_stat_screen_shown = true
-		true:
-			ui_parent.remove_child(ui_parent.get_node("CharacterSheet"))
-			is_stat_screen_shown = false
-
+func toggle_char_sheet() -> void:
+	if ui_parent.has_node("CharacterSheet"):
+		ui_parent.get_node("CharacterSheet").queue_free()
+	else:
+		ui_parent.add_child(char_sheet.instance())
 
 
 func notify_pickup(item, amount) -> void:

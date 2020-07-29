@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-export var health_is_damaged: bool = false
-export var speed: int = 120
+var health_is_damaged: bool = false
 
-
+var rng = RandomNumberGenerator.new()
+var speed: int
 var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
@@ -32,6 +32,7 @@ signal open_gate
 
 
 func _ready() -> void:
+	speed = _get_stat_value("movement_speed")
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_heal", health_scripts, "_on_damage_healed")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
@@ -44,6 +45,12 @@ func _ready() -> void:
 	_connect_signal("use_key", loot_management, "_on_key_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 
+
+func _get_stat_value(param: String) -> int:
+	for key in PlayerStats.stats_list.keys():
+		if PlayerStats.stats_list[key].type == param:
+			return PlayerStats.stats_list[key].value
+	return 0
 
 func _physics_process(_delta) -> void:
 	if is_dead == false:
@@ -70,7 +77,7 @@ func _input(event) -> void:
 				pass
 		
 		if event.is_action_pressed("view_stats"):
-			HUD.toggle_stat_screen()
+			HUD.toggle_char_sheet()
 		
 		if event.is_pressed() == false:
 			match idle_timer.is_stopped():
@@ -105,7 +112,6 @@ func open_gate() -> void:
 		emit_signal("open_gate")
 		emit_signal("use_key")
 		_on_data_request_received()
-	
 
 
 func _on_message_received(msg: String, type: int) -> void:
@@ -117,7 +123,14 @@ func _on_message_removed() -> void:
 	
 
 func _damage_taken(damage: int) -> void:
-	emit_signal("damage_receive", damage)
+	rng.randomize()
+	var dodge_chance = 0
+	for stat in PlayerStats.stats_list:
+		if PlayerStats.stats_list[stat].type == "dodge_chance":
+			dodge_chance = PlayerStats.stats_list[stat].value
+	var result: int = rng.randi_range(0, 100)
+	if result > dodge_chance:
+		emit_signal("damage_receive", damage)
 
 
 func _on_IdleTimer_timeout() -> void:
