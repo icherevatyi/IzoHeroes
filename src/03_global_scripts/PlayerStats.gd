@@ -12,8 +12,8 @@ var stats_list: Dictionary = {
 		"type": "attack_speed",
 		"title": "Atk. Speed",
 		"description": "1",
-		"base_value": 30,
-		"value": 30,
+		"base_value": 8,
+		"value": 8,
 	},
 	2: {
 		"type": "attack_power",
