@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/warrior.png-be139957abce4f503797c98846119069.stex"
+path="res://.import/minotaur.png-4c58d9828667eac20f30844fada31c43.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/01_assets/02_Characters/02_Enemies/warrior.png"
-dest_files=[ "res://.import/warrior.png-be139957abce4f503797c98846119069.stex" ]
+source_file="res://src/01_assets/02_Characters/02_Enemies/minotaur.png"
+dest_files=[ "res://.import/minotaur.png-4c58d9828667eac20f30844fada31c43.stex" ]
 
 [params]
 
