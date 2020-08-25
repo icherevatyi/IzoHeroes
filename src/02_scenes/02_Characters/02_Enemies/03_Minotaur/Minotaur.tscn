@@ -1,20 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/02_Enemies/minotaur.png" type="Texture" id=2]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/03_Minotaur/Minotaur.gd" type="Script" id=3]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 96.0
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 32.0
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.0
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16, 10 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 15, 10 )
 
 [node name="Minotaur" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -29,8 +31,7 @@ parameters/playback = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( -16, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )

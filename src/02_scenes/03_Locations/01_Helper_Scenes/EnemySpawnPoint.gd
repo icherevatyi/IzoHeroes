@@ -2,9 +2,18 @@ extends Position2D
 
 onready var spawn_container = get_node("/root/Dungeon/YSort")
 
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
-	spawn_enemy("skeleton")
+	spawn_enemy(get_enemy_type())
+
+
+func get_enemy_type() -> String:
+	rng.randomize()
+	var rng_number: int = rng.randi_range(0, 10)
+	if rng_number >= 7:
+		return "minotaur"
+	return "skeleton"
 
 
 func spawn_enemy(type) -> void:

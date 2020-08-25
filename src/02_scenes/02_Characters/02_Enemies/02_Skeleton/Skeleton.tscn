@@ -144,10 +144,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:material:shader_param/hit_opacity")
@@ -188,6 +188,7 @@ material = SubResource( 3 )
 texture = SubResource( 4 )
 vframes = 6
 hframes = 6
+frame = 16
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 5 )
@@ -199,3 +200,6 @@ anims/walk = SubResource( 10 )
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 11 )
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+disabled = true

@@ -36,6 +36,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
+	state_scripts.monitor_states()
 	if is_dead == false:
 		match is_chasing:
 			false:
@@ -50,7 +51,6 @@ func _physics_process(_delta) -> void:
 								movement_scripts.enemy_stop(body.get_global_position())
 								attack_scripts._face_player(body.get_global_position())
 		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
-	state_scripts.monitor_states()
 
 
 func _get_stats(enemy_type: String) -> void:
@@ -59,6 +59,7 @@ func _get_stats(enemy_type: String) -> void:
 			health_max = Lists.enemy_list[enemy].health_max * Global.hp_modifier
 			health_current = health_max
 			damage = Lists.enemy_list[enemy].damage
+
 
 func receive_damage(damage_received) -> void:
 	var health_prev = health_current
@@ -73,10 +74,8 @@ func receive_damage(damage_received) -> void:
 
 	health_current -= damage_received
 	health_current = int(max(0, health_current))
-	
-	is_taking_damage = true
 	emit_signal("manage_healthbar_change", health_prev, health_current)
-	yield(get_tree().create_timer(0.35), "timeout")
+	yield(get_tree().create_timer(0.35),"timeout")
 	
 	if health_current == 0:
 		_death()
