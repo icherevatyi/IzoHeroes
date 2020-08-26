@@ -62,7 +62,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.2 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -144,7 +144,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 5
-frame = 3
+frame = 24
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 10 )
