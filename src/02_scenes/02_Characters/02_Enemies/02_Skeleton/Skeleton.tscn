@@ -34,7 +34,7 @@ atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 288, 288 )
 
 [sub_resource type="Animation" id=5]
-length = 1.4
+length = 1.2
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -188,7 +188,6 @@ material = SubResource( 3 )
 texture = SubResource( 4 )
 vframes = 6
 hframes = 6
-frame = 16
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 5 )

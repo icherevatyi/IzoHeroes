@@ -11,8 +11,10 @@ func _ready() -> void:
 func get_enemy_type() -> String:
 	rng.randomize()
 	var rng_number: int = rng.randi_range(0, 10)
-	if rng_number >= 7:
+	if rng_number >= 5 and rng_number < 8:
 		return "minotaur"
+	if rng_number >= 8:
+		return "mage"
 	return "skeleton"
 
 

@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 export var is_taking_damage: bool = false
+
+
 var is_boss: bool = false
 var type: String
 var health_current: float
@@ -8,21 +10,22 @@ var health_max: float
 var damage: int
 var _damage_multiplier: int = 1
 var is_dead: bool = false
-
 var drops_key: bool = false
 
 onready var detection_range: Area2D = $DetectionRange
+onready var attack_range: Area2D = $AttackRange
 onready var attack_scripts: Node2D = $AdditionalScripts/AttackManagement
 onready var movement_scripts: Node2D = $AdditionalScripts/MovementManagement
 onready var state_scripts: Node2D = $AdditionalScripts/StatesManagement
 onready var loot_scripts: Node2D = $AdditionalScripts/LootManagement
 onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var rng = RandomNumberGenerator.new()
 var movement
-var is_chasing: bool = false
 var is_attacking: bool = false
+var is_chasing: bool = false
 
 signal initiate_healthpool(health_maximum)
 signal manage_healthbar_change(hp_before_damage, hp_after_damage)
@@ -50,6 +53,7 @@ func _physics_process(_delta) -> void:
 							true:
 								movement_scripts.enemy_stop(body.get_global_position())
 								attack_scripts._face_player(body.get_global_position())
+
 		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
 
 
@@ -106,7 +110,6 @@ func _on_DetectionRange_body_entered(body) -> void:
 func _on_DetectionRange_body_exited(body) -> void:
 	if body.name == "Player":
 		is_chasing = false
-
 
 
 func _on_AttackRange_body_entered(body) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -148,7 +148,6 @@ priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
-switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
@@ -157,9 +156,7 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-
-[sub_resource type="AnimationNodeStateMachine" id=23]
+[sub_resource type="AnimationNodeStateMachine" id=22]
 states/death/node = SubResource( 9 )
 states/death/position = Vector2( 813, 309 )
 states/idle_1/node = SubResource( 10 )
@@ -170,17 +167,17 @@ states/receive_damage/node = SubResource( 12 )
 states/receive_damage/position = Vector2( 553, 309 )
 states/walk/node = SubResource( 13 )
 states/walk/position = Vector2( 298, 309 )
-transitions = [ "idle_1", "idle_2", SubResource( 14 ), "idle_1", "walk", SubResource( 15 ), "idle_2", "idle_1", SubResource( 16 ), "walk", "idle_1", SubResource( 17 ), "idle_1", "receive_damage", SubResource( 18 ), "receive_damage", "death", SubResource( 19 ), "receive_damage", "idle_1", SubResource( 20 ), "walk", "receive_damage", SubResource( 21 ), "receive_damage", "walk", SubResource( 22 ) ]
+transitions = [ "idle_1", "idle_2", SubResource( 14 ), "idle_1", "walk", SubResource( 15 ), "idle_2", "idle_1", SubResource( 16 ), "walk", "idle_1", SubResource( 17 ), "idle_1", "receive_damage", SubResource( 18 ), "receive_damage", "death", SubResource( 19 ), "receive_damage", "idle_1", SubResource( 20 ), "walk", "receive_damage", SubResource( 21 ) ]
 start_node = "idle_1"
 end_node = "death"
-graph_offset = Vector2( -178, 30 )
+graph_offset = Vector2( -201, -52 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
-[sub_resource type="CircleShape2D" id=25]
+[sub_resource type="CircleShape2D" id=24]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id=26]
+[sub_resource type="CircleShape2D" id=25]
 radius = 5.0
 
 [node name="Player" type="KinematicBody2D"]
@@ -222,10 +219,10 @@ anims/receive_damage = SubResource( 7 )
 anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 23 )
+tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 24 )
+parameters/playback = SubResource( 23 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -256,14 +253,14 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetectionRange"]
-shape = SubResource( 25 )
+shape = SubResource( 24 )
 
 [node name="DoorOpener" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpener"]
 position = Vector2( 0, 5 )
-shape = SubResource( 26 )
+shape = SubResource( 25 )
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="area_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_area_entered"]
 [connection signal="area_entered" from="DoorOpener" to="." method="_on_DoorOpener_area_entered"]
