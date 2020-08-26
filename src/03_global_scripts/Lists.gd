@@ -145,23 +145,23 @@ var enemy_list: Dictionary = {
 			}
 		}
 	},
-#	3: {
-#		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/04_Ghost/Ghost.tscn"),
-#		"type": "ghost",
-#		"health_max": 150,
-#		"damage": 1,
-#		"loot": {
-#			1: {
-#				"chance": 50,
-#				"type": "healing_bottle"
-#			},
-#			2: {
-#				"chance": 85,
-#				"type": "gold_coins"
-#			}
-#		}
-#	},
 	3: {
+		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/04_Ghost/Ghost.tscn"),
+		"type": "ghost",
+		"health_max": 150,
+		"damage": 1,
+		"loot": {
+			1: {
+				"chance": 50,
+				"type": "healing_bottle"
+			},
+			2: {
+				"chance": 85,
+				"type": "gold_coins"
+			}
+		}
+	},
+	4: {
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/05_Mage/Mage.tscn"),
 		"type": "mage",
 		"health_max": 150,
