@@ -4,7 +4,7 @@
 [ext_resource path="res://src/01_assets/02_Characters/02_Enemies/minotaur.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/03_Minotaur/Minotaur.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=11]
 resource_name = "attack"
 length = 2.0
 loop = true
@@ -33,8 +33,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:is_attack_animation_playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.84 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 resource_name = "chase"
 length = 0.7
 loop = true
@@ -52,7 +64,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=13]
 length = 1.4
 step = 0.05
 tracks/0/type = "value"
@@ -82,7 +94,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=14]
 length = 0.9
 step = 0.01
 tracks/0/type = "value"
@@ -98,7 +110,7 @@ tracks/0/keys = {
 "values": [ 17 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -125,7 +137,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -140,43 +152,44 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=8]
 radius = 96.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=9]
 radius = 30.0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 15, 10 )
 
 [node name="Minotaur" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+is_attack_animation_playing = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 30
+frame = 17
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/attack = SubResource( 5 )
-anims/chase = SubResource( 6 )
-anims/death = SubResource( 7 )
-anims/idle = SubResource( 8 )
-anims/receive_damage = SubResource( 9 )
-anims/walk = SubResource( 10 )
+anims/attack = SubResource( 11 )
+anims/chase = SubResource( 12 )
+anims/death = SubResource( 13 )
+anims/idle = SubResource( 14 )
+anims/receive_damage = SubResource( 5 )
+anims/walk = SubResource( 6 )
 
 [node name="AnimationTree" parent="." index="3"]
-parameters/playback = SubResource( 1 )
+parameters/playback = SubResource( 7 )
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 10 )
 disabled = true
