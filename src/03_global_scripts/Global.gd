@@ -10,6 +10,7 @@ var hp_modifier: float
 var _scene_change_value
 var is_game_started: bool = false
 var is_paused: bool = false
+var is_player_dead: bool = false
 
 onready var root_node = get_node("/root/")
 
@@ -30,7 +31,8 @@ func _check_modifier_active() -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		toggle_pause_menu()
+		if is_player_dead == false:
+			toggle_pause_menu()
 	if event.is_action_pressed("console"):
 		toggle_console()
 		if is_paused:
@@ -63,6 +65,13 @@ func toggle_pause_menu() -> void:
 					if dungeon.has_node("Menu"):
 						dungeon.get_node("Menu").queue_free()
 					is_paused = false
+
+func call_deathscreen_menu() -> void:
+	get_tree().paused = true
+	var dungeon = get_parent().get_node("Dungeon")
+	var menu_instance = menu.instance()
+	dungeon.add_child(menu_instance)
+	is_paused = true
 
 
 func start_game() -> void:

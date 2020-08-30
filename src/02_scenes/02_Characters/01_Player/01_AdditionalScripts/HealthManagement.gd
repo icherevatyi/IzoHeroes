@@ -30,3 +30,5 @@ func _on_damage_healed(damage) -> void:
 func player_died() -> void:
 	player.health_is_damaged = false
 	player.is_dead = true
+	Global.is_player_dead = true
+	Global.call_deathscreen_menu()

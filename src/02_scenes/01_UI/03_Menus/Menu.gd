@@ -12,8 +12,13 @@ func _ready() -> void:
 		background.color = Color(0, 0, 0, 1)
 		_start_main_menu()
 	if Global.is_game_started == true:
-		background.color = Color(0, 0, 0, 0.6)
-		_start_pause_menu()
+		match Global.is_player_dead:
+			false:
+				background.color = Color(0, 0, 0, 0.6)
+				_start_pause_menu()
+			true:
+				background.color = Color(0, 0, 0, 0.6)
+				_start_deathscreen_menu()
 
 
 func _start_main_menu() -> void:
@@ -24,6 +29,17 @@ func _start_main_menu() -> void:
 		
 		items_container.add_child(item_instance)
 		item_instance.item_init(item_title, item_action)
+
+
+func _start_deathscreen_menu() -> void:
+	for item_index in Lists.deathscreen_game_list:
+		var item_instance: TextureButton = menu_item.instance()
+		var item_title: String = Lists.deathscreen_game_list[item_index].title
+		var item_action = Lists.deathscreen_game_list[item_index].action
+		
+		items_container.add_child(item_instance)
+		item_instance.item_init(item_title, item_action)
+	
 
 
 func _start_pause_menu() ->  void:

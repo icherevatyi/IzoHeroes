@@ -53,6 +53,26 @@ var pause_game_list: Dictionary = {
 }
 
 
+var deathscreen_game_list: Dictionary = {
+	1: {
+		"title": "Load Checkpoint",
+		"action": "LOAD_GAME"
+	},
+	2: {
+		"title": "Options",
+		"action": "SHOW_OPTIONS"
+	},
+	3: {
+		"title": "Exit to Menu",
+		"action": "QTM"
+	},
+	4: {
+		"title": "Exit to Desktop",
+		"action": "QTD"
+	},
+}
+
+
 var options_list: Dictionary = {
 	
 }
