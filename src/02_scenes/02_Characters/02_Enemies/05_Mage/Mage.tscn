@@ -33,6 +33,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, true ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_create_circle"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "chase"
@@ -151,12 +165,16 @@ radius = 88.0
 
 [node name="Mage" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+is_attack_animation_playing = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 5
-frame = 10
+frame = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -169,8 +187,20 @@ anims/walk = SubResource( 6 )
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 7 )
 
+[node name="HurtBox" parent="." index="4"]
+visible = false
+
+[node name="DetectionRange" parent="." index="9"]
+visible = false
+
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 8 )
 
+[node name="AttackRange" parent="." index="10"]
+visible = false
+
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 9 )
+
+[node name="HitBox" parent="." index="11"]
+visible = false

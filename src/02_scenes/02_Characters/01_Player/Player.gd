@@ -132,6 +132,11 @@ func _damage_taken(damage: int) -> void:
 	if result > dodge_chance:
 		emit_signal("damage_receive", damage)
 
+func _player_staggered() -> void:
+	set_physics_process(false)
+	yield(get_tree().create_timer(0.5),"timeout")
+	set_physics_process(true)
+
 
 func _on_IdleTimer_timeout() -> void:
 	is_bored = true

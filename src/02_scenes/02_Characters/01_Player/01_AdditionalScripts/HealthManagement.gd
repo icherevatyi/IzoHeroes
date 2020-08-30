@@ -31,4 +31,7 @@ func player_died() -> void:
 	player.health_is_damaged = false
 	player.is_dead = true
 	Global.is_player_dead = true
+
+
+func _call_death_menu() -> void:
 	Global.call_deathscreen_menu()

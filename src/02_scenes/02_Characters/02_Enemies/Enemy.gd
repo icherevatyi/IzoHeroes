@@ -11,6 +11,7 @@ var damage: int
 var _damage_multiplier: int = 1
 var is_dead: bool = false
 var drops_key: bool = false
+var player_coords: Vector2
 
 onready var detection_range: Area2D = $DetectionRange
 onready var attack_range: Area2D = $AttackRange
@@ -116,6 +117,7 @@ func _on_DetectionRange_body_exited(body) -> void:
 func _on_AttackRange_body_entered(body) -> void:
 	if body.name == "Player":
 		is_attacking = true
+		player_coords = body.get_global_position()
 
 
 func _on_AttackRange_body_exited(body) -> void:
