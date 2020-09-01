@@ -5,7 +5,9 @@
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01_DungeonStart/StartRoom.gd" type="Script" id=3]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Destroyer.tscn" type="PackedScene" id=4]
 
-[node name="StartRoom" type="TileMap"]
+[node name="StartRoom" type="TileMap" groups=[
+"rooms",
+]]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 collision_mask = 14

@@ -48,7 +48,7 @@ tracks/2/keys = {
 }
 
 [node name="MagicCircle" type="Area2D"]
-collision_layer = 4
+collision_layer = 64
 collision_mask = 2
 script = ExtResource( 2 )
 
