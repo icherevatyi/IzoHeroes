@@ -1,9 +1,18 @@
 extends RigidBody2D
 
+var is_flipped: bool = false
+
 signal do_damage(damage)
 
 func _ready() -> void:
+	print(is_flipped)
 	apply_impulse(Vector2(), Vector2(150, 0).rotated(rotation))
+	match is_flipped:
+		false:
+			$Sprite.flip_v = false
+		true:
+			$Sprite.flip_v = true
+	
 
 
 func _on_MagicSkull_body_entered(body) -> void:
