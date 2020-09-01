@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 export var is_taking_damage: bool = false
-export var is_attack_animation_playing: bool = false
 
 var is_boss: bool = false
 var type: String
@@ -50,8 +49,7 @@ func _physics_process(_delta) -> void:
 					if body.name == "Player":
 						match is_attacking:
 							false:
-								if is_attack_animation_playing == false:
-									movement_scripts.chase_player(body.get_global_position())
+								movement_scripts.chase_player(body.get_global_position())
 							true:
 								movement_scripts.enemy_stop(body.get_global_position())
 								attack_scripts._face_player(body.get_global_position())

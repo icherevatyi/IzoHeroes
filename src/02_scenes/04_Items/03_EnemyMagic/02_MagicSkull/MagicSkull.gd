@@ -5,6 +5,7 @@ signal do_damage(damage)
 func _ready() -> void:
 	apply_impulse(Vector2(), Vector2(150, 0).rotated(rotation))
 
+
 func _on_MagicSkull_body_entered(body) -> void:
 	print(body.name)
 	if body.name == "Player":

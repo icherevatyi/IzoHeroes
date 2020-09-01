@@ -21,28 +21,19 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 10, 11, 12, 13, 14, 15, 14, 15, 14, 15, 14, 16, 17, 18 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:is_attack_animation_playing")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.82 ),
+"times": PoolRealArray( 0.59, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, true ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
 "values": [ {
+"args": [  ],
+"method": "_get_coords"
+}, {
 "args": [  ],
 "method": "_create_circle"
 } ]
@@ -165,7 +156,6 @@ radius = 88.0
 
 [node name="Mage" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-is_attack_animation_playing = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

@@ -4,7 +4,7 @@
 [ext_resource path="res://src/01_assets/02_Characters/02_Enemies/minotaur.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/03_Minotaur/Minotaur.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 2.0
 loop = true
@@ -33,20 +33,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:is_attack_animation_playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.84 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 resource_name = "chase"
 length = 0.7
 loop = true
@@ -64,7 +52,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 length = 1.4
 step = 0.05
 tracks/0/type = "value"
@@ -94,7 +82,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=4]
 length = 0.9
 step = 0.01
 tracks/0/type = "value"
@@ -165,7 +153,6 @@ extents = Vector2( 15, 10 )
 
 [node name="Minotaur" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-is_attack_animation_playing = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -174,10 +161,10 @@ hframes = 5
 frame = 17
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/attack = SubResource( 11 )
-anims/chase = SubResource( 12 )
-anims/death = SubResource( 13 )
-anims/idle = SubResource( 14 )
+anims/attack = SubResource( 1 )
+anims/chase = SubResource( 2 )
+anims/death = SubResource( 3 )
+anims/idle = SubResource( 4 )
 anims/receive_damage = SubResource( 5 )
 anims/walk = SubResource( 6 )
 
