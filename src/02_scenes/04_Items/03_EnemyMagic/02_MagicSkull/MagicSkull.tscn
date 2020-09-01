@@ -43,7 +43,9 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Trail" type="Particles2D" parent="."]
-position = Vector2( -4, 0 )
+position = Vector2( -3, 0 )
 amount = 350
+preprocess = 0.5
+speed_scale = 1.5
 process_material = SubResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_MagicSkull_body_entered"]
