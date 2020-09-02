@@ -135,6 +135,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 9, 10, 11, 12, 13, 14 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_create_dust"
+}, {
+"args": [  ],
+"method": "_create_dust"
+} ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "death"
@@ -274,6 +291,9 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpener"]
 position = Vector2( 0, 5 )
 shape = SubResource( 25 )
+
+[node name="DustPoint" type="Position2D" parent="."]
+position = Vector2( 6, 9 )
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="area_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_area_entered"]
 [connection signal="area_entered" from="DoorOpener" to="." method="_on_DoorOpener_area_entered"]

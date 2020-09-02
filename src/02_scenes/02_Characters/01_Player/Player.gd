@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var dust_particles: PackedScene = preload("res://src/02_scenes/05_Helpers/DustParticles.tscn")
+
 var health_is_damaged: bool = false
 
 var rng = RandomNumberGenerator.new()
@@ -12,6 +14,7 @@ var can_attack: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
 
+
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
 onready var loot_management: Node2D = $AdditionalScripts/LootManagement
@@ -21,6 +24,7 @@ onready var weapon_container: Node2D = $Weapon
 onready var current_weapon: Area2D = $Weapon/Sword
 onready var pickup_detection_range: Area2D = $PickupDetectionRange
 onready var camera: Camera2D = $Camera2D
+
 
 signal weapon_swing
 signal damage_receive(dmg)
@@ -69,6 +73,19 @@ func _move_player() ->  void:
 	movement = move_and_slide(movement, Vector2(0, 0))
 
 
+func _create_dust() -> void:
+	var dungeon = get_node("/root/Dungeon")
+	var dust_instance = dust_particles.instance()
+	if $Sprite.flip_h == false:
+		$DustPoint.position.x = 6
+		dust_instance.is_flipped = false
+	else:
+		$DustPoint.position.x = -6
+		dust_instance.is_flipped = true
+	dust_instance.set_global_position($DustPoint.get_global_position())
+	dungeon.add_child(dust_instance)
+
+
 func _input(event) -> void:		
 	if is_dead == false:
 		if event.is_action_pressed("attack"):
@@ -94,7 +111,8 @@ func _input(event) -> void:
 					emit_signal("damage_heal", 1)
 					emit_signal("use_bottle")
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
-				
+
+
 
 
 func _check_mouse_position() -> void:
