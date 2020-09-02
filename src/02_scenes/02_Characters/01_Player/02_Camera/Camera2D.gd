@@ -9,7 +9,6 @@ onready var frequency_timer: Timer = $FrequencyTimer
 onready var duration_timer: Timer = $DurationTimer
 
 
-
 func start_shaking( duration = 0.2, frequency = 15, off_value = 16):
 	self.offset_value = off_value
 	duration_timer.wait_time = duration

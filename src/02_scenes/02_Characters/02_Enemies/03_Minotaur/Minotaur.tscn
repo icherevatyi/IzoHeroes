@@ -81,6 +81,20 @@ tracks/1/keys = {
 "method": "generate_loot"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("HurtBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_disable_collision_box"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.9
@@ -158,7 +172,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 17
+frame = 30
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )

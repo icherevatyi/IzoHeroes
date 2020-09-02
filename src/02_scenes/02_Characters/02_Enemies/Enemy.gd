@@ -66,6 +66,8 @@ func _get_stats(enemy_type: String) -> void:
 
 
 func receive_damage(damage_received) -> void:
+	if (health_current - damage_received) <= 0:
+		OS.delay_msec(80)
 	var health_prev = health_current
 	if is_boss == false:
 		for stat in PlayerStats.stats_list:
@@ -81,7 +83,7 @@ func receive_damage(damage_received) -> void:
 	emit_signal("manage_healthbar_change", health_prev, health_current)
 	yield(get_tree().create_timer(0.35),"timeout")
 	
-	if health_current == 0:
+	if health_current <= 0:
 		_death()
 
 
