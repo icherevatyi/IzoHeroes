@@ -12,4 +12,4 @@ func _ready() -> void:
 			get_process_material().gravity.x = -70
 
 	yield(get_tree().create_timer(1), "timeout")
-	queue_free()
+	call_deferred("queue_free")

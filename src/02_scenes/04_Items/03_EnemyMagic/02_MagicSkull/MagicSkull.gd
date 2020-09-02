@@ -5,7 +5,7 @@ var is_flipped: bool = false
 signal do_damage(damage)
 
 func _ready() -> void:
-	apply_impulse(Vector2(), Vector2(150, 0).rotated(rotation))
+	apply_impulse(Vector2(), Vector2(250, 0).rotated(rotation))
 	match is_flipped:
 		false:
 			$Sprite.flip_v = false

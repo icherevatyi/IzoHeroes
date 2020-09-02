@@ -6,8 +6,6 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends \"res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd\"
 
-var dust_particles: PackedScene = preload(\"res://src/02_scenes/05_Helpers/DustParticles.tscn\")
-
 
 func _ready():
 	movement_scripts.initial_speed = 35
@@ -17,18 +15,6 @@ func _ready():
 	emit_signal(\"initiate_healthpool\", health_max)
 	loot_scripts.get_loot_table(type)
 
-
-func _create_dust() -> void:
-	var dungeon = get_node(\"/root/Dungeon\")
-	var dust_instance = dust_particles.instance()
-	if $Sprite.flip_h == false:
-		$DustPoint.position.x = 6
-		dust_instance.is_flipped = false
-	else:
-		$DustPoint.position.x = -6
-		dust_instance.is_flipped = true
-	dust_instance.set_global_position($DustPoint.get_global_position())
-	dungeon.add_child(dust_instance)
 "
 
 [sub_resource type="Shader" id=2]
@@ -93,20 +79,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 4, 5, 6 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "_create_dust"
-} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -273,6 +245,3 @@ visible = false
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 disabled = true
-
-[node name="DustPoint" type="Position2D" parent="." index="12"]
-position = Vector2( 6, 9 )

@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-var dust_particles: PackedScene = preload("res://src/02_scenes/05_Helpers/DustParticles.tscn")
-
 var health_is_damaged: bool = false
 
 var rng = RandomNumberGenerator.new()
@@ -57,6 +55,7 @@ func _get_stat_value(param: String) -> int:
 			return PlayerStats.stats_list[key].value
 	return 0
 
+
 func _physics_process(_delta) -> void:
 	if is_dead == false:
 		_move_player()
@@ -71,20 +70,6 @@ func _move_player() ->  void:
 	movement.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	movement = movement * speed
 	movement = move_and_slide(movement, Vector2(0, 0))
-
-
-func _create_dust() -> void:
-	var dungeon = get_node("/root/Dungeon")
-	var dust_instance = dust_particles.instance()
-	if $Sprite.flip_h == false:
-		$DustPoint.position.x = 6
-		dust_instance.is_flipped = false
-	else:
-		$DustPoint.position.x = -6
-		dust_instance.is_flipped = true
-	dust_instance.set_global_position($DustPoint.get_global_position())
-	dungeon.add_child(dust_instance)
-
 
 func _input(event) -> void:		
 	if is_dead == false:
