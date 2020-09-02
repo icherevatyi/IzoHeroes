@@ -20,6 +20,7 @@ onready var idle_timer: Timer = $Timers/IdleTimer
 onready var weapon_container: Node2D = $Weapon
 onready var current_weapon: Area2D = $Weapon/Sword
 onready var pickup_detection_range: Area2D = $PickupDetectionRange
+onready var camera: Camera2D = $Camera2D
 
 signal weapon_swing
 signal damage_receive(dmg)
@@ -131,6 +132,8 @@ func _damage_taken(damage: int) -> void:
 	var result: int = rng.randi_range(0, 100)
 	if result > dodge_chance:
 		emit_signal("damage_receive", damage)
+		camera.start_shaking(0.2, 20, 7)
+
 
 func _player_staggered() -> void:
 	set_physics_process(false)
