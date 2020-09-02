@@ -172,7 +172,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 30
+frame = 17
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )

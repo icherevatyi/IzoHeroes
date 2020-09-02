@@ -6,7 +6,7 @@ var magic_circle: PackedScene = preload("res://src/02_scenes/04_Items/03_EnemyMa
 onready var hitbox: CollisionShape2D = $HitBox/CollisionShape2D
 
 func _ready():
-	print()
+	movement_scripts.initial_speed = 20
 	type = "mage"
 	_get_stats(type)
 	hitbox.disabled = true

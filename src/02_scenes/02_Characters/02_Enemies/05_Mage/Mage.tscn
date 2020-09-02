@@ -175,7 +175,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 5
-frame = 24
+frame = 3
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false

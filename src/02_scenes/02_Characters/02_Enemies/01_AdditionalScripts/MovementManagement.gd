@@ -9,7 +9,8 @@ var movement_dir_dict: Dictionary = {
 	4: Vector2.RIGHT,
 }
 
-export var speed: int = 30
+var initial_speed: int = 30
+var speed: int
 var movement_dir: Vector2
 var velocity: Vector2
 
@@ -18,6 +19,7 @@ onready var sprite: Sprite = get_node("../../Sprite")
 onready var timer: Timer = get_node("../../Timers/MovementChangeTimer")
 
 func _ready():
+	speed = initial_speed	
 	_select_direction()
 	_select_timer_timeout()
 
@@ -25,9 +27,9 @@ func _ready():
 func move_enemy() -> void:
 	match parent.is_chasing:
 		true:
-			speed = 60
+			speed = initial_speed + 30
 		false:
-			speed = 30
+			speed = initial_speed
 	velocity = speed * movement_dir
 	if parent.is_on_wall():
 		_select_direction()
