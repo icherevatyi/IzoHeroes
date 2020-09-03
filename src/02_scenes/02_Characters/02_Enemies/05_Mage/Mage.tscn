@@ -106,7 +106,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 1.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -207,13 +207,14 @@ radius = 88.0
 
 [node name="Mage" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+is_attacking = true
 
 [node name="Sprite" parent="." index="0"]
 material = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 5
-frame = 3
+frame = 28
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
@@ -228,9 +229,6 @@ anims/walk = SubResource( 6 )
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 7 )
-
-[node name="HurtBox" parent="." index="4"]
-visible = false
 
 [node name="DetectionRange" parent="." index="9"]
 visible = false

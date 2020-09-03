@@ -152,7 +152,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.88 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -274,11 +274,20 @@ anims/walk = SubResource( 7 )
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 8 )
 
+[node name="DetectionRange" parent="." index="9"]
+visible = false
+
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 9 )
 
+[node name="AttackRange" parent="." index="10"]
+visible = false
+
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 10 )
+
+[node name="HitBox" parent="." index="11"]
+visible = false
 
 [node name="SkullSpawn" type="Position2D" parent="." index="12"]
 position = Vector2( 15, 0 )

@@ -115,7 +115,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.35 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -230,7 +230,7 @@ material = ExtResource( 2 )
 texture = SubResource( 4 )
 vframes = 6
 hframes = 6
-frame = 20
+frame = 30
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 5 )
@@ -242,9 +242,6 @@ anims/walk = SubResource( 10 )
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 11 )
-
-[node name="HurtBox" parent="." index="4"]
-visible = false
 
 [node name="DetectionRange" parent="." index="9"]
 visible = false

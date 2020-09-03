@@ -134,7 +134,7 @@ func _damage_taken(damage: int) -> void:
 			dodge_chance = PlayerStats.stats_list[stat].value
 	var result: int = rng.randi_range(0, 100)
 	if result > dodge_chance:
-#		emit_signal("damage_receive", damage)
+		emit_signal("damage_receive", damage)
 		camera.start_shaking(0.2, 20, 7)
 
 

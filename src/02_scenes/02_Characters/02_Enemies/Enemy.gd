@@ -84,7 +84,6 @@ func receive_damage(damage_received) -> void:
 	health_current = int(max(0, health_current))
 	emit_signal("manage_healthbar_change", health_prev, health_current)
 	yield(get_tree().create_timer(0.35),"timeout")
-	
 	if health_current <= 0:
 		_death()
 

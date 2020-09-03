@@ -3,7 +3,7 @@ extends CanvasLayer
 var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/01_PlayerHealthIcon/Heart.tscn")
 var notification_message: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/Notification/PickupNotification.tscn")
 var char_sheet: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.tscn")
-
+var _response: int
 var is_stat_screen_shown: bool = false
 
 onready var player: KinematicBody2D = get_node("../")
@@ -14,7 +14,8 @@ onready var dialog_box: Control = $Control/DialogBox
 onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
 onready var key_item: TextureRect = $Control/KeyItem
-
+onready var grayscale_filter: TextureRect = $Grayscale
+onready var grayscale_tween: Tween = $GrayscaleTween
 
 var coins_amount: int
 var bottle_amount: int
@@ -106,3 +107,12 @@ func _on_key_received() -> void:
 
 func _on_key_used() -> void:
 	key_item.visible = false
+
+
+func grayscale_on() -> void:
+	_response = grayscale_tween.interpolate_property(grayscale_filter, "visible", false, true, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	_response = grayscale_tween.start()
+
+func grayscale_off() -> void:
+	_response = grayscale_tween.interpolate_property(grayscale_filter, "visible", true, false, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	_response = grayscale_tween.start()
