@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/01_assets/07_Shaders/DamageBlinkShader.tres" type="Material" id=7]
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/LootManagement.gd" type="Script" id=8]
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/02_Camera/Camera2D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/DamageBlinkShader.tres" type="Material" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -196,6 +197,7 @@ radius = 8.0
 radius = 5.0
 
 [node name="Player" type="KinematicBody2D"]
+material = ExtResource( 10 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
