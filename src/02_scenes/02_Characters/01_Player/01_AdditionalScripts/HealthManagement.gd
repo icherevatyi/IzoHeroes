@@ -37,7 +37,6 @@ func _on_damage_healed(damage) -> void:
 
 
 func _check_health_status() -> void:
-	print("current health: ", health_current)
 	if health_current <= 0:
 		emit_signal("grayscale_off")
 	if health_current > 0 and health_current <= 2:
