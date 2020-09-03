@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var is_taking_damage: bool = false
+export var is_attacking: bool = false
 
 var is_boss: bool = false
 var type: String
@@ -24,7 +25,7 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var rng = RandomNumberGenerator.new()
 var movement
-var is_attacking: bool = false
+var is_in_attack_range: bool = false
 var is_chasing: bool = false
 
 signal initiate_healthpool(health_maximum)
@@ -47,12 +48,13 @@ func _physics_process(_delta) -> void:
 			true:
 				for body in detection_range.get_overlapping_bodies():
 					if body.name == "Player":
-						match is_attacking:
-							false:
-								movement_scripts.chase_player(body.get_global_position())
-							true:
-								movement_scripts.enemy_stop(body.get_global_position())
-								attack_scripts._face_player(body.get_global_position())
+						if is_in_attack_range:
+							movement_scripts.enemy_stop(body.get_global_position())
+							attack_scripts._face_player(body.get_global_position())
+						else:
+							match is_attacking:
+								false:
+									movement_scripts.chase_player(body.get_global_position())
 
 		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
 
@@ -116,13 +118,13 @@ func _on_DetectionRange_body_exited(body) -> void:
 
 func _on_AttackRange_body_entered(body) -> void:
 	if body.name == "Player":
-		is_attacking = true
+		is_in_attack_range = true
 		player_coords = body.get_global_position()
 
 
 func _on_AttackRange_body_exited(body) -> void:
 	if body.name == "Player":
-		is_attacking = false
+		is_in_attack_range = false
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

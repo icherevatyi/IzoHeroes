@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/02_Enemies/minotaur.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/03_Minotaur/Minotaur.gd" type="Script" id=3]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/DamageBlinkShader.tres" type="Material" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
-length = 2.0
+length = 0.9
 loop = true
 step = 0.01
 tracks/0/type = "value"
@@ -32,6 +33,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:is_attacking")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -138,6 +151,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:is_attacking")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:material:shader_param/hit_opacity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), 1.0, ExtResource( 4 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 loop = true
@@ -169,10 +206,11 @@ extents = Vector2( 15, 10 )
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
+material = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 7
+frame = 29
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -185,23 +223,11 @@ anims/walk = SubResource( 6 )
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 7 )
 
-[node name="HurtBox" parent="." index="4"]
-visible = false
-
-[node name="DetectionRange" parent="." index="9"]
-visible = false
-
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 8 )
 
-[node name="AttackRange" parent="." index="10"]
-visible = false
-
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 9 )
-
-[node name="HitBox" parent="." index="11"]
-visible = false
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource( 10 )

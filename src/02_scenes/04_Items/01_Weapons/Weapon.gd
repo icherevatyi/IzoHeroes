@@ -14,7 +14,7 @@ signal do_damage(damage)
 func _ready() -> void:
 	damage = get_param_value("attack_power")
 	is_monitored = monitoring
-	animation_player.playback_speed = 2
+	animation_player.playback_speed = 3
 	swing_timer.set_wait_time(float(get_param_value("attack_speed")) / 10)
 
 func get_param_value(param: String) -> int:
@@ -40,7 +40,6 @@ func _on_Weapon_area_entered(area) -> void:
 		if area.name == "HurtBox":
 			_connect_signal("do_damage", area, "_on_damage_received")
 			emit_signal("do_damage", damage)
-			get_node("../../Camera2D").start_shaking(0.1, 18, 3)
 			disconnect("do_damage", area, "_on_damage_received")
 
 
