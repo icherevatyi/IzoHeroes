@@ -143,6 +143,13 @@ func _player_staggered() -> void:
 	yield(get_tree().create_timer(0.5),"timeout")
 	set_physics_process(true)
 
+func _on_grayscale_enabled() -> void:
+	HUD.grayscale_on()
+
+
+func _on_grayscale_disabled() -> void:
+	HUD.grayscale_off()
+
 
 func _on_IdleTimer_timeout() -> void:
 	is_bored = true
