@@ -109,10 +109,11 @@ func _on_key_used() -> void:
 	key_item.visible = false
 
 
-func grayscale_on() -> void:
+func _on_grayscale_enabled() -> void:
 	_response = grayscale_tween.interpolate_property(grayscale_filter, "visible", false, true, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	_response = grayscale_tween.start()
 
-func grayscale_off() -> void:
+
+func _on_grayscale_disabled() -> void:
 	_response = grayscale_tween.interpolate_property(grayscale_filter, "visible", true, false, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	_response = grayscale_tween.start()

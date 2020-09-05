@@ -32,7 +32,8 @@ signal use_bottle
 signal hide_message
 signal use_key
 signal open_gate
-
+signal grayscale_on
+signal grayscale_off
 
 func _ready() -> void:
 	speed = _get_stat_value("movement_speed")
@@ -47,6 +48,8 @@ func _ready() -> void:
 	_connect_signal("use_bottle", loot_management, "_on_bottle_used")
 	_connect_signal("use_key", loot_management, "_on_key_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
+	_connect_signal("grayscale_on", HUD, "_on_grayscale_enabled")
+	_connect_signal("grayscale_off", HUD, "_on_grayscale_disabled")
 
 
 func _get_stat_value(param: String) -> int:
@@ -144,11 +147,17 @@ func _player_staggered() -> void:
 	set_physics_process(true)
 
 func _on_grayscale_enabled() -> void:
-	HUD.grayscale_on()
+	emit_signal("grayscale_on")
+
+
+func _load_injured() -> void:
+	yield(get_tree().create_timer(0.5),"timeout")
+	emit_signal("grayscale_on")
+	
 
 
 func _on_grayscale_disabled() -> void:
-	HUD.grayscale_off()
+	emit_signal("grayscale_off")
 
 
 func _on_IdleTimer_timeout() -> void:
