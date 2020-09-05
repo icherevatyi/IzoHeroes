@@ -19,7 +19,6 @@ func process_command(text: String) -> void:
 
 	for _i in range(words.count("")):
 		words.erase("")
-
 	if words.size() == 0:
 		return
 

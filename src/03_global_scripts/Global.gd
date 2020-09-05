@@ -11,6 +11,8 @@ var _scene_change_value
 var is_game_started: bool = false
 var is_paused: bool = false
 var is_player_dead: bool = false
+var is_console_enabled: bool = false
+var is_menu_enabled: bool = false
 
 onready var root_node = get_node("/root/")
 
@@ -35,17 +37,16 @@ func _input(event) -> void:
 			toggle_pause_menu()
 	if event.is_action_pressed("console"):
 		toggle_console()
-		if is_paused:
-			return
-		get_tree().paused = !get_tree().paused
+		if is_menu_enabled == false:
+			get_tree().paused = !get_tree().paused
 
 
 func toggle_console() -> void:
+	is_console_enabled = !is_console_enabled
 	if root_node.has_node("Console"):
 		root_node.remove_child(get_node("/root/Console"))
 	else:
 		root_node.add_child(console.instance())
-
 
 
 func call_main_menu() -> void:
@@ -53,18 +54,19 @@ func call_main_menu() -> void:
 
 
 func toggle_pause_menu() -> void:
-	get_tree().paused = !get_tree().paused
 	if is_game_started == true:
-			var dungeon = get_parent().get_node("Dungeon")
-			var menu_instance = menu.instance()
-			match is_paused:
-				false:
-					dungeon.add_child(menu_instance)
-					is_paused = true
-				true:
-					if dungeon.has_node("Menu"):
-						dungeon.get_node("Menu").queue_free()
-					is_paused = false
+		is_menu_enabled = !is_menu_enabled
+		var dungeon = get_parent().get_node("Dungeon")
+		var menu_instance = menu.instance()
+		
+		if dungeon.has_node("Menu"):
+			dungeon.remove_child(get_node("/root/Dungeon/Menu"))
+		else:
+			dungeon.add_child(menu_instance)
+		
+		if is_console_enabled == false:
+			get_tree().paused = !get_tree().paused
+
 
 func call_deathscreen_menu() -> void:
 	get_tree().paused = true
