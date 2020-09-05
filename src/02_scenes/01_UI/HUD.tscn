@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/02_DialogBox/DialogBox.tscn" type="PackedScene" id=2]
@@ -16,19 +16,6 @@ region = Rect2( 0, 17, 17, 16 )
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
 region = Rect2( 18, 0, 11, 22 )
-
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-
-void fragment() {
-	//COLOR = texture(TEXTURE, UV);
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
-	float avg = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
-	COLOR.rgb = vec3(avg);
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
 
 [node name="HUD" type="CanvasLayer"]
 layer = 2
@@ -121,15 +108,3 @@ __meta__ = {
 [node name="DialogBox" parent="Control" instance=ExtResource( 2 )]
 margin_top = -71.0
 margin_bottom = 61.0
-
-[node name="Grayscale" type="ColorRect" parent="."]
-visible = false
-material = SubResource( 5 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 1, 1, 1, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GrayscaleTween" type="Tween" parent="."]
