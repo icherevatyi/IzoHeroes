@@ -9,12 +9,10 @@ var _responce: int
 
 onready var player: KinematicBody2D = get_node("../../")
 signal grayscale_on
-signal _lvl_start_grayscale_on
 signal grayscale_off
 
 func _ready() -> void:
 	_responce = connect("grayscale_on", player, "_on_grayscale_enabled")
-	_responce = connect("_lvl_start_grayscale_on", player, "_load_injured")
 	_responce = connect("grayscale_off", player, "_on_grayscale_disabled")
 	
 	health_current = ResourceStorage.player_data.health_current
@@ -22,7 +20,8 @@ func _ready() -> void:
 	health_min = 0
 	
 	if health_current <= 2:
-		emit_signal("_lvl_start_grayscale_on")
+		yield(get_tree().create_timer(0.5),"timeout")
+		emit_signal("grayscale_on")
 
 
 func _on_damage_taken(damage) -> void:
