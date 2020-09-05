@@ -27,9 +27,9 @@ func _ready():
 
 func _physics_process(_delta):
 	if $Sprite.flip_h == false:
-		skull_spawn.position.x = 15
+		skull_spawn.position.x = 5
 	else: 
-		skull_spawn.position.x = -15
+		skull_spawn.position.x = -5
 
 
 func _get_coords() -> void:
@@ -292,4 +292,3 @@ shape = SubResource( 10 )
 visible = false
 
 [node name="SkullSpawn" type="Position2D" parent="." index="12"]
-position = Vector2( 15, 0 )
