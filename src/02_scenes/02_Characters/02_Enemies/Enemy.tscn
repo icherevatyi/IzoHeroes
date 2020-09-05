@@ -163,18 +163,18 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id=24]
@@ -190,7 +190,7 @@ states/receive_damage/node = SubResource( 12 )
 states/receive_damage/position = Vector2( 548, 224 )
 states/walk/node = SubResource( 13 )
 states/walk/position = Vector2( 548, 56 )
-transitions = [ "receive_damage", "death", SubResource( 14 ), "idle", "walk", SubResource( 15 ), "walk", "idle", SubResource( 16 ), "idle", "receive_damage", SubResource( 17 ), "idle", "chase", SubResource( 19 ), "chase", "idle", SubResource( 20 ), "attack", "idle", SubResource( 21 ), "idle", "attack", SubResource( 22 ), "attack", "receive_damage", SubResource( 23 ), "receive_damage", "chase", SubResource( 33 ) ]
+transitions = [ "receive_damage", "death", SubResource( 14 ), "idle", "walk", SubResource( 15 ), "walk", "idle", SubResource( 16 ), "idle", "receive_damage", SubResource( 17 ), "idle", "chase", SubResource( 18 ), "chase", "idle", SubResource( 19 ), "attack", "idle", SubResource( 20 ), "idle", "attack", SubResource( 21 ), "attack", "receive_damage", SubResource( 22 ), "receive_damage", "chase", SubResource( 23 ) ]
 start_node = "idle"
 end_node = "death"
 graph_offset = Vector2( -292, -94 )
