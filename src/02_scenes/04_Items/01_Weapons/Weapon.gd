@@ -17,6 +17,7 @@ func _ready() -> void:
 	animation_player.playback_speed = 3
 	swing_timer.set_wait_time(float(get_param_value("attack_speed")) / 10)
 
+
 func get_param_value(param: String) -> int:
 	for key in PlayerStats.stats_list.keys():
 		if PlayerStats.stats_list[key].type == param:

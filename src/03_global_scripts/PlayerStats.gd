@@ -5,8 +5,8 @@ var stats_list: Dictionary = {
 		"type": "max_health",
 		"title": "Max. Health",
 		"description": "0",
-		"base_value": 4,
-		"value": 4,
+		"base_value": 6,
+		"value": 6,
 	},
 	1: {
 		"type": "attack_speed",
@@ -19,8 +19,8 @@ var stats_list: Dictionary = {
 		"type": "attack_power",
 		"title": "Atk. Power",
 		"description": "2",
-		"base_value": 35.0,
-		"value": 35.0,
+		"base_value": 45.0,
+		"value": 45.0,
 	},
 	5: {
 		"type": "movement_speed",
