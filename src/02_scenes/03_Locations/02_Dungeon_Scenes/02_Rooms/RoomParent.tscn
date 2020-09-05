@@ -19,3 +19,5 @@ script = ExtResource( 2 )
 [node name="RoomSpawnPoint" parent="Corridors" instance=ExtResource( 3 )]
 
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
+
+[node name="Torches" type="Node2D" parent="."]

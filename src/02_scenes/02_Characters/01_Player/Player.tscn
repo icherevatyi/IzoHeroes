@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/01_AdditionalScripts/LootManagement.gd" type="Script" id=8]
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/02_Camera/Camera2D.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/DamageBlinkShader.tres" type="Material" id=10]
+[ext_resource path="res://src/01_assets/08_Items/Light.png" type="Texture" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -277,6 +278,11 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpener"]
 position = Vector2( 0, 5 )
 shape = SubResource( 25 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 11 )
+color = Color( 1, 1, 1, 0.54902 )
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="area_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_area_entered"]
 [connection signal="area_entered" from="DoorOpener" to="." method="_on_DoorOpener_area_entered"]
