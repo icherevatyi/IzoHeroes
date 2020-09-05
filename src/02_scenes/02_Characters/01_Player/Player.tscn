@@ -283,6 +283,7 @@ shape = SubResource( 25 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 11 )
 color = Color( 1, 1, 1, 0.54902 )
+energy = 1.2
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="area_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_area_entered"]
 [connection signal="area_entered" from="DoorOpener" to="." method="_on_DoorOpener_area_entered"]
