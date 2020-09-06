@@ -41,7 +41,7 @@ func monitor_states() -> void:
 			_set_state(STATE_VALUES.WALK)
 		if enemy.movement != Vector2.ZERO and enemy.is_chasing == true:
 			_set_state(STATE_VALUES.CHASE)
-		if enemy.is_in_attack_range == true:
+		if enemy.is_in_attack_range == true and enemy.player_visible == true:
 			_set_state(STATE_VALUES.ATTACK)
 		if enemy.is_taking_damage == true:
 			_set_state(STATE_VALUES.RECEIVE_DAMAGE)

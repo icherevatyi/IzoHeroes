@@ -12,6 +12,7 @@ var _damage_multiplier: int = 1
 var is_dead: bool = false
 var drops_key: bool = false
 var player_coords: Vector2
+var player_visible: bool = false
 
 onready var detection_range: Area2D = $DetectionRange
 onready var attack_range: Area2D = $AttackRange
@@ -48,7 +49,8 @@ func _physics_process(_delta) -> void:
 			true:
 				for body in detection_range.get_overlapping_bodies():
 					if body.name == "Player":
-						if is_in_attack_range:
+						is_player_visible(body)
+						if is_in_attack_range and player_visible == true:
 							movement_scripts.enemy_stop(body.get_global_position())
 							attack_scripts._face_player(body.get_global_position())
 						else:
@@ -57,6 +59,17 @@ func _physics_process(_delta) -> void:
 									movement_scripts.chase_player(body.get_global_position())
 
 		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
+
+
+func is_player_visible(body) -> void:
+	var space_state = get_world_2d().direct_space_state
+	var result =  space_state.intersect_ray(position, body.position, [self], collision_mask)
+	if result:
+		print(result.collider.name)
+		if result.collider.name == "Player":
+			player_visible = true
+		else:
+			player_visible = false
 
 
 func _get_stats(enemy_type: String) -> void:
