@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-var heart_point: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/01_PlayerHealthIcon/Heart.tscn")
 var notification_message: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/Notification/PickupNotification.tscn")
 var char_sheet: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.tscn")
 var _response: int
@@ -9,17 +8,23 @@ var is_stat_screen_shown: bool = false
 onready var player: KinematicBody2D = get_node("../")
 onready var ui_parent: Control = $Control
 onready var notification_container: VBoxContainer = $Control/NotificationContainer
-onready var healthbar: HBoxContainer = $Control/HealthBar
+onready var health_top:  = $Control/Health/HealthBarTop
+onready var health_bottom:  = $Control/Health/HealthBarBottom
 onready var dialog_box: Control = $Control/DialogBox
 onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
+onready var hp_change_tween: Tween = $HPChangeTween
 onready var key_item: TextureRect = $Control/KeyItem
 
 var coins_amount: int
 var bottle_amount: int
 
 func _ready() -> void:
-	_on_healing_displayed(ResourceStorage.player_data.health_current)
+	health_top.max_value = ResourceStorage.player_data.health_current
+	health_top.value = ResourceStorage.player_data.health_current
+	health_bottom.max_value = ResourceStorage.player_data.health_current
+	health_bottom.value = ResourceStorage.player_data.health_current
+	
 	_display_starting_amount("gold_coins", ResourceStorage.player_data.coins_count)
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
 
@@ -53,19 +58,20 @@ func _on_message_hidden() -> void:
 
 
 func _on_healing_displayed(amount: int) -> void:
-	for healthpoint in amount:
-		var _h_instance = heart_point.instance()
-		healthbar.add_child(_h_instance)
+	var health_current = health_top.value
+	var health_new = health_current + amount
+	_response = hp_change_tween.interpolate_property(health_top, "value", health_current, health_new, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = hp_change_tween.start()
+	_response = hp_change_tween.interpolate_property(health_top, "value", health_current, health_new, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = hp_change_tween.start()
 
 
 func _on_damage_displayed(dmg_taken: int) -> void:
-	var _health_pool = healthbar.get_children()
-	if _health_pool.size() >= dmg_taken:
-		for health_point in dmg_taken:
-			_health_pool[health_point].queue_free()
-	else:
-		dmg_taken = _health_pool.size()
-		_on_damage_displayed(dmg_taken)
+	var health_current = health_top.value
+	var health_new = health_current - dmg_taken
+	health_top.value = health_new
+	_response = hp_change_tween.interpolate_property(health_bottom, "value", health_current, health_new - dmg_taken, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = hp_change_tween.start()
 
 
 func _display_starting_amount(type, value) -> void:

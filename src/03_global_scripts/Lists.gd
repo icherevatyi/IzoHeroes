@@ -137,7 +137,7 @@ var enemy_list: Dictionary = {
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/02_Skeleton/Skeleton.tscn"),
 		"type": "skeleton",
 		"health_max": 100,
-		"damage": 1,
+		"damage": 20,
 		"loot": {
 			1: {
 				"chance": 50,
@@ -153,7 +153,7 @@ var enemy_list: Dictionary = {
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/03_Minotaur/Minotaur.tscn"),
 		"type": "minotaur",
 		"health_max": 200,
-		"damage": 2,
+		"damage": 45,
 		"loot": {
 			1: {
 				"chance": 50,
@@ -169,7 +169,7 @@ var enemy_list: Dictionary = {
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/04_Ghost/Ghost.tscn"),
 		"type": "ghost",
 		"health_max": 150,
-		"damage": 1,
+		"damage": 15,
 		"loot": {
 			1: {
 				"chance": 50,
@@ -185,7 +185,7 @@ var enemy_list: Dictionary = {
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/05_Mage/Mage.tscn"),
 		"type": "mage",
 		"health_max": 150,
-		"damage": 2,
+		"damage": 45,
 		"loot": {
 			1: {
 				"chance": 50,

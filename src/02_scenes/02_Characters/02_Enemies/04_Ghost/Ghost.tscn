@@ -48,6 +48,7 @@ func _create_skull() -> void:
 		skull_instance.is_flipped = false
 	else: 
 		skull_instance.is_flipped = true
+	skull_instance.damage = Lists.enemy_list[3].damage
 	skull_instance.set_global_position(skull_spawn.get_global_position())
 	skull_instance.rotation = get_angle_to(player_pos)
 	world_node.add_child(skull_instance)

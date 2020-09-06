@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 var is_flipped: bool = false
+var damage: int
 
 signal do_damage(damage)
 
@@ -17,7 +18,7 @@ func _ready() -> void:
 func _on_MagicSkull_body_entered(body) -> void:
 	if body.name == "Player":
 		_connect_signal("do_damage", body, "_damage_taken")
-		emit_signal("do_damage", 1)
+		emit_signal("do_damage", damage)
 		disconnect("do_damage", body, "_damage_taken")
 		queue_free()
 	if body.is_in_group("rooms"):
