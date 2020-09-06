@@ -214,10 +214,7 @@ material = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 5
-frame = 28
-
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
+frame = 3
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -230,17 +227,8 @@ anims/walk = SubResource( 6 )
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 7 )
 
-[node name="DetectionRange" parent="." index="9"]
-visible = false
-
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 8 )
 
-[node name="AttackRange" parent="." index="10"]
-visible = false
-
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 9 )
-
-[node name="HitBox" parent="." index="11"]
-visible = false

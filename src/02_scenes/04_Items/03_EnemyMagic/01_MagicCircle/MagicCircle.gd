@@ -1,5 +1,7 @@
 extends Area2D
 
+var damage: int
+
 signal attack(dmg)
 signal stagger
 
@@ -15,7 +17,7 @@ func _on_MagicCircle_area_entered(area):
 	if area.name == "HurtBox":
 		_connect_signal("attack", area.get_parent(), "_damage_taken")
 		_connect_signal("stagger", area.get_parent(), "_player_staggered")
-		emit_signal("attack", 3)
+		emit_signal("attack", damage)
 		emit_signal("stagger")
 
 

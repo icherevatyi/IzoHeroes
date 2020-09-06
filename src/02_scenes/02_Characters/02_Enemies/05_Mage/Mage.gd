@@ -25,5 +25,6 @@ func _get_coords() -> Vector2:
 func _create_circle() -> void:
 	var circle_instance: Area2D = magic_circle.instance()
 	var world_node: Node2D = get_node("/root/Dungeon/YSort")
+	circle_instance.damage = Lists.enemy_list[4].damage
 	circle_instance.set_global_position(_get_coords())
 	world_node.add_child(circle_instance)

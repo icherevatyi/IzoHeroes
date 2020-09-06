@@ -65,7 +65,6 @@ func is_player_visible(body) -> void:
 	var space_state = get_world_2d().direct_space_state
 	var result =  space_state.intersect_ray(position, body.position, [self], collision_mask)
 	if result:
-		print(result.collider.name)
 		if result.collider.name == "Player":
 			player_visible = true
 		else:
