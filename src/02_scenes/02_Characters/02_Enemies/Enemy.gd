@@ -23,6 +23,7 @@ onready var loot_scripts: Node2D = $AdditionalScripts/LootManagement
 onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var hurtbox_collision: CollisionShape2D = $HurtBox/CollisionShape2D
 
 var rng = RandomNumberGenerator.new()
 var movement
@@ -67,8 +68,10 @@ func is_player_visible(body) -> void:
 	if result:
 		if result.collider.name == "Player":
 			player_visible = true
+			hurtbox_collision.disabled = false
 		else:
 			player_visible = false
+			hurtbox_collision.disabled = true
 
 
 func _get_stats(enemy_type: String) -> void:

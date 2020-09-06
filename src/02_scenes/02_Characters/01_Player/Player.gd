@@ -11,6 +11,7 @@ var can_open: bool = false
 var can_attack: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
+var enemy_visible: bool = false
 
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
