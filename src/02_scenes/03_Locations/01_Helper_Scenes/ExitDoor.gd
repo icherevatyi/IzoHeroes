@@ -26,7 +26,8 @@ func _on_gate_opened() -> void:
 
 func _load_next_lvl() -> void:
 	var next_lvl = Global.current_lvl + 1
-	if next_lvl > 3:
+	get_tree().paused = true
+	if next_lvl > 13:
 		_message = Lists.level_messages["demo_end"]
 		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
 		Backdrop.fade_in()
