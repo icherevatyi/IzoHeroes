@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/01_assets/03_Tiles/dungeon_tile_1.png" type="Texture" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.gd" type="Script" id=2]
+[ext_resource path="res://src/01_assets/08_Items/Light.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -23,5 +24,9 @@ texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MessageTrigger"]
 shape = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+texture_scale = 0.2
 [connection signal="body_entered" from="MessageTrigger" to="." method="_on_MessageTrigger_body_entered"]
 [connection signal="body_exited" from="MessageTrigger" to="." method="_on_MessageTrigger_body_exited"]
