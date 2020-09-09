@@ -8,20 +8,20 @@
 atlas = ExtResource( 2 )
 region = Rect2( 32, 25, 31, 14 )
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.160584, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.992981, 1, 0.101563, 1, 1, 0.0351563, 0.0351563, 1 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.513636 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
 emission_sphere_radius = 0.5
 flag_disable_z = true
@@ -33,26 +33,22 @@ linear_accel_random = 0.3
 radial_accel = -8.0
 radial_accel_random = 0.5
 scale = 0.3
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 6 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
 [node name="TableTop_6" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 1 )
 
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-
 [node name="Light2D" type="Light2D" parent="." index="2"]
 position = Vector2( -7, -4 )
 texture = ExtResource( 3 )
-texture_scale = 0.03
-energy = 0.8
+texture_scale = 0.05
 
 [node name="Particles2D" type="Particles2D" parent="." index="3"]
 position = Vector2( -7.03303, -3.47151 )
 amount = 30
 lifetime = 0.5
 preprocess = 0.3
-process_material = SubResource( 2 )
+process_material = SubResource( 6 )

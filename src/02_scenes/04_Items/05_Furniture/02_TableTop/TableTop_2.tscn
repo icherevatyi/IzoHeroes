@@ -11,20 +11,20 @@ region = Rect2( 32, 9, 31, 15 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 8 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.189781, 1 )
 colors = PoolColorArray( 0.939941, 0.939941, 0.939941, 1, 0.830566, 0.825931, 0.152487, 1, 1, 0.0546875, 0.0546875, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.518182 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 1
 emission_sphere_radius = 0.5
 flag_disable_z = true
@@ -35,8 +35,8 @@ linear_accel = -35.0
 radial_accel = -8.0
 radial_accel_random = 0.5
 scale = 0.3
-scale_curve = SubResource( 7 )
-color_ramp = SubResource( 5 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
 [node name="TableTop_2" instance=ExtResource( 1 )]
 
@@ -44,14 +44,12 @@ color_ramp = SubResource( 5 )
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
 shape = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="." index="2"]
 position = Vector2( -8, -5 )
 texture = ExtResource( 3 )
-texture_scale = 0.03
-energy = 0.6
+texture_scale = 0.05
 
 [node name="CandleFire" type="Particles2D" parent="." index="3"]
 position = Vector2( -8, -5 )
@@ -60,4 +58,4 @@ lifetime = 0.5
 preprocess = 0.2
 explosiveness = 0.1
 randomness = 0.44
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
