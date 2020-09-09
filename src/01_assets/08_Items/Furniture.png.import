@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/foot_dust.png-d2990f83eba4465dcc83ec074fc3a29f.stex"
+path="res://.import/Furniture.png-0ddf9692c704d15fbbac180a71be27b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/01_assets/08_Items/foot_dust.png"
-dest_files=[ "res://.import/foot_dust.png-d2990f83eba4465dcc83ec074fc3a29f.stex" ]
+source_file="res://src/01_assets/08_Items/Furniture.png"
+dest_files=[ "res://.import/Furniture.png-0ddf9692c704d15fbbac180a71be27b3.stex" ]
 
 [params]
 
