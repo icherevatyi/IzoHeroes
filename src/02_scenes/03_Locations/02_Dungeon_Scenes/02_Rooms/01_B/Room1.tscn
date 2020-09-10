@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01_B/Room1.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://src/02_scenes/04_Items/05_Furniture/01_Chairs/Chair_5.tscn" type="PackedScene" id=24]
 [ext_resource path="res://src/02_scenes/04_Items/05_Furniture/01_Chairs/Chair_2.tscn" type="PackedScene" id=25]
 [ext_resource path="res://src/02_scenes/04_Items/05_Furniture/01_Chairs/Chair_3.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/05_Shelfs/FallenShelf.tscn" type="PackedScene" id=27]
 
 [node name="Room" instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -262149, 3, 0, -262148, 0, 0, -262147, 1, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 1, 0, -327678, 1, 0, -327677, 0, 0, -327676, 2, 0, -196613, 5, 0, -196612, 4, 0, -196611, 4, 0, -196610, 4, 0, -196609, 4, 0, -262144, 4, 0, -262143, 4, 0, -262142, 4, 0, -262141, 4, 0, -262140, 9, 0, -131077, 5, 0, -131076, 4, 0, -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -196605, 4, 0, -196604, 9, 0, -65541, 5, 0, -65540, 4, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -131070, 4, 0, -131069, 4, 0, -131068, 9, 0, -5, 5, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 9, 0, 65531, 5, 0, 65532, 4, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 9, 0, 131067, 5, 0, 131068, 4, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 9, 0, 196603, 5, 0, 196604, 4, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 9, 0, 262139, 7, 0, 262140, 8, 0, 262141, 8, 0, 262142, 8, 0, 262143, 12, 0, 196608, 11, 0, 196609, 8, 0, 196610, 8, 0, 196611, 8, 0, 196612, 10, 0, 327679, 5, 0, 262144, 9, 0 )
@@ -90,100 +91,86 @@ rotation = 0.261799
 [node name="Chair_1" parent="Furniture" index="4" instance=ExtResource( 13 )]
 position = Vector2( -90.033, -86.1538 )
 
-[node name="Chair_2" parent="Furniture" index="5" instance=ExtResource( 13 )]
-position = Vector2( 86.1538, -90.6538 )
-rotation = 6.28318
-
-[node name="Chair_3" parent="Furniture" index="6" instance=ExtResource( 13 )]
+[node name="Chair_3" parent="Furniture" index="5" instance=ExtResource( 13 )]
 position = Vector2( -73.8462, -49.2308 )
 rotation = 0.523598
 
-[node name="Shelf_1" parent="Furniture" index="7" instance=ExtResource( 15 )]
+[node name="Shelf_1" parent="Furniture" index="6" instance=ExtResource( 15 )]
 position = Vector2( -72.3077, -104.615 )
 
-[node name="Shelf_3" parent="Furniture" index="8" instance=ExtResource( 15 )]
+[node name="Shelf_3" parent="Furniture" index="7" instance=ExtResource( 15 )]
 position = Vector2( -39.2308, -104.615 )
 
-[node name="Shelf_2" parent="Furniture" index="9" instance=ExtResource( 15 )]
-position = Vector2( 98.4615, -104.615 )
-
-[node name="ShelfTop_3" parent="Furniture" index="10" instance=ExtResource( 14 )]
+[node name="ShelfTop_3" parent="Furniture" index="8" instance=ExtResource( 14 )]
 position = Vector2( 71, -104.615 )
 
-[node name="ShelfTop_4" parent="Furniture" index="11" instance=ExtResource( 14 )]
+[node name="ShelfTop_4" parent="Furniture" index="9" instance=ExtResource( 14 )]
 position = Vector2( -98.5, -104.615 )
 
-[node name="Web" parent="Furniture" index="12" instance=ExtResource( 9 )]
-position = Vector2( 105, -105.385 )
-
-[node name="TableTop_7" parent="Furniture" index="13" instance=ExtResource( 16 )]
+[node name="TableTop_7" parent="Furniture" index="10" instance=ExtResource( 16 )]
 position = Vector2( 86.1538, -36.9231 )
 rotation = 0.523598
 
-[node name="TableTop_9" parent="Furniture" index="14" instance=ExtResource( 16 )]
+[node name="TableTop_9" parent="Furniture" index="11" instance=ExtResource( 16 )]
 position = Vector2( -36.9231, -32.0769 )
 rotation = 0.523598
 
-[node name="ShelfSide_1" parent="Furniture" index="15" instance=ExtResource( 17 )]
+[node name="ShelfSide_1" parent="Furniture" index="12" instance=ExtResource( 17 )]
 position = Vector2( -113.846, 6.15384 )
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_7" parent="Furniture" index="16" instance=ExtResource( 17 )]
+[node name="ShelfSide_7" parent="Furniture" index="13" instance=ExtResource( 17 )]
 position = Vector2( -61.5385, 89.2307 )
 rotation = -1.57079
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_9" parent="Furniture" index="17" instance=ExtResource( 17 )]
+[node name="ShelfSide_9" parent="Furniture" index="14" instance=ExtResource( 17 )]
 position = Vector2( 61.538, 89.231 )
 rotation = -1.57079
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_10" parent="Furniture" index="18" instance=ExtResource( 17 )]
+[node name="ShelfSide_10" parent="Furniture" index="15" instance=ExtResource( 17 )]
 position = Vector2( 87.4615, 89.2308 )
 rotation = -1.57079
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_11" parent="Furniture" index="19" instance=ExtResource( 17 )]
+[node name="ShelfSide_11" parent="Furniture" index="16" instance=ExtResource( 17 )]
 position = Vector2( 113.846, 12.3077 )
 rotation = -3.14159
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_8" parent="Furniture" index="20" instance=ExtResource( 17 )]
+[node name="ShelfSide_13" parent="Furniture" index="17" instance=ExtResource( 17 )]
+position = Vector2( 113.5, -32.0769 )
+rotation = -3.14159
+
+[node name="ShelfSide_14" parent="Furniture" index="18" instance=ExtResource( 17 )]
+position = Vector2( 113.846, -57.6923 )
+rotation = -3.14159
+
+[node name="ShelfSide_8" parent="Furniture" index="19" instance=ExtResource( 17 )]
 position = Vector2( -88.3023, 89.2307 )
 rotation = -1.57079
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_5" parent="Furniture" index="21" instance=ExtResource( 17 )]
+[node name="ShelfSide_5" parent="Furniture" index="20" instance=ExtResource( 17 )]
 position = Vector2( -113.846, 55.3846 )
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_6" parent="Furniture" index="22" instance=ExtResource( 17 )]
+[node name="ShelfSide_6" parent="Furniture" index="21" instance=ExtResource( 17 )]
 position = Vector2( -113.846, 80 )
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_3" parent="Furniture" index="23" instance=ExtResource( 17 )]
+[node name="ShelfSide_3" parent="Furniture" index="22" instance=ExtResource( 17 )]
 position = Vector2( -113.846, 30.7692 )
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_4" parent="Furniture" index="24" instance=ExtResource( 17 )]
+[node name="ShelfSide_4" parent="Furniture" index="23" instance=ExtResource( 17 )]
 position = Vector2( 113.846, 39.2308 )
 rotation = -3.14159
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_12" parent="Furniture" index="25" instance=ExtResource( 17 )]
+[node name="ShelfSide_12" parent="Furniture" index="24" instance=ExtResource( 17 )]
 position = Vector2( 113.846, 67.6922 )
 rotation = -3.14159
-scale = Vector2( 1, 1 )
 
-[node name="ShelfSide_2" parent="Furniture" index="26" instance=ExtResource( 18 )]
+[node name="ShelfSide_2" parent="Furniture" index="25" instance=ExtResource( 18 )]
 position = Vector2( -113.846, -43.0769 )
-scale = Vector2( 1, 1 )
 
-[node name="TableTop_5" parent="Furniture" index="27" instance=ExtResource( 20 )]
-position = Vector2( 93, -73.8461 )
+[node name="ShelfSide_15" parent="Furniture" index="26" instance=ExtResource( 18 )]
+position = Vector2( -113.846, -68.4615 )
 
-[node name="Stain_1" parent="Furniture/TableTop_5" index="2" instance=ExtResource( 19 )]
-position = Vector2( 1, 8.29999 )
+[node name="ShelfSide_16" parent="Furniture" index="27" instance=ExtResource( 18 )]
+position = Vector2( -113.846, -93.0769 )
 
 [node name="TableTop_12" parent="Furniture" index="28" instance=ExtResource( 20 )]
 position = Vector2( -28.2308, 18.4615 )
@@ -251,13 +238,21 @@ position = Vector2( 96, 6.92308 )
 rotation = 0.523598
 
 [node name="Chair_8" parent="Furniture" index="44" instance=ExtResource( 24 )]
-position = Vector2( 96, -49.2308 )
+position = Vector2( 98.4615, -44.7308 )
 
 [node name="Chair_9" parent="Furniture" index="45" instance=ExtResource( 24 )]
 position = Vector2( 33.9231, -63.5462 )
 
-[node name="Chair_3" parent="." index="4" instance=ExtResource( 26 )]
-position = Vector2( -40, 4.5 )
+[node name="Chair_4" parent="Furniture" index="46" instance=ExtResource( 26 )]
+position = Vector2( -30.7692, 3.46154 )
+scale = Vector2( 0.769231, 0.769231 )
 
-[node name="Chair_4" parent="." index="5" instance=ExtResource( 26 )]
-position = Vector2( -88, -16 )
+[node name="Chair_12" parent="Furniture" index="47" instance=ExtResource( 26 )]
+position = Vector2( -67.6923, -12.3077 )
+scale = Vector2( 0.769231, 0.769231 )
+
+[node name="FallenShelf" parent="Furniture" index="48" instance=ExtResource( 27 )]
+position = Vector2( 98.4615, -73.8461 )
+
+[node name="Web" parent="Furniture" index="49" instance=ExtResource( 9 )]
+position = Vector2( 105, -105.385 )

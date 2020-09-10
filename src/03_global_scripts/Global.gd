@@ -68,13 +68,6 @@ func toggle_pause_menu() -> void:
 			get_tree().paused = !get_tree().paused
 
 
-func call_deathscreen_menu() -> void:
-	get_tree().paused = true
-	var dungeon = get_parent().get_node("Dungeon")
-	var menu_instance = menu.instance()
-	dungeon.add_child(menu_instance)
-	is_paused = true
-
 
 func start_game() -> void:
 	ResourceStorage.player_data =  ResourceStorage.player_original_data

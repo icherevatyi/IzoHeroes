@@ -10,6 +10,7 @@ var _responce: int
 onready var player: KinematicBody2D = get_node("../../")
 
 func _ready() -> void:
+	Global.is_player_dead = false
 	health_current = ResourceStorage.player_data.health_current
 	health_max = PlayerStats.stats_list[0].value
 	health_min = 0
@@ -36,4 +37,4 @@ func player_died() -> void:
 
 
 func _call_death_menu() -> void:
-	Global.call_deathscreen_menu()
+	Global.toggle_pause_menu()
