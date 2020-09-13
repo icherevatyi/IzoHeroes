@@ -33,6 +33,7 @@ signal use_bottle
 signal hide_message
 signal use_key
 signal open_gate
+signal pickup_screen_blink
 
 func _ready() -> void:
 	speed = _get_stat_value("movement_speed")
@@ -47,6 +48,7 @@ func _ready() -> void:
 	_connect_signal("use_bottle", loot_management, "_on_bottle_used")
 	_connect_signal("use_key", loot_management, "_on_key_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
+	_connect_signal("pickup_screen_blink", camera, "_on_screen_blinked")
 
 
 func _get_stat_value(param: String) -> int:
@@ -155,6 +157,7 @@ func _on_data_request_received() -> void:
 
 
 func _on_item_data_received(data) -> void:
+	emit_signal("pickup_screen_blink")
 	loot_management.process_received_loot_data(data)
 
 

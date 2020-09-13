@@ -12,5 +12,23 @@ script = ExtResource( 1 )
 
 [node name="DurationTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="BlinkTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="BlinkColor" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -202.0
+margin_top = -114.0
+margin_right = 201.0
+margin_bottom = 114.0
+color = Color( 1, 1, 0.576471, 0.0588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="FrequencyTimer" to="." method="_on_FrequencyTimer_timeout"]
 [connection signal="timeout" from="DurationTimer" to="." method="_on_DurationTimer_timeout"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_BlinkTimer_timeout"]
