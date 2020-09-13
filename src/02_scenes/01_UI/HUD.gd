@@ -1,9 +1,11 @@
 extends CanvasLayer
 
+var rng := RandomNumberGenerator.new()
 var notification_message: PackedScene = preload("res://src/02_scenes/01_UI/01_Elements/Notification/PickupNotification.tscn")
 var char_sheet: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.tscn")
 var _response: int
 var is_stat_screen_shown: bool = false
+var shake_offset_value: float = 0
 
 onready var player: KinematicBody2D = get_node("../")
 onready var ui_parent: Control = $Control
@@ -13,7 +15,15 @@ onready var health_bottom:  = $Control/Health/HealthBarBottom
 onready var dialog_box: Control = $Control/DialogBox
 onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
+onready var coin_icon: TextureRect = $Control/Coins/CoinIcons
+onready var bottle_icon: TextureRect = $Control/PlayerStoredPotions/PotionsIcon
 onready var hp_change_tween: Tween = $HPChangeTween
+onready var bottle_shake_tween: Tween = $BottleShakeTween
+onready var coin_shake_tween: Tween = $CoinShakeTween
+onready var coin_frequency_timer: Timer = $ShakeTimers/CoinFrequencyTimer
+onready var coin_duration_timer: Timer = $ShakeTimers/CoinDurationTimer
+onready var bottle_frequency_timer: Timer = $ShakeTimers/BottleFrequencyTimer
+onready var bottle_duration_timer: Timer = $ShakeTimers/BottleDurationTimer
 onready var key_item: TextureRect = $Control/KeyItem
 
 var coins_amount: int
@@ -81,13 +91,15 @@ func _display_starting_amount(type, value) -> void:
 	if type == "healing_bottle":
 		bottle_amount += value
 		healing_bottle_counter.text = "x " + str(bottle_amount)
-	
+
 
 func _on_item_picked_up(type, value) -> void:
 	if type == "gold_coins":
+		_start_coins_shake()
 		coins_amount += value
 		gold_coins_counter.set_text("x " + str(coins_amount))
 	if type == "healing_bottle":
+		_start_bottle_shake()
 		bottle_amount += value
 		healing_bottle_counter.text = "x " + str(bottle_amount)
 	if type == "key":
@@ -98,6 +110,71 @@ func _on_item_picked_up(type, value) -> void:
 	else:
 		item_name = Lists.boss_loot_list[type].title
 	notify_pickup(item_name, value)
+
+
+func _start_coins_shake() -> void:
+	shake_offset_value = 5
+	coin_duration_timer.wait_time = 0.2
+	coin_frequency_timer.wait_time = 1 / float(30)
+	coin_duration_timer.start()
+	coin_frequency_timer.start()
+	
+	_shake_coins_icon()
+
+
+func _start_bottle_shake() -> void:
+	shake_offset_value = 5
+	bottle_duration_timer.wait_time = 0.2
+	bottle_frequency_timer.wait_time = 1 / float(30)
+	bottle_duration_timer.start()
+	bottle_frequency_timer.start()
+	
+	_shake_bottle_icon()
+
+
+func _shake_coins_icon() -> void:
+	var rand_position = Vector2()
+	rng.randomize()
+	rand_position.x = rng.randf_range(-shake_offset_value, shake_offset_value)
+	rand_position.y = rng.randf_range(-shake_offset_value, shake_offset_value)
+	
+	_response = coin_shake_tween.interpolate_property(coin_icon, "rect_position", Vector2(0, 0), rand_position, coin_frequency_timer.wait_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	_response = coin_shake_tween.start()
+
+
+func _shake_bottle_icon() -> void:
+	var rand_position = Vector2()
+	rng.randomize()
+	rand_position.x = rng.randf_range(-shake_offset_value, shake_offset_value)
+	rand_position.y = rng.randf_range(-shake_offset_value, shake_offset_value)
+	
+	_response = bottle_shake_tween.interpolate_property(bottle_icon, "rect_position", offset, rand_position, bottle_frequency_timer.wait_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	_response = bottle_shake_tween.start()
+
+
+func _on_CoinFrequencyTimer_timeout() -> void:
+	_shake_coins_icon()
+
+
+func _on_BottleFrequencyTimer_timeout() -> void:
+	_shake_bottle_icon()
+
+func _on_CoinDurationTimer_timeout() -> void:
+	_reset_coin_position()
+	coin_frequency_timer.stop()
+
+
+func _on_BottleDurationTimer_timeout() -> void:
+	_reset_bottle_position()
+	bottle_frequency_timer.stop()
+
+
+func _reset_coin_position() ->  void:
+	_response = coin_shake_tween.interpolate_property(coin_icon, "rect_position", offset, Vector2(), coin_frequency_timer.wait_time, coin_shake_tween.TRANS_SINE, coin_shake_tween.EASE_IN_OUT)
+
+
+func _reset_bottle_position() -> void:
+	_response = bottle_shake_tween.interpolate_property(bottle_icon, "rect_position", offset, Vector2(), bottle_frequency_timer.wait_time, bottle_shake_tween.TRANS_SINE, bottle_shake_tween.EASE_IN_OUT)
 
 
 func _on_bottle_used() -> void:
@@ -111,3 +188,5 @@ func _on_key_received() -> void:
 
 func _on_key_used() -> void:
 	key_item.visible = false
+
+

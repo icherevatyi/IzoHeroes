@@ -20,6 +20,8 @@ script = ExtResource( 2 )
 
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 
+[node name="FloorDecorations" type="Node2D" parent="."]
+
 [node name="Torches" type="Node2D" parent="."]
 
 [node name="Furniture" type="Node2D" parent="."]

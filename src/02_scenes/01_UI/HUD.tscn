@@ -6,31 +6,31 @@
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=4]
 [ext_resource path="res://src/01_assets/01_UI/player_bar.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 112, 13 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 24, 112, 13 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 112, 13 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 13, 112, 13 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 17, 16 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 17, 17, 16 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
 region = Rect2( 18, 0, 11, 22 )
 
@@ -61,8 +61,8 @@ __meta__ = {
 margin_right = 112.0
 margin_bottom = 13.0
 value = 100.0
-texture_under = SubResource( 6 )
-texture_progress = SubResource( 7 )
+texture_under = SubResource( 1 )
+texture_progress = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,8 +71,8 @@ __meta__ = {
 margin_right = 112.0
 margin_bottom = 13.0
 value = 20.0
-texture_under = SubResource( 4 )
-texture_progress = SubResource( 5 )
+texture_under = SubResource( 3 )
+texture_progress = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -90,7 +90,7 @@ __meta__ = {
 [node name="CoinIcons" type="TextureRect" parent="Control/Coins"]
 margin_right = 17.0
 margin_bottom = 16.0
-texture = SubResource( 1 )
+texture = SubResource( 5 )
 
 [node name="Count" type="Label" parent="Control/Coins"]
 margin_left = 21.0
@@ -111,7 +111,7 @@ __meta__ = {
 [node name="PotionsIcon" type="TextureRect" parent="Control/PlayerStoredPotions"]
 margin_right = 17.0
 margin_bottom = 16.0
-texture = SubResource( 2 )
+texture = SubResource( 6 )
 
 [node name="Count" type="Label" parent="Control/PlayerStoredPotions"]
 margin_left = 21.0
@@ -126,7 +126,7 @@ margin_top = 57.0
 margin_right = 13.0
 margin_bottom = 79.0
 rect_scale = Vector2( 0.6, 0.6 )
-texture = SubResource( 3 )
+texture = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -147,3 +147,23 @@ margin_top = -71.0
 margin_bottom = 61.0
 
 [node name="HPChangeTween" type="Tween" parent="."]
+
+[node name="BottleShakeTween" type="Tween" parent="."]
+
+[node name="CoinShakeTween" type="Tween" parent="."]
+
+[node name="ShakeTimers" type="Node2D" parent="."]
+
+[node name="BottleDurationTimer" type="Timer" parent="ShakeTimers"]
+one_shot = true
+
+[node name="BottleFrequencyTimer" type="Timer" parent="ShakeTimers"]
+
+[node name="CoinDurationTimer" type="Timer" parent="ShakeTimers"]
+one_shot = true
+
+[node name="CoinFrequencyTimer" type="Timer" parent="ShakeTimers"]
+[connection signal="timeout" from="ShakeTimers/BottleDurationTimer" to="." method="_on_BottleDurationTimer_timeout"]
+[connection signal="timeout" from="ShakeTimers/BottleFrequencyTimer" to="." method="_on_BottleFrequencyTimer_timeout"]
+[connection signal="timeout" from="ShakeTimers/CoinDurationTimer" to="." method="_on_CoinDurationTimer_timeout"]
+[connection signal="timeout" from="ShakeTimers/CoinFrequencyTimer" to="." method="_on_CoinFrequencyTimer_timeout"]

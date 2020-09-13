@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/01_B/Room1.gd" type="Script" id=2]
@@ -27,6 +27,20 @@
 [ext_resource path="res://src/02_scenes/04_Items/05_Furniture/01_Chairs/Chair_2.tscn" type="PackedScene" id=25]
 [ext_resource path="res://src/02_scenes/04_Items/05_Furniture/01_Chairs/Chair_3.tscn" type="PackedScene" id=26]
 [ext_resource path="res://src/02_scenes/04_Items/05_Furniture/05_Shelfs/FallenShelf.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/00_SingleDecorationElements/Stand.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/01_assets/08_Items/Furniture.png" type="Texture" id=29]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 29 )
+region = Rect2( 207, 0, 5, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 29 )
+region = Rect2( 172, -1, 14, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 29 )
+region = Rect2( 200, 0, 6, 6 )
 
 [node name="Room" instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -262149, 3, 0, -262148, 0, 0, -262147, 1, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 1, 0, -327678, 1, 0, -327677, 0, 0, -327676, 2, 0, -196613, 5, 0, -196612, 4, 0, -196611, 4, 0, -196610, 4, 0, -196609, 4, 0, -262144, 4, 0, -262143, 4, 0, -262142, 4, 0, -262141, 4, 0, -262140, 9, 0, -131077, 5, 0, -131076, 4, 0, -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -196605, 4, 0, -196604, 9, 0, -65541, 5, 0, -65540, 4, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -131070, 4, 0, -131069, 4, 0, -131068, 9, 0, -5, 5, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 9, 0, 65531, 5, 0, 65532, 4, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 9, 0, 131067, 5, 0, 131068, 4, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 9, 0, 196603, 5, 0, 196604, 4, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 9, 0, 262139, 7, 0, 262140, 8, 0, 262141, 8, 0, 262142, 8, 0, 262143, 12, 0, 196608, 11, 0, 196609, 8, 0, 196610, 8, 0, 196611, 8, 0, 196612, 10, 0, 327679, 5, 0, 262144, 9, 0 )
@@ -47,6 +61,93 @@ position = Vector2( 80, 54.3 )
 
 [node name="EnemySpawnPoint4" parent="EnemySpawnPoints" index="3" instance=ExtResource( 4 )]
 position = Vector2( -72, 0 )
+
+[node name="FloorDecorations" parent="." index="2"]
+position = Vector2( 7.62939e-06, 0 )
+rotation = 1.49012e-08
+
+[node name="Sprite14" type="Sprite" parent="FloorDecorations" index="0"]
+position = Vector2( -32.2999, -32 )
+rotation = -0.261799
+texture = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="FloorDecorations" index="1"]
+position = Vector2( 78, -52.3 )
+texture = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="FloorDecorations" index="2"]
+position = Vector2( -24, 0 )
+rotation = 0.785397
+texture = SubResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="FloorDecorations" index="3"]
+position = Vector2( 68, 48 )
+rotation = 1.57079
+texture = SubResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="FloorDecorations" index="4"]
+position = Vector2( -64, 40 )
+rotation = 2.09439
+texture = SubResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="FloorDecorations" index="5"]
+position = Vector2( 8, 144 )
+rotation = 0.785397
+texture = SubResource( 2 )
+
+[node name="Sprite6" type="Sprite" parent="FloorDecorations" index="6"]
+position = Vector2( 44.1, 48 )
+texture = SubResource( 3 )
+
+[node name="Sprite8" type="Sprite" parent="FloorDecorations" index="7"]
+position = Vector2( -32, 51 )
+rotation = 2.87979
+texture = SubResource( 3 )
+
+[node name="Sprite9" type="Sprite" parent="FloorDecorations" index="8"]
+position = Vector2( -42.5, -11 )
+rotation = 1.83259
+texture = SubResource( 3 )
+
+[node name="Sprite7" type="Sprite" parent="FloorDecorations" index="9"]
+position = Vector2( 74.0981, 29.798 )
+rotation = 0.523598
+texture = SubResource( 3 )
+
+[node name="Sprite10" type="Sprite" parent="FloorDecorations" index="10"]
+position = Vector2( 74.0981, 29.798 )
+rotation = 0.523598
+texture = SubResource( 3 )
+
+[node name="Sprite12" type="Sprite" parent="FloorDecorations" index="11"]
+position = Vector2( 8, -76.7601 )
+rotation = -0.261799
+texture = SubResource( 1 )
+
+[node name="Sprite13" type="Sprite" parent="FloorDecorations" index="12"]
+position = Vector2( 24, -16 )
+rotation = -0.261799
+texture = SubResource( 1 )
+
+[node name="Sprite16" type="Sprite" parent="FloorDecorations" index="13"]
+position = Vector2( -7.49528e-06, 9 )
+rotation = -1.83259
+texture = SubResource( 1 )
+
+[node name="Sprite17" type="Sprite" parent="FloorDecorations" index="14"]
+position = Vector2( 7.99999, 48 )
+rotation = -0.523598
+texture = SubResource( 1 )
+
+[node name="Sprite15" type="Sprite" parent="FloorDecorations" index="15"]
+position = Vector2( 56, -11.5 )
+rotation = -1.309
+texture = SubResource( 1 )
+
+[node name="Sprite11" type="Sprite" parent="FloorDecorations" index="16"]
+position = Vector2( 53.7981, -43.9019 )
+rotation = 0.523598
+texture = SubResource( 3 )
 
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 6 )]
 position = Vector2( -72, -138 )
@@ -70,7 +171,7 @@ position = Vector2( -60, 117 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 
-[node name="Furniture" parent="." index="3"]
+[node name="Furniture" parent="." index="4"]
 scale = Vector2( 1.3, 1.3 )
 
 [node name="TableTop_1" parent="Furniture" index="0" instance=ExtResource( 12 )]
@@ -240,19 +341,25 @@ rotation = 0.523598
 [node name="Chair_8" parent="Furniture" index="44" instance=ExtResource( 24 )]
 position = Vector2( 98.4615, -44.7308 )
 
-[node name="Chair_9" parent="Furniture" index="45" instance=ExtResource( 24 )]
+[node name="Chair_13" parent="Furniture" index="45" instance=ExtResource( 24 )]
+position = Vector2( -6.50001, -54.0769 )
+
+[node name="Chair_9" parent="Furniture" index="46" instance=ExtResource( 24 )]
 position = Vector2( 33.9231, -63.5462 )
 
-[node name="Chair_4" parent="Furniture" index="46" instance=ExtResource( 26 )]
+[node name="Chair_4" parent="Furniture" index="47" instance=ExtResource( 26 )]
 position = Vector2( -30.7692, 3.46154 )
 scale = Vector2( 0.769231, 0.769231 )
 
-[node name="Chair_12" parent="Furniture" index="47" instance=ExtResource( 26 )]
+[node name="Chair_12" parent="Furniture" index="48" instance=ExtResource( 26 )]
 position = Vector2( -67.6923, -12.3077 )
 scale = Vector2( 0.769231, 0.769231 )
 
-[node name="FallenShelf" parent="Furniture" index="48" instance=ExtResource( 27 )]
+[node name="FallenShelf" parent="Furniture" index="49" instance=ExtResource( 27 )]
 position = Vector2( 98.4615, -73.8461 )
 
-[node name="Web" parent="Furniture" index="49" instance=ExtResource( 9 )]
+[node name="Web" parent="Furniture" index="50" instance=ExtResource( 9 )]
 position = Vector2( 105, -105.385 )
+
+[node name="Stand" parent="Furniture" index="51" instance=ExtResource( 28 )]
+position = Vector2( 0, -74.6922 )

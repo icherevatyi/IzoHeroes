@@ -6,6 +6,7 @@ var can_swing: bool = true
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: Sprite = get_node("../../Sprite")
+onready var camera: Camera2D = get_node("../../Camera2D")
 onready var swing_timer: Timer = $SwingTimer
 
 signal do_damage(damage)
@@ -41,6 +42,7 @@ func _on_Weapon_area_entered(area) -> void:
 		if area.name == "HurtBox":
 			_connect_signal("do_damage", area, "_on_damage_received")
 			emit_signal("do_damage", damage)
+			camera.start_shaking(0.15, 50, 3)
 			disconnect("do_damage", area, "_on_damage_received")
 
 
