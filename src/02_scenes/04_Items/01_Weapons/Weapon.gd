@@ -2,7 +2,6 @@ extends Area2D
 
 var is_monitored: bool
 var damage: int
-var can_swing: bool = true
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: Sprite = get_node("../../Sprite")
@@ -15,8 +14,7 @@ signal do_damage(damage)
 func _ready() -> void:
 	damage = get_param_value("attack_power")
 	is_monitored = monitoring
-	animation_player.playback_speed = 3
-	swing_timer.set_wait_time(float(get_param_value("attack_speed")) / 10)
+	animation_player.playback_speed = float(get_param_value("attack_speed")) / 10
 
 
 func get_param_value(param: String) -> int:
@@ -27,14 +25,10 @@ func get_param_value(param: String) -> int:
 
 
 func _on_weapon_swing() -> void:
-	if can_swing == false: 
-		return
 	if player_sprite.flip_h == false:
 		animation_player.play("swing")
 	if player_sprite.flip_h == true:
 		animation_player.play_backwards("swing")
-	can_swing = false
-	swing_timer.start()
 
 
 func _on_Weapon_area_entered(area) -> void:
@@ -54,7 +48,3 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
-
-
-func _on_AttackTimer_timeout() -> void:
-	can_swing = true
