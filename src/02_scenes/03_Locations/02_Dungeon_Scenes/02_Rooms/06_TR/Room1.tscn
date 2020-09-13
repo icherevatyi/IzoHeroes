@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/06_TR/Room1.gd" type="Script" id=2]
@@ -7,6 +7,15 @@
 [ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchTop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchRight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchLeft.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/01_assets/08_Items/FloorMess.png" type="Texture" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 8 )
+region = Rect2( 89, 1, 47, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 8 )
+region = Rect2( 95, 1, 41, 40 )
 
 [node name="Room" instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -393215, 16, 0, -262145, 5, 0, -327680, 9, 0, -196613, 3, 0, -196612, 1, 0, -196611, 0, 0, -196610, 0, 0, -196609, 13, 0, -262144, 14, 0, -262143, 0, 0, -262142, 0, 0, -262141, 2, 0, -131077, 5, 0, -131076, 4, 0, -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -196605, 9, 0, -65541, 5, 0, -65540, 4, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -131070, 4, 0, -131069, 14, 0, -131068, 0, 0, -5, 5, 0, -4, 4, 0, -3, 4, 0, -2, 11, 0, -1, 8, 0, -65536, 8, 0, -65535, 12, 0, -65534, 4, 0, -65533, 4, 0, -65532, 4, 0, 65531, 5, 0, 65532, 4, 0, 65533, 4, 0, 65534, 9, 0, 1, 5, 0, 2, 4, 0, 3, 11, 0, 4, 8, 0, 131067, 5, 0, 131068, 4, 0, 131069, 4, 0, 131070, 9, 0, 65537, 5, 0, 65538, 4, 0, 65539, 9, 0, 196603, 5, 0, 196604, 4, 0, 196605, 4, 0, 196606, 14, 0, 196607, 0, 0, 131072, 0, 0, 131073, 13, 0, 131074, 4, 0, 131075, 9, 0, 262139, 5, 0, 262140, 4, 0, 262141, 4, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 9, 0, 327675, 7, 0, 327676, 8, 0, 327677, 8, 0, 327678, 8, 0, 327679, 8, 0, 262144, 8, 0, 262145, 8, 0, 262146, 8, 0, 262147, 10, 0, 458745, 6, 0 )
@@ -25,6 +34,41 @@ position = Vector2( 48, -56 )
 
 [node name="EnemySpawnPoint2" parent="EnemySpawnPoints" index="1" instance=ExtResource( 4 )]
 position = Vector2( -72, 40 )
+
+[node name="Sprite" type="Sprite" parent="FloorDecorations" index="0"]
+position = Vector2( 1, -112 )
+rotation = -0.785397
+texture = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="FloorDecorations" index="1"]
+position = Vector2( -112, -64 )
+rotation = 2.09439
+texture = SubResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="FloorDecorations" index="2"]
+position = Vector2( 72, -59 )
+rotation = 1.0472
+texture = SubResource( 1 )
+
+[node name="Sprite4" type="Sprite" parent="FloorDecorations" index="3"]
+position = Vector2( -50, 120 )
+rotation = 1.309
+texture = SubResource( 1 )
+
+[node name="Sprite5" type="Sprite" parent="FloorDecorations" index="4"]
+position = Vector2( -104, 65 )
+rotation = 1.309
+texture = SubResource( 2 )
+
+[node name="Sprite7" type="Sprite" parent="FloorDecorations" index="5"]
+position = Vector2( 128, -1.90735e-06 )
+rotation = 2.87979
+texture = SubResource( 2 )
+
+[node name="Sprite6" type="Sprite" parent="FloorDecorations" index="6"]
+position = Vector2( 48, 120 )
+rotation = 1.309
+texture = SubResource( 2 )
 
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 5 )]
 position = Vector2( 1, 84 )

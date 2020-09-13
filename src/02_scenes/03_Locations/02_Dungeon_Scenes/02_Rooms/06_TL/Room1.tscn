@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/06_TL/Room1.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/SpawnPoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/EnemySpawnPoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/01_assets/08_Items/FloorMess.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 88, 1, 45, 23 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 44, 51, 44, 30 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 1, 1, 45, 49 )
 
 [node name="Room" instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -262145, 5, 0, -327680, 9, 0, -196612, 3, 0, -196611, 1, 0, -196610, 0, 0, -196609, 13, 0, -262144, 14, 0, -262143, 0, 0, -262142, 0, 0, -262141, 1, 0, -262140, 2, 0, -131076, 5, 0, -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -196605, 4, 0, -196604, 9, 0, -65541, 0, 0, -65540, 13, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -131070, 4, 0, -131069, 4, 0, -131068, 9, 0, -5, 4, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 9, 0, 65531, 8, 0, 65532, 12, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 9, 0, 131068, 5, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 9, 0, 196604, 7, 0, 196605, 12, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 9, 0, 262141, 5, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 9, 0, 327677, 7, 0, 327678, 8, 0, 327679, 8, 0, 262144, 8, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 10, 0 )
@@ -25,3 +38,63 @@ position = Vector2( 16, 48 )
 
 [node name="EnemySpawnPoint3" parent="EnemySpawnPoints" index="2" instance=ExtResource( 4 )]
 position = Vector2( -64, -40 )
+
+[node name="Sprite" type="Sprite" parent="FloorDecorations" index="0"]
+position = Vector2( -121.917, -5.50755 )
+rotation = 0.793135
+texture = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="FloorDecorations" index="1"]
+position = Vector2( -1.75239, -96.382 )
+rotation = -0.250451
+texture = SubResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="FloorDecorations" index="2"]
+position = Vector2( -1.75239, -96.382 )
+rotation = 0.888492
+texture = SubResource( 1 )
+
+[node name="Sprite4" type="Sprite" parent="FloorDecorations" index="3"]
+position = Vector2( 6.01238, -134.559 )
+rotation = -0.912787
+texture = SubResource( 1 )
+
+[node name="Sprite5" type="Sprite" parent="FloorDecorations" index="4"]
+position = Vector2( -42.1939, 31.0896 )
+rotation = -0.912787
+texture = SubResource( 1 )
+
+[node name="Sprite6" type="Sprite" parent="FloorDecorations" index="5"]
+position = Vector2( 101.778, -46.2346 )
+rotation = -0.912787
+texture = SubResource( 1 )
+
+[node name="Sprite7" type="Sprite" parent="FloorDecorations" index="6"]
+position = Vector2( 49.3657, 72.1782 )
+rotation = -0.912787
+texture = SubResource( 1 )
+
+[node name="Sprite8" type="Sprite" parent="FloorDecorations" index="7"]
+position = Vector2( 4.39475, 7.14822 )
+rotation = -0.912787
+texture = SubResource( 1 )
+
+[node name="Sprite9" type="Sprite" parent="FloorDecorations" index="8"]
+position = Vector2( 100.824, 37.5124 )
+rotation = -0.912787
+texture = SubResource( 2 )
+
+[node name="Sprite10" type="Sprite" parent="FloorDecorations" index="9"]
+position = Vector2( -48.9725, 86.647 )
+rotation = 0.198662
+texture = SubResource( 2 )
+
+[node name="Sprite11" type="Sprite" parent="FloorDecorations" index="10"]
+position = Vector2( 28.3419, -55.6795 )
+rotation = -0.866972
+texture = SubResource( 2 )
+
+[node name="Sprite12" type="Sprite" parent="FloorDecorations" index="11"]
+position = Vector2( 123.696, 121.35 )
+rotation = 0.584799
+texture = SubResource( 3 )

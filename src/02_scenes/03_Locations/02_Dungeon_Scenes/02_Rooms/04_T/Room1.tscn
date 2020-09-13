@@ -47,33 +47,39 @@ position = Vector2( -112, 24 )
 rotation = -0.523598
 texture = SubResource( 1 )
 
-[node name="Sprite2" type="Sprite" parent="FloorDecorations" index="1"]
-position = Vector2( -72, -56 )
-texture = SubResource( 1 )
-
-[node name="Sprite3" type="Sprite" parent="FloorDecorations" index="2"]
+[node name="Sprite3" type="Sprite" parent="FloorDecorations" index="1"]
 position = Vector2( 104, -64 )
 rotation = 0.523598
 texture = SubResource( 1 )
 
-[node name="Sprite4" type="Sprite" parent="FloorDecorations" index="3"]
-position = Vector2( -32, 80 )
+[node name="Sprite4" type="Sprite" parent="FloorDecorations" index="2"]
+position = Vector2( -112, 120 )
 rotation = 0.523598
 texture = SubResource( 2 )
 
-[node name="Sprite5" type="Sprite" parent="FloorDecorations" index="4"]
+[node name="Sprite5" type="Sprite" parent="FloorDecorations" index="3"]
 position = Vector2( 72, 64 )
 rotation = -0.261799
 texture = SubResource( 2 )
 
-[node name="Sprite6" type="Sprite" parent="FloorDecorations" index="5"]
-position = Vector2( 9, -59 )
+[node name="Sprite6" type="Sprite" parent="FloorDecorations" index="4"]
+position = Vector2( -17, -72 )
 rotation = -0.261799
 texture = SubResource( 2 )
 
+[node name="Sprite9" type="Sprite" parent="FloorDecorations" index="5"]
+position = Vector2( 9.53674e-07, -128 )
+rotation = 0.523598
+texture = SubResource( 2 )
+
 [node name="Sprite7" type="Sprite" parent="FloorDecorations" index="6"]
-position = Vector2( 8.00001, 24 )
-rotation = 1.83259
+position = Vector2( 9, 8 )
+rotation = 2.35619
+texture = SubResource( 3 )
+
+[node name="Sprite8" type="Sprite" parent="FloorDecorations" index="7"]
+position = Vector2( 104, 16 )
+rotation = -2.35619
 texture = SubResource( 3 )
 
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 7 )]
