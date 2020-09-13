@@ -55,8 +55,4 @@ disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/swing = SubResource( 1 )
-
-[node name="SwingTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
 [connection signal="area_entered" from="." to="." method="_on_Weapon_area_entered"]
