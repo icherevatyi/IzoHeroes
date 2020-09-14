@@ -26,6 +26,7 @@ onready var camera: Camera2D = $Camera2D
 
 
 signal weapon_swing
+signal use_stamina(value)
 signal damage_receive(dmg)
 signal damage_heal(dmg)
 signal show_message(msg, type)
@@ -41,6 +42,7 @@ func _ready() -> void:
 	_connect_signal("damage_heal", health_scripts, "_on_damage_healed")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
 	_connect_signal("damage_heal", HUD, "_on_healing_displayed")
+	_connect_signal("use_stamina", HUD, "_on_stamina_used")
 	_connect_signal("show_message", HUD, "_on_message_shown")
 	_connect_signal("hide_message", HUD, "_on_message_hidden")
 	_connect_signal("use_bottle", HUD, "_on_bottle_used")
@@ -48,6 +50,7 @@ func _ready() -> void:
 	_connect_signal("use_bottle", loot_management, "_on_bottle_used")
 	_connect_signal("use_key", loot_management, "_on_key_used")
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
+	_connect_signal("use_stamina", health_scripts, "_on_stamina_used")
 	_connect_signal("pickup_screen_blink", camera, "_on_screen_blinked")
 
 
@@ -78,6 +81,7 @@ func _input(event) -> void:
 		if event.is_action_pressed("attack"):
 			if can_attack == true:
 				emit_signal("weapon_swing")
+				emit_signal("use_stamina", 10)
 			else:
 				pass
 		
@@ -99,7 +103,12 @@ func _input(event) -> void:
 					emit_signal("use_bottle")
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
 
+func _on_stam_depleeted() -> void:
+	can_attack = false
 
+
+func _on_stam_restored() -> void:
+	can_attack = true
 
 
 func _check_mouse_position() -> void:

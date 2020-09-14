@@ -208,7 +208,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 2
+frame = 4
 __meta__ = {
 "_editor_description_": ""
 }
@@ -250,6 +250,12 @@ parameters/playback = SubResource( 23 )
 wait_time = 8.0
 one_shot = true
 
+[node name="StaminaRegenTimer" type="Timer" parent="Timers"]
+wait_time = 0.05
+
+[node name="StaminaDelayTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="AdditionalScripts" type="Node2D" parent="."]
 
 [node name="StateManagement" type="Node2D" parent="AdditionalScripts"]
@@ -264,6 +270,8 @@ script = ExtResource( 8 )
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="StaminaRegenTween" type="Tween" parent="."]
 
 [node name="PickupDetectionRange" type="Area2D" parent="."]
 collision_layer = 2
@@ -285,5 +293,7 @@ texture = ExtResource( 11 )
 color = Color( 1, 1, 1, 0.54902 )
 energy = 1.2
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
+[connection signal="timeout" from="Timers/StaminaRegenTimer" to="AdditionalScripts/HealthManagement" method="_on_StaminaRegenTimer_timeout"]
+[connection signal="timeout" from="Timers/StaminaDelayTimer" to="AdditionalScripts/HealthManagement" method="_on_StaminaDelayTimer_timeout"]
 [connection signal="area_entered" from="PickupDetectionRange" to="AdditionalScripts/LootManagement" method="_on_PickupDetectionRange_area_entered"]
 [connection signal="area_entered" from="DoorOpener" to="." method="_on_DoorOpener_area_entered"]

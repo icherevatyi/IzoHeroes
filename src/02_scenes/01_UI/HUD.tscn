@@ -22,31 +22,31 @@ region = Rect2( 0, 0, 112, 10 )
 atlas = ExtResource( 5 )
 region = Rect2( 0, 10, 112, 10 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 28, 74, 8 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 42, 74, 8 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 28, 74, 8 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 36, 74, 8 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 17, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 17, 17, 16 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
 region = Rect2( 18, 0, 11, 22 )
 
@@ -106,8 +106,8 @@ __meta__ = {
 margin_right = 74.0
 margin_bottom = 8.0
 value = 100.0
-texture_under = SubResource( 8 )
-texture_progress = SubResource( 9 )
+texture_under = SubResource( 5 )
+texture_progress = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -116,8 +116,8 @@ __meta__ = {
 margin_right = 74.0
 margin_bottom = 8.0
 value = 60.0
-texture_under = SubResource( 10 )
-texture_progress = SubResource( 11 )
+texture_under = SubResource( 7 )
+texture_progress = SubResource( 8 )
 
 [node name="Coins" type="HBoxContainer" parent="Control"]
 margin_top = 30.0
@@ -132,7 +132,7 @@ __meta__ = {
 [node name="CoinIcons" type="TextureRect" parent="Control/Coins"]
 margin_right = 17.0
 margin_bottom = 16.0
-texture = SubResource( 5 )
+texture = SubResource( 9 )
 
 [node name="Count" type="Label" parent="Control/Coins"]
 margin_left = 21.0
@@ -153,7 +153,7 @@ __meta__ = {
 [node name="PotionsIcon" type="TextureRect" parent="Control/PlayerStoredPotions"]
 margin_right = 17.0
 margin_bottom = 16.0
-texture = SubResource( 6 )
+texture = SubResource( 10 )
 
 [node name="Count" type="Label" parent="Control/PlayerStoredPotions"]
 margin_left = 21.0
@@ -168,7 +168,7 @@ margin_top = 57.0
 margin_right = 13.0
 margin_bottom = 79.0
 rect_scale = Vector2( 0.6, 0.6 )
-texture = SubResource( 7 )
+texture = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -189,6 +189,8 @@ margin_top = -71.0
 margin_bottom = 61.0
 
 [node name="HPChangeTween" type="Tween" parent="."]
+
+[node name="StaminaChangeTween" type="Tween" parent="."]
 
 [node name="BottleShakeTween" type="Tween" parent="."]
 

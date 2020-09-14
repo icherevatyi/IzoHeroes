@@ -12,12 +12,15 @@ onready var ui_parent: Control = $Control
 onready var notification_container: VBoxContainer = $Control/NotificationContainer
 onready var health_top:  = $Control/Health/HealthBarTop
 onready var health_bottom:  = $Control/Health/HealthBarBottom
+onready var stamina_top: = $Control/Stamina/StaminaBarTop
+onready var stamina_bottom: = $Control/Stamina/StaminaBarBottom 
 onready var dialog_box: Control = $Control/DialogBox
 onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
 onready var coin_icon: TextureRect = $Control/Coins/CoinIcons
 onready var bottle_icon: TextureRect = $Control/PlayerStoredPotions/PotionsIcon
 onready var hp_change_tween: Tween = $HPChangeTween
+onready var stamina_change_tween: Tween = $StaminaChangeTween
 onready var bottle_shake_tween: Tween = $BottleShakeTween
 onready var coin_shake_tween: Tween = $CoinShakeTween
 onready var coin_frequency_timer: Timer = $ShakeTimers/CoinFrequencyTimer
@@ -34,6 +37,11 @@ func _ready() -> void:
 	health_top.value = ResourceStorage.player_data.health_current
 	health_bottom.max_value = ResourceStorage.player_data.health_current
 	health_bottom.value = ResourceStorage.player_data.health_current
+	
+	stamina_top.max_value = ResourceStorage.player_data.stam_current
+	stamina_top.value = ResourceStorage.player_data.stam_current
+	stamina_bottom.max_value = ResourceStorage.player_data.stam_current
+	stamina_bottom.value = ResourceStorage.player_data.stam_current
 	
 	_display_starting_amount("gold_coins", ResourceStorage.player_data.coins_count)
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
@@ -82,6 +90,18 @@ func _on_damage_displayed(dmg_taken: int) -> void:
 	health_top.value = health_new
 	_response = hp_change_tween.interpolate_property(health_bottom, "value", health_current, health_new - dmg_taken, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_response = hp_change_tween.start()
+
+
+func _on_stamina_used(value) -> void:
+	var stam_current = stamina_top.value
+	var stam_new = stam_current - value
+	stamina_top.value = stam_new
+	_response = stamina_change_tween.interpolate_property(stamina_bottom, "value", stam_current, stam_new - value, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = stamina_change_tween.start()
+
+
+func _on_stam_regenerated(regen_amount) -> void:
+	stamina_top.value = stamina_top.value + regen_amount
 
 
 func _display_starting_amount(type, value) -> void:
