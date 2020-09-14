@@ -188,6 +188,25 @@ __meta__ = {
 margin_top = -71.0
 margin_bottom = 61.0
 
+[node name="PlayerMessagePopup" type="Label" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -16.5
+margin_right = 104.0
+margin_bottom = 0.5
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 4 )
+text = "I'm exhausted"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HPChangeTween" type="Tween" parent="."]
 
 [node name="StaminaChangeTween" type="Tween" parent="."]
@@ -196,18 +215,24 @@ margin_bottom = 61.0
 
 [node name="CoinShakeTween" type="Tween" parent="."]
 
-[node name="ShakeTimers" type="Node2D" parent="."]
+[node name="PopupFadeTween" type="Tween" parent="."]
 
-[node name="BottleDurationTimer" type="Timer" parent="ShakeTimers"]
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="BottleDurationTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="BottleFrequencyTimer" type="Timer" parent="ShakeTimers"]
+[node name="BottleFrequencyTimer" type="Timer" parent="Timers"]
 
-[node name="CoinDurationTimer" type="Timer" parent="ShakeTimers"]
+[node name="CoinDurationTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="CoinFrequencyTimer" type="Timer" parent="ShakeTimers"]
-[connection signal="timeout" from="ShakeTimers/BottleDurationTimer" to="." method="_on_BottleDurationTimer_timeout"]
-[connection signal="timeout" from="ShakeTimers/BottleFrequencyTimer" to="." method="_on_BottleFrequencyTimer_timeout"]
-[connection signal="timeout" from="ShakeTimers/CoinDurationTimer" to="." method="_on_CoinDurationTimer_timeout"]
-[connection signal="timeout" from="ShakeTimers/CoinFrequencyTimer" to="." method="_on_CoinFrequencyTimer_timeout"]
+[node name="CoinFrequencyTimer" type="Timer" parent="Timers"]
+
+[node name="PopupTimer" type="Timer" parent="Timers"]
+one_shot = true
+[connection signal="timeout" from="Timers/BottleDurationTimer" to="." method="_on_BottleDurationTimer_timeout"]
+[connection signal="timeout" from="Timers/BottleFrequencyTimer" to="." method="_on_BottleFrequencyTimer_timeout"]
+[connection signal="timeout" from="Timers/CoinDurationTimer" to="." method="_on_CoinDurationTimer_timeout"]
+[connection signal="timeout" from="Timers/CoinFrequencyTimer" to="." method="_on_CoinFrequencyTimer_timeout"]
+[connection signal="timeout" from="Timers/PopupTimer" to="." method="_on_PopupTimer_timeout"]

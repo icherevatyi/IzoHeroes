@@ -23,11 +23,14 @@ onready var hp_change_tween: Tween = $HPChangeTween
 onready var stamina_change_tween: Tween = $StaminaChangeTween
 onready var bottle_shake_tween: Tween = $BottleShakeTween
 onready var coin_shake_tween: Tween = $CoinShakeTween
-onready var coin_frequency_timer: Timer = $ShakeTimers/CoinFrequencyTimer
-onready var coin_duration_timer: Timer = $ShakeTimers/CoinDurationTimer
-onready var bottle_frequency_timer: Timer = $ShakeTimers/BottleFrequencyTimer
-onready var bottle_duration_timer: Timer = $ShakeTimers/BottleDurationTimer
+onready var coin_frequency_timer: Timer = $Timers/CoinFrequencyTimer
+onready var coin_duration_timer: Timer = $Timers/CoinDurationTimer
+onready var bottle_frequency_timer: Timer = $Timers/BottleFrequencyTimer
+onready var bottle_duration_timer: Timer = $Timers/BottleDurationTimer
 onready var key_item: TextureRect = $Control/KeyItem
+onready var player_message_popup: Label = $Control/PlayerMessagePopup
+onready var popup_fade_tween: Tween = $PopupFadeTween
+onready var popup_timer: Timer = $Timers/PopupTimer
 
 var coins_amount: int
 var bottle_amount: int
@@ -210,3 +213,11 @@ func _on_key_used() -> void:
 	key_item.visible = false
 
 
+func on_exhaustion_message_trigger() -> void:
+	_response = popup_fade_tween.interpolate_property(player_message_popup, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1),  1, popup_fade_tween.TRANS_LINEAR, popup_fade_tween.EASE_IN_OUT)
+	_response = popup_fade_tween.start()
+	popup_timer.start()
+
+func _on_PopupTimer_timeout() -> void:
+	_response = popup_fade_tween.interpolate_property(player_message_popup, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0),  1, popup_fade_tween.TRANS_LINEAR, popup_fade_tween.EASE_IN_OUT)
+	_response = popup_fade_tween.start()

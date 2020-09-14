@@ -83,7 +83,7 @@ func _input(event) -> void:
 				emit_signal("weapon_swing")
 				emit_signal("use_stamina", 10)
 			else:
-				pass
+				HUD.on_exhaustion_message_trigger()
 		
 		if event.is_action_pressed("view_stats"):
 			HUD.toggle_char_sheet()
