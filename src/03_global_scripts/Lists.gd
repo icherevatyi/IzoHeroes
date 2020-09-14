@@ -8,6 +8,14 @@ var level_messages: Dictionary = {
 	"demo_end": "You reached end of this demo, thank you for playing!"
 }
 
+var exhaustion_messages: Dictionary = {
+	0: "I'm tired.",
+	1: "I am exhausted.",
+	2: "My arms are so heavy.",
+	3: "I need time to rest.",
+	4: "Give me some time."
+}
+
 
 var main_menu_list: Dictionary = {
 	1: {

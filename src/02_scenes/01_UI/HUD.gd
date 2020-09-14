@@ -7,6 +7,9 @@ var _response: int
 var is_stat_screen_shown: bool = false
 var shake_offset_value: float = 0
 
+var coins_amount: int
+var bottle_amount: int
+
 onready var player: KinematicBody2D = get_node("../")
 onready var ui_parent: Control = $Control
 onready var notification_container: VBoxContainer = $Control/NotificationContainer
@@ -32,8 +35,6 @@ onready var player_message_popup: Label = $Control/PlayerMessagePopup
 onready var popup_fade_tween: Tween = $PopupFadeTween
 onready var popup_timer: Timer = $Timers/PopupTimer
 
-var coins_amount: int
-var bottle_amount: int
 
 func _ready() -> void:
 	health_top.max_value = ResourceStorage.player_data.health_current
@@ -214,9 +215,17 @@ func _on_key_used() -> void:
 
 
 func on_exhaustion_message_trigger() -> void:
+	player_message_popup.text = get_tired_phrase()
 	_response = popup_fade_tween.interpolate_property(player_message_popup, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1),  1, popup_fade_tween.TRANS_LINEAR, popup_fade_tween.EASE_IN_OUT)
 	_response = popup_fade_tween.start()
 	popup_timer.start()
+
+
+func get_tired_phrase() ->  String:
+	rng.randomize()
+	var phrase_number = rng.randi_range(0, Lists.exhaustion_messages.size() - 1)
+	return Lists.exhaustion_messages[phrase_number]
+
 
 func _on_PopupTimer_timeout() -> void:
 	_response = popup_fade_tween.interpolate_property(player_message_popup, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0),  1, popup_fade_tween.TRANS_LINEAR, popup_fade_tween.EASE_IN_OUT)
