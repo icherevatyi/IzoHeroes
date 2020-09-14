@@ -6,7 +6,6 @@ var damage: int
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: Sprite = get_node("../../Sprite")
 onready var camera: Camera2D = get_node("../../Camera2D")
-onready var swing_timer: Timer = $SwingTimer
 
 signal do_damage(damage)
 
