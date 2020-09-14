@@ -30,7 +30,7 @@ func _ready() -> void:
 	health_max = PlayerStats.stats_list[0].value
 	health_min = 0
 	
-	stam_current = ResourceStorage.player_data.stam_current
+	stam_current = PlayerStats.stats_list[1].value
 	stam_max = PlayerStats.stats_list[1].value
 	stam_min = 0
 

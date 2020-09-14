@@ -56,7 +56,7 @@ var perk_list: Dictionary = {
 	0: {
 		"title": "Fortitude",
 		"type": "max_health",
-		"description": "Your adventures made you sturdier, from now on foes will have much harder time killing you. Increased maximum health by 35.",
+		"description": "Your adventures made you sturdier, from now on foes will have much harder time killing you. Increased maximum health by 35. and maximum stamina by 15",
 		"value": 35,
 		"perk_lvl": 0,
 	},
@@ -104,6 +104,7 @@ func update_stat(index: int) -> void:
 		if stats_list[list_item].type == perk_list[index].type:
 			if stats_list[list_item].type == "max_health":
 				stats_list[list_item].value += 35
+				stats_list[1].value += 15
 			else:
 				stats_list[list_item].value += int(round((stats_list[list_item].base_value * perk_list[index].value)))
 

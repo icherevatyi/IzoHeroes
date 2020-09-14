@@ -38,10 +38,10 @@ func _ready() -> void:
 	health_bottom.max_value = ResourceStorage.player_data.health_current
 	health_bottom.value = ResourceStorage.player_data.health_current
 	
-	stamina_top.max_value = ResourceStorage.player_data.stam_current
-	stamina_top.value = ResourceStorage.player_data.stam_current
-	stamina_bottom.max_value = ResourceStorage.player_data.stam_current
-	stamina_bottom.value = ResourceStorage.player_data.stam_current
+	stamina_top.max_value = PlayerStats.stats_list[1].value
+	stamina_top.value = PlayerStats.stats_list[1].value
+	stamina_bottom.max_value = PlayerStats.stats_list[1].value
+	stamina_bottom.value = PlayerStats.stats_list[1].value
 	
 	_display_starting_amount("gold_coins", ResourceStorage.player_data.coins_count)
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
