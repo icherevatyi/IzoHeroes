@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Chibi Knight"
+config/name="IzoHeroes"
 run/main_scene="res://src/02_scenes/01_UI/03_Menus/Menu.tscn"
 config/icon="res://icon.png"
 
