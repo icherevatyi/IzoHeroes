@@ -59,7 +59,7 @@ func _on_StaminaRegenTimer_timeout() -> void:
 	if stam_current >= stam_max:
 		stam_regen_timer.stop()
 		return
-	var regen_value = 1
+	var regen_value = 2
 	stam_current = stam_current + regen_value
 	emit_signal("_stam_regenerated", regen_value)
 	stam_regen_timer.start()
