@@ -122,6 +122,7 @@ view_stats={
 2d_physics/layer_5="PlayerWeapon"
 2d_physics/layer_6="RoomSpawnPoints"
 2d_physics/layer_7="EnemyMagic"
+2d_physics/layer_8="ActiveObjects"
 
 [rendering]
 
