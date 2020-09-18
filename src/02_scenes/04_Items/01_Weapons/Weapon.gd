@@ -3,6 +3,7 @@ extends Area2D
 var is_monitored: bool
 var damage: int
 
+onready var weapon_sprite: Sprite = $Sprite
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: Sprite = get_node("../../Sprite")
 onready var camera: Camera2D = get_node("../../Camera2D")
@@ -25,8 +26,10 @@ func get_param_value(param: String) -> int:
 
 func _on_weapon_swing() -> void:
 	if player_sprite.flip_h == false:
+		weapon_sprite.flip_v = false
 		animation_player.play("swing")
 	if player_sprite.flip_h == true:
+		weapon_sprite.flip_v = true
 		animation_player.play_backwards("swing")
 
 
