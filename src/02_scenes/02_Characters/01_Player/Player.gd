@@ -12,6 +12,10 @@ var can_attack: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
 var enemy_visible: bool = false
+var is_interactive: bool = false
+
+
+var interactive_obj: Object
 
 
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
@@ -76,6 +80,7 @@ func _move_player() ->  void:
 	movement = movement * speed
 	movement = move_and_slide(movement, Vector2(0, 0))
 
+
 func _input(event) -> void:		
 	if is_dead == false:
 		if event.is_action_pressed("attack"):
@@ -102,6 +107,10 @@ func _input(event) -> void:
 					emit_signal("damage_heal", 30)
 					emit_signal("use_bottle")
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
+			if event.is_action_pressed("interract"):
+				if is_interactive == true and interactive_obj != null:
+					interactive_obj.activate()
+
 
 func _on_stam_depleeted() -> void:
 	can_attack = false
