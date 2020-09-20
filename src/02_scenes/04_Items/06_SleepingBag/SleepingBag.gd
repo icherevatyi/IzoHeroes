@@ -4,6 +4,8 @@ var _response: int
 var is_usable: bool = true
 
 onready var activation_label: Control = $InterractionIndicator
+onready var bag_not_used: Node2D = $NotUsed
+onready var bag_used: Node2D = $Used
 
 signal show_label
 signal hide_label
@@ -18,6 +20,9 @@ func _ready() -> void:
 	_response = connect("start_activation", activation_label, "_on_activation_started")
 	_response = connect("stop_activation", activation_label, "_on_activation_stopped")
 	
+	bag_not_used.visible = true
+	bag_used.visible = false
+
 
 func _on_PlayerCollisionDetector_body_entered(body) -> void:
 	if body.name == "Player":
@@ -51,6 +56,8 @@ func activate() -> void:
 				emit_signal("hide_label")
 				body.emit_signal("damage_heal", body.health_scripts.health_max)
 				is_usable = false
+				bag_not_used.visible = false
+				bag_used.visible = true
 
 
 func show_inactive_message() -> void:
