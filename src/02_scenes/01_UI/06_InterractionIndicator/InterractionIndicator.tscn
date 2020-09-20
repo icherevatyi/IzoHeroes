@@ -36,7 +36,9 @@ __meta__ = {
 [node name="VisibilityTween" type="Tween" parent="."]
 
 [node name="ActivationSlider" type="ColorRect" parent="."]
+margin_left = 6.33333
 margin_top = -27.0
+margin_right = 30.3333
 margin_bottom = -24.0
 __meta__ = {
 "_edit_use_anchors_": false
