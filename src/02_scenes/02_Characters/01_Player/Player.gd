@@ -109,7 +109,10 @@ func _input(event) -> void:
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
 			if event.is_action_pressed("interract"):
 				if is_interactive == true and interactive_obj != null:
-					interactive_obj.activate()
+					interactive_obj.start_activation()
+			if event.is_action_released("interract"):
+				if is_interactive == true and interactive_obj != null:
+					interactive_obj.abort_activation()
 
 
 func _on_stam_depleeted() -> void:

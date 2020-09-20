@@ -7,11 +7,16 @@ onready var activation_label: Control = $InterractionIndicator
 
 signal show_label
 signal hide_label
+signal start_activation
+signal stop_activation
 
 
 func _ready() -> void:
 	_response = connect("show_label", activation_label, "_on_indicator_enabled")
 	_response = connect("hide_label", activation_label, "_on_indicator_disabled")
+	
+	_response = connect("start_activation", activation_label, "_on_activation_started")
+	_response = connect("stop_activation", activation_label, "_on_activation_stopped")
 	
 
 func _on_PlayerCollisionDetector_body_entered(body) -> void:
@@ -28,6 +33,15 @@ func _on_PlayerCollisionDetector_body_exited(body) -> void:
 		body.interactive_obj = null
 		if is_usable == true:
 			emit_signal("hide_label")
+			emit_signal("stop_activation")
+
+
+func start_activation() -> void:
+			emit_signal("start_activation")
+
+
+func abort_activation() -> void:
+			emit_signal("stop_activation")
 
 
 func activate() -> void:

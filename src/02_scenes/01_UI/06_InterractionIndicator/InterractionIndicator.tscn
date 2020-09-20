@@ -34,3 +34,13 @@ __meta__ = {
 [node name="SlidingTween" type="Tween" parent="."]
 
 [node name="VisibilityTween" type="Tween" parent="."]
+
+[node name="ActivationSlider" type="ColorRect" parent="."]
+margin_top = -27.0
+margin_bottom = -24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActivationAnimationTween" type="Tween" parent="."]
+[connection signal="tween_all_completed" from="ActivationAnimationTween" to="." method="_on_ActivationAnimationTween_tween_all_completed"]
