@@ -12,8 +12,8 @@ var stats_list: Dictionary = {
 		"type": "max_stamina",
 		"title": "Max. Stamina",
 		"description": "0",
-		"base_value": 60,
-		"value": 60,
+		"base_value": 100,
+		"value": 100,
 	},
 	2: {
 		"type": "attack_speed",

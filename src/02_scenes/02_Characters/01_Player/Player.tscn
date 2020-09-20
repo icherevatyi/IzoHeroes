@@ -208,7 +208,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 3
+frame = 2
 __meta__ = {
 "_editor_description_": ""
 }
@@ -254,6 +254,7 @@ one_shot = true
 wait_time = 0.025
 
 [node name="StaminaDelayTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
 one_shot = true
 
 [node name="AdditionalScripts" type="Node2D" parent="."]

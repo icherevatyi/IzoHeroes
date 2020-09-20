@@ -38,13 +38,13 @@ func _ready() -> void:
 func _on_stamina_used(value) -> void:
 	stam_regen_timer.stop()
 	stam_delay_timer.stop()
-	stam_delay_timer.set_wait_time(1)
+	stam_delay_timer.set_wait_time(0.5)
 	stam_current = int(stam_current - value)
 	stam_current = int(max(stam_current, 0))
 	stam_delay_timer.start()
 	if stam_current <= 0:
 		emit_signal("_stam_depleeted")
-		stam_delay_timer.set_wait_time(2)
+		stam_delay_timer.set_wait_time(1)
 		stam_delay_timer.start()
 
 
