@@ -100,7 +100,7 @@ func _input(event) -> void:
 		if event.is_pressed() == true:
 			idle_timer.stop()
 			is_bored = false
-		
+
 		if health_scripts.health_current < health_scripts.health_max:
 			if event.is_action_pressed("use_item"):
 				if loot_management.healing_bottle > 0:

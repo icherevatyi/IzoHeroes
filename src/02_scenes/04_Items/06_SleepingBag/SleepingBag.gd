@@ -1,7 +1,7 @@
 extends Node2D
 
 var _response: int
-var can_rest: bool = false
+var is_usable: bool = true
 
 onready var activation_label: Control = $InterractionIndicator
 
@@ -16,19 +16,28 @@ func _ready() -> void:
 
 func _on_PlayerCollisionDetector_body_entered(body) -> void:
 	if body.name == "Player":
-		body.is_interactive = true
+		if is_usable == true:
+			body.is_interactive = true
+			emit_signal("show_label")
 		body.interactive_obj = self
-		emit_signal("show_label")
 
 
 func _on_PlayerCollisionDetector_body_exited(body) -> void:
 	if body.name == "Player":
 		body.is_interactive = false
 		body.interactive_obj = null
-		emit_signal("hide_label")
+		if is_usable == true:
+			emit_signal("hide_label")
 
 
 func activate() -> void:
 	for body in $PlayerCollisionDetector.get_overlapping_bodies():
 		if body.name == "Player":
-			body.emit_signal("damage_heal", body.health_scripts.health_max)
+			if is_usable == true:
+				emit_signal("hide_label")
+				body.emit_signal("damage_heal", body.health_scripts.health_max)
+				is_usable = false
+
+
+func show_inactive_message() -> void:
+	print("There's no time to rest!")
