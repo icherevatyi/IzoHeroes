@@ -111,7 +111,6 @@ func _input(event) -> void:
 					emit_signal("use_bottle")
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
 			if event.is_action_pressed("interract"):
-				print(is_dangerous_to_rest)
 				_response = _rest() if (is_dangerous_to_rest == false) else print("it's dangerous here")
 				
 			if event.is_action_released("interract"):

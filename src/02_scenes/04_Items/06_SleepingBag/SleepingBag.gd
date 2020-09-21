@@ -54,11 +54,15 @@ func activate() -> void:
 		if body.name == "Player":
 			if is_usable == true:
 				emit_signal("hide_label")
+				Backdrop.fade_in(2.5)
+				yield(Backdrop.animation_player, "animation_finished")
+				get_tree().paused = true
 				body.emit_signal("damage_heal", body.health_scripts.health_max)
 				is_usable = false
 				bag_not_used.visible = false
 				bag_used.visible = true
-
+				get_tree().paused = false
+				Backdrop.fade_out()
 
 func show_inactive_message() -> void:
 	print("There's no time to rest!")

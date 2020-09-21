@@ -6,51 +6,52 @@
 [ext_resource path="res://src/02_scenes/01_UI/06_InterractionIndicator/InterractionIndicator.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/01_assets/08_Items/SleepingBagUsed.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 47, 49 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 47, 0, 15, 10 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 11, 12, 23 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 47, 49 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 5 )
 region = Rect2( 47, 36, 8, 9 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 5 )
 region = Rect2( 48, 11, 12, 23 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 18.8292, 29.7127 )
 
 [node name="SleepingBag" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="NotUsed" type="Node2D" parent="."]
 
 [node name="Bag" type="Sprite" parent="NotUsed"]
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 
 [node name="Book" type="Sprite" parent="NotUsed"]
 position = Vector2( 24, -1 )
 rotation = 0.280978
-texture = SubResource( 8 )
+texture = SubResource( 2 )
 region_rect = Rect2( 34, -1, 16, 21 )
 
 [node name="Lantern" type="Sprite" parent="NotUsed"]
 position = Vector2( 27, -12 )
 scale = Vector2( 0.6, 0.6 )
-texture = SubResource( 4 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -68,17 +69,17 @@ visible = false
 [node name="Bag" type="Sprite" parent="Used"]
 position = Vector2( -1.79917, -2.95579 )
 scale = Vector2( 1.2, 1.2 )
-texture = SubResource( 7 )
+texture = SubResource( 4 )
 
 [node name="Book" type="Sprite" parent="Used"]
 position = Vector2( 9, 9.50003 )
 rotation = -0.331021
-texture = SubResource( 6 )
+texture = SubResource( 5 )
 
 [node name="Lantern" type="Sprite" parent="Used"]
 position = Vector2( 5, 10 )
 scale = Vector2( 0.6, 0.6 )
-texture = SubResource( 5 )
+texture = SubResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -89,7 +90,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollisionDetector"]
 rotation = 0.802851
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="InterractionIndicator" parent="." instance=ExtResource( 4 )]
 margin_left = 8.694
