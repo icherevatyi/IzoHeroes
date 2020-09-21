@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var _response
+
 var health_is_damaged: bool = false
 
 var rng = RandomNumberGenerator.new()
@@ -11,7 +13,8 @@ var can_open: bool = false
 var can_attack: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
-var enemy_visible: bool = false
+
+var is_dangerous_to_rest: bool = false
 var is_interactive: bool = false
 
 
@@ -108,11 +111,16 @@ func _input(event) -> void:
 					emit_signal("use_bottle")
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
 			if event.is_action_pressed("interract"):
-				if is_interactive == true and interactive_obj != null:
-					interactive_obj.start_activation()
+				print(is_dangerous_to_rest)
+				_response = _rest() if (is_dangerous_to_rest == false) else print("it's dangerous here")
+				
 			if event.is_action_released("interract"):
 				if is_interactive == true and interactive_obj != null:
 					interactive_obj.abort_activation()
+
+func _rest() -> void:
+	if is_interactive == true and interactive_obj != null:
+			interactive_obj.start_activation()
 
 
 func _on_stam_depleeted() -> void:
