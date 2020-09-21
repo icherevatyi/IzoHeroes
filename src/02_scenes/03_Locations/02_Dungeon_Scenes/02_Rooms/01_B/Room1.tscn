@@ -120,6 +120,361 @@ position = Vector2( -117.043, -79 )
 rotation = 1.83259
 texture = SubResource( 4 )
 
+[node name="Furniture" parent="." index="3"]
+scale = Vector2( 1.3, 1.3 )
+
+[node name="TableTop_1" parent="Furniture" index="0" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( -92.3077, -73.8461 )
+collision_layer = 1
+
+[node name="TableTop_3" parent="Furniture" index="1" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( -67.6923, 3.8147e-06 )
+rotation = -0.261799
+collision_layer = 1
+
+[node name="TableTop_2" parent="Furniture" index="2" groups=[
+"rooms",
+] instance=ExtResource( 11 )]
+position = Vector2( -43.0769, -66.8461 )
+rotation = -0.261799
+collision_layer = 1
+
+[node name="TableTop_6" parent="Furniture" index="3" groups=[
+"rooms",
+] instance=ExtResource( 10 )]
+position = Vector2( -80, -36.9231 )
+rotation = 0.261799
+collision_layer = 1
+
+[node name="Chair_1" parent="Furniture" index="4" groups=[
+"rooms",
+] instance=ExtResource( 13 )]
+position = Vector2( -90.033, -86.1538 )
+collision_layer = 1
+
+[node name="Chair_3" parent="Furniture" index="5" groups=[
+"rooms",
+] instance=ExtResource( 13 )]
+position = Vector2( -73.8462, -49.2308 )
+rotation = 0.523598
+collision_layer = 1
+
+[node name="Shelf_1" parent="Furniture" index="6" groups=[
+"rooms",
+] instance=ExtResource( 15 )]
+position = Vector2( -72.3077, -104.615 )
+collision_layer = 1
+
+[node name="Shelf_3" parent="Furniture" index="7" groups=[
+"rooms",
+] instance=ExtResource( 15 )]
+position = Vector2( -39.2308, -104.615 )
+collision_layer = 1
+
+[node name="ShelfTop_3" parent="Furniture" index="8" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( 71, -104.615 )
+collision_layer = 1
+
+[node name="ShelfTop_4" parent="Furniture" index="9" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( -98.5, -104.615 )
+collision_layer = 1
+
+[node name="TableTop_7" parent="Furniture" index="10" groups=[
+"rooms",
+] instance=ExtResource( 16 )]
+position = Vector2( 86.1538, -36.9231 )
+rotation = 0.523598
+collision_layer = 1
+
+[node name="TableTop_9" parent="Furniture" index="11" groups=[
+"rooms",
+] instance=ExtResource( 16 )]
+position = Vector2( -36.9231, -32.0769 )
+rotation = 0.523598
+collision_layer = 1
+
+[node name="ShelfSide_1" parent="Furniture" index="12" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( -113.846, 6.15384 )
+collision_layer = 1
+
+[node name="ShelfSide_7" parent="Furniture" index="13" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( -61.5385, 89.2307 )
+rotation = -1.57079
+collision_layer = 1
+
+[node name="ShelfSide_9" parent="Furniture" index="14" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( 61.538, 89.231 )
+rotation = -1.57079
+collision_layer = 1
+
+[node name="ShelfSide_10" parent="Furniture" index="15" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( 87.4615, 89.2308 )
+rotation = -1.57079
+collision_layer = 1
+
+[node name="ShelfSide_11" parent="Furniture" index="16" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( 113.846, 12.3077 )
+rotation = -3.14159
+collision_layer = 1
+
+[node name="ShelfSide_13" parent="Furniture" index="17" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( 113.5, -32.0769 )
+rotation = -3.14159
+collision_layer = 1
+
+[node name="ShelfSide_14" parent="Furniture" index="18" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( 113.846, -57.6923 )
+rotation = -3.14159
+collision_layer = 1
+
+[node name="ShelfSide_8" parent="Furniture" index="19" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( -88.3023, 89.2307 )
+rotation = -1.57079
+collision_layer = 1
+
+[node name="ShelfSide_5" parent="Furniture" index="20" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( -113.846, 55.3846 )
+collision_layer = 1
+
+[node name="ShelfSide_6" parent="Furniture" index="21" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( -113.846, 80 )
+collision_layer = 1
+
+[node name="ShelfSide_3" parent="Furniture" index="22" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( -113.846, 30.7692 )
+collision_layer = 1
+
+[node name="ShelfSide_4" parent="Furniture" index="23" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( 113.846, 39.2308 )
+rotation = -3.14159
+collision_layer = 1
+
+[node name="ShelfSide_12" parent="Furniture" index="24" groups=[
+"rooms",
+] instance=ExtResource( 17 )]
+position = Vector2( 113.846, 67.6922 )
+rotation = -3.14159
+collision_layer = 1
+
+[node name="ShelfSide_2" parent="Furniture" index="25" groups=[
+"rooms",
+] instance=ExtResource( 18 )]
+position = Vector2( -113.846, -43.0769 )
+collision_layer = 1
+
+[node name="ShelfSide_15" parent="Furniture" index="26" groups=[
+"rooms",
+] instance=ExtResource( 18 )]
+position = Vector2( -113.846, -68.4615 )
+collision_layer = 1
+
+[node name="ShelfSide_16" parent="Furniture" index="27" groups=[
+"rooms",
+] instance=ExtResource( 18 )]
+position = Vector2( -113.846, -93.0769 )
+collision_layer = 1
+
+[node name="TableTop_12" parent="Furniture" index="28" groups=[
+"rooms",
+] instance=ExtResource( 20 )]
+position = Vector2( -28.2308, 18.4615 )
+rotation = 0.523598
+collision_layer = 1
+
+[node name="Stain_1" parent="Furniture/TableTop_12" index="2" groups=[
+"rooms",
+] instance=ExtResource( 19 )]
+position = Vector2( 1, 8.29999 )
+collision_layer = 1
+
+[node name="TableTop_13" parent="Furniture" index="29" groups=[
+"rooms",
+] instance=ExtResource( 20 )]
+position = Vector2( 49.2308, 6.15385 )
+rotation = 0.261799
+collision_layer = 1
+
+[node name="Stain_1" parent="Furniture/TableTop_13" index="2" groups=[
+"rooms",
+] instance=ExtResource( 19 )]
+position = Vector2( 1, 8.29999 )
+collision_layer = 1
+
+[node name="ShelfTop_2" parent="Furniture" index="30" groups=[
+"rooms",
+] instance=ExtResource( 21 )]
+position = Vector2( -13.8461, -104.615 )
+collision_layer = 1
+
+[node name="ShelfTop_5" parent="Furniture" index="31" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( 12.0769, -104.615 )
+collision_layer = 1
+
+[node name="ShelfTop_6" parent="Furniture" index="32" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( 38.2308, -104.615 )
+collision_layer = 1
+
+[node name="TableTop_4" parent="Furniture" index="33" groups=[
+"rooms",
+] instance=ExtResource( 22 )]
+position = Vector2( 60, -19.2308 )
+rotation = 0.261799
+collision_layer = 1
+
+[node name="TableTop_8" parent="Furniture" index="34" groups=[
+"rooms",
+] instance=ExtResource( 22 )]
+position = Vector2( 43.0769, -55.3846 )
+rotation = -0.785397
+collision_layer = 1
+
+[node name="TableTop_10" parent="Furniture" index="35" groups=[
+"rooms",
+] instance=ExtResource( 10 )]
+position = Vector2( 92.3077, 18.4615 )
+rotation = 0.261799
+collision_layer = 1
+
+[node name="TableTop_11" parent="Furniture" index="36" groups=[
+"rooms",
+] instance=ExtResource( 10 )]
+position = Vector2( -83.3077, 30.7692 )
+rotation = -0.523598
+collision_layer = 1
+
+[node name="TableTop_14" parent="Furniture" index="37" groups=[
+"rooms",
+] instance=ExtResource( 23 )]
+position = Vector2( 73.8462, 55.3846 )
+rotation = -0.523598
+collision_layer = 1
+
+[node name="TableTop_15" parent="Furniture" index="38" groups=[
+"rooms",
+] instance=ExtResource( 23 )]
+position = Vector2( -50.2308, 49.2308 )
+rotation = 0.261799
+collision_layer = 1
+
+[node name="Chair_5" parent="Furniture" index="39" groups=[
+"rooms",
+] instance=ExtResource( 25 )]
+position = Vector2( -90.033, 19.7692 )
+collision_layer = 1
+
+[node name="Chair_10" parent="Furniture" index="40" groups=[
+"rooms",
+] instance=ExtResource( 25 )]
+position = Vector2( 71, -30.7692 )
+rotation = -0.261799
+collision_layer = 1
+
+[node name="Chair_11" parent="Furniture" index="41" groups=[
+"rooms",
+] instance=ExtResource( 25 )]
+position = Vector2( -49.2308, -81.6538 )
+rotation = 0.523598
+collision_layer = 1
+
+[node name="Chair_6" parent="Furniture" index="42" groups=[
+"rooms",
+] instance=ExtResource( 24 )]
+position = Vector2( 53.8462, -8.46154 )
+collision_layer = 1
+
+[node name="Chair_7" parent="Furniture" index="43" groups=[
+"rooms",
+] instance=ExtResource( 24 )]
+position = Vector2( 96, 6.92308 )
+rotation = 0.523598
+collision_layer = 1
+
+[node name="Chair_8" parent="Furniture" index="44" groups=[
+"rooms",
+] instance=ExtResource( 24 )]
+position = Vector2( 98.4615, -44.7308 )
+collision_layer = 1
+
+[node name="Chair_13" parent="Furniture" index="45" groups=[
+"rooms",
+] instance=ExtResource( 24 )]
+position = Vector2( -6.50001, -54.0769 )
+collision_layer = 1
+
+[node name="Chair_9" parent="Furniture" index="46" groups=[
+"rooms",
+] instance=ExtResource( 24 )]
+position = Vector2( 33.9231, -63.5462 )
+collision_layer = 1
+
+[node name="Chair_4" parent="Furniture" index="47" groups=[
+"rooms",
+] instance=ExtResource( 26 )]
+position = Vector2( -30.7692, 3.46154 )
+scale = Vector2( 0.769231, 0.769231 )
+collision_layer = 1
+
+[node name="Chair_12" parent="Furniture" index="48" groups=[
+"rooms",
+] instance=ExtResource( 26 )]
+position = Vector2( -67.6923, -12.3077 )
+scale = Vector2( 0.769231, 0.769231 )
+collision_layer = 1
+
+[node name="FallenShelf" parent="Furniture" index="49" groups=[
+"rooms",
+] instance=ExtResource( 27 )]
+position = Vector2( 98.4615, -73.8461 )
+collision_layer = 1
+
+[node name="Web" parent="Furniture" index="50" groups=[
+"rooms",
+] instance=ExtResource( 9 )]
+position = Vector2( 105, -105.385 )
+collision_layer = 1
+
+[node name="Stand" parent="Furniture" index="51" groups=[
+"rooms",
+] instance=ExtResource( 28 )]
+position = Vector2( 0, -74.6922 )
+collision_layer = 1
+
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 6 )]
 position = Vector2( -72, -138 )
 
@@ -141,196 +496,3 @@ scale = Vector2( 1, -1 )
 position = Vector2( -60, 117 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
-
-[node name="Furniture" parent="." index="4"]
-scale = Vector2( 1.3, 1.3 )
-
-[node name="TableTop_1" parent="Furniture" index="0" instance=ExtResource( 12 )]
-position = Vector2( -92.3077, -73.8461 )
-
-[node name="TableTop_3" parent="Furniture" index="1" instance=ExtResource( 12 )]
-position = Vector2( -67.6923, 3.8147e-06 )
-rotation = -0.261799
-
-[node name="TableTop_2" parent="Furniture" index="2" instance=ExtResource( 11 )]
-position = Vector2( -43.0769, -66.8461 )
-rotation = -0.261799
-
-[node name="TableTop_6" parent="Furniture" index="3" instance=ExtResource( 10 )]
-position = Vector2( -80, -36.9231 )
-rotation = 0.261799
-
-[node name="Chair_1" parent="Furniture" index="4" instance=ExtResource( 13 )]
-position = Vector2( -90.033, -86.1538 )
-
-[node name="Chair_3" parent="Furniture" index="5" instance=ExtResource( 13 )]
-position = Vector2( -73.8462, -49.2308 )
-rotation = 0.523598
-
-[node name="Shelf_1" parent="Furniture" index="6" instance=ExtResource( 15 )]
-position = Vector2( -72.3077, -104.615 )
-
-[node name="Shelf_3" parent="Furniture" index="7" instance=ExtResource( 15 )]
-position = Vector2( -39.2308, -104.615 )
-
-[node name="ShelfTop_3" parent="Furniture" index="8" instance=ExtResource( 14 )]
-position = Vector2( 71, -104.615 )
-
-[node name="ShelfTop_4" parent="Furniture" index="9" instance=ExtResource( 14 )]
-position = Vector2( -98.5, -104.615 )
-
-[node name="TableTop_7" parent="Furniture" index="10" instance=ExtResource( 16 )]
-position = Vector2( 86.1538, -36.9231 )
-rotation = 0.523598
-
-[node name="TableTop_9" parent="Furniture" index="11" instance=ExtResource( 16 )]
-position = Vector2( -36.9231, -32.0769 )
-rotation = 0.523598
-
-[node name="ShelfSide_1" parent="Furniture" index="12" instance=ExtResource( 17 )]
-position = Vector2( -113.846, 6.15384 )
-
-[node name="ShelfSide_7" parent="Furniture" index="13" instance=ExtResource( 17 )]
-position = Vector2( -61.5385, 89.2307 )
-rotation = -1.57079
-
-[node name="ShelfSide_9" parent="Furniture" index="14" instance=ExtResource( 17 )]
-position = Vector2( 61.538, 89.231 )
-rotation = -1.57079
-
-[node name="ShelfSide_10" parent="Furniture" index="15" instance=ExtResource( 17 )]
-position = Vector2( 87.4615, 89.2308 )
-rotation = -1.57079
-
-[node name="ShelfSide_11" parent="Furniture" index="16" instance=ExtResource( 17 )]
-position = Vector2( 113.846, 12.3077 )
-rotation = -3.14159
-
-[node name="ShelfSide_13" parent="Furniture" index="17" instance=ExtResource( 17 )]
-position = Vector2( 113.5, -32.0769 )
-rotation = -3.14159
-
-[node name="ShelfSide_14" parent="Furniture" index="18" instance=ExtResource( 17 )]
-position = Vector2( 113.846, -57.6923 )
-rotation = -3.14159
-
-[node name="ShelfSide_8" parent="Furniture" index="19" instance=ExtResource( 17 )]
-position = Vector2( -88.3023, 89.2307 )
-rotation = -1.57079
-
-[node name="ShelfSide_5" parent="Furniture" index="20" instance=ExtResource( 17 )]
-position = Vector2( -113.846, 55.3846 )
-
-[node name="ShelfSide_6" parent="Furniture" index="21" instance=ExtResource( 17 )]
-position = Vector2( -113.846, 80 )
-
-[node name="ShelfSide_3" parent="Furniture" index="22" instance=ExtResource( 17 )]
-position = Vector2( -113.846, 30.7692 )
-
-[node name="ShelfSide_4" parent="Furniture" index="23" instance=ExtResource( 17 )]
-position = Vector2( 113.846, 39.2308 )
-rotation = -3.14159
-
-[node name="ShelfSide_12" parent="Furniture" index="24" instance=ExtResource( 17 )]
-position = Vector2( 113.846, 67.6922 )
-rotation = -3.14159
-
-[node name="ShelfSide_2" parent="Furniture" index="25" instance=ExtResource( 18 )]
-position = Vector2( -113.846, -43.0769 )
-
-[node name="ShelfSide_15" parent="Furniture" index="26" instance=ExtResource( 18 )]
-position = Vector2( -113.846, -68.4615 )
-
-[node name="ShelfSide_16" parent="Furniture" index="27" instance=ExtResource( 18 )]
-position = Vector2( -113.846, -93.0769 )
-
-[node name="TableTop_12" parent="Furniture" index="28" instance=ExtResource( 20 )]
-position = Vector2( -28.2308, 18.4615 )
-rotation = 0.523598
-
-[node name="Stain_1" parent="Furniture/TableTop_12" index="2" instance=ExtResource( 19 )]
-position = Vector2( 1, 8.29999 )
-
-[node name="TableTop_13" parent="Furniture" index="29" instance=ExtResource( 20 )]
-position = Vector2( 49.2308, 6.15385 )
-rotation = 0.261799
-
-[node name="Stain_1" parent="Furniture/TableTop_13" index="2" instance=ExtResource( 19 )]
-position = Vector2( 1, 8.29999 )
-
-[node name="ShelfTop_2" parent="Furniture" index="30" instance=ExtResource( 21 )]
-position = Vector2( -13.8461, -104.615 )
-
-[node name="ShelfTop_5" parent="Furniture" index="31" instance=ExtResource( 14 )]
-position = Vector2( 12.0769, -104.615 )
-
-[node name="ShelfTop_6" parent="Furniture" index="32" instance=ExtResource( 14 )]
-position = Vector2( 38.2308, -104.615 )
-
-[node name="TableTop_4" parent="Furniture" index="33" instance=ExtResource( 22 )]
-position = Vector2( 60, -19.2308 )
-rotation = 0.261799
-
-[node name="TableTop_8" parent="Furniture" index="34" instance=ExtResource( 22 )]
-position = Vector2( 43.0769, -55.3846 )
-rotation = -0.785397
-
-[node name="TableTop_10" parent="Furniture" index="35" instance=ExtResource( 10 )]
-position = Vector2( 92.3077, 18.4615 )
-rotation = 0.261799
-
-[node name="TableTop_11" parent="Furniture" index="36" instance=ExtResource( 10 )]
-position = Vector2( -83.3077, 30.7692 )
-rotation = -0.523598
-
-[node name="TableTop_14" parent="Furniture" index="37" instance=ExtResource( 23 )]
-position = Vector2( 73.8462, 55.3846 )
-rotation = -0.523598
-
-[node name="TableTop_15" parent="Furniture" index="38" instance=ExtResource( 23 )]
-position = Vector2( -50.2308, 49.2308 )
-rotation = 0.261799
-
-[node name="Chair_5" parent="Furniture" index="39" instance=ExtResource( 25 )]
-position = Vector2( -90.033, 19.7692 )
-
-[node name="Chair_10" parent="Furniture" index="40" instance=ExtResource( 25 )]
-position = Vector2( 71, -30.7692 )
-rotation = -0.261799
-
-[node name="Chair_11" parent="Furniture" index="41" instance=ExtResource( 25 )]
-position = Vector2( -49.2308, -81.6538 )
-rotation = 0.523598
-
-[node name="Chair_6" parent="Furniture" index="42" instance=ExtResource( 24 )]
-position = Vector2( 53.8462, -8.46154 )
-
-[node name="Chair_7" parent="Furniture" index="43" instance=ExtResource( 24 )]
-position = Vector2( 96, 6.92308 )
-rotation = 0.523598
-
-[node name="Chair_8" parent="Furniture" index="44" instance=ExtResource( 24 )]
-position = Vector2( 98.4615, -44.7308 )
-
-[node name="Chair_13" parent="Furniture" index="45" instance=ExtResource( 24 )]
-position = Vector2( -6.50001, -54.0769 )
-
-[node name="Chair_9" parent="Furniture" index="46" instance=ExtResource( 24 )]
-position = Vector2( 33.9231, -63.5462 )
-
-[node name="Chair_4" parent="Furniture" index="47" instance=ExtResource( 26 )]
-position = Vector2( -30.7692, 3.46154 )
-scale = Vector2( 0.769231, 0.769231 )
-
-[node name="Chair_12" parent="Furniture" index="48" instance=ExtResource( 26 )]
-position = Vector2( -67.6923, -12.3077 )
-scale = Vector2( 0.769231, 0.769231 )
-
-[node name="FallenShelf" parent="Furniture" index="49" instance=ExtResource( 27 )]
-position = Vector2( 98.4615, -73.8461 )
-
-[node name="Web" parent="Furniture" index="50" instance=ExtResource( 9 )]
-position = Vector2( 105, -105.385 )
-
-[node name="Stand" parent="Furniture" index="51" instance=ExtResource( 28 )]
-position = Vector2( 0, -74.6922 )

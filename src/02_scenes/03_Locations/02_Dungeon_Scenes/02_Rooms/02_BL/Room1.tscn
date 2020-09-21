@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/02_BL/Room1.gd" type="Script" id=2]
@@ -9,6 +9,13 @@
 [ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchTop.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchLeft.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/01_assets/08_Items/FloorMess.png" type="Texture" id=9]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/05_Shelfs/ShelfTop_3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/05_Shelfs/ShelfTop_1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/07_Cells/CellSide1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/07_Cells/CellTop2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/07_Cells/CellTop1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/02_TableTop/TableTop_2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/01_Chairs/Chair_6.tscn" type="PackedScene" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
@@ -38,13 +45,13 @@ opening_direction = 3
 position = Vector2( 48, 40 )
 
 [node name="EnemySpawnPoint2" parent="EnemySpawnPoints" index="1" instance=ExtResource( 4 )]
-position = Vector2( 40, -48 )
+position = Vector2( 32, -88 )
 
 [node name="EnemySpawnPoint3" parent="EnemySpawnPoints" index="2" instance=ExtResource( 4 )]
-position = Vector2( -32, 32 )
+position = Vector2( -32, 48 )
 
 [node name="Sprite" type="Sprite" parent="FloorDecorations" index="0"]
-position = Vector2( -55, -72 )
+position = Vector2( -55, -40 )
 rotation = 0.523598
 texture = SubResource( 1 )
 
@@ -69,7 +76,7 @@ rotation = -0.785397
 texture = SubResource( 2 )
 
 [node name="Sprite6" type="Sprite" parent="FloorDecorations" index="5"]
-position = Vector2( -88, -106 )
+position = Vector2( -72, -82 )
 rotation = -2.09439
 texture = SubResource( 2 )
 
@@ -82,6 +89,143 @@ texture = SubResource( 3 )
 position = Vector2( 9, -101 )
 rotation = -2.09439
 texture = SubResource( 3 )
+
+[node name="CellTop1" parent="Furniture" index="0" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( -27, -125 )
+collision_layer = 1
+
+[node name="CellTop4" parent="Furniture" index="1" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( 96, -125 )
+collision_layer = 1
+
+[node name="CellTop5" parent="Furniture" index="2" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( -16, -24 )
+collision_layer = 1
+
+[node name="CellTop6" parent="Furniture" index="3" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( -16, 1 )
+collision_layer = 1
+
+[node name="CellTop7" parent="Furniture" index="4" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( 16, -24 )
+collision_layer = 1
+
+[node name="CellTop8" parent="Furniture" index="5" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( 16, 1 )
+collision_layer = 1
+
+[node name="CellTop9" parent="Furniture" index="6" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( 48, -24 )
+collision_layer = 1
+
+[node name="CellTop10" parent="Furniture" index="7" groups=[
+"rooms",
+] instance=ExtResource( 14 )]
+position = Vector2( -48, -24 )
+collision_layer = 1
+
+[node name="CellTop2" parent="Furniture" index="8" groups=[
+"rooms",
+] instance=ExtResource( 13 )]
+position = Vector2( -103, -123 )
+collision_layer = 1
+
+[node name="CellTop3" parent="Furniture" index="9" groups=[
+"rooms",
+] instance=ExtResource( 13 )]
+position = Vector2( -69, -123 )
+collision_layer = 1
+
+[node name="CellTop11" parent="Furniture" index="10" groups=[
+"rooms",
+] instance=ExtResource( 13 )]
+position = Vector2( -48, 3 )
+collision_layer = 1
+
+[node name="CellTop12" parent="Furniture" index="11" groups=[
+"rooms",
+] instance=ExtResource( 13 )]
+position = Vector2( 48, 3 )
+collision_layer = 1
+
+[node name="CellSide1" parent="Furniture" index="12" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( -107, 91 )
+collision_layer = 1
+
+[node name="CellSide6" parent="Furniture" index="13" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( 139, -63 )
+rotation = 3.14159
+collision_layer = 1
+
+[node name="CellSide7" parent="Furniture" index="14" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( 139, -27 )
+rotation = 3.14159
+collision_layer = 1
+
+[node name="CellSide3" parent="Furniture" index="15" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( 139, 67 )
+rotation = 3.14159
+collision_layer = 1
+
+[node name="CellSide5" parent="Furniture" index="16" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( 139, 32 )
+rotation = 3.14159
+collision_layer = 1
+
+[node name="CellSide4" parent="Furniture" index="17" groups=[
+"rooms",
+] instance=ExtResource( 12 )]
+position = Vector2( 139, 102 )
+rotation = 3.14159
+collision_layer = 1
+
+[node name="ShelfTop_3" parent="Furniture" index="18" groups=[
+"rooms",
+] instance=ExtResource( 10 )]
+position = Vector2( 3, -136 )
+collision_layer = 1
+
+[node name="Shelf_2" parent="Furniture" index="19" groups=[
+"rooms",
+] instance=ExtResource( 11 )]
+position = Vector2( 58, -136 )
+collision_layer = 1
+
+[node name="TableTop_2" parent="Furniture" index="20" groups=[
+"rooms",
+] instance=ExtResource( 15 )]
+position = Vector2( 31, -127 )
+collision_layer = 1
+
+[node name="Chair_6" parent="Furniture" index="21" groups=[
+"rooms",
+] instance=ExtResource( 16 )]
+position = Vector2( 32, -117 )
+collision_layer = 1
 
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 6 )]
 position = Vector2( -55, 117 )
