@@ -151,6 +151,8 @@ __meta__ = {
 }
 
 [node name="PotionsIcon" type="TextureRect" parent="Control/PlayerStoredPotions"]
+anchor_top = -4.76837e-07
+anchor_bottom = -4.76837e-07
 margin_right = 17.0
 margin_bottom = 16.0
 texture = SubResource( 10 )
@@ -164,9 +166,9 @@ text = "x 0"
 [node name="KeyItem" type="TextureRect" parent="Control"]
 visible = false
 margin_left = 2.0
-margin_top = 57.0
+margin_top = 62.0
 margin_right = 13.0
-margin_bottom = 79.0
+margin_bottom = 84.0
 rect_scale = Vector2( 0.6, 0.6 )
 texture = SubResource( 11 )
 __meta__ = {

@@ -62,8 +62,12 @@ func _get_random_perk() -> int:
 
 
 func _on_lvl_proceed() -> void:
+	var _lvl_change_msg
 	_toggle_screen_msg()
-	var _lvl_change_msg = get_tree().reload_current_scene()
+	if Global.current_lvl == 2:
+		_lvl_change_msg = get_tree().change_scene("res://src/02_scenes/03_Locations/03_BossRooms/BossRoom.tscn")
+	else:
+		_lvl_change_msg = get_tree().reload_current_scene()
 
 
 func _on_perk_type_received(index: int) -> void:
