@@ -21,6 +21,7 @@ position = Vector2( 0, -40 )
 texture = SubResource( 1 )
 
 [node name="MessageTrigger" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MessageTrigger"]
 shape = SubResource( 2 )
