@@ -10,6 +10,7 @@ onready var duration_timer: Timer = $DurationTimer
 onready var blink_timer: Timer = $BlinkTimer
 onready var blink_color: ColorRect = $BlinkColor
 
+
 func start_shaking(duration = 0.2, frequency = 15, off_value = 16) -> void:
 	self.offset_value = off_value
 	duration_timer.wait_time = duration

@@ -18,7 +18,6 @@ var is_door_opened: bool = false
 var is_dangerous_to_rest: bool = false
 var is_interactive: bool = false
 
-
 var interactive_obj: Object
 
 
