@@ -15,7 +15,7 @@ var has_stamina: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
 
-var is_dangerous_to_rest: bool = false
+var is_dangerous_to_interact: bool = false
 var is_interactive: bool = false
 
 var interactive_obj: Object
@@ -110,14 +110,14 @@ func _input(event) -> void:
 					emit_signal("damage_heal", 30)
 					emit_signal("use_bottle")
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
-			if event.is_action_pressed("interract"):
-				_response = _rest() if (is_dangerous_to_rest == false) else print("it's dangerous here")
+		if event.is_action_pressed("interract"):
+			_response = _start_event() if (is_dangerous_to_interact == false) else print("it's dangerous here")
 				
-			if event.is_action_released("interract"):
-				if is_interactive == true and interactive_obj != null:
-					interactive_obj.abort_activation()
+		if event.is_action_released("interract"):
+			if is_interactive == true and interactive_obj != null:
+				interactive_obj.abort_activation()
 
-func _rest() -> void:
+func _start_event() -> void:
 	if is_interactive == true and interactive_obj != null:
 			interactive_obj.start_activation()
 
