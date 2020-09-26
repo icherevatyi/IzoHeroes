@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="DeadBodyParent" type="StaticBody2D"]
+collision_mask = 78
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
