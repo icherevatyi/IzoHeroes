@@ -37,7 +37,7 @@ color_ramp = SubResource( 2 )
 position = Vector2( 0, -6 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
-energy = 1.3
+energy = 1.1
 
 [node name="Fire" type="Particles2D" parent="."]
 position = Vector2( 0, -6 )
