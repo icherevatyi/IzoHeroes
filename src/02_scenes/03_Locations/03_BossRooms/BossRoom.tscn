@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/DungeonAuto.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/03_FriendNPC/01_Paladins/PaladinCorpse4.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/02_scenes/02_Characters/03_FriendNPC/01_Paladins/PaladinCorpse1.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/02_scenes/02_Characters/03_FriendNPC/01_Paladins/PaladinCorpse2.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/01_assets/06_Weapons/weapons.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 16 )
@@ -29,37 +30,77 @@ atlas = ExtResource( 15 )
 region = Rect2( 50, 0, 50, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 11 )
-region = Rect2( 97, 2, 38, 36 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 11 )
-region = Rect2( 25, 2, 17, 24 )
-
-[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 16 )
 region = Rect2( 29, 0, 30, 329 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 26, 19 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 43, 26, 8 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 20, 26, 22 )
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 14, 13 )
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 11 )
+region = Rect2( 97, 2, 38, 36 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 11 )
+region = Rect2( 25, 2, 17, 24 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 11 )
+region = Rect2( 137, 1, 15, 26 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 11 )
+region = Rect2( 180, 1, 32, 33 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 11 )
+region = Rect2( 137, 28, 42, 25 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 11 )
+region = Rect2( 153, 1, 26, 26 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 11 )
+region = Rect2( 180, 35, 25, 23 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 21 )
+region = Rect2( 1, 55, 28, 13 )
 
 [sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 21 )
+region = Rect2( 1, 69, 28, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 21 )
+region = Rect2( 1, 39, 41, 5 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 21 )
+region = Rect2( 1, 94, 20, 7 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 21 )
+region = Rect2( 1, 86, 20, 7 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 14, 13 )
+
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 12 )
 region = Rect2( 0, 30, 28, 18 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 28, 30 )
 
@@ -91,145 +132,225 @@ texture = SubResource( 2 )
 
 [node name="Decorations" type="Node2D" parent="."]
 
-[node name="FloorMess" type="Node2D" parent="Decorations"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( -80, 80 )
-texture = SubResource( 3 )
-
-[node name="Sprite2" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 48, 80 )
-rotation = 1.57079
-texture = SubResource( 3 )
-
-[node name="Sprite3" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 17, 57 )
-rotation = -0.785397
-texture = SubResource( 3 )
-
-[node name="Sprite4" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 224, 40 )
-rotation = -1.57079
-texture = SubResource( 3 )
-
-[node name="Sprite5" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 140, 112 )
-rotation = -1.309
-texture = SubResource( 3 )
-
-[node name="Sprite6" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( -172, 98 )
-rotation = -3.14159
-texture = SubResource( 3 )
-
-[node name="Sprite7" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 2, 232 )
-rotation = -2.87979
-texture = SubResource( 3 )
-
-[node name="Sprite8" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 35, 403 )
-rotation = -4.18878
-texture = SubResource( 3 )
-
-[node name="Sprite9" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( -38, 531 )
-rotation = -4.71238
-texture = SubResource( 3 )
-
-[node name="Sprite10" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 64, -56 )
-rotation = -4.71238
-texture = SubResource( 3 )
-
-[node name="Sprite11" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( -7, 16 )
-rotation = -3.40339
-texture = SubResource( 3 )
-
-[node name="Sprite12" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( -114, -56 )
-rotation = -2.09439
-texture = SubResource( 4 )
-
-[node name="Sprite13" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( -25, 24 )
-rotation = -0.785397
-texture = SubResource( 4 )
-
-[node name="Sprite14" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 72, -12 )
-rotation = -0.785397
-texture = SubResource( 4 )
-
-[node name="Sprite15" type="Sprite" parent="Decorations/FloorMess"]
-position = Vector2( 224, 32 )
-rotation = -0.785397
-texture = SubResource( 4 )
-
 [node name="Carpet" type="Sprite" parent="Decorations"]
-position = Vector2( -0.5, 166 )
-texture = SubResource( 5 )
+position = Vector2( -0.5, 151 )
+texture = SubResource( 3 )
 
 [node name="WallFlag" type="Sprite" parent="Decorations"]
 position = Vector2( -143.5, 53 )
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 
 [node name="WallFlag2" type="Sprite" parent="Decorations"]
 position = Vector2( -79.5, 208 )
-texture = SubResource( 7 )
+texture = SubResource( 5 )
 
 [node name="WallFlag3" type="Sprite" parent="Decorations"]
 position = Vector2( 144.5, 53.25 )
 scale = Vector2( 1, 0.840909 )
-texture = SubResource( 8 )
+texture = SubResource( 6 )
 
 [node name="WallFlag4" type="Sprite" parent="Decorations"]
 position = Vector2( 80.5, 212.748 )
 scale = Vector2( 1, 0.86824 )
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 
 [node name="WallFlag5" type="Sprite" parent="Decorations"]
 position = Vector2( 108.5, -107.75 )
 scale = Vector2( 1, 0.921053 )
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 
 [node name="WallFlag6" type="Sprite" parent="Decorations"]
 position = Vector2( -108.5, -107 )
 scale = Vector2( 1, 0.818182 )
-texture = SubResource( 8 )
+texture = SubResource( 6 )
 
 [node name="WallFlag10" type="Sprite" parent="Decorations"]
 position = Vector2( 164.5, -107 )
 scale = Vector2( 1, 0.818182 )
-texture = SubResource( 8 )
+texture = SubResource( 6 )
 
 [node name="WallFlag7" type="Sprite" parent="Decorations"]
 position = Vector2( -42.5, -112 )
-texture = SubResource( 7 )
+texture = SubResource( 5 )
 
 [node name="WallFlag8" type="Sprite" parent="Decorations"]
 position = Vector2( 43.5, -107.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 
 [node name="WallFlag11" type="Sprite" parent="Decorations"]
 position = Vector2( 219.5, -75.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 
 [node name="WallFlag12" type="Sprite" parent="Decorations"]
 position = Vector2( -218.5, -75.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 
 [node name="WallFlag9" type="Sprite" parent="Decorations"]
 position = Vector2( -164.5, -107.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 6 )
+texture = SubResource( 4 )
+
+[node name="Mess" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Mess"]
+position = Vector2( -80, 80 )
+texture = SubResource( 7 )
+
+[node name="Sprite2" type="Sprite" parent="Mess"]
+position = Vector2( 48, 80 )
+rotation = 1.57079
+texture = SubResource( 7 )
+
+[node name="Sprite3" type="Sprite" parent="Mess"]
+position = Vector2( 17, 57 )
+rotation = -0.785397
+texture = SubResource( 7 )
+
+[node name="Sprite4" type="Sprite" parent="Mess"]
+position = Vector2( 224, 40 )
+rotation = -1.57079
+texture = SubResource( 7 )
+
+[node name="Sprite5" type="Sprite" parent="Mess"]
+position = Vector2( 140, 112 )
+rotation = -1.309
+texture = SubResource( 7 )
+
+[node name="Sprite6" type="Sprite" parent="Mess"]
+position = Vector2( -172, 98 )
+rotation = -3.14159
+texture = SubResource( 7 )
+
+[node name="Sprite7" type="Sprite" parent="Mess"]
+position = Vector2( 2, 232 )
+rotation = -2.87979
+texture = SubResource( 7 )
+
+[node name="Sprite8" type="Sprite" parent="Mess"]
+position = Vector2( 35, 403 )
+rotation = -4.18878
+texture = SubResource( 7 )
+
+[node name="Sprite9" type="Sprite" parent="Mess"]
+position = Vector2( -38, 531 )
+rotation = -4.71238
+texture = SubResource( 7 )
+
+[node name="Sprite10" type="Sprite" parent="Mess"]
+position = Vector2( 64, -56 )
+rotation = -4.71238
+texture = SubResource( 7 )
+
+[node name="Sprite11" type="Sprite" parent="Mess"]
+position = Vector2( -7, 16 )
+rotation = -3.40339
+texture = SubResource( 7 )
+
+[node name="Sprite12" type="Sprite" parent="Mess"]
+position = Vector2( -114, -56 )
+rotation = -2.09439
+texture = SubResource( 8 )
+
+[node name="Sprite13" type="Sprite" parent="Mess"]
+position = Vector2( -25, 24 )
+rotation = -0.785397
+texture = SubResource( 8 )
+
+[node name="Sprite14" type="Sprite" parent="Mess"]
+position = Vector2( 72, -12 )
+rotation = -0.785397
+texture = SubResource( 8 )
+
+[node name="Sprite15" type="Sprite" parent="Mess"]
+position = Vector2( 224, 32 )
+rotation = -0.785397
+texture = SubResource( 8 )
+
+[node name="Blood" type="Sprite" parent="Mess"]
+position = Vector2( -136, 200 )
+texture = SubResource( 17 )
+
+[node name="Blood2" type="Sprite" parent="Mess"]
+position = Vector2( -8, 312 )
+texture = SubResource( 17 )
+
+[node name="Blood3" type="Sprite" parent="Mess"]
+position = Vector2( 40, 104 )
+texture = SubResource( 18 )
+
+[node name="Blood4" type="Sprite" parent="Mess"]
+position = Vector2( 70, 240 )
+texture = SubResource( 18 )
+
+[node name="Blood5" type="Sprite" parent="Mess"]
+position = Vector2( -73, 215 )
+texture = SubResource( 19 )
+
+[node name="Blood6" type="Sprite" parent="Mess"]
+position = Vector2( 7, 415 )
+rotation = 1.0472
+texture = SubResource( 19 )
+
+[node name="Blood7" type="Sprite" parent="Mess"]
+position = Vector2( 127, 87 )
+rotation = 0.261799
+texture = SubResource( 20 )
+
+[node name="Blood8" type="Sprite" parent="Mess"]
+position = Vector2( -17, 247 )
+rotation = 0.261799
+texture = SubResource( 21 )
+
+[node name="Blood9" type="Sprite" parent="Mess"]
+position = Vector2( -8.99999, 63 )
+rotation = -1.0472
+texture = SubResource( 21 )
+
+[node name="Blood10" type="Sprite" parent="Mess"]
+position = Vector2( 34, 27 )
+rotation = -2.09439
+scale = Vector2( 0.956561, 0.451103 )
+texture = SubResource( 21 )
+
+[node name="Blood11" type="Sprite" parent="Mess"]
+position = Vector2( -46.0215, 118.906 )
+scale = Vector2( 1.35828, 0.790769 )
+texture = SubResource( 21 )
+
+[node name="BrokenWeapon1" type="Sprite" parent="Mess"]
+position = Vector2( 187, 80 )
+texture = SubResource( 9 )
+
+[node name="BrokenWeapon2" type="Sprite" parent="Mess"]
+position = Vector2( -106, 232 )
+rotation = 2.35619
+texture = SubResource( 10 )
+
+[node name="BrokenWeapon3" type="Sprite" parent="Mess"]
+position = Vector2( 25, 392 )
+rotation = 0.785397
+texture = SubResource( 10 )
+
+[node name="BrokenWeapon4" type="Sprite" parent="Mess"]
+position = Vector2( -29.5, 392 )
+rotation = -0.523598
+texture = SubResource( 11 )
+
+[node name="BrokenWeapon5" type="Sprite" parent="Mess"]
+position = Vector2( -21, 245 )
+rotation = 0.523598
+texture = SubResource( 12 )
+
+[node name="BrokenWeapon6" type="Sprite" parent="Mess"]
+position = Vector2( -68, 219 )
+rotation = 2.87979
+texture = SubResource( 13 )
 
 [node name="ExitDoor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 224, -736 )
@@ -474,7 +595,7 @@ position = Vector2( -40, 309 )
 position = Vector2( -144, 693 )
 
 [node name="ThronePlace" type="Sprite" parent="."]
-position = Vector2( 0, -39 )
+position = Vector2( 0, -55 )
 texture = ExtResource( 13 )
 
 [node name="Throne" type="StaticBody2D" parent="." groups=[
@@ -489,11 +610,11 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Throne"]
 position = Vector2( 0, -4 )
-shape = SubResource( 9 )
+shape = SubResource( 14 )
 
 [node name="BottomPart" type="Sprite" parent="Throne"]
 position = Vector2( 0, -1 )
-texture = SubResource( 10 )
+texture = SubResource( 15 )
 
 [node name="SecretPassageButton" parent="." instance=ExtResource( 14 )]
 
@@ -531,7 +652,7 @@ scale = Vector2( -1, 1 )
 "throne",
 ]]
 position = Vector2( 0, -102 )
-texture = SubResource( 11 )
+texture = SubResource( 16 )
 
 [node name="SecretCorridorDarkness" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0.94902 )

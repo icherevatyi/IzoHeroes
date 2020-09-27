@@ -41,18 +41,17 @@ func _on_SecretPassageButton_body_exited(body) -> void:
 	if body.name == "Player":
 		player_obj = null
 		body.is_interactive = false
-		body.interactive_obj = null
 		if is_usable == true:
 			emit_signal("hide_label")
 			emit_signal("stop_activation")
 
 
 func start_activation() -> void:
-			emit_signal("start_activation")
+	emit_signal("start_activation")
 
 
 func abort_activation() -> void:
-			emit_signal("stop_activation")
+	emit_signal("stop_activation")
 
 
 func activate() -> void:
@@ -62,6 +61,7 @@ func activate() -> void:
 				emit_signal("hide_label")
 				is_usable = false
 				btn_animation_player.play("activation")
+				body.interactive_obj = null
 
 
 func activated() -> void:
