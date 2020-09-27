@@ -333,13 +333,13 @@ rotation = 2.35619
 texture = SubResource( 10 )
 
 [node name="BrokenWeapon3" type="Sprite" parent="Mess"]
-position = Vector2( 25, 392 )
+position = Vector2( 17, 72 )
 rotation = 0.785397
 texture = SubResource( 10 )
 
 [node name="BrokenWeapon4" type="Sprite" parent="Mess"]
-position = Vector2( -29.5, 392 )
-rotation = -0.523598
+position = Vector2( -41.5, 97 )
+rotation = 1.49924
 texture = SubResource( 11 )
 
 [node name="BrokenWeapon5" type="Sprite" parent="Mess"]
