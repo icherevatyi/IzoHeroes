@@ -14,6 +14,8 @@ var is_player_dead: bool = false
 var is_console_enabled: bool = false
 var is_menu_enabled: bool = false
 
+var is_dangerous_to_interact: bool = false
+
 onready var root_node = get_node("/root/")
 
 

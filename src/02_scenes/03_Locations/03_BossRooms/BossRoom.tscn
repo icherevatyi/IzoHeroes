@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/DungeonAuto.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/03_FriendNPC/01_Paladins/PaladinCorpse2.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/01_assets/06_Weapons/weapons.png" type="Texture" id=21]
 [ext_resource path="res://src/01_assets/08_Items/Barricade.png" type="Texture" id=22]
+[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/06_Boss/Boss.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 16 )
@@ -708,6 +709,8 @@ rotation = 0.541052
 scale = Vector2( -1, 1 )
 
 [node name="YSort" type="YSort" parent="."]
+
+[node name="Boss" parent="YSort" instance=ExtResource( 23 )]
 
 [node name="TopPart" type="Sprite" parent="." groups=[
 "throne",

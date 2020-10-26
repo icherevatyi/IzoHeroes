@@ -14,7 +14,6 @@ var drops_key: bool = false
 var player_coords: Vector2
 var player_visible: bool = false
 
-onready var player: KinematicBody2D = get_parent().get_node("Player")
 onready var detection_range: Area2D = $DetectionRange
 onready var attack_range: Area2D = $AttackRange
 onready var attack_scripts: Node2D = $AdditionalScripts/AttackManagement
@@ -70,12 +69,12 @@ func is_player_visible(body) -> void:
 		if result.collider.name == "Player":
 			player_visible = true
 			hurtbox_collision.disabled = false
-			player.is_dangerous_to_rest = true
+			Global.is_dangerous_to_interact = true
 			
 		else:
 			player_visible = false
 			hurtbox_collision.disabled = true
-			player.is_dangerous_to_rest = false
+			Global.is_dangerous_to_interact = false
 
 
 func _get_stats(enemy_type: String) -> void:
@@ -104,7 +103,7 @@ func receive_damage(damage_received) -> void:
 	emit_signal("manage_healthbar_change", health_prev, health_current)
 	yield(get_tree().create_timer(0.35),"timeout")
 	if health_current <= 0:
-		player.is_dangerous_to_rest = false
+		Global.is_dangerous_to_interact = false
 		_death()
 
 
