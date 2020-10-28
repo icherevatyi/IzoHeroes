@@ -4,6 +4,7 @@ export var is_taking_damage: bool = false
 export var is_attacking: bool = false
 
 var is_boss: bool = false
+var is_main_boss: bool = false
 var type: String
 var health_current: float
 var health_max: float
@@ -89,7 +90,7 @@ func receive_damage(damage_received) -> void:
 	if (health_current - damage_received) <= 0:
 		OS.delay_msec(80)
 	var health_prev = health_current
-	if is_boss == false:
+	if is_boss == false or is_main_boss == false:
 		for stat in PlayerStats.stats_list:
 			if PlayerStats.stats_list[stat].type == "instakill_chance":
 				var instadeath_chance: float = PlayerStats.stats_list[stat].value

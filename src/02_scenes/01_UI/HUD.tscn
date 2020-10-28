@@ -151,8 +151,6 @@ __meta__ = {
 }
 
 [node name="PotionsIcon" type="TextureRect" parent="Control/PlayerStoredPotions"]
-anchor_top = -4.76837e-07
-anchor_bottom = -4.76837e-07
 margin_right = 17.0
 margin_bottom = 16.0
 texture = SubResource( 10 )

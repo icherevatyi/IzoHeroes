@@ -224,6 +224,7 @@ tracks/1/keys = {
 [node name="Skeleton" instance=ExtResource( 1 )]
 script = SubResource( 1 )
 is_taking_damage = true
+is_attacking = true
 
 [node name="Sprite" parent="." index="0"]
 material = ExtResource( 2 )
@@ -241,12 +242,6 @@ anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 9 )
-
-[node name="DetectionRange" parent="." index="9"]
-visible = false
-
-[node name="AttackRange" parent="." index="10"]
-visible = false
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 disabled = true
