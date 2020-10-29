@@ -199,7 +199,8 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-length = 1.2
+length = 0.05
+loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -260,22 +261,22 @@ region = Rect2( 0, 0, 112.523, 10.8816 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 112, 11 )
+region = Rect2( 0, 0, 96, 11 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 11, 112, 11 )
+region = Rect2( 0, 20, 96, 11 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 112, 11 )
+region = Rect2( 0, 0, 96, 11 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 11, 112, 11 )
+region = Rect2( 0, 11, 96, 11 )
 
 [sub_resource type="CircleShape2D" id=19]
-radius = 136.0
+radius = 392.082
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 70.0
@@ -290,7 +291,6 @@ script = ExtResource( 6 )
 texture = SubResource( 1 )
 vframes = 9
 hframes = 6
-frame = 12
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 13 )
@@ -335,10 +335,11 @@ offset = Vector2( 0, 5 )
 transform = Transform2D( 1, 0, 0, 1, 0, 5 )
 
 [node name="HealthBottom" type="TextureProgress" parent="HealthBars/BossHealth" index="0"]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -56.0
-margin_right = 56.0
+margin_left = -48.0
+margin_right = 48.0
 margin_bottom = 11.0
 value = 100.0
 texture_under = SubResource( 15 )
@@ -348,17 +349,22 @@ __meta__ = {
 }
 
 [node name="HealthTop" type="TextureProgress" parent="HealthBars/BossHealth" index="1"]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -56.0
-margin_right = 56.0
+margin_left = -48.0
+margin_right = 48.0
 margin_bottom = 11.0
 value = 100.0
 texture_under = SubResource( 17 )
 texture_progress = SubResource( 18 )
-tint_progress = Color( 0.592157, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EnrageColorTween" type="Tween" parent="." index="8"]
+
+[node name="HPEnableTween" type="Tween" parent="." index="9"]
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 19 )

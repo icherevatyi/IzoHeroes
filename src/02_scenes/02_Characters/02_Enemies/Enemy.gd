@@ -92,7 +92,7 @@ func receive_damage(damage_received) -> void:
 	if (health_current - damage_received) <= 0:
 		OS.delay_msec(80)
 	var health_prev = health_current
-	if is_boss == false or is_main_boss == false:
+	if is_boss == false and is_main_boss == false:
 		for stat in PlayerStats.stats_list:
 			if PlayerStats.stats_list[stat].type == "instakill_chance":
 				var instadeath_chance: float = PlayerStats.stats_list[stat].value
@@ -108,7 +108,7 @@ func receive_damage(damage_received) -> void:
 	if health_current <= 0:
 		Global.is_dangerous_to_interact = false
 		_death()
-
+	
 
 func _on_miniboss_created() -> void:
 	is_boss = true
