@@ -5,6 +5,7 @@ enum STATE_VALUES {
 	WALK,
 	CHASE,
 	ATTACK,
+	ENRAGING,
 	RECEIVE_DAMAGE,
 	DEATH
 }
@@ -26,7 +27,12 @@ func _set_state(state) -> void:
 		STATE_VALUES.CHASE:
 			state_machine.travel("chase")
 		STATE_VALUES.ATTACK:
-			state_machine.travel("attack")
+			if enemy.is_enraged == true:
+				state_machine.travel("attack_3")
+			else: 
+				state_machine.travel("attack")
+		STATE_VALUES.ENRAGING:
+			state_machine.travel("attack_2")
 		STATE_VALUES.RECEIVE_DAMAGE:
 			state_machine.travel("receive_damage")
 		STATE_VALUES.DEATH:
@@ -43,6 +49,8 @@ func monitor_states() -> void:
 			_set_state(STATE_VALUES.CHASE)
 		if enemy.is_in_attack_range == true and enemy.player_visible == true:
 			_set_state(STATE_VALUES.ATTACK)
+		if enemy.going_rage == true and enemy.is_main_boss == true:
+			_set_state(STATE_VALUES.ENRAGING)
 		if enemy.is_taking_damage == true:
 			_set_state(STATE_VALUES.RECEIVE_DAMAGE)
 	else:

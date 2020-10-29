@@ -5,6 +5,8 @@ export var is_attacking: bool = false
 
 var is_boss: bool = false
 var is_main_boss: bool = false
+var going_rage: bool = false
+var is_enraged: bool = false
 var type: String
 var health_current: float
 var health_max: float

@@ -10,11 +10,10 @@
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 900, 738 )
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=2]
 radius = 8.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "attack"
+[sub_resource type="Animation" id=3]
 length = 2.0
 loop = true
 step = 0.05
@@ -55,8 +54,7 @@ tracks/2/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "attack_2"
+[sub_resource type="Animation" id=4]
 length = 1.7
 loop = true
 tracks/0/type = "value"
@@ -83,8 +81,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_enrage"
+} ]
+}
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=5]
 resource_name = "attack_3"
 length = 2.0
 step = 0.05
@@ -125,7 +137,7 @@ tracks/2/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 0.55
 loop = true
 step = 0.07
@@ -142,7 +154,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 3.0
 step = 0.05
 tracks/0/type = "method"
@@ -186,7 +198,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 1.2
 step = 0.01
 tracks/0/type = "value"
@@ -202,7 +214,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:is_taking_damage")
@@ -217,7 +229,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -233,18 +245,26 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
 [sub_resource type="CapsuleShape2D" id=12]
 height = 22.0
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
 region = Rect2( 1, 23, 26, 6 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 112.523, 10.8816 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 112, 11 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 11, 112, 11 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 3 )
@@ -254,50 +274,40 @@ region = Rect2( 0, 0, 112, 11 )
 atlas = ExtResource( 3 )
 region = Rect2( 0, 11, 112, 11 )
 
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 112, 11 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 11, 112, 11 )
-
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=19]
 radius = 136.0
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=20]
 radius = 70.0
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 31, 10 )
 
 [node name="Boss" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
-is_attacking = true
 
 [node name="Sprite" parent="." index="0"]
-self_modulate = Color( 0.788235, 0.196078, 0.196078, 1 )
 texture = SubResource( 1 )
 vframes = 9
 hframes = 6
-frame = 30
+frame = 12
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 13 )
-shape = SubResource( 13 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/attack = SubResource( 2 )
-anims/attack_2 = SubResource( 3 )
-anims/attack_3 = SubResource( 21 )
-anims/chase = SubResource( 4 )
-anims/death = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/receive_damage = SubResource( 7 )
-anims/walk = SubResource( 8 )
+anims/attack = SubResource( 3 )
+anims/attack_2 = SubResource( 4 )
+anims/attack_3 = SubResource( 5 )
+anims/chase = SubResource( 6 )
+anims/death = SubResource( 7 )
+anims/idle = SubResource( 8 )
+anims/receive_damage = SubResource( 9 )
+anims/walk = SubResource( 10 )
 
 [node name="AnimationTree" parent="." index="3"]
-parameters/playback = SubResource( 9 )
+parameters/playback = SubResource( 11 )
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 12 )
@@ -306,14 +316,19 @@ shape = SubResource( 12 )
 wait_time = 10.0
 one_shot = true
 
+[node name="RageEnableTimer" type="Timer" parent="Timers" index="2"]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
 [node name="HealthBars" parent="." index="6"]
 visible = false
 
 [node name="HealthUnder" parent="HealthBars" index="0"]
-texture_progress = SubResource( 10 )
+texture_progress = SubResource( 13 )
 
 [node name="HealthUpper" parent="HealthBars" index="1"]
-texture_under = SubResource( 11 )
+texture_under = SubResource( 14 )
 
 [node name="BossHealth" type="CanvasLayer" parent="HealthBars" index="2"]
 offset = Vector2( 0, 5 )
@@ -326,8 +341,8 @@ margin_left = -56.0
 margin_right = 56.0
 margin_bottom = 11.0
 value = 100.0
-texture_under = SubResource( 17 )
-texture_progress = SubResource( 18 )
+texture_under = SubResource( 15 )
+texture_progress = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -339,16 +354,21 @@ margin_left = -56.0
 margin_right = 56.0
 margin_bottom = 11.0
 value = 100.0
-texture_under = SubResource( 19 )
-texture_progress = SubResource( 20 )
+texture_under = SubResource( 17 )
+texture_progress = SubResource( 18 )
 tint_progress = Color( 0.592157, 0, 0, 1 )
 
+[node name="EnrageColorTween" type="Tween" parent="." index="8"]
+
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
-shape = SubResource( 16 )
+shape = SubResource( 19 )
 
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
-shape = SubResource( 15 )
+shape = SubResource( 20 )
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 38, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 21 )
+disabled = true
+[connection signal="timeout" from="Timers/RageTimer" to="." method="_on_RageTimer_timeout"]
+[connection signal="timeout" from="Timers/RageEnableTimer" to="." method="_on_RageEnableTimer_timeout"]
