@@ -21,6 +21,20 @@ func _ready():
 	emit_signal("initiate_healthpool", health_max)
 
 
+func _physics_process(_delta):
+	if is_attacking == true:
+		movement_scripts.speed = 0
+	else: 
+		if is_chasing == true: 
+			match is_enraged:
+				true:
+					movement_scripts.speed = 40
+				false:
+					movement_scripts.speed = 30
+		
+	
+
+
 func _enrage() -> void:
 	is_enraged = true
 	going_rage = false
@@ -44,6 +58,7 @@ func _on_RageEnableTimer_timeout() -> void:
 
 func _on_room_entered() -> void:
 	set_physics_process(true)
+	rage_enable_timer.start()
 	_response = hp_enable_tween.interpolate_property(health_top, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_response = hp_enable_tween.start()
 	_response = hp_enable_tween.interpolate_property(health_bottom, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

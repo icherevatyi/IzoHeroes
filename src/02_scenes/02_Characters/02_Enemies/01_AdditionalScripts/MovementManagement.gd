@@ -19,7 +19,7 @@ onready var sprite: Sprite = get_node("../../Sprite")
 onready var timer: Timer = get_node("../../Timers/MovementChangeTimer")
 
 func _ready():
-	speed = initial_speed	
+	speed = initial_speed
 	_select_direction()
 	_select_timer_timeout()
 
@@ -30,6 +30,7 @@ func move_enemy() -> void:
 			speed = initial_speed + 30
 		false:
 			speed = initial_speed
+			
 	velocity = speed * movement_dir
 	if parent.is_on_wall():
 		_select_direction()
@@ -70,7 +71,10 @@ func chase_player(player_position) -> void:
 		sprite.flip_h = true
 	if (player_position.x - enemy_position.x) > 0:
 		sprite.flip_h = false
-	velocity = (player_position - enemy_position).normalized() * speed * 2
+	if parent.is_attacking == true:
+		velocity = Vector2(0, 0)
+	else:
+		velocity = global_position.direction_to(player_position) * speed * 2
 
 
 func enemy_stop(player_position) -> void:

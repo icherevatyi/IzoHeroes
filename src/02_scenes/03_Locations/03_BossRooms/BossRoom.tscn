@@ -656,7 +656,7 @@ texture = SubResource( 21 )
 polygon = PoolVector2Array( -15.0422, 18.5657, -15.0199, 7.4505, 4.72034, -8.55661, 10.2634, -8.72629, 12.1865, -4.2579, 14.7318, 4.8486, 14.2228, 10.3351, 4.38096, 18.8195 )
 
 [node name="Barricade2" type="StaticBody2D" parent="Barricades"]
-position = Vector2( 25, 425 )
+position = Vector2( 28, 425.834 )
 collision_layer = 256
 collision_mask = 78
 __meta__ = {
@@ -714,6 +714,7 @@ scale = Vector2( -1, 1 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Boss" parent="YSort" instance=ExtResource( 23 )]
+position = Vector2( 0, -63 )
 
 [node name="TopPart" type="Sprite" parent="." groups=[
 "throne",

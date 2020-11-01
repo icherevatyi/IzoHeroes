@@ -204,14 +204,13 @@ extents = Vector2( 15, 10 )
 
 [node name="Minotaur" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-is_attacking = true
 
 [node name="Sprite" parent="." index="0"]
 material = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 19
+frame = 17
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -224,20 +223,11 @@ anims/walk = SubResource( 6 )
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 7 )
 
-[node name="DetectionRange" parent="." index="9"]
-visible = false
-
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 8 )
 
-[node name="AttackRange" parent="." index="10"]
-visible = false
-
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 9 )
-
-[node name="HitBox" parent="." index="11"]
-visible = false
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource( 10 )

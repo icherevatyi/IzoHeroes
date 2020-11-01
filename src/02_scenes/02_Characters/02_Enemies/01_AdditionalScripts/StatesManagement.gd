@@ -43,9 +43,9 @@ func monitor_states() -> void:
 	if enemy.is_dead == false:
 		if enemy.movement == Vector2.ZERO:
 			_set_state(STATE_VALUES.IDLE)
-		if enemy.movement != Vector2.ZERO and enemy.is_chasing == false:
+		if enemy.movement != Vector2.ZERO and enemy.is_chasing == false and enemy.is_attacking == false:
 			_set_state(STATE_VALUES.WALK)
-		if enemy.movement != Vector2.ZERO and enemy.is_chasing == true:
+		if enemy.movement != Vector2.ZERO and enemy.is_chasing == true and enemy.is_attacking == false:
 			_set_state(STATE_VALUES.CHASE)
 		if enemy.is_in_attack_range == true and enemy.player_visible == true:
 			_set_state(STATE_VALUES.ATTACK)
