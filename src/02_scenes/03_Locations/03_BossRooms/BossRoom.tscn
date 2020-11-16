@@ -748,5 +748,6 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossEnabler"]
+visible = false
 shape = SubResource( 26 )
 [connection signal="body_entered" from="BossEnabler" to="." method="_on_BossEnabler_body_entered"]

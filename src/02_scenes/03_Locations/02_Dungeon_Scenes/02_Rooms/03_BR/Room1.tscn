@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/03_BR/Room1.gd" type="Script" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchLeft.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchBottom.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/01_assets/08_Items/FloorMess.png" type="Texture" id=9]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/StoneStructure/Well.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/StoneStructure/StoneTable3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/StoneStructure/StoneTable2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/StoneStructure/StoneTable1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/StoneStructure/StoneTabe4.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/08_Scene/WoodenScene.tscn" type="PackedScene" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
@@ -34,13 +40,13 @@ opening_direction = 4
 position = Vector2( 40, -48 )
 
 [node name="EnemySpawnPoint2" parent="EnemySpawnPoints" index="1" instance=ExtResource( 4 )]
-position = Vector2( 40, 64 )
+position = Vector2( 72, -24 )
 
 [node name="EnemySpawnPoint3" parent="EnemySpawnPoints" index="2" instance=ExtResource( 4 )]
-position = Vector2( -64, 8 )
+position = Vector2( 48, -5 )
 
 [node name="EnemySpawnPoint4" parent="EnemySpawnPoints" index="3" instance=ExtResource( 4 )]
-position = Vector2( -32, -56 )
+position = Vector2( 49, -75 )
 
 [node name="Sprite" type="Sprite" parent="FloorDecorations" index="0"]
 position = Vector2( -94, -96 )
@@ -84,6 +90,30 @@ texture = SubResource( 2 )
 position = Vector2( -32, -88 )
 rotation = -0.523598
 texture = SubResource( 2 )
+
+[node name="Well" parent="Furniture" index="0" instance=ExtResource( 10 )]
+position = Vector2( 72, 72 )
+
+[node name="StoneBench1" parent="Furniture" index="1" instance=ExtResource( 13 )]
+position = Vector2( -109, -90 )
+
+[node name="StoneBench2" parent="Furniture" index="2" instance=ExtResource( 12 )]
+position = Vector2( -109, -16 )
+
+[node name="StoneBench3" parent="Furniture" index="3" instance=ExtResource( 11 )]
+position = Vector2( -45, -16 )
+
+[node name="StoneBench4" parent="Furniture" index="4" instance=ExtResource( 14 )]
+position = Vector2( -45, -90 )
+
+[node name="StoneBench5" parent="Furniture" index="5" instance=ExtResource( 14 )]
+position = Vector2( -109, 56 )
+
+[node name="StoneBench6" parent="Furniture" index="6" instance=ExtResource( 13 )]
+position = Vector2( -45, 56 )
+
+[node name="WoodenScene" parent="Furniture" index="7" instance=ExtResource( 15 )]
+position = Vector2( 80.5, -91 )
 
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 6 )]
 position = Vector2( 42, -140 )

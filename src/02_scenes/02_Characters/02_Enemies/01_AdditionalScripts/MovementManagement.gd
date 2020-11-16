@@ -30,11 +30,10 @@ func move_enemy() -> void:
 			speed = initial_speed + 30
 		false:
 			speed = initial_speed
-			
-	velocity = speed * movement_dir
-	if parent.is_on_wall():
-		_select_direction()
-		_select_timer_timeout()
+			velocity = speed * movement_dir
+			if parent.is_on_wall():
+				_select_direction()
+				_select_timer_timeout()
 
 
 func _select_timer_timeout() -> void:
