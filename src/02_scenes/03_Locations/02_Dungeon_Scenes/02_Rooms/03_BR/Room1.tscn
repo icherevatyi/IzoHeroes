@@ -113,7 +113,7 @@ position = Vector2( -109, 56 )
 position = Vector2( -45, 56 )
 
 [node name="WoodenScene" parent="Furniture" index="7" instance=ExtResource( 15 )]
-position = Vector2( 80.5, -91 )
+position = Vector2( 80.5, -89 )
 
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 6 )]
 position = Vector2( 42, -140 )

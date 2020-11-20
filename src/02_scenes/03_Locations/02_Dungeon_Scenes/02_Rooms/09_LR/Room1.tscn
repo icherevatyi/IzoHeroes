@@ -116,29 +116,26 @@ position = Vector2( 112, 89 )
 [node name="CellTop1" parent="Furniture" index="3" instance=ExtResource( 7 )]
 position = Vector2( -104, -128 )
 
-[node name="CellTop2" parent="Furniture" index="4" instance=ExtResource( 7 )]
-position = Vector2( 104, -128 )
-
-[node name="CellTop5" parent="Furniture" index="5" instance=ExtResource( 7 )]
+[node name="CellTop5" parent="Furniture" index="4" instance=ExtResource( 7 )]
 position = Vector2( 12, -128 )
 
-[node name="CellTop6" parent="Furniture" index="6" instance=ExtResource( 7 )]
+[node name="CellTop6" parent="Furniture" index="5" instance=ExtResource( 7 )]
 position = Vector2( -20, -128 )
 
-[node name="CellTop3" parent="Furniture" index="7" instance=ExtResource( 9 )]
+[node name="CellTop3" parent="Furniture" index="6" instance=ExtResource( 9 )]
 position = Vector2( -52, -126 )
 
-[node name="CellTop4" parent="Furniture" index="8" instance=ExtResource( 9 )]
+[node name="CellTop4" parent="Furniture" index="7" instance=ExtResource( 9 )]
 position = Vector2( 44, -126 )
 
-[node name="PaladinCorpse3" parent="Furniture" index="9" instance=ExtResource( 10 )]
+[node name="PaladinCorpse3" parent="Furniture" index="8" instance=ExtResource( 10 )]
 position = Vector2( -80, 120 )
 rotation = -0.785397
 
-[node name="PaladinCorpse4" parent="Furniture" index="10" instance=ExtResource( 11 )]
+[node name="PaladinCorpse4" parent="Furniture" index="9" instance=ExtResource( 11 )]
 position = Vector2( 24, 136 )
 
-[node name="PaladinCorpse2" parent="Furniture" index="11" instance=ExtResource( 12 )]
+[node name="PaladinCorpse2" parent="Furniture" index="10" instance=ExtResource( 12 )]
 position = Vector2( 112, 96 )
 
 [node name="Torch" parent="Torches" index="0" instance=ExtResource( 8 )]
