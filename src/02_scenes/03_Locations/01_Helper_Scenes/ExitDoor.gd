@@ -15,6 +15,7 @@ signal _message_removed
 func _ready() -> void:
 	sprite.play("closed")
 	_connect_signal("floor_cleared", LvlSummary, "_on_lvl_ended")
+	print("Spawned door position: ", get_global_position())
 
 
 func _on_gate_opened() -> void:

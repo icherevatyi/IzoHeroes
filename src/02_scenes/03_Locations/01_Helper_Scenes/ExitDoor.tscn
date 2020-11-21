@@ -53,13 +53,12 @@ pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 16 )
 frames = SubResource( 7 )
 animation = "closed"
 playing = true
 
 [node name="MessageTrigger" type="Area2D" parent="."]
-position = Vector2( 0, 48 )
+position = Vector2( 0, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MessageTrigger"]
 shape = SubResource( 8 )

@@ -98,6 +98,7 @@ func _input(event) -> void:
 		if event.is_pressed() == false:
 			match idle_timer.is_stopped():
 				true:
+					print(get_global_position())
 					idle_timer.start()
 		if event.is_pressed() == true:
 			idle_timer.stop()

@@ -1,6 +1,7 @@
 extends Node2D
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var exit_door: PackedScene = preload("res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.tscn")
 
 onready var room_container: Node2D = $Rooms
 onready var characters_container: YSort = $YSort
@@ -13,15 +14,25 @@ func _ready() -> void:
 
 
 func _select_random_room() -> void:
-	var rooms = room_container.get_children()
+	var _rooms: Array
 	var selected_child
-	if rooms.size() > 4:
+	for room in room_container.get_children():
+		if room.is_in_group("has_exit"):
+			_rooms.append(room)
+	if _rooms.size() > 4:
 		rng.randomize()
-		selected_child = rng.randi_range(3, rooms.size() - 1)
+		selected_child = rng.randi_range(3, _rooms.size() - 1)
 	else:
 		rng.randomize()
-		selected_child = rooms.size()
-	_connect_signal("_create_exit", rooms[selected_child], "_on_create_exit_command_received")
+		selected_child = rng.randi_range(0, _rooms.size() - 1)
+	_connect_signal("_create_exit", _rooms[selected_child], "_on_create_exit_command_received")
+
+
+func _on_exit_position_received(position_coords: Vector2) -> void:
+	var exit_instance: Node2D = exit_door.instance()
+	exit_instance.set_global_position(position_coords)
+	room_container.add_child(exit_instance)
+	print("Spawned door expected position: ", position_coords)
 
 
 func _select_random_enemy() -> int:

@@ -29,19 +29,6 @@ func set_type(d_type: int) -> void:
 			btn_decline.visible = true
 
 
-func _on_BtnAccept_pressed() -> void:
-	match dialog_type:
-		2:
-			parent.open_gate()
-	parent.can_attack = true
-	set_visible(false)
-
-
-func _on_BtnDecline_pressed() -> void:
-	parent.can_attack = true
-	set_visible(false)
-
-
 func _on_DialogBox_mouse_entered() -> void:
 	parent.can_attack = false
 
@@ -64,3 +51,27 @@ func _on_BtnDecline_mouse_entered() -> void:
 
 func _on_BtnDecline_mouse_exited() -> void:
 	parent.can_attack = true
+
+
+func _on_BtnAccept_button_down():
+	btn_accept._set_position(Vector2(-1, 1))
+
+
+func _on_BtnAccept_button_up():
+	btn_accept._set_position(Vector2(0, 0))
+	match dialog_type:
+		2:
+			parent.open_gate()
+	parent.can_attack = true
+	set_visible(false)
+
+
+func _on_BtnDecline_button_down():
+	btn_decline._set_position(Vector2(-1, 20))
+
+
+func _on_BtnDecline_button_up():
+	btn_decline._set_position(Vector2(0, 19))
+	parent.can_attack = true
+	set_visible(false)
+

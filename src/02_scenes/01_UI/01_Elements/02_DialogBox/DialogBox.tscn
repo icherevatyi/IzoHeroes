@@ -1,9 +1,190 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/01_assets/01_UI/dialog_frame.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/02_DialogBox/DialogBox.gd" type="Script" id=3]
 
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 13
+font_data = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StreamTexture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = SubResource( 7 )
+region_rect = Rect2( 0, 0, 64, 64 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 206, 108 )
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id=10]
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = SubResource( 7 )
+region_rect = Rect2( 0, 0, 64, 64 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 13
+extra_spacing_space = 1
+font_data = SubResource( 11 )
+
+[sub_resource type="DynamicFontData" id=13]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=14]
+size = 13
+extra_spacing_bottom = 3
+font_data = SubResource( 13 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFontData" id=16]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=17]
+size = 14
+font_data = SubResource( 16 )
+
+[sub_resource type="Theme" id=18]
+default_font = SubResource( 17 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.333333, 0.333333, 0.333333, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+Dialogs/constants/button_margin = 32
+Dialogs/constants/margin = 8
+Label/colors/font_color = Color( 0.890196, 0.890196, 0.890196, 1 )
+Label/colors/font_color_shadow = Color( 0.286275, 0.321569, 0.439216, 1 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = SubResource( 2 )
+Label/styles/normal = null
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 5 )
+LineEdit/styles/normal = SubResource( 6 )
+LineEdit/styles/read_only = null
+LinkButton/colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+LinkButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+LinkButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+LinkButton/constants/underline_spacing = 2
+LinkButton/fonts/font = null
+LinkButton/styles/focus = null
+Panel/styles/panel = SubResource( 8 )
+PopupDialog/styles/panel = SubResource( 9 )
+PopupPanel/styles/panel = SubResource( 10 )
+RichTextLabel/colors/default_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0.286275, 0.321569, 0.439216, 1 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = SubResource( 12 )
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
+TextEdit/colors/bookmark_color = Color( 0.08, 0.49, 0.98, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
+TextEdit/colors/breakpoint_color = Color( 0.8, 0.8, 0.4, 0.2 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/code_folding_color = Color( 0.8, 0.8, 0.8, 0.8 )
+TextEdit/colors/completion_background_color = Color( 0.17, 0.16, 0.2, 1 )
+TextEdit/colors/completion_existing_color = Color( 0.87, 0.87, 0.87, 0.13 )
+TextEdit/colors/completion_font_color = Color( 1, 1, 1, 1 )
+TextEdit/colors/completion_scroll_color = Color( 1, 1, 1, 1 )
+TextEdit/colors/completion_selected_color = Color( 0.26, 0.26, 0.27, 1 )
+TextEdit/colors/current_line_color = Color( 0.25, 0.25, 0.26, 0.8 )
+TextEdit/colors/executing_line_color = Color( 0.2, 0.8, 0.2, 0.4 )
+TextEdit/colors/font_color = Color( 1, 1, 1, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.88, 0.88, 0.88, 0.5 )
+TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+TextEdit/colors/function_color = Color( 0.4, 0.64, 0.81, 1 )
+TextEdit/colors/line_number_color = Color( 0.67, 0.67, 0.67, 0.4 )
+TextEdit/colors/mark_color = Color( 1, 0.4, 0.4, 0.4 )
+TextEdit/colors/member_variable_color = Color( 0.9, 0.31, 0.35, 1 )
+TextEdit/colors/number_color = Color( 0.92, 0.58, 0.2, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0.67, 0.78, 0.67, 0.6 )
+TextEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+TextEdit/colors/symbol_color = Color( 0.94, 0.94, 0.94, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0.8, 0.9, 0.9, 0.15 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 50
+TextEdit/constants/completion_scroll_width = 3
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = SubResource( 14 )
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = null
+TextEdit/styles/focus = null
+TextEdit/styles/normal = null
+TextEdit/styles/read_only = SubResource( 15 )
+
 [node name="DialogBox" type="PopupDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -22,21 +203,23 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = 18.0
-margin_right = -18.0
-margin_bottom = -18.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextArea" type="RichTextLabel" parent="VBoxContainer"]
-margin_right = 284.0
-margin_bottom = 46.0
+margin_right = 280.0
+margin_bottom = 44.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 1 )
+theme = SubResource( 18 )
+custom_colors/default_color = Color( 0.341176, 0.196078, 0.184314, 1 )
+custom_colors/font_color_shadow = Color( 0.65098, 0.439216, 0.227451, 0.576471 )
 meta_underlined = false
 text = "asdasdasdasdasdasdasdasd"
 scroll_active = false
@@ -45,16 +228,19 @@ __meta__ = {
 }
 
 [node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 50.0
-margin_right = 284.0
-margin_bottom = 96.0
+margin_top = 48.0
+margin_right = 280.0
+margin_bottom = 92.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BtnAccept" type="LinkButton" parent="VBoxContainer/Buttons"]
-margin_right = 284.0
+margin_right = 280.0
 margin_bottom = 15.0
 size_flags_horizontal = 7
+custom_colors/font_color = Color( 0.341176, 0.196078, 0.184314, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.254902, 0.2, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.254902, 0.2, 1 )
 shortcut_in_tooltip = false
 text = "Ok"
 underline = 2
@@ -66,15 +252,19 @@ __meta__ = {
 show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 15.0
+custom_colors/font_color_shadow = Color( 0.65098, 0.439216, 0.227451, 0.576471 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BtnDecline" type="LinkButton" parent="VBoxContainer/Buttons"]
 margin_top = 19.0
-margin_right = 284.0
+margin_right = 280.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.341176, 0.196078, 0.184314, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.254902, 0.2, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.254902, 0.2, 1 )
 shortcut_in_tooltip = false
 text = "Cancel"
 underline = 2
@@ -83,14 +273,17 @@ underline = 2
 show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 15.0
+custom_colors/font_color_shadow = Color( 0.65098, 0.439216, 0.227451, 0.576471 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="mouse_entered" from="." to="." method="_on_DialogBox_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_DialogBox_mouse_exited"]
+[connection signal="button_down" from="VBoxContainer/Buttons/BtnAccept" to="." method="_on_BtnAccept_button_down"]
+[connection signal="button_up" from="VBoxContainer/Buttons/BtnAccept" to="." method="_on_BtnAccept_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/Buttons/BtnAccept" to="." method="_on_BtnAccept_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Buttons/BtnAccept" to="." method="_on_BtnAccept_mouse_exited"]
-[connection signal="pressed" from="VBoxContainer/Buttons/BtnAccept" to="." method="_on_BtnAccept_pressed"]
+[connection signal="button_down" from="VBoxContainer/Buttons/BtnDecline" to="." method="_on_BtnDecline_button_down"]
+[connection signal="button_up" from="VBoxContainer/Buttons/BtnDecline" to="." method="_on_BtnDecline_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/Buttons/BtnDecline" to="." method="_on_BtnDecline_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Buttons/BtnDecline" to="." method="_on_BtnDecline_mouse_exited"]
-[connection signal="pressed" from="VBoxContainer/Buttons/BtnDecline" to="." method="_on_BtnDecline_pressed"]
