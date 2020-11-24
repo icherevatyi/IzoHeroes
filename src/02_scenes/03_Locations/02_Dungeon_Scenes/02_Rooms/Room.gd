@@ -13,8 +13,6 @@ func _ready():
 
 func _on_create_exit_command_received() -> void:
 	emit_signal("_send_exit_door_coords", exit_spawner_position.get_global_position())
-	print(exit_spawner_position.get_global_position())
-	print("exit ready")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

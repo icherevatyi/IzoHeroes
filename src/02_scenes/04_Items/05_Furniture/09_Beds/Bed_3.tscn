@@ -5,15 +5,17 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 14, 121, 13, 15 )
+region = Rect2( 54, 149, 29, 43 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7, 8 )
+extents = Vector2( 13, 21 )
 
-[node name="Box_2" instance=ExtResource( 1 )]
+[node name="Bed" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2( 1, 0 )
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -1, 0 )
 shape = SubResource( 2 )

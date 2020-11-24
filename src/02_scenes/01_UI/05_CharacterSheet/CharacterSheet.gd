@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 var param_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
 var perk_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.tscn")

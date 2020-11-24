@@ -184,7 +184,6 @@ TextEdit/styles/normal = null
 TextEdit/styles/read_only = SubResource( 15 )
 
 [node name="DialogBox" type="PopupDialog"]
-visible = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -218,8 +217,8 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 18 )
-custom_colors/default_color = Color( 0.341176, 0.196078, 0.184314, 1 )
-custom_colors/font_color_shadow = Color( 0.65098, 0.439216, 0.227451, 0.576471 )
+custom_colors/default_color = Color( 0.207843, 0.2, 0.239216, 1 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
 meta_underlined = false
 text = "asdasdasdasdasdasdasdasd"
 scroll_active = false
@@ -238,9 +237,9 @@ size_flags_vertical = 3
 margin_right = 280.0
 margin_bottom = 15.0
 size_flags_horizontal = 7
-custom_colors/font_color = Color( 0.341176, 0.196078, 0.184314, 1 )
-custom_colors/font_color_hover = Color( 0.388235, 0.254902, 0.2, 1 )
-custom_colors/font_color_pressed = Color( 0.388235, 0.254902, 0.2, 1 )
+custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
+custom_colors/font_color_hover = Color( 0.243137, 0.254902, 0.305882, 1 )
+custom_colors/font_color_pressed = Color( 0.243137, 0.254902, 0.305882, 1 )
 shortcut_in_tooltip = false
 text = "Ok"
 underline = 2
@@ -252,7 +251,7 @@ __meta__ = {
 show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 15.0
-custom_colors/font_color_shadow = Color( 0.65098, 0.439216, 0.227451, 0.576471 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,9 +261,9 @@ margin_top = 19.0
 margin_right = 280.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.341176, 0.196078, 0.184314, 1 )
-custom_colors/font_color_hover = Color( 0.388235, 0.254902, 0.2, 1 )
-custom_colors/font_color_pressed = Color( 0.388235, 0.254902, 0.2, 1 )
+custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
+custom_colors/font_color_hover = Color( 0.243137, 0.254902, 0.305882, 1 )
+custom_colors/font_color_pressed = Color( 0.243137, 0.254902, 0.305882, 1 )
 shortcut_in_tooltip = false
 text = "Cancel"
 underline = 2
@@ -273,7 +272,7 @@ underline = 2
 show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 15.0
-custom_colors/font_color_shadow = Color( 0.65098, 0.439216, 0.227451, 0.576471 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

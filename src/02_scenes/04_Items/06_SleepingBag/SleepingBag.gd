@@ -3,7 +3,7 @@ extends Node2D
 var _response: int
 var is_usable: bool = true
 
-onready var activation_label: Control = $InterractionIndicator
+onready var activation_label: Node2D = $InterractionIndicator
 onready var bag_not_used: Node2D = $NotUsed
 onready var bag_used: Node2D = $Used
 

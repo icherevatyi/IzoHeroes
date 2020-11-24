@@ -208,6 +208,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
+frame = 4
 __meta__ = {
 "_editor_description_": ""
 }
@@ -290,6 +291,7 @@ shape = SubResource( 25 )
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 11 )
+texture_scale = 0.6
 color = Color( 1, 1, 1, 0.54902 )
 energy = 1.2
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]

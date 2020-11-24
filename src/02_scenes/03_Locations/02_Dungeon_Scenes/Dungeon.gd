@@ -32,7 +32,6 @@ func _on_exit_position_received(position_coords: Vector2) -> void:
 	var exit_instance: Node2D = exit_door.instance()
 	exit_instance.set_global_position(position_coords)
 	room_container.add_child(exit_instance)
-	print("Spawned door expected position: ", position_coords)
 
 
 func _select_random_enemy() -> int:
