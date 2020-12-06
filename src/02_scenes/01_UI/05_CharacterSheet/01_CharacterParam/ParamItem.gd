@@ -2,14 +2,15 @@ extends HBoxContainer
 
 var param_id: int
 
-onready var sheet: Control = get_node("../../../../../../")
+onready var sheet: Node2D = get_parent().get_owner()
 
 signal send_item_id(id)
 signal clear_item_id
 
 func _ready() -> void:
-	_connect_signal("send_item_id", sheet, "_on_param_id_received")
-	_connect_signal("clear_item_id", sheet, "_on_item_id_cleared")
+	if sheet.get_class() == "Node2D":
+		_connect_signal("send_item_id", sheet, "_on_param_id_received")
+		_connect_signal("clear_item_id", sheet, "_on_item_id_cleared")
 
 
 
@@ -20,11 +21,13 @@ func init(title: String, value: String, id: int) -> void:
 
 
 func _on_ParamItem_mouse_entered() -> void:
-	emit_signal("send_item_id", param_id)
+	if sheet.get_class() == "Node2D":
+		emit_signal("send_item_id", param_id)
 
 
 func _on_ParamItem_mouse_exited() -> void:
-	emit_signal("clear_item_id")
+	if sheet.get_class() == "Node2D":
+		emit_signal("clear_item_id")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

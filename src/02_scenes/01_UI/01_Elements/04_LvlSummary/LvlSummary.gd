@@ -1,27 +1,30 @@
 extends CanvasLayer
 
+var param_item: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
 var perk_item: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/02_PerkButton/PerkButton.tscn")
 
+var params: Dictionary = PlayerStats.stats_list
 var available_perks: Dictionary
 var perk_index_list: Array = []
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
-onready var textarea: RichTextLabel = $RichTextLabel
 onready var lvl_end_screen: VBoxContainer = $LvlEndScreen
-onready var perk_container: HBoxContainer = $LvlEndScreen/PerkContainer
-onready var perk_description: RichTextLabel = $LvlEndScreen/PekrDescription/DescriptionBody
+onready var texture_bg: NinePatchRect = $BgTexture
+onready var perk_container: HBoxContainer = $LvlEndScreen/PerkParent/PerkContainer
+onready var perk_description: RichTextLabel = $LvlEndScreen/PerkParent/DescriptionContainer/PekrDescription/DescriptionBody
+onready var params_container: GridContainer = $LvlEndScreen/PerkParent/DescriptionContainer/Params
 
 func _ready() -> void:
 	lvl_end_screen.visible = false
+	texture_bg.visible = false
 	available_perks =  PlayerStats.perk_list
 	_get_perks_index()
 	_assign_perks()
+	load_param_sheet()
 
 
 func _end_demo_reached(message: String) -> void:
-	textarea.bbcode_enabled = true
-	var formatted_text = "[color=white][center]" + message + "[/center][/color]"
-	textarea.set_bbcode(formatted_text)
+	var _formatted_text = "[color=white][center]" + message + "[/center][/color]"
 
 
 func _get_perks_index() -> void:
@@ -33,6 +36,12 @@ func _get_perks_index() -> void:
 		else:
 			perk_index_list.append(perk_index)
 
+func _on_param_id_received() -> void:
+	pass
+
+func _on_item_id_cleared() -> void:
+	pass
+
 
 func _assign_perks() -> void:
 	var perk_index: int
@@ -40,10 +49,17 @@ func _assign_perks() -> void:
 	for i in perk_index_list.size():
 		perk_index = perk_index_list[i]
 		perk = available_perks[perk_index]
-		var perk_instance: Control = perk_item.instance()
+		var perk_instance: HBoxContainer = perk_item.instance()
 		perk_container.add_child(perk_instance)
-		perk_instance.item_init(perk.title, perk_index)
-		
+		perk_instance.item_init(perk.title, perk.icon, perk_index)
+
+
+func load_param_sheet() -> void:
+	var param_instance
+	for param in params.keys():
+		param_instance = param_item.instance()
+		param_instance.init(params[param].title, str(params[param].value), int(param))
+		params_container.add_child(param_instance)
 
 
 func _on_lvl_ended() -> void:
@@ -53,6 +69,7 @@ func _on_lvl_ended() -> void:
 
 func _toggle_screen_msg() -> void:
 	lvl_end_screen.visible = !lvl_end_screen.visible
+	texture_bg.visible = !texture_bg.visible
 
 
 func _get_random_perk() -> int:

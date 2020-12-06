@@ -67,9 +67,8 @@ func show_items() -> String:
 func lvl_next() -> String:
 	var rooms = get_node("/root/Dungeon/Rooms").get_children()
 	for room_item in rooms:
-		for item_element in room_item.get_children():
-			if item_element.name == "ExitDoor":
-				item_element._load_next_lvl()
+		if room_item.name == "ExitDoor":
+			room_item._load_next_lvl()
 	return "Changing level, please wait"
 
 

@@ -1,4 +1,4 @@
-extends Control
+extends HBoxContainer
 
 var index: int
 
@@ -8,9 +8,10 @@ onready var btn_texture: TextureButton = $Texture
 signal return_type(index)
 signal clear_type
 
-func item_init(perk_title, perk_index) -> void:
+func item_init(perk_title, perk_icon, perk_index) -> void:
 	_connect_signal("return_type", LvlSummary, "_on_perk_type_received")
 	_connect_signal("clear_type", LvlSummary, "_on_perk_type_cleared")
+	get_node("Texture/Glyph").set_texture(perk_icon)
 	btn_text.set_text(perk_title)
 	index = perk_index
 

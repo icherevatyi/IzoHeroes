@@ -46,6 +46,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Glyph" type="TextureRect" parent="Texture"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -9.5
+margin_top = -8.5
+margin_right = 38.5
+margin_bottom = 34.5
+rect_scale = Vector2( 0.4, 0.4 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PerkLvl" type="Label" parent="Texture"]
 anchor_left = 1.0
 anchor_top = 1.0

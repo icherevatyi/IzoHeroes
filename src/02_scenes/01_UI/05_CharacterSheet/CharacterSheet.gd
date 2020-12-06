@@ -1,7 +1,7 @@
 extends Node2D
 
-var param_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
-var perk_scene: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.tscn")
+var param_item: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
+var perk_item: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/02_PerkItem/PerkItem.tscn")
 
 
 var params: Dictionary = PlayerStats.stats_list
@@ -21,7 +21,7 @@ func _ready() -> void:
 func load_param_sheet() -> void:
 	var param_instance
 	for param in params.keys():
-		param_instance = param_scene.instance()
+		param_instance = param_item.instance()
 		param_instance.init(params[param].title, str(params[param].value), int(param))
 		params_container.add_child(param_instance)
 #
@@ -31,8 +31,8 @@ func load_param_sheet() -> void:
 func load_perk_grid() -> void:
 	var perk_instance
 	for perk in perks.keys():
-		perk_instance = perk_scene.instance()
-		perk_instance.init(perks[perk].title, perks[perk].perk_lvl, int(perk))
+		perk_instance = perk_item.instance()
+		perk_instance.init(perks[perk].title, perks[perk].perk_lvl, perks[perk].icon, int(perk))
 		perk_container.add_child(perk_instance)
 
 
