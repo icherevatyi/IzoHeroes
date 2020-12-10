@@ -63,6 +63,7 @@ func load_param_sheet() -> void:
 
 
 func _on_lvl_ended() -> void:
+	get_tree().paused = true
 	_toggle_screen_msg()
 	Global.current_lvl += 1
 

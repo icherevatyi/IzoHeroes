@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/DungeonAuto.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://src/01_assets/06_Weapons/weapons.png" type="Texture" id=21]
 [ext_resource path="res://src/01_assets/08_Items/Barricade.png" type="Texture" id=22]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/06_Boss/Boss.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/02_scenes/04_Items/02_Loot/04_Amulet/Amulet.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/01_assets/08_Items/Furniture.png" type="Texture" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 16 )
@@ -46,6 +48,10 @@ region = Rect2( 0, 43, 26, 8 )
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 20, 26, 22 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 25 )
+region = Rect2( 131, 85, 56, 56 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 11 )
@@ -213,6 +219,10 @@ texture = SubResource( 4 )
 position = Vector2( -164.5, -107.25 )
 scale = Vector2( 1, 0.973684 )
 texture = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Decorations"]
+position = Vector2( 5, -352 )
+texture = SubResource( 28 )
 
 [node name="Mess" type="Node2D" parent="."]
 __meta__ = {
@@ -710,6 +720,10 @@ rotation = -0.811578
 position = Vector2( 48, 91.3654 )
 rotation = 0.541052
 scale = Vector2( -1, 1 )
+
+[node name="Loot" type="Node2D" parent="."]
+
+[node name="Amulet" parent="Loot" instance=ExtResource( 24 )]
 
 [node name="YSort" type="YSort" parent="."]
 

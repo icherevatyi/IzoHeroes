@@ -36,7 +36,7 @@ func _on_indicator_enabled() -> void:
 
 
 func _on_indicator_disabled() -> void:
-	_response = visibility_tween.interpolate_property(indicator_container, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = visibility_tween.interpolate_property(indicator_container, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_response = sliding_tween.interpolate_property(indicator_container, "rect_position", end_point, start_point, 0.4, slide_trans_param, slide_easing_param)
 	_response = visibility_tween.start()
 	_response = sliding_tween.start()
