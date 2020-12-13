@@ -21,6 +21,7 @@ region = Rect2( 0, 14, 14, 14 )
 
 [node name="InterractionIndicator" type="Node2D"]
 material = SubResource( 1 )
+scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 1 )
 
 [node name="InterractionIndicatorParent" type="Control" parent="."]
@@ -63,8 +64,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SlidingTween" type="Tween" parent="InterractionIndicatorParent"]
 
 [node name="VisibilityTween" type="Tween" parent="InterractionIndicatorParent"]
 

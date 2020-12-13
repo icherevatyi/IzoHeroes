@@ -93,5 +93,6 @@ rotation = 0.802851
 shape = SubResource( 7 )
 
 [node name="InterractionIndicator" parent="." instance=ExtResource( 4 )]
+position = Vector2( 19.2, -27.8 )
 [connection signal="body_entered" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_body_entered"]
 [connection signal="body_exited" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_body_exited"]
