@@ -25,15 +25,13 @@ func load_param_sheet() -> void:
 		param_instance = param_item.instance()
 		param_instance.init(params[param].title, str(params[param].value), int(param))
 		params_container.add_child(param_instance)
-#
-#		print(params[param].title, ": ", params[param].value)
 
 
 func load_perk_grid() -> void:
 	var perk_instance
 	for perk in perks.keys():
 		perk_instance = perk_item.instance()
-		perk_instance.init(perks[perk].title, perks[perk].perk_lvl, perks[perk].icon, int(perk))
+		perk_instance.init(perks[perk].perk_lvl, perks[perk].icon, int(perk))
 		perk_container.add_child(perk_instance)
 
 

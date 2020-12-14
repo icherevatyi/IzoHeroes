@@ -42,11 +42,11 @@ func _on_PlayerCollisionDetector_body_exited(body) -> void:
 
 
 func start_activation() -> void:
-			emit_signal("start_activation")
+	emit_signal("start_activation")
 
 
 func abort_activation() -> void:
-			emit_signal("stop_activation")
+	emit_signal("stop_activation")
 
 
 func activate() -> void:

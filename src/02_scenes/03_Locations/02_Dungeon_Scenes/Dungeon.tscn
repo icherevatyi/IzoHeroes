@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/01_DungeonStart/01/StartRoom1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Darkness.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/BloodFalchion/BloodFalchion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Background.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -27,4 +28,9 @@ autostart = true
 material = SubResource( 1 )
 z_index = 1
 color = Color( 0.235294, 0.266667, 0.388235, 1 )
+
+[node name="BloodFalchion" parent="." instance=ExtResource( 4 )]
+position = Vector2( 80, -64 )
+collision_layer = 1
+collision_mask = 1
 [connection signal="timeout" from="CreateExitTimer" to="." method="_on_CreateExitTimer_timeout"]

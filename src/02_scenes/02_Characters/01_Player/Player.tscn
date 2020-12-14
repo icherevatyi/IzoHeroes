@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/01_Player/Player.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/01_Player/02_Camera/Camera2D.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/DamageBlinkShader.tres" type="Material" id=10]
 [ext_resource path="res://src/01_assets/08_Items/Light.png" type="Texture" id=11]
+[ext_resource path="res://src/02_scenes/04_Items/01_Weapons/02_BloodFalchion/BloodFalchion.tscn" type="PackedScene" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -221,7 +222,11 @@ shape = SubResource( 2 )
 [node name="Weapon" type="Node2D" parent="."]
 
 [node name="Sword" parent="Weapon" instance=ExtResource( 6 )]
-visible = true
+visible = false
+monitoring = true
+
+[node name="BloodFalchion" parent="Weapon" instance=ExtResource( 12 )]
+position = Vector2( -6.67572e-06, 4.05312e-06 )
 monitoring = true
 
 [node name="HurtBox" type="Area2D" parent="."]

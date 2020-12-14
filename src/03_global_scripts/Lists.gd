@@ -81,12 +81,33 @@ var deathscreen_game_list: Dictionary = {
 }
 
 var weapon_list: Dictionary = {
-	1: {
+	"steel_sword": {
 		"title": "Straight Steel Sword",
-		"id": "steel_sword",
+		"type": "steel_sword",
 		"attack_power": 37,
 		"attack_speed": 20,
-		"scene": preload("res://src/02_scenes/04_Items/01_Weapons/01_Sword/Sword.tscn")
+		"ability": null,
+	},
+	"blood_falchion": {
+		"title": "Blood Falchion",
+		"type": "blood_falchion",
+		"attack_power": 30,
+		"attack_speed": 25,
+		"ability": "blood_ciphon",
+	},
+	"jade_dadao": {
+		"title": "Jade Dadao",
+		"type": "jade_dadao",
+		"attack_power": 43,
+		"attack_speed": 18,
+		"ability": null,
+	},
+	"great_axe": {
+		"title": "Great Axe",
+		"type": "great_axe",
+		"attack_power": 48,
+		"attack_speed": 13,
+		"ability": null,
 	}
 }
 

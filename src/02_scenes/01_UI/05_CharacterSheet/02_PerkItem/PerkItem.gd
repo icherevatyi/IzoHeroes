@@ -13,7 +13,7 @@ func _ready() -> void:
 	_connect_signal("clear_item_id", sheet, "_on_item_id_cleared")
 
 
-func init(title: String, perk_lvl: int, perk_icon: Object, id: int) -> void:
+func init(perk_lvl: int, perk_icon: Object, id: int) -> void:
 	get_node("Texture/Glyph").set_texture(perk_icon)
 	get_node("Texture/PerkLvl").set_text(str(perk_lvl))
 	perk_id = id

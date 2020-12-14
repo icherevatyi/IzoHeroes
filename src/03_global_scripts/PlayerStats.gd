@@ -1,6 +1,6 @@
 extends Node
 
-var weapon_id: String = "steel_sword"
+var _default_weapon_id: String = Lists.weapon_list["steel_sword"].type
 
 var stats_list: Dictionary = {
 	0: {
@@ -8,16 +8,14 @@ var stats_list: Dictionary = {
 		"title": "Max. Health",
 		"description": "0",
 		"base_value": 120,
-		"value": 120,
-		"calculated_final": 120
+		"value": 120
 	},
 	1: {
 		"type": "max_stamina",
 		"title": "Max. Stamina",
 		"description": "0",
 		"base_value": 100,
-		"value": 100,
-		"calculated_final": 100
+		"value": 100
 	},
 	2: {
 		"type": "attack_speed",
@@ -108,8 +106,29 @@ var perk_list: Dictionary = {
 	}
 }
 
-func _on_weapon_picked_up(weapon_id: String) -> void:
-		print(weapon_id)
+func _on_weapon_picked_up(weapon_id: String = _default_weapon_id) -> void:
+	update_weapon_params(weapon_id)
+
+
+func update_weapon_params(weapon_id: String ) -> void:
+	var weapon_stats
+	for weapon in Lists.weapon_list:
+		if weapon == weapon_id:
+			weapon_stats = weapon
+
+	for stat_item in stats_list:
+		for weapon_characteristic in Lists.weapon_list[weapon_stats]:
+			if stats_list[stat_item].type == weapon_characteristic:
+				stats_list[stat_item].base_value = Lists.weapon_list[weapon_stats].get(weapon_characteristic)
+				_recalculate_stats(stat_item, stats_list[stat_item].type)
+
+func _recalculate_stats(stat_id: int, stat: String) -> void:
+	for perk_item in perk_list:
+		if perk_list[perk_item].type == stat:
+			if perk_list[perk_item].perk_lvl == 0:
+				stats_list[stat_id].value = stats_list[stat_id].base_value
+			else:
+				stats_list[stat_id].value = stats_list[stat_id].base_value + int(round((stats_list[stat_id].base_value * perk_list[perk_item].value) * perk_list[perk_item].perk_lvl))
 
 
 func update_stat(index: int) -> void:

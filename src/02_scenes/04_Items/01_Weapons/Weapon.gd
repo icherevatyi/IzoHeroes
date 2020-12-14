@@ -2,6 +2,7 @@ extends Area2D
 
 var is_monitored: bool
 var damage: float
+var is_active: bool = false
 var weapon_type: String
 
 onready var weapon_sprite: Sprite = $Sprite
@@ -28,12 +29,13 @@ func get_param_value(param: String) -> int:
 
 
 func _on_weapon_swing() -> void:
-	if player_sprite.flip_h == false:
-		weapon_sprite.flip_v = false
-		animation_player.play("swing")
-	if player_sprite.flip_h == true:
-		weapon_sprite.flip_v = true
-		animation_player.play_backwards("swing")
+	if is_active == true:
+		if player_sprite.flip_h == false:
+			weapon_sprite.flip_v = false
+			animation_player.play("swing")
+		if player_sprite.flip_h == true:
+			weapon_sprite.flip_v = true
+			animation_player.play_backwards("swing")
 
 
 func _on_Weapon_area_entered(area) -> void:

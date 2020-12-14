@@ -26,7 +26,7 @@ onready var loot_management: Node2D = $AdditionalScripts/LootManagement
 onready var HUD = $HUD
 onready var idle_timer: Timer = $Timers/IdleTimer
 onready var weapon_container: Node2D = $Weapon
-onready var current_weapon: Area2D = $Weapon/Sword
+onready var current_weapon: Area2D
 onready var pickup_detection_range: Area2D = $PickupDetectionRange
 onready var camera: Camera2D = $Camera2D
 
@@ -43,6 +43,7 @@ signal open_gate
 signal pickup_screen_blink
 
 func _ready() -> void:
+	_ready_weapon()
 	speed = _get_stat_value("movement_speed")
 	PlayerStats._on_weapon_picked_up("steel_sword")
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
@@ -56,10 +57,18 @@ func _ready() -> void:
 	_connect_signal("use_key", HUD, "_on_key_used")
 	_connect_signal("use_bottle", loot_management, "_on_bottle_used")
 	_connect_signal("use_key", loot_management, "_on_key_used")
-	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 	_connect_signal("use_stamina", health_scripts, "_on_stamina_used")
 	_connect_signal("pickup_screen_blink", camera, "_on_screen_blinked")
 
+
+func _ready_weapon() -> void:
+	for weapon in weapon_container.get_children():
+		if weapon.is_active == true:
+			current_weapon = weapon
+			_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
+		else:
+			if is_connected("weapon_swing", weapon, "_on_weapon_swing"):
+				disconnect("weapon_swing", weapon, "_on_weapon_swing")
 
 func _on_weapon_picked(weapon_id: String) -> void:
 	PlayerStats._on_weapon_stats_received(weapon_id)
@@ -187,6 +196,16 @@ func _on_data_request_received() -> void:
 	ResourceStorage.player_data.health_current = health_scripts.health_current
 	ResourceStorage.player_data.coins_count = loot_management.gold_coins
 	ResourceStorage.player_data.healing_pots_count = loot_management.healing_bottle
+
+
+func _on_weapon_taken(picked_weapon_type: String) -> void:
+	for weapon in weapon_container.get_children():
+		if weapon.weapon_type == picked_weapon_type:
+			weapon.is_active = true
+			PlayerStats._on_weapon_picked_up(picked_weapon_type)
+		else:
+			weapon.is_active = false
+	_ready_weapon()
 
 
 func _on_item_data_received(data) -> void:
