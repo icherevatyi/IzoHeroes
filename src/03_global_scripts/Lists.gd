@@ -80,9 +80,14 @@ var deathscreen_game_list: Dictionary = {
 	},
 }
 
-
-var options_list: Dictionary = {
-	
+var weapon_list: Dictionary = {
+	1: {
+		"title": "Straight Steel Sword",
+		"id": "steel_sword",
+		"attack_power": 37,
+		"attack_speed": 20,
+		"scene": preload("res://src/02_scenes/04_Items/01_Weapons/01_Sword/Sword.tscn")
+	}
 }
 
 var closing_rooms: Dictionary = {

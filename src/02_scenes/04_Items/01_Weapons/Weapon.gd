@@ -1,7 +1,8 @@
 extends Area2D
 
 var is_monitored: bool
-var damage: int
+var damage: float
+var weapon_type: String
 
 onready var weapon_sprite: Sprite = $Sprite
 onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -9,9 +10,11 @@ onready var player_sprite: Sprite = get_node("../../Sprite")
 onready var camera: Camera2D = get_node("../../Camera2D")
 
 signal do_damage(damage)
+signal weapon_equipped(weapon_type)
 
 
 func _ready() -> void:
+	connect("weapon_equipped", get_parent().get_owner(), "_on_weapon_picked")
 	damage = get_param_value("attack_power")
 	is_monitored = monitoring
 	animation_player.playback_speed = float(get_param_value("attack_speed")) / 10

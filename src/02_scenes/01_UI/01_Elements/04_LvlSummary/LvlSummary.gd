@@ -11,6 +11,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 onready var lvl_end_screen: VBoxContainer = $LvlEndScreen
 onready var texture_bg: NinePatchRect = $BgTexture
 onready var perk_container: HBoxContainer = $LvlEndScreen/PerkParent/PerkContainer
+onready var perk_title: Label = $LvlEndScreen/PerkParent/DescriptionContainer/PekrDescription/PerkTitle
 onready var perk_description: RichTextLabel = $LvlEndScreen/PerkParent/DescriptionContainer/PekrDescription/DescriptionBody
 onready var params_container: GridContainer = $LvlEndScreen/PerkParent/DescriptionContainer/Params
 
@@ -89,10 +90,12 @@ func _on_lvl_proceed() -> void:
 
 
 func _on_perk_type_received(index: int) -> void:
+	perk_title.set_text(available_perks[index].title)
 	perk_description.set_text(available_perks[index].description)
 
 
 func _on_perk_type_cleared() -> void:
+	perk_title.set_text("")
 	perk_description.clear()
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/05_CharacterSheet/CharacterSheet.gd" type="Script" id=2]
 [ext_resource path="res://src/01_assets/01_UI/dialog_frame.png" type="Texture" id=3]
+[ext_resource path="res://src/01_assets/01_UI/close_btn.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
@@ -25,6 +26,14 @@ font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 size = 8
 font_data = SubResource( 5 )
 
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 8
+use_mipmaps = true
+font_data = SubResource( 11 )
+
 [sub_resource type="DynamicFontData" id=7]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
@@ -33,6 +42,14 @@ size = 6
 use_mipmaps = true
 extra_spacing_char = 1
 font_data = SubResource( 7 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 10, 9, 9 )
 
 [node name="CharacterSheet" type="Node2D"]
 z_index = 3
@@ -133,16 +150,17 @@ margin_right = 208.0
 margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 20
 
 [node name="LeftSide" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel/BottomSection"]
-margin_right = 102.0
+margin_right = 94.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="CharacterSheetBody/StatsPanel/BottomSection/LeftSide"]
-margin_right = 102.0
+margin_right = 94.0
 margin_bottom = 9.0
 custom_fonts/font = SubResource( 6 )
 text = "Player Params"
@@ -151,31 +169,53 @@ valign = 1
 
 [node name="Params" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel/BottomSection/LeftSide"]
 margin_top = 13.0
-margin_right = 102.0
+margin_right = 94.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Description" type="Control" parent="CharacterSheetBody/StatsPanel/BottomSection"]
-margin_left = 106.0
+[node name="Description" type="VBoxContainer" parent="CharacterSheetBody/StatsPanel/BottomSection"]
+margin_left = 114.0
 margin_right = 208.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Title" type="Label" parent="CharacterSheetBody/StatsPanel/BottomSection/Description"]
+margin_right = 94.0
+margin_bottom = 2.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 12 )
+text = "asdasdasd"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DescriptionBox" type="RichTextLabel" parent="CharacterSheetBody/StatsPanel/BottomSection/Description"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 6.0
-margin_top = 10.0
-margin_right = -8.0
-margin_bottom = -3.0
+margin_top = 6.0
+margin_right = 94.0
+margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 8 )
 custom_colors/default_color = Color( 0.890196, 0.890196, 0.890196, 1 )
-text = "asdasdassd asd  asd asd asd  a"
+text = "asdasdasd"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CloseBtn" type="TextureButton" parent="."]
+margin_left = 293.0
+margin_top = 32.0
+margin_right = 302.0
+margin_bottom = 41.0
+texture_normal = SubResource( 9 )
+texture_pressed = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CloseBtn" to="." method="_on_CloseBtn_pressed"]

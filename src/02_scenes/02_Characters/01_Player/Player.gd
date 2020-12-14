@@ -14,7 +14,7 @@ var can_attack: bool = true
 var has_stamina: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
-
+var is_charsheet_opened: bool = false
 var is_interactive: bool = false
 
 var interactive_obj: Object
@@ -44,6 +44,7 @@ signal pickup_screen_blink
 
 func _ready() -> void:
 	speed = _get_stat_value("movement_speed")
+	PlayerStats._on_weapon_picked_up("steel_sword")
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_heal", health_scripts, "_on_damage_healed")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
@@ -58,6 +59,10 @@ func _ready() -> void:
 	_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
 	_connect_signal("use_stamina", health_scripts, "_on_stamina_used")
 	_connect_signal("pickup_screen_blink", camera, "_on_screen_blinked")
+
+
+func _on_weapon_picked(weapon_id: String) -> void:
+	PlayerStats._on_weapon_stats_received(weapon_id)
 
 
 func _get_stat_value(param: String) -> int:
@@ -85,7 +90,7 @@ func _move_player() ->  void:
 
 func _input(event) -> void:		
 	if is_dead == false:
-		if event.is_action_pressed("attack"):
+		if event.is_action_pressed("attack") and is_charsheet_opened == false:
 			if has_stamina == true and can_attack == true:
 				emit_signal("weapon_swing")
 				emit_signal("use_stamina", 10)
@@ -93,6 +98,7 @@ func _input(event) -> void:
 				HUD.on_exhaustion_message_trigger()
 		
 		if event.is_action_pressed("view_stats"):
+			is_charsheet_opened = !is_charsheet_opened
 			HUD.toggle_char_sheet()
 		
 		if event.is_pressed() == false:

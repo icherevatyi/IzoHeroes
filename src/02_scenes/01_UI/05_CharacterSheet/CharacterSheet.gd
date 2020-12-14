@@ -10,6 +10,7 @@ var perks: Dictionary = PlayerStats.perk_list
 onready var body: Control = $CharacterSheetBody
 onready var params_container: VBoxContainer = $CharacterSheetBody/StatsPanel/BottomSection/LeftSide/Params
 onready var perk_container: GridContainer = $CharacterSheetBody/StatsPanel/Perks/PerkGrid
+onready var description_title: Label = $CharacterSheetBody/StatsPanel/BottomSection/Description/Title
 onready var description_box: RichTextLabel = $CharacterSheetBody/StatsPanel/BottomSection/Description/DescriptionBox
 
 func _ready() -> void:
@@ -37,14 +38,17 @@ func load_perk_grid() -> void:
 
 
 func _on_perk_id_received(perk_id: int) -> void:
+	description_title.set_text(perks[perk_id].title)
 	description_box.set_text(perks[perk_id].description)
 	
 	
 func _on_param_id_received(param_id: int) -> void:
+	description_title.set_text(params[param_id].title)
 	description_box.set_text(params[param_id].description)
 
 
 func _on_item_id_cleared() -> void:
+	description_title.set_text("")
 	description_box.clear()
 
 
@@ -56,3 +60,8 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+
+
+func _on_CloseBtn_pressed():
+	get_parent().get_owner().get_parent().is_charsheet_opened = false
+	queue_free()

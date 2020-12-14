@@ -2,7 +2,7 @@ extends Control
 
 var perk_id: int
 
-onready var sheet: Control = get_node("../../../../../")
+onready var sheet: Control = get_parent().get_owner()
 
 signal send_item_id(id)
 signal clear_item_id
@@ -16,18 +16,14 @@ func _ready() -> void:
 func init(title: String, perk_lvl: int, perk_icon: Object, id: int) -> void:
 	get_node("Texture/Glyph").set_texture(perk_icon)
 	get_node("Texture/PerkLvl").set_text(str(perk_lvl))
-	get_node("PerkTooltip").set_text(title)
-	get_node("PerkTooltip").set_visible(false)
 	perk_id = id
 
 
 func _on_PerkItem_mouse_entered() -> void:
-	get_node("PerkTooltip").set_visible(true)
 	emit_signal("send_item_id", perk_id)
 
 
 func _on_PerkItem_mouse_exited() -> void:
-	get_node("PerkTooltip").set_visible(false)
 	emit_signal("clear_item_id")
 
 

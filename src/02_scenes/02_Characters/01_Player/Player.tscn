@@ -199,6 +199,7 @@ radius = 5.0
 
 [node name="Player" type="KinematicBody2D"]
 material = ExtResource( 10 )
+position = Vector2( 0.291992, 0.291985 )
 collision_layer = 2
 collision_mask = 133
 script = ExtResource( 1 )
@@ -220,6 +221,7 @@ shape = SubResource( 2 )
 [node name="Weapon" type="Node2D" parent="."]
 
 [node name="Sword" parent="Weapon" instance=ExtResource( 6 )]
+visible = true
 monitoring = true
 
 [node name="HurtBox" type="Area2D" parent="."]

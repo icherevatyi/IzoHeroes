@@ -1,5 +1,7 @@
 extends Node
 
+var weapon_id: String = "steel_sword"
+
 var stats_list: Dictionary = {
 	0: {
 		"type": "max_health",
@@ -7,6 +9,7 @@ var stats_list: Dictionary = {
 		"description": "0",
 		"base_value": 120,
 		"value": 120,
+		"calculated_final": 120
 	},
 	1: {
 		"type": "max_stamina",
@@ -14,6 +17,7 @@ var stats_list: Dictionary = {
 		"description": "0",
 		"base_value": 100,
 		"value": 100,
+		"calculated_final": 100
 	},
 	2: {
 		"type": "attack_speed",
@@ -104,6 +108,9 @@ var perk_list: Dictionary = {
 	}
 }
 
+func _on_weapon_picked_up(weapon_id: String) -> void:
+		print(weapon_id)
+
 
 func update_stat(index: int) -> void:
 	for list_item in stats_list:
@@ -113,6 +120,5 @@ func update_stat(index: int) -> void:
 				stats_list[1].value += 15
 			else:
 				stats_list[list_item].value += int(round((stats_list[list_item].base_value * perk_list[index].value)))
-
 	perk_list[index].perk_lvl += 1
 
