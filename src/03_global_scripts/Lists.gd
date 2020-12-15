@@ -84,7 +84,7 @@ var weapon_list: Dictionary = {
 	"steel_sword": {
 		"title": "Straight Steel Sword",
 		"type": "steel_sword",
-		"attack_power": 37,
+		"attack_power": 45,
 		"attack_speed": 20,
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/SteelSword/Sword.tscn")
 	},
@@ -92,7 +92,7 @@ var weapon_list: Dictionary = {
 		"title": "Blood Falchion",
 		"type": "blood_falchion",
 		"attack_power": 30,
-		"attack_speed": 25,
+		"attack_speed": 27,
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/BloodFalchion/BloodFalchion.tscn")
 	},
 #	"jade_dadao": {

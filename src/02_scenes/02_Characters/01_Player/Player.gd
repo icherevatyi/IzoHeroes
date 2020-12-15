@@ -204,7 +204,7 @@ func _on_weapon_taken(picked_weapon_type: String, weapon_position: Vector2) -> v
 		if weapon.is_active == true:
 			prev_weapon_type = weapon.weapon_type
 		if weapon.weapon_type == picked_weapon_type:
-			weapon.is_active = true
+			weapon.activate_weapon()
 			PlayerStats._on_weapon_picked_up(picked_weapon_type)
 		else:
 			weapon.is_active = false

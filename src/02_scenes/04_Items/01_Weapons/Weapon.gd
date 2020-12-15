@@ -16,9 +16,17 @@ signal do_damage(damage)
 
 
 func _ready() -> void:
-	damage = get_param_value("attack_power")
 	is_monitored = monitoring
-	animation_player.playback_speed = float(get_param_value("attack_speed")) / 10
+	recalculate_params()
+
+
+func activate_weapon() -> void:
+	is_active = true
+
+
+func recalculate_params() -> void:
+	damage = get_param_value("attack_power")
+	animation_player.playback_speed = float(get_param_value("attack_speed")) / 10.0
 
 
 func get_param_value(param: String) -> int:
@@ -30,12 +38,16 @@ func get_param_value(param: String) -> int:
 
 func _on_weapon_swing() -> void:
 	if is_active == true:
+		recalculate_params()
 		if player_sprite.flip_h == false:
 			weapon_sprite.flip_v = false
 			animation_player.play("swing")
 		if player_sprite.flip_h == true:
 			weapon_sprite.flip_v = true
 			animation_player.play_backwards("swing")
+	
+		print(get_param_value("attack_speed"), ", and final speed is: ", animation_player.get_speed_scale())
+		print(get_param_value("attack_power"))
 
 
 func _on_Weapon_area_entered(area) -> void:

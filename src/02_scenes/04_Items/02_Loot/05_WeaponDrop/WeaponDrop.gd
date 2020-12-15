@@ -43,8 +43,8 @@ func _select_direction() -> Vector2:
 func _on_PlayerCollisionDetector_body_entered(body) -> void:
 	if body.name == "Player":
 		body.is_interactive = true
+		body.interactive_obj = self
 		emit_signal("show_label")
-	body.interactive_obj = self
 
 
 func _on_PlayerCollisionDetector_body_exited(body) -> void:
