@@ -17,7 +17,7 @@ signal show_label
 signal hide_label
 signal start_activation
 signal stop_activation
-signal take_weapon(weapon_type)
+signal take_weapon(weapon_type, weapon_position)
 
 func _ready() -> void:
 	_response = connect("show_label", activation_label, "_on_indicator_enabled")
@@ -69,7 +69,7 @@ func activate() -> void:
 			_response = connect("take_weapon", body, "_on_weapon_taken")
 			
 			emit_signal("hide_label")
-			emit_signal("take_weapon", weapon_type)
+			emit_signal("take_weapon", weapon_type, get_global_position())
 			
 			disconnect("show_label", activation_label, "_on_indicator_enabled")
 			disconnect("hide_label", activation_label, "_on_indicator_disabled")

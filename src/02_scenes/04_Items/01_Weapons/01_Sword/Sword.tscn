@@ -12,11 +12,9 @@ region = Rect2( 1, 1, 27, 7 )
 extents = Vector2( 14, 4 )
 
 [node name="Sword" instance=ExtResource( 1 )]
-visible = true
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 24, 0 )
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]

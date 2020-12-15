@@ -19,7 +19,7 @@ var is_interactive: bool = false
 
 var interactive_obj: Object
 
-
+onready var dungeon: Node2D = get_parent().get_owner()
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
 onready var loot_management: Node2D = $AdditionalScripts/LootManagement
@@ -198,14 +198,24 @@ func _on_data_request_received() -> void:
 	ResourceStorage.player_data.healing_pots_count = loot_management.healing_bottle
 
 
-func _on_weapon_taken(picked_weapon_type: String) -> void:
+func _on_weapon_taken(picked_weapon_type: String, weapon_position: Vector2) -> void:
+	var prev_weapon_type: String
 	for weapon in weapon_container.get_children():
+		if weapon.is_active == true:
+			prev_weapon_type = weapon.weapon_type
 		if weapon.weapon_type == picked_weapon_type:
 			weapon.is_active = true
 			PlayerStats._on_weapon_picked_up(picked_weapon_type)
 		else:
 			weapon.is_active = false
 	_ready_weapon()
+	_weapon_drop(prev_weapon_type, weapon_position)
+
+
+func _weapon_drop(weapon_type, weapon_position: Vector2) ->  void:
+	var weapon_loot_item = Lists.weapon_list[weapon_type].loot_scene.instance()
+	dungeon.add_child(weapon_loot_item)
+	weapon_loot_item.set_global_position(weapon_position)
 
 
 func _on_item_data_received(data) -> void:

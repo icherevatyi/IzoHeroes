@@ -4,18 +4,18 @@ var is_monitored: bool
 var damage: float
 var is_active: bool = false
 var weapon_type: String
+var has_effect: bool = false
 
+onready var player = get_parent().get_owner()
 onready var weapon_sprite: Sprite = $Sprite
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: Sprite = get_node("../../Sprite")
 onready var camera: Camera2D = get_node("../../Camera2D")
 
 signal do_damage(damage)
-signal weapon_equipped(weapon_type)
 
 
 func _ready() -> void:
-	connect("weapon_equipped", get_parent().get_owner(), "_on_weapon_picked")
 	damage = get_param_value("attack_power")
 	is_monitored = monitoring
 	animation_player.playback_speed = float(get_param_value("attack_speed")) / 10
@@ -45,6 +45,12 @@ func _on_Weapon_area_entered(area) -> void:
 			emit_signal("do_damage", damage)
 			camera.start_shaking(0.15, 50, 3)
 			disconnect("do_damage", area, "_on_damage_received")
+			if has_effect == true:
+				apply_effect()
+
+
+func apply_effect() ->  void:
+	pass
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

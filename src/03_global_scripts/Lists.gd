@@ -86,29 +86,29 @@ var weapon_list: Dictionary = {
 		"type": "steel_sword",
 		"attack_power": 37,
 		"attack_speed": 20,
-		"ability": null,
+		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/SteelSword/Sword.tscn")
 	},
 	"blood_falchion": {
 		"title": "Blood Falchion",
 		"type": "blood_falchion",
 		"attack_power": 30,
 		"attack_speed": 25,
-		"ability": "blood_ciphon",
+		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/BloodFalchion/BloodFalchion.tscn")
 	},
-	"jade_dadao": {
-		"title": "Jade Dadao",
-		"type": "jade_dadao",
-		"attack_power": 43,
-		"attack_speed": 18,
-		"ability": null,
-	},
-	"great_axe": {
-		"title": "Great Axe",
-		"type": "great_axe",
-		"attack_power": 48,
-		"attack_speed": 13,
-		"ability": null,
-	}
+#	"jade_dadao": {
+#		"title": "Jade Dadao",
+#		"type": "jade_dadao",
+#		"attack_power": 43,
+#		"attack_speed": 18,
+#		"loot_scene": preload()
+#	},
+#	"great_axe": {
+#		"title": "Great Axe",
+#		"type": "great_axe",
+#		"attack_power": 48,
+#		"attack_speed": 13,
+#		"loot_scene": preload()
+#	}
 }
 
 var closing_rooms: Dictionary = {
