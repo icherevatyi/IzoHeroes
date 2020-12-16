@@ -45,9 +45,6 @@ func _on_weapon_swing() -> void:
 		if player_sprite.flip_h == true:
 			weapon_sprite.flip_v = true
 			animation_player.play_backwards("swing")
-	
-		print(get_param_value("attack_speed"), ", and final speed is: ", animation_player.get_speed_scale())
-		print(get_param_value("attack_power"))
 
 
 func _on_Weapon_area_entered(area) -> void:
