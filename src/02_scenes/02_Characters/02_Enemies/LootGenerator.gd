@@ -14,11 +14,10 @@ func get_loot_table(enemy_type) -> void:
 			loot_table = Lists.enemy_list[index].loot
 	if parent.drops_key == true:
 		loot_table[loot_table.size() + 1] = Lists.boss_loot_list["key"]
-		print(loot_table)
 
 
 func generate_loot() -> void:
-	if is_generated == false:	
+	if is_generated == false:
 		for index in loot_table:
 			rng.randomize()
 			var drop_chance_value: int = rng.randi_range(0, 100)
@@ -35,5 +34,14 @@ func generate_loot() -> void:
 			key_instance.item_info = Lists.boss_loot_list["key"]
 			key_instance.set_global_position(parent.get_global_position())
 			dungeon.add_child(key_instance)
+		if parent.is_boss == true:
+			for weapon_holder in Lists.weapon_list:
+				rng.randomize()
+				var drop_chance_value: int = rng.randi_range(0, 100)
+				
+				if parent.type == Lists.weapon_list[weapon_holder].dropped and drop_chance_value < 30:
+					var weapon_instance = Lists.weapon_list[weapon_holder].loot_scene.instance()
+					weapon_instance.set_global_position(parent.get_global_position())
+					dungeon.add_child(weapon_instance)
 
 		is_generated = true

@@ -80,37 +80,6 @@ var deathscreen_game_list: Dictionary = {
 	},
 }
 
-var weapon_list: Dictionary = {
-	"steel_sword": {
-		"title": "Straight Steel Sword",
-		"type": "steel_sword",
-		"attack_power": 45,
-		"attack_speed": 20,
-		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/SteelSword/Sword.tscn")
-	},
-	"blood_falchion": {
-		"title": "Blood Falchion",
-		"type": "blood_falchion",
-		"attack_power": 30,
-		"attack_speed": 27,
-		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/BloodFalchion/BloodFalchion.tscn")
-	},
-	"jade_dadao": {
-		"title": "Jade Dadao",
-		"type": "jade_dadao",
-		"attack_power": 43,
-		"attack_speed": 18,
-		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/JadeDadao/JadeDadao.tscn")
-	},
-	"great_axe": {
-		"title": "Great Axe",
-		"type": "great_axe",
-		"attack_power": 48,
-		"attack_speed": 13,
-		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/GreatAxe/GreatAxe.tscn")
-	}
-}
-
 var closing_rooms: Dictionary = {
 	"BOTTOM_LEFT": preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/02_BL/Room1.tscn"),
 	"BOTTOM_RIGHT": preload("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/03_BR/Room1.tscn"),
@@ -230,6 +199,41 @@ var enemy_list: Dictionary = {
 				"type": "gold_coins"
 			}
 		}
+	}
+}
+
+var weapon_list: Dictionary = {
+	"steel_sword": {
+		"title": "Straight Steel Sword",
+		"type": "steel_sword",
+		"attack_power": 45,
+		"attack_speed": 20,
+		"dropped": "skeleton",
+		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/SteelSword/Sword.tscn")
+	},
+	"blood_falchion": {
+		"title": "Blood Falchion",
+		"type": "blood_falchion",
+		"attack_power": 30,
+		"attack_speed": 27,
+		"dropped": "ghost",
+		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/BloodFalchion/BloodFalchion.tscn")
+	},
+	"jade_dadao": {
+		"title": "Jade Dadao",
+		"type": "jade_dadao",
+		"attack_power": 43,
+		"attack_speed": 18,
+		"dropped": "mage",
+		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/JadeDadao/JadeDadao.tscn")
+	},
+	"great_axe": {
+		"title": "Great Axe",
+		"type": "great_axe",
+		"attack_power": 48,
+		"attack_speed": 13,
+		"dropped": "minotaur",
+		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/GreatAxe/GreatAxe.tscn")
 	}
 }
 
