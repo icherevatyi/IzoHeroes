@@ -73,18 +73,12 @@ func toggle_pause_menu() -> void:
 
 func start_game() -> void:
 	ResourceStorage.player_data =  ResourceStorage.player_original_data
-	_reset_params()
+	PlayerStats.weapon_id = PlayerStats.weapon_default
+	PlayerStats.reset_params()
 	is_game_started = true
 	is_paused = false
 	get_tree().paused = false
 	_scene_change_value = get_tree().change_scene("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.tscn")
-
-
-func _reset_params() -> void:
-	for param in PlayerStats.perk_list:
-		PlayerStats.perk_list[param].perk_lvl = 0
-	for param in PlayerStats.stats_list:
-		PlayerStats.stats_list[param].value = PlayerStats.stats_list[param].base_value
 
 
 func load_game() -> void:

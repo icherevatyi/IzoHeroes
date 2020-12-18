@@ -1,6 +1,7 @@
 extends Node
 
-var _default_weapon_id: String = Lists.weapon_list["steel_sword"].type
+var weapon_default: String = Lists.weapon_list["steel_sword"].type
+var weapon_id: String = Lists.weapon_list["steel_sword"].type
 
 var stats_list: Dictionary = {
 	0: {
@@ -106,14 +107,25 @@ var perk_list: Dictionary = {
 	}
 }
 
-func _on_weapon_picked_up(weapon_id: String = _default_weapon_id) -> void:
+func reset_params() -> void:
+	for stat in stats_list:
+		stats_list[stat].value = stats_list[stat].base_value
+	for param in PlayerStats.stats_list:
+		stats_list[param].value = stats_list[param].base_value
+	
+	weapon_id = weapon_default
+	update_weapon_params(weapon_default)
+
+
+func _on_weapon_picked_up(w_id: String = weapon_default) -> void:
+	weapon_id = w_id
 	update_weapon_params(weapon_id)
 
 
-func update_weapon_params(weapon_id: String ) -> void:
+func update_weapon_params(w_type: String = weapon_default ) -> void:
 	var weapon_stats
 	for weapon in Lists.weapon_list:
-		if weapon == weapon_id:
+		if weapon == w_type:
 			weapon_stats = weapon
 
 	for stat_item in stats_list:
@@ -121,6 +133,7 @@ func update_weapon_params(weapon_id: String ) -> void:
 			if stats_list[stat_item].type == weapon_characteristic:
 				stats_list[stat_item].base_value = Lists.weapon_list[weapon_stats].get(weapon_characteristic)
 				_recalculate_stats(stat_item, stats_list[stat_item].type)
+
 
 func _recalculate_stats(stat_id: int, stat: String) -> void:
 	for perk_item in perk_list:

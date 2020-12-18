@@ -212,6 +212,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
+frame = 3
 __meta__ = {
 "_editor_description_": ""
 }
@@ -233,7 +234,6 @@ monitoring = true
 
 [node name="GreatAxe" parent="Weapon" instance=ExtResource( 13 )]
 rotation = -1.74533
-scale = Vector2( 1, 1 )
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2

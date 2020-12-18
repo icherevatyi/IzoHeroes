@@ -43,9 +43,8 @@ signal open_gate
 signal pickup_screen_blink
 
 func _ready() -> void:
-	_ready_weapon()
+	set_active_weapon()
 	speed = _get_stat_value("movement_speed")
-	PlayerStats._on_weapon_picked_up("steel_sword")
 	_connect_signal("damage_receive", health_scripts, "_on_damage_taken")
 	_connect_signal("damage_heal", health_scripts, "_on_damage_healed")
 	_connect_signal("damage_receive", HUD, "_on_damage_displayed")
@@ -59,6 +58,17 @@ func _ready() -> void:
 	_connect_signal("use_key", loot_management, "_on_key_used")
 	_connect_signal("use_stamina", health_scripts, "_on_stamina_used")
 	_connect_signal("pickup_screen_blink", camera, "_on_screen_blinked")
+
+
+func set_active_weapon() -> void:
+	print("Weapon ID: ", PlayerStats.weapon_id)
+	
+	for weapon in weapon_container.get_children():
+			if weapon.weapon_type == PlayerStats.weapon_id:
+				weapon.is_active = true
+				_ready_weapon()
+			else:
+				weapon.is_active = false
 
 
 func _ready_weapon() -> void:
