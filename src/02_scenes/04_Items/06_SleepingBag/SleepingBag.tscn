@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/01_assets/08_Items/SleepingBag.png" type="Texture" id=1]
 [ext_resource path="res://src/01_assets/08_Items/Light.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/04_Items/06_SleepingBag/SleepingBag.gd" type="Script" id=3]
-[ext_resource path="res://src/02_scenes/01_UI/06_InterractionIndicator/InterractionIndicator.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/01_assets/08_Items/SleepingBagUsed.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -92,7 +91,11 @@ collision_mask = 2
 rotation = 0.802851
 shape = SubResource( 7 )
 
-[node name="InterractionIndicator" parent="." instance=ExtResource( 4 )]
-position = Vector2( 19.2, -27.8 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enable = true
+
+[node name="ActivatorCoords" type="Position2D" parent="."]
+position = Vector2( 21, -28 )
 [connection signal="body_entered" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_body_entered"]
 [connection signal="body_exited" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_body_exited"]
