@@ -3,6 +3,7 @@ extends RigidBody2D
 var activation_indicator: PackedScene = preload("res://src/02_scenes/01_UI/06_InterractionIndicator/InterractionIndicator.tscn")
 
 var _response: int
+var weapon_data: Dictionary
 var weapon_type: String
 
 var direction_list: Dictionary = {
@@ -14,21 +15,26 @@ var direction_list: Dictionary = {
 
 var signals_dictionary = {
 		0: {
+			"signal_title": "send_data",
+			"connected_function": "_on_data_received"
+		},
+		1: {
 			"signal_title": "show_label",
 			"connected_function": "_on_indicator_enabled"
 		},
-		1: {
+		2: {
 			"signal_title": "hide_label",
 			"connected_function": "_on_indicator_disabled"
 			},
-		2: {
+		3: {
 			"signal_title": "start_activation",
 			"connected_function": "_on_activation_started"
 		},
-		3: {
+		4: {
 			"signal_title": "stop_activation",
 			"connected_function": "_on_activation_stopped"
 		},
+		
 	}
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -37,6 +43,7 @@ onready var activator_coords: Position2D = $ActivatorCoords
 onready var activation_label: Node2D
 onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 
+signal send_data(current_wep_obj, data_obj)
 signal show_label
 signal hide_label
 signal start_activation
@@ -49,10 +56,11 @@ func _ready() -> void:
 
 
 func _connect_activation_signals(target_node: Node2D) -> void:
-	_response = connect("show_label", target_node, "_on_indicator_enabled")
-	_response = connect("hide_label", target_node, "_on_indicator_disabled")
-	_response = connect("start_activation", target_node, "_on_activation_started")
-	_response = connect("stop_activation", target_node, "_on_activation_stopped")
+	for signal_item in signals_dictionary:
+		var signal_i = signals_dictionary[signal_item].signal_title
+		var conn_func =  signals_dictionary[signal_item].connected_function
+		if is_connected(signal_i, target_node, conn_func) == false:
+			_response = connect(signal_i, target_node, conn_func)
 
 
 func _disconnect_activation_signals(target_node: Node2D) -> void:	
@@ -82,6 +90,7 @@ func _on_PlayerCollisionDetector_body_entered(body) -> void:
 		canvas_activation_node.add_child(activation_label)
 		body.is_interactive = true
 		body.interactive_obj = self
+		emit_signal("send_data", body.current_weapon.weapon_type, Lists.weapon_list[weapon_type])
 		emit_signal("show_label")
 
 

@@ -61,8 +61,6 @@ func _ready() -> void:
 
 
 func set_active_weapon() -> void:
-	print("Weapon ID: ", PlayerStats.weapon_id)
-	
 	for weapon in weapon_container.get_children():
 			if weapon.weapon_type == PlayerStats.weapon_id:
 				weapon.is_active = true

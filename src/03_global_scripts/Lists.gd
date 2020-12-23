@@ -204,10 +204,10 @@ var enemy_list: Dictionary = {
 
 var weapon_list: Dictionary = {
 	"steel_sword": {
-		"title": "Straight Steel Sword",
+		"title": "Steel Sword",
 		"type": "steel_sword",
-		"attack_power": 45,
-		"attack_speed": 20,
+		"attack_power": 40,
+		"attack_speed": 23,
 		"dropped": "skeleton",
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/SteelSword/Sword.tscn")
 	},
@@ -222,7 +222,7 @@ var weapon_list: Dictionary = {
 	"jade_dadao": {
 		"title": "Jade Dadao",
 		"type": "jade_dadao",
-		"attack_power": 43,
+		"attack_power": 48,
 		"attack_speed": 18,
 		"dropped": "mage",
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/JadeDadao/JadeDadao.tscn")
@@ -230,7 +230,7 @@ var weapon_list: Dictionary = {
 	"great_axe": {
 		"title": "Great Axe",
 		"type": "great_axe",
-		"attack_power": 48,
+		"attack_power": 56,
 		"attack_speed": 13,
 		"dropped": "minotaur",
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/GreatAxe/GreatAxe.tscn")
