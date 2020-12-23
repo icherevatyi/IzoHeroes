@@ -43,7 +43,7 @@ onready var activator_coords: Position2D = $ActivatorCoords
 onready var activation_label: Node2D
 onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 
-signal send_data(current_wep_obj, data_obj)
+signal send_data(data_obj, current_wep_obj)
 signal show_label
 signal hide_label
 signal start_activation
@@ -90,7 +90,7 @@ func _on_PlayerCollisionDetector_body_entered(body) -> void:
 		canvas_activation_node.add_child(activation_label)
 		body.is_interactive = true
 		body.interactive_obj = self
-		emit_signal("send_data", body.current_weapon.weapon_type, Lists.weapon_list[weapon_type])
+		emit_signal("send_data", Lists.weapon_list[weapon_type], body.current_weapon.weapon_type)
 		emit_signal("show_label")
 
 

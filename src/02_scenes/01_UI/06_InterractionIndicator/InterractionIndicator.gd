@@ -27,7 +27,7 @@ func _ready() -> void:
 	description.modulate = Color(1, 1, 1, 0)
 
 
-func _on_data_received(current_weapon: String, received_data: Dictionary) -> void:
+func _on_data_received(received_data: Dictionary = Lists.weapon_list["steel_sword"], current_weapon: String = "steel_sword") -> void:
 	item_data = received_data
 	label.set_text(item_data.title)
 	if item_data.has("attack_power"):
@@ -43,10 +43,10 @@ func _on_data_received(current_weapon: String, received_data: Dictionary) -> voi
 func _compare_attack(val1: int, val2: int) -> void:
 	if val1 > val2:
 		description.get_node("WeaponComparsion/Attack/ValCurr").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Attack/ValNew").modulate = Color(1, 0, 0, 1)
+		description.get_node("WeaponComparsion/Attack/ValNew").modulate = Color(0.72, 0.23, 0.23, 1)
 	elif val1 < val2:
 		description.get_node("WeaponComparsion/Attack/ValNew").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Attack/ValCurr").modulate = Color(1, 0, 0, 1)
+		description.get_node("WeaponComparsion/Attack/ValCurr").modulate = Color(0.72, 0.23, 0.23, 1)
 	else:
 		description.get_node("WeaponComparsion/Attack/ValNew").modulate = Color(0.2, 0.2, 0.2, 1)
 		description.get_node("WeaponComparsion/Attack/ValCurr").modulate = Color(0.2, 0.2, 0.2, 1)
@@ -55,10 +55,10 @@ func _compare_attack(val1: int, val2: int) -> void:
 func _compare_speed(val1: int, val2: int) -> void:
 	if val1 > val2:
 		description.get_node("WeaponComparsion/Speed/ValCurr").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Speed/ValNew").modulate = Color(1, 0, 0, 1)
+		description.get_node("WeaponComparsion/Speed/ValNew").modulate = Color(0.72, 0.23, 0.23, 1)
 	elif val1 < val2:
 		description.get_node("WeaponComparsion/Speed/ValNew").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Speed/ValCurr").modulate = Color(1, 0, 0, 1)
+		description.get_node("WeaponComparsion/Speed/ValCurr").modulate = Color(0.72, 0.23, 0.23, 1)
 	else:
 		description.get_node("WeaponComparsion/Speed/ValNew").modulate = Color(0.2, 0.2, 0.2, 1)
 		description.get_node("WeaponComparsion/Speed/ValCurr").modulate = Color(0.2, 0.2, 0.2, 1)
@@ -74,6 +74,8 @@ func _on_indicator_enabled() -> void:
 		yield(get_tree().create_timer(0.02), "timeout")
 		_response = visibility_tween.interpolate_property(description, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		_response = visibility_tween.start()
+		if item_data.type == "blood_falchion":
+			description.get_node("WeaponComparsion/Effect").visible = true
 
 
 func _on_indicator_disabled() -> void:

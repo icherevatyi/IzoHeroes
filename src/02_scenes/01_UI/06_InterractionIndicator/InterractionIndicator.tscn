@@ -9,21 +9,6 @@
 blend_mode = 1
 light_mode = 1
 
-[sub_resource type="CanvasItemMaterial" id=2]
-blend_mode = 1
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 3 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 3 )
-region = Rect2( 32, 2, 54, 12 )
-
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
 region = Rect2( 20, 16, 66, 36 )
@@ -417,10 +402,184 @@ TextEdit/styles/focus = null
 TextEdit/styles/normal = null
 TextEdit/styles/read_only = SubResource( 15 )
 
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 2, 54, 12 )
+
 [node name="InterractionIndicator" type="Node2D"]
 material = SubResource( 1 )
 scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 1 )
+
+[node name="ItemDescription" type="TextureRect" parent="."]
+margin_left = -4.0
+margin_top = 6.0
+margin_right = 62.0
+margin_bottom = 42.0
+texture = SubResource( 6 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponComparsion" type="VBoxContainer" parent="ItemDescription"]
+margin_left = 4.0
+margin_top = 6.66667
+margin_right = 118.0
+margin_bottom = 59.6667
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="HBoxContainer" parent="ItemDescription/WeaponComparsion"]
+margin_right = 114.0
+margin_bottom = 15.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatLabel" type="Label" parent="ItemDescription/WeaponComparsion/Attack"]
+margin_right = 32.0
+margin_bottom = 15.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "Atck."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValCurr" type="Label" parent="ItemDescription/WeaponComparsion/Attack"]
+margin_left = 36.0
+margin_right = 51.0
+margin_bottom = 15.0
+theme = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "42"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="TextureRect" parent="ItemDescription/WeaponComparsion/Attack"]
+margin_left = 55.0
+margin_right = 63.0
+margin_bottom = 15.0
+theme = ExtResource( 2 )
+texture = SubResource( 7 )
+stretch_mode = 4
+
+[node name="ValNew" type="Label" parent="ItemDescription/WeaponComparsion/Attack"]
+margin_left = 67.0
+margin_right = 81.0
+margin_bottom = 15.0
+theme = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "58"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speed" type="HBoxContainer" parent="ItemDescription/WeaponComparsion"]
+margin_top = 19.0
+margin_right = 114.0
+margin_bottom = 34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatLabel" type="Label" parent="ItemDescription/WeaponComparsion/Speed"]
+margin_right = 26.0
+margin_bottom = 15.0
+theme = SubResource( 25 )
+custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "Spd."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValCurr" type="Label" parent="ItemDescription/WeaponComparsion/Speed"]
+margin_left = 30.0
+margin_right = 45.0
+margin_bottom = 15.0
+theme = SubResource( 26 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "45"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="TextureRect" parent="ItemDescription/WeaponComparsion/Speed"]
+margin_left = 49.0
+margin_right = 57.0
+margin_bottom = 15.0
+theme = ExtResource( 2 )
+texture = SubResource( 7 )
+stretch_mode = 4
+
+[node name="ValNew" type="Label" parent="ItemDescription/WeaponComparsion/Speed"]
+margin_left = 61.0
+margin_right = 75.0
+margin_bottom = 15.0
+theme = SubResource( 27 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "58"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Effect" type="HBoxContainer" parent="ItemDescription/WeaponComparsion"]
+visible = false
+margin_top = 38.0
+margin_right = 114.0
+margin_bottom = 53.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatLabel" type="Label" parent="ItemDescription/WeaponComparsion/Effect"]
+margin_right = 19.0
+margin_bottom = 15.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "Eff."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EffTitle" type="Label" parent="ItemDescription/WeaponComparsion/Effect"]
+margin_left = 23.0
+margin_right = 80.0
+margin_bottom = 15.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
+custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
+text = "Vampiric"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="InterractionIndicatorParent" type="Control" parent="."]
 material = SubResource( 2 )
@@ -482,163 +641,6 @@ theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
 custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
 align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ItemDescription" type="TextureRect" parent="."]
-margin_left = -4.0
-margin_top = 6.0
-margin_right = 62.0
-margin_bottom = 42.0
-texture = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WeaponComparsion" type="VBoxContainer" parent="ItemDescription"]
-margin_left = 4.0
-margin_top = 4.66666
-margin_right = 154.0
-margin_bottom = 58.6667
-rect_scale = Vector2( 0.5, 0.5 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Attack" type="HBoxContainer" parent="ItemDescription/WeaponComparsion"]
-margin_right = 150.0
-margin_bottom = 15.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StatLabel" type="Label" parent="ItemDescription/WeaponComparsion/Attack"]
-margin_right = 32.0
-margin_bottom = 15.0
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "Atck."
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ValCurr" type="Label" parent="ItemDescription/WeaponComparsion/Attack"]
-margin_left = 36.0
-margin_right = 51.0
-margin_bottom = 15.0
-theme = ExtResource( 2 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "42"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Arrow" type="TextureRect" parent="ItemDescription/WeaponComparsion/Attack"]
-margin_left = 55.0
-margin_right = 63.0
-margin_bottom = 15.0
-theme = ExtResource( 2 )
-texture = SubResource( 7 )
-stretch_mode = 4
-
-[node name="ValNew" type="Label" parent="ItemDescription/WeaponComparsion/Attack"]
-margin_left = 67.0
-margin_right = 81.0
-margin_bottom = 15.0
-theme = ExtResource( 2 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "58"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Speed" type="HBoxContainer" parent="ItemDescription/WeaponComparsion"]
-margin_top = 19.0
-margin_right = 150.0
-margin_bottom = 34.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StatLabel" type="Label" parent="ItemDescription/WeaponComparsion/Speed"]
-margin_right = 26.0
-margin_bottom = 15.0
-theme = SubResource( 25 )
-custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "Spd."
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ValCurr" type="Label" parent="ItemDescription/WeaponComparsion/Speed"]
-margin_left = 30.0
-margin_right = 45.0
-margin_bottom = 15.0
-theme = SubResource( 26 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "45"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Arrow" type="TextureRect" parent="ItemDescription/WeaponComparsion/Speed"]
-margin_left = 49.0
-margin_right = 57.0
-margin_bottom = 15.0
-theme = ExtResource( 2 )
-texture = SubResource( 7 )
-stretch_mode = 4
-
-[node name="ValNew" type="Label" parent="ItemDescription/WeaponComparsion/Speed"]
-margin_left = 61.0
-margin_right = 75.0
-margin_bottom = 15.0
-theme = SubResource( 27 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "58"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Effect" type="HBoxContainer" parent="ItemDescription/WeaponComparsion"]
-margin_top = 38.0
-margin_right = 150.0
-margin_bottom = 53.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StatLabel" type="Label" parent="ItemDescription/WeaponComparsion/Effect"]
-margin_right = 19.0
-margin_bottom = 15.0
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "Eff."
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EffTitle" type="Label" parent="ItemDescription/WeaponComparsion/Effect"]
-margin_left = 23.0
-margin_right = 80.0
-margin_bottom = 15.0
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
-custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
-text = "Vampiric"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
