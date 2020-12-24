@@ -75,6 +75,7 @@ func _on_indicator_enabled() -> void:
 		_response = visibility_tween.interpolate_property(description, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		_response = visibility_tween.start()
 		if item_data.type == "blood_falchion":
+			description._set_size(Vector2(66, 36))
 			description.get_node("WeaponComparsion/Effect").visible = true
 
 
