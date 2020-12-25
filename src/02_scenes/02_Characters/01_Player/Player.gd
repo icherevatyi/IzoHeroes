@@ -110,7 +110,7 @@ func _input(event) -> void:
 		if event.is_action_pressed("attack") and is_charsheet_opened == false:
 			if has_stamina == true and can_attack == true:
 				emit_signal("weapon_swing")
-				emit_signal("use_stamina", 10)
+				can_attack = false
 			elif has_stamina == false:
 				HUD.on_exhaustion_message_trigger()
 		
@@ -138,6 +138,15 @@ func _input(event) -> void:
 		if event.is_action_released("interract"):
 			if is_interactive == true and interactive_obj != null:
 				interactive_obj.abort_activation()
+
+
+func _on_attack_finished() -> void:
+	can_attack = true
+
+
+func _on_weapon_swing_made(stam_value: int) -> void:
+	emit_signal("use_stamina", stam_value)
+
 
 func _start_event() -> void:
 	if is_interactive == true and interactive_obj != null:

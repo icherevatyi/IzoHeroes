@@ -13,11 +13,15 @@ onready var player_sprite: Sprite = get_node("../../Sprite")
 onready var camera: Camera2D = get_node("../../Camera2D")
 
 signal do_damage(damage)
+signal use_stamina(stam_value)
+signal enable_attack
 
 
 func _ready() -> void:
 	is_monitored = monitoring
 	recalculate_params()
+	_connect_signal("use_stamina", player, "_on_weapon_swing_made")
+	_connect_signal("enable_attack", player, "_on_attack_finished")
 
 
 func activate_weapon() -> void:
@@ -45,6 +49,11 @@ func _on_weapon_swing() -> void:
 		if player_sprite.flip_h == true:
 			weapon_sprite.flip_v = true
 			animation_player.play_backwards("swing")
+		emit_signal("use_stamina", 10)
+
+
+func _on_attack_finished() -> void:
+	emit_signal("enable_attack")
 
 
 func _on_Weapon_area_entered(area) -> void:
