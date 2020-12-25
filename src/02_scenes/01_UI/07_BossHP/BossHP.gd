@@ -11,6 +11,7 @@ onready var health_top: TextureProgress = $HealthTop
 onready var health_bottom: TextureProgress = $HealthBottom
 onready var tween := $Tween
 
+
 func _init_health(health: int) -> void:
 	health_max = health
 	health_current = health

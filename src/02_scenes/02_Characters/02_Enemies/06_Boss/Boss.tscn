@@ -198,6 +198,20 @@ tracks/2/keys = {
 "method": "_disable_collision_box"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_hide_healthbar"
+} ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.05
@@ -287,6 +301,7 @@ extents = Vector2( 31, 10 )
 
 [node name="Boss" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
+is_attacking = true
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 1 )
@@ -325,9 +340,11 @@ one_shot = true
 visible = false
 
 [node name="HealthUnder" parent="HealthBars" index="0"]
+visible = false
 texture_progress = SubResource( 13 )
 
 [node name="HealthUpper" parent="HealthBars" index="1"]
+visible = false
 texture_under = SubResource( 14 )
 
 [node name="BossHealth" type="CanvasLayer" parent="HealthBars" index="2"]

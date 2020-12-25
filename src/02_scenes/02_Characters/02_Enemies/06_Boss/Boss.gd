@@ -31,8 +31,6 @@ func _physics_process(_delta):
 					movement_scripts.speed = 40
 				false:
 					movement_scripts.speed = 30
-		
-	
 
 
 func _enrage() -> void:
@@ -62,4 +60,11 @@ func _on_room_entered() -> void:
 	_response = hp_enable_tween.interpolate_property(health_top, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_response = hp_enable_tween.start()
 	_response = hp_enable_tween.interpolate_property(health_bottom, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = hp_enable_tween.start()
+
+
+func _hide_healthbar() -> void:
+	_response = hp_enable_tween.interpolate_property(health_top, "self_modulate", Color(1, 1, 1, 1),  Color(1, 1, 1, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = hp_enable_tween.start()
+	_response = hp_enable_tween.interpolate_property(health_bottom, "self_modulate", Color(1, 1, 1, 1),  Color(1, 1, 1, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_response = hp_enable_tween.start()

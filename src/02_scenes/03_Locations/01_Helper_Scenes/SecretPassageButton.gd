@@ -117,6 +117,7 @@ func activate() -> void:
 
 
 func activated() -> void:
+	player_obj = get_parent().get_node("YSort/Player")
 	emit_signal("open_secret_door")
 	yield(get_tree().create_timer(1), "timeout")
-	player_obj.camera.start_shaking(2, 30, 1.5)
+	player_obj.camera.start_shaking(3, 30, 1.5)
