@@ -113,6 +113,18 @@ tracks/2/keys = {
 "method": "_disable_collision_box"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:material:shader_param/hit_opacity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 2.0
@@ -207,14 +219,13 @@ radius = 88.0
 
 [node name="Mage" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-is_attacking = true
 
 [node name="Sprite" parent="." index="0"]
 material = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 5
-frame = 3
+frame = 24
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )

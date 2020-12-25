@@ -108,6 +108,18 @@ tracks/2/keys = {
 "method": "_disable_collision_box"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:material:shader_param/hit_opacity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.9
@@ -210,7 +222,7 @@ material = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 17
+frame = 30
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
