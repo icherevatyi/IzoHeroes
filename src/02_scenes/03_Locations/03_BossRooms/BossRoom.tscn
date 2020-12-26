@@ -726,7 +726,6 @@ scale = Vector2( -1, 1 )
 
 [node name="Boss" parent="YSort" instance=ExtResource( 23 )]
 position = Vector2( 0, -46.5 )
-is_taking_damage = false
 
 [node name="TopPart" type="Sprite" parent="." groups=[
 "throne",

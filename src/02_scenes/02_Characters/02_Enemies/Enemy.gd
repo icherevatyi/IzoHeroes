@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export var is_taking_damage: bool = false
-export var is_attacking: bool = false
+var is_taking_damage: bool = false
+var is_attacking: bool = false
 
 var is_boss: bool = false
 var is_main_boss: bool = false
@@ -62,6 +62,8 @@ func _physics_process(_delta) -> void:
 							match is_attacking:
 								false:
 									movement_scripts.chase_player(player_coords)
+								true:
+									movement_scripts.velocity = Vector2.ZERO
 
 		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
 
