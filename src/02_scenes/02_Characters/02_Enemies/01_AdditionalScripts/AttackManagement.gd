@@ -7,7 +7,7 @@ onready var hitbox: Area2D = parent.get_node("HitBox")
 signal attack(dmg)
 
 
-func _face_player(player_pos) -> void:
+func _aim_at_player(player_pos) -> void:
 	hitbox.look_at(player_pos)
 
 

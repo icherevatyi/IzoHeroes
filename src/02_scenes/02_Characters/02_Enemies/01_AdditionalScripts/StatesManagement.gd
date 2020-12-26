@@ -41,17 +41,28 @@ func _set_state(state) -> void:
 
 func monitor_states() -> void:
 	if enemy.is_dead == false:
-		if enemy.movement == Vector2.ZERO:
-			_set_state(STATE_VALUES.IDLE)
-		if enemy.movement != Vector2.ZERO and enemy.is_chasing == false and enemy.is_attacking == false:
-			_set_state(STATE_VALUES.WALK)
-		if enemy.movement != Vector2.ZERO and enemy.is_chasing == true and enemy.is_attacking == false:
-			_set_state(STATE_VALUES.CHASE)
-		if enemy.is_in_attack_range == true and enemy.player_visible == true:
-			_set_state(STATE_VALUES.ATTACK)
-		if enemy.going_rage == true and enemy.is_main_boss == true:
-			_set_state(STATE_VALUES.ENRAGING)
-		if enemy.is_taking_damage == true:
-			_set_state(STATE_VALUES.RECEIVE_DAMAGE)
+		match enemy.is_main_boss:
+			false:
+				if enemy.movement == Vector2.ZERO:
+					_set_state(STATE_VALUES.IDLE)
+				if enemy.movement != Vector2.ZERO and enemy.is_chasing == false and enemy.is_attacking == false:
+					_set_state(STATE_VALUES.WALK)
+				if enemy.movement != Vector2.ZERO and enemy.is_chasing == true and enemy.is_attacking == false:
+					_set_state(STATE_VALUES.CHASE)
+				if enemy.is_in_attack_range == true and enemy.player_visible == true:
+					_set_state(STATE_VALUES.ATTACK)
+				if enemy.is_taking_damage == true:
+					_set_state(STATE_VALUES.RECEIVE_DAMAGE)
+			true:
+				if enemy.movement == Vector2.ZERO:
+					_set_state(STATE_VALUES.IDLE)
+				if enemy.movement != Vector2.ZERO and enemy.is_chasing == false and enemy.is_attacking == false:
+					_set_state(STATE_VALUES.WALK)
+				if enemy.going_rage == true:
+					_set_state(STATE_VALUES.ENRAGING)
+				if enemy.is_in_attack_range == true and enemy.player_visible == true:
+					_set_state(STATE_VALUES.ATTACK)
+				if enemy.movement != Vector2.ZERO and enemy.is_chasing == true and enemy.is_attacking == false:
+					_set_state(STATE_VALUES.CHASE)
 	else:
 		_set_state(STATE_VALUES.DEATH)

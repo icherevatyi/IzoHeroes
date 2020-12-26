@@ -27,6 +27,7 @@ onready var movement_timer: Timer = $Timers/MovementChangeTimer
 onready var health_bars: Node2D = $HealthBars
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var hurtbox_collision: CollisionShape2D = $HurtBox/CollisionShape2D
+onready var player_position_update_timer: Timer = $PlayerPositionUpdate
 
 var rng = RandomNumberGenerator.new()
 var movement
@@ -55,12 +56,12 @@ func _physics_process(_delta) -> void:
 					if body.name == "Player":
 						is_player_visible(body)
 						if is_in_attack_range and player_visible == true:
-							movement_scripts.enemy_stop(body.get_global_position())
-							attack_scripts._face_player(body.get_global_position())
+							movement_scripts._face_player(player_coords)
+							attack_scripts._aim_at_player(player_coords)
 						else:
 							match is_attacking:
 								false:
-									movement_scripts.chase_player(body.get_global_position())
+									movement_scripts.chase_player(player_coords)
 
 		movement = move_and_slide(movement_scripts.velocity, Vector2(0, 0))
 
@@ -129,6 +130,7 @@ func _death() -> void:
 
 func _on_DetectionRange_body_entered(body) -> void:
 	if body.name == "Player":
+		player_position_update_timer.start()
 		is_chasing = true
 
 
@@ -156,3 +158,9 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+
+
+func _on_PlayerPositionUpdate_timeout():
+	for body in detection_range.get_overlapping_bodies():
+		if body.name == "Player" and is_chasing == true:
+			player_coords = body.get_global_position()

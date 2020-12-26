@@ -235,13 +235,13 @@ tracks/1/keys = {
 
 [node name="Skeleton" instance=ExtResource( 1 )]
 script = SubResource( 1 )
-is_taking_damage = true
 
 [node name="Sprite" parent="." index="0"]
 material = ExtResource( 2 )
 texture = SubResource( 2 )
 vframes = 6
 hframes = 6
+frame = 7
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 3 )

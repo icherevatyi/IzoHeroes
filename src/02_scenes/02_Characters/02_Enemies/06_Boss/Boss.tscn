@@ -15,7 +15,6 @@ region = Rect2( 0, 0, 900, 738 )
 radius = 8.0
 
 [sub_resource type="Animation" id=3]
-length = 2.0
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -49,14 +48,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.95 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true, false ]
 }
 
 [sub_resource type="Animation" id=4]
-length = 1.7
+length = 1.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -77,10 +76,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true, false ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -132,7 +131,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.85 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -215,7 +214,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=8]
 length = 0.05
-loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -291,7 +289,7 @@ atlas = ExtResource( 3 )
 region = Rect2( 0, 11, 96, 11 )
 
 [sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 320, 224 )
+extents = Vector2( 360, 224 )
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 70.0
@@ -301,7 +299,6 @@ extents = Vector2( 31, 10 )
 
 [node name="Boss" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
-is_attacking = true
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 1 )
@@ -385,6 +382,8 @@ __meta__ = {
 
 [node name="DetectionRange" parent="." index="11"]
 visible = true
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 19 )

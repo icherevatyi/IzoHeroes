@@ -76,7 +76,7 @@ func chase_player(player_position) -> void:
 		velocity = global_position.direction_to(player_position) * speed * 2
 
 
-func enemy_stop(player_position) -> void:
+func _face_player(player_position) -> void:
 	if parent.is_dead == false:
 		var enemy_position = parent.get_global_position()
 		if (player_position.x - enemy_position.x) < 0:
