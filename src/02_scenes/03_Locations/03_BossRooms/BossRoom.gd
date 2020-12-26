@@ -2,8 +2,6 @@ extends Node2D
 
 var _response: int
 
-var is_player_entered: bool = false
-
 var tween_time: float = 2.0
 var tween_ease := Tween.EASE_IN_OUT
 var tween_trans := Tween.TRANS_LINEAR
@@ -31,13 +29,11 @@ onready var throne_bottom_moving_tween: Tween = $ThroneBottomMover
 onready var boss: KinematicBody2D = $YSort/Boss
 
 
-signal _room_entered
-
 
 func _ready() -> void:
 	secret_corridor_darkness.modulate = darkness_enabled
 	Backdrop.fade_out()
-	_response = connect("_room_entered", boss, "_on_room_entered")
+
 
 func _on_secret_door_opened() -> void:
 	_response = secret_door_tween.interpolate_property(secret_door, "position", secret_door_start_position, secret_door_end_position, tween_time, tween_trans, tween_ease)
@@ -50,11 +46,3 @@ func _on_secret_door_opened() -> void:
 	yield(get_tree().create_timer(1), "timeout")
 	_response = secret_door_tween.start()
 	_response = darkness_removal_tween.start()
-	
-
-
-func _on_BossEnabler_body_entered(body) -> void:
-	if body.name == "Player":
-		if is_player_entered == false:
-			is_player_entered = true
-			emit_signal("_room_entered")

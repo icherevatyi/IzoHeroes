@@ -10,7 +10,6 @@ onready var health_top: TextureProgress = $HealthBars/BossHealth/HealthTop
 onready var health_bottom: TextureProgress = $HealthBars/BossHealth/HealthBottom
 
 func _ready():
-	set_physics_process(false)
 	is_main_boss = true
 	health_max = 450
 	health_current = health_max
@@ -22,6 +21,7 @@ func _ready():
 
 
 func _physics_process(_delta):
+	state_scripts.monitor_states()
 	if is_attacking == true:
 		movement_scripts.speed = 0
 	else: 
@@ -54,13 +54,14 @@ func _on_RageEnableTimer_timeout() -> void:
 	going_rage = true
 
 
-func _on_room_entered() -> void:
-	set_physics_process(true)
-	rage_enable_timer.start()
-	_response = hp_enable_tween.interpolate_property(health_top, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	_response = hp_enable_tween.start()
-	_response = hp_enable_tween.interpolate_property(health_bottom, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	_response = hp_enable_tween.start()
+func _on_DetectionRange_body_entered(body) -> void:
+	if body.name == "Player":
+		is_chasing = true
+		rage_enable_timer.start()
+		_response = hp_enable_tween.interpolate_property(health_top, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		_response = hp_enable_tween.start()
+		_response = hp_enable_tween.interpolate_property(health_bottom, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		_response = hp_enable_tween.start()
 
 
 func _hide_healthbar() -> void:

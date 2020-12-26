@@ -290,8 +290,8 @@ region = Rect2( 0, 0, 96, 11 )
 atlas = ExtResource( 3 )
 region = Rect2( 0, 11, 96, 11 )
 
-[sub_resource type="CircleShape2D" id=19]
-radius = 392.082
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 320, 224 )
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 70.0
@@ -382,6 +382,9 @@ __meta__ = {
 [node name="EnrageColorTween" type="Tween" parent="." index="8"]
 
 [node name="HPEnableTween" type="Tween" parent="." index="9"]
+
+[node name="DetectionRange" parent="." index="11"]
+visible = true
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 19 )
