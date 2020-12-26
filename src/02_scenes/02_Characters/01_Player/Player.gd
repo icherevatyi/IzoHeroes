@@ -10,7 +10,6 @@ var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
 var can_open: bool = false
-var can_attack: bool = true
 var has_stamina: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
@@ -108,9 +107,8 @@ func _move_player() ->  void:
 func _input(event) -> void:		
 	if is_dead == false:
 		if event.is_action_pressed("attack") and is_charsheet_opened == false:
-			if has_stamina == true and can_attack == true:
+			if has_stamina == true:
 				emit_signal("weapon_swing")
-				can_attack = false
 			elif has_stamina == false:
 				HUD.on_exhaustion_message_trigger()
 		
@@ -139,9 +137,6 @@ func _input(event) -> void:
 			if is_interactive == true and interactive_obj != null:
 				interactive_obj.abort_activation()
 
-
-func _on_attack_finished() -> void:
-	can_attack = true
 
 
 func _on_weapon_swing_made(stam_value: int) -> void:
