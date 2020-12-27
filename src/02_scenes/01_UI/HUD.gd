@@ -34,6 +34,7 @@ onready var key_item: TextureRect = $Control/KeyItem
 onready var player_message_popup: Label = $Control/PlayerMessagePopup
 onready var popup_fade_tween: Tween = $PopupFadeTween
 onready var popup_timer: Timer = $Timers/PopupTimer
+onready var description_popup: PopupDialog = $Control/DescriptionPopup
 
 
 func _ready() -> void:
@@ -46,6 +47,8 @@ func _ready() -> void:
 	stamina_top.value = PlayerStats.stats_list[1].value
 	stamina_bottom.max_value = PlayerStats.stats_list[1].value
 	stamina_bottom.value = PlayerStats.stats_list[1].value
+	
+	description_popup.popup()
 	
 	_display_starting_amount("gold_coins", ResourceStorage.player_data.coins_count)
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)

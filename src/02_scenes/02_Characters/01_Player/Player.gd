@@ -10,6 +10,7 @@ var movement: Vector2 = Vector2(0, 0)
 var is_bored: bool = false
 var is_dead:  bool = false
 var can_open: bool = false
+var can_attack: bool = true
 var has_stamina: bool = true
 var door: Node2D = null
 var is_door_opened: bool = false
@@ -106,7 +107,7 @@ func _move_player() ->  void:
 
 func _input(event) -> void:		
 	if is_dead == false:
-		if event.is_action_pressed("attack") and is_charsheet_opened == false:
+		if event.is_action_pressed("attack") and is_charsheet_opened == false and can_attack == true:
 			if has_stamina == true:
 				emit_signal("weapon_swing")
 			elif has_stamina == false:
