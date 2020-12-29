@@ -31,37 +31,28 @@ func _on_data_received(received_data: Dictionary = Lists.weapon_list["steel_swor
 	item_data = received_data
 	label.set_text(item_data.title)
 	if item_data.has("attack_power"):
-		_compare_attack(Lists.weapon_list[current_weapon].attack_power, item_data.attack_power)
-		_compare_speed(Lists.weapon_list[current_weapon].attack_speed, item_data.attack_speed)
+		_compare_values(Lists.weapon_list[current_weapon].attack_power, item_data.attack_power, "Attack")
+		_compare_values(Lists.weapon_list[current_weapon].attack_speed, item_data.attack_speed, "Speed")
+		_compare_values(Lists.weapon_list[current_weapon].crit_mult, item_data.crit_mult, "Crit")
 		
 		description.get_node("WeaponComparsion/Attack/ValCurr").set_text(str(Lists.weapon_list[current_weapon].attack_power))
 		description.get_node("WeaponComparsion/Speed/ValCurr").set_text(str(Lists.weapon_list[current_weapon].attack_speed))
+		description.get_node("WeaponComparsion/Crit/ValCurr").set_text(str(Lists.weapon_list[current_weapon].crit_mult))
 		description.get_node("WeaponComparsion/Attack/ValNew").set_text(str(item_data.attack_power))
 		description.get_node("WeaponComparsion/Speed/ValNew").set_text(str(item_data.attack_speed))
+		description.get_node("WeaponComparsion/Crit/ValNew").set_text(str(item_data.crit_mult))
 
 
-func _compare_attack(val1: int, val2: int) -> void:
+func _compare_values(val1: float, val2: float, Param: String) -> void:
 	if val1 > val2:
-		description.get_node("WeaponComparsion/Attack/ValCurr").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Attack/ValNew").modulate = Color(0.72, 0.23, 0.23, 1)
+		description.get_node("WeaponComparsion/" + Param + "/ValCurr").modulate = Color(0.06, 0.5, 0.25, 1)
+		description.get_node("WeaponComparsion/" + Param + "/ValNew").modulate = Color(0.72, 0.23, 0.23, 1)
 	elif val1 < val2:
-		description.get_node("WeaponComparsion/Attack/ValNew").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Attack/ValCurr").modulate = Color(0.72, 0.23, 0.23, 1)
+		description.get_node("WeaponComparsion/" + Param + "/ValNew").modulate = Color(0.06, 0.5, 0.25, 1)
+		description.get_node("WeaponComparsion/" + Param + "/ValCurr").modulate = Color(0.72, 0.23, 0.23, 1)
 	else:
-		description.get_node("WeaponComparsion/Attack/ValNew").modulate = Color(0.2, 0.2, 0.2, 1)
-		description.get_node("WeaponComparsion/Attack/ValCurr").modulate = Color(0.2, 0.2, 0.2, 1)
-
-
-func _compare_speed(val1: int, val2: int) -> void:
-	if val1 > val2:
-		description.get_node("WeaponComparsion/Speed/ValCurr").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Speed/ValNew").modulate = Color(0.72, 0.23, 0.23, 1)
-	elif val1 < val2:
-		description.get_node("WeaponComparsion/Speed/ValNew").modulate = Color(0.06, 0.5, 0.25, 1)
-		description.get_node("WeaponComparsion/Speed/ValCurr").modulate = Color(0.72, 0.23, 0.23, 1)
-	else:
-		description.get_node("WeaponComparsion/Speed/ValNew").modulate = Color(0.2, 0.2, 0.2, 1)
-		description.get_node("WeaponComparsion/Speed/ValCurr").modulate = Color(0.2, 0.2, 0.2, 1)
+		description.get_node("WeaponComparsion/" + Param + "/ValNew").modulate = Color(0.2, 0.2, 0.2, 1)
+		description.get_node("WeaponComparsion/" + Param + "/ValCurr").modulate = Color(0.2, 0.2, 0.2, 1)
 
 
 func _on_indicator_enabled() -> void:
@@ -75,7 +66,7 @@ func _on_indicator_enabled() -> void:
 		_response = visibility_tween.interpolate_property(description, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		_response = visibility_tween.start()
 		if item_data.type == "blood_falchion":
-			description._set_size(Vector2(66, 36))
+			description._set_size(Vector2(66, 46))
 			description.get_node("WeaponComparsion/Effect").visible = true
 
 

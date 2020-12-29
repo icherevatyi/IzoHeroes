@@ -98,9 +98,9 @@ var perk_list: Dictionary = {
 		"icon": load("res://src/01_assets/01_UI/glyph/armor_glyph.png")
 	},
 	5: {
-		"title": "Combat Vision",
+		"title": "Vicious Strikes",
 		"type": "instakill_chance",
-		"description": "Your eyes are catching enemy weak points. Chance to immediately kill any monster (excluding bosses) is increased by 12%",
+		"description": "Your eyes are catching enemy weak points. Chance to inflict critical damage is increased by 12%",
 		"value": 0.12,
 		"perk_lvl": 0,
 		"icon": load("res://src/01_assets/01_UI/glyph/battleEye_glyph.png")

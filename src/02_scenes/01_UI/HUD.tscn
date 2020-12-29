@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/02_DialogBox/DialogBox.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=4]
 [ext_resource path="res://src/01_assets/01_UI/player_bar.png" type="Texture" id=5]
 [ext_resource path="res://src/01_assets/01_UI/close_btn.png" type="Texture" id=6]
+[ext_resource path="res://src/01_assets/01_UI/tip_frame.png" type="Texture" id=7]
+[ext_resource path="res://src/01_assets/04_Fonts/Mister Pixel Regular.otf" type="DynamicFontData" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -51,11 +53,19 @@ region = Rect2( 0, 17, 17, 16 )
 atlas = ExtResource( 3 )
 region = Rect2( 18, 0, 11, 22 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 202, 104 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 10
+font_data = ExtResource( 8 )
+
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 9, 9 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 10, 9, 9 )
 
@@ -225,6 +235,7 @@ margin_right = 492.0
 margin_bottom = 108.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 4 )
+custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -240,6 +251,7 @@ margin_bottom = -19.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 4 )
+custom_fonts/normal_font = SubResource( 15 )
 custom_colors/default_color = Color( 0.207843, 0.2, 0.239216, 1 )
 custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
 text = "Each Strike heals player for 10% of damage"
@@ -249,13 +261,12 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="Control/DescriptionPopup"]
-modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
-margin_left = 185.0
-margin_top = 16.0
-margin_right = 194.0
-margin_bottom = 25.0
-texture_normal = SubResource( 12 )
-texture_pressed = SubResource( 13 )
+margin_left = 189.0
+margin_top = 12.0
+margin_right = 198.0
+margin_bottom = 21.0
+texture_normal = SubResource( 13 )
+texture_pressed = SubResource( 14 )
 
 [node name="HPChangeTween" type="Tween" parent="."]
 
