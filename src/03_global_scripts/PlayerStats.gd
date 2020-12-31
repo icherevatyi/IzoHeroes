@@ -47,8 +47,8 @@ var stats_list: Dictionary = {
 		"value": 5.0,
 	},
 	6: {
-		"type": "instakill_chance",
-		"title": "Fatal Blow",
+		"type": "crit_chance",
+		"title": "Vicious Strikes",
 		"description": "4",
 		"base_value":  8.0,
 		"value": 8.0,
@@ -99,7 +99,7 @@ var perk_list: Dictionary = {
 	},
 	5: {
 		"title": "Vicious Strikes",
-		"type": "instakill_chance",
+		"type": "crit_chance",
 		"description": "Your eyes are catching enemy weak points. Chance to inflict critical damage is increased by 12%",
 		"value": 0.12,
 		"perk_lvl": 0,

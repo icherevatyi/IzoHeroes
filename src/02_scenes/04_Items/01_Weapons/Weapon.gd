@@ -5,6 +5,7 @@ var damage: float
 var is_active: bool = false
 var weapon_type: String
 var has_effect: bool = false
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 onready var player = get_parent().get_owner()
 onready var weapon_sprite: Sprite = $Sprite
@@ -59,16 +60,40 @@ func _get_stam_usage_param() -> int:
 	else:
 		return 10
 
+func _get_crit_multiplier() -> float:
+	if is_active == true:
+		return Lists.weapon_list[weapon_type].crit_mult
+	else:
+		return 1.4
+	
+
 
 func _on_Weapon_area_entered(area) -> void:
 	if is_monitored:
 		if area.name == "HurtBox":
 			_connect_signal("do_damage", area, "_on_damage_received")
-			emit_signal("do_damage", damage)
-			camera.start_shaking(0.15, 50, 3)
+			if _calculate_crit_strike() == true:
+				emit_signal("do_damage", int(damage * _get_crit_multiplier()))
+				camera.start_shaking(0.3, 60, 3)
+				get_tree().paused = true
+				yield(get_tree().create_timer(0.05), "timeout")
+				get_tree().paused = false
+				
+			else:  
+				emit_signal("do_damage", damage)
+				camera.start_shaking(0.15, 50, 3)
 			disconnect("do_damage", area, "_on_damage_received")
 			if has_effect == true:
 				apply_effect()
+
+
+func _calculate_crit_strike() -> bool:
+	var crit_chance = PlayerStats.stats_list[6].value
+	rng.randomize()
+	if rng.randi_range(0, 100) <  crit_chance:
+		return true
+	else:
+		return false
 
 
 func apply_effect() ->  void:

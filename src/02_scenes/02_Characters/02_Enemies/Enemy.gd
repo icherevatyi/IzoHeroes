@@ -95,14 +95,6 @@ func receive_damage(damage_received) -> void:
 	if (health_current - damage_received) <= 0:
 		OS.delay_msec(80)
 	var health_prev = health_current
-	if is_boss == false and is_main_boss == false:
-		for stat in PlayerStats.stats_list:
-			if PlayerStats.stats_list[stat].type == "instakill_chance":
-				var instadeath_chance: float = PlayerStats.stats_list[stat].value
-				rng.randomize()
-				var result = rng.randi_range(0, 100)
-				if result <= instadeath_chance:
-					damage_received = health_current
 
 	health_current -= damage_received
 	health_current = int(max(0, health_current))
