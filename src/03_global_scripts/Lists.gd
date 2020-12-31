@@ -209,6 +209,7 @@ var weapon_list: Dictionary = {
 		"attack_power": 40,
 		"attack_speed": 23,
 		"crit_mult": 1.4,
+		"stamina_usage": 13,
 		"dropped": "skeleton",
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/SteelSword/Sword.tscn")
 	},
@@ -218,6 +219,7 @@ var weapon_list: Dictionary = {
 		"attack_power": 30,
 		"attack_speed": 27,
 		"crit_mult": 2.4,
+		"stamina_usage": 8,
 		"dropped": "ghost",
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/BloodFalchion/BloodFalchion.tscn")
 	},
@@ -227,6 +229,7 @@ var weapon_list: Dictionary = {
 		"attack_power": 48,
 		"attack_speed": 18,
 		"crit_mult": 1.8,
+		"stamina_usage": 18,
 		"dropped": "mage",
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/JadeDadao/JadeDadao.tscn")
 	},
@@ -236,6 +239,7 @@ var weapon_list: Dictionary = {
 		"attack_power": 56,
 		"attack_speed": 13,
 		"crit_mult": 2.0,
+		"stamina_usage": 30,
 		"dropped": "minotaur",
 		"loot_scene": preload("res://src/02_scenes/04_Items/02_Loot/05_WeaponDrop/GreatAxe/GreatAxe.tscn")
 	}

@@ -50,7 +50,15 @@ func _on_weapon_swing() -> void:
 
 
 func use_stam() -> void:
-	emit_signal("use_stamina", 10)
+	_get_stam_usage_param()
+	emit_signal("use_stamina", _get_stam_usage_param())
+
+
+func _get_stam_usage_param() -> int:
+	if is_active == true:
+		return Lists.weapon_list[weapon_type].stamina_usage
+	else:
+		return 10
 
 
 func _on_Weapon_area_entered(area) -> void:
