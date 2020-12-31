@@ -50,7 +50,6 @@ func _on_weapon_swing() -> void:
 
 
 func use_stam() -> void:
-	_get_stam_usage_param()
 	emit_signal("use_stamina", _get_stam_usage_param())
 
 
