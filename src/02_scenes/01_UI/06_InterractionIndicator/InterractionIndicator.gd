@@ -19,7 +19,7 @@ onready var description: TextureRect = $ItemDescription
 
 onready var activation_animation_tween: Tween = $ActivationAnimationTween
 onready var activation_texure: TextureProgress = $InterractionIndicatorParent/ActivationTexture
-
+onready var effect_container: HBoxContainer = $ItemDescription/WeaponComparsion/Effect
 
 func _ready() -> void:
 	indicator_container.modulate = Color(1, 1, 1, 0)

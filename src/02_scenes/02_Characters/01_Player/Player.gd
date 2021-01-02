@@ -74,6 +74,10 @@ func _ready_weapon() -> void:
 		if weapon.is_active == true:
 			current_weapon = weapon
 			_connect_signal("weapon_swing", current_weapon, "_on_weapon_swing")
+			if current_weapon.weapon_type == "blood_falchion":
+				HUD.manage_buff_icon(true)
+			else:
+				HUD.manage_buff_icon(false)
 		else:
 			if is_connected("weapon_swing", weapon, "_on_weapon_swing"):
 				disconnect("weapon_swing", weapon, "_on_weapon_swing")

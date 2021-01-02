@@ -43,6 +43,7 @@ onready var activator_coords: Position2D = $ActivatorCoords
 onready var activation_label: Node2D
 onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 
+
 signal send_data(data_obj, current_wep_obj)
 signal show_label
 signal hide_label

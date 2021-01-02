@@ -34,7 +34,7 @@ onready var key_item: TextureRect = $Control/KeyItem
 onready var player_message_popup: Label = $Control/PlayerMessagePopup
 onready var popup_fade_tween: Tween = $PopupFadeTween
 onready var popup_timer: Timer = $Timers/PopupTimer
-onready var description_popup: PopupDialog = $Control/DescriptionPopup
+onready var vamp_icon: TextureRect = $Control/VampiricIcon
 
 
 func _ready() -> void:
@@ -48,17 +48,23 @@ func _ready() -> void:
 	stamina_bottom.max_value = PlayerStats.stats_list[1].value
 	stamina_bottom.value = PlayerStats.stats_list[1].value
 	
-	description_popup.popup()
-	
 	_display_starting_amount("gold_coins", ResourceStorage.player_data.coins_count)
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
-
+	manage_buff_icon()
 
 func toggle_char_sheet() -> void:
 	if ui_parent.has_node("CharacterSheet"):
 		ui_parent.get_node("CharacterSheet").queue_free()
 	else:
 		ui_parent.add_child(char_sheet.instance())
+
+
+func manage_buff_icon(value: bool = false) -> void:
+	match value:
+		true:
+			vamp_icon.set_visible(true)
+		false:
+			vamp_icon.set_visible(false)
 
 
 func notify_pickup(item, amount) -> void:
