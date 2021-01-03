@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/06_InterractionIndicator/InterractionIndicator.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
@@ -629,6 +629,11 @@ region = Rect2( 0, 0, 16, 16 )
 atlas = ExtResource( 3 )
 region = Rect2( 32, 2, 54, 12 )
 
+[sub_resource type="DynamicFont" id=31]
+size = 12
+use_filter = true
+font_data = ExtResource( 5 )
+
 [node name="InterractionIndicator" type="Node2D"]
 material = SubResource( 1 )
 scale = Vector2( 0.6, 0.6 )
@@ -948,10 +953,11 @@ __meta__ = {
 
 [node name="ItemLable" type="Label" parent="ItemTitle"]
 margin_top = 1.0
-margin_right = 89.0
+margin_right = 88.0
 margin_bottom = 19.0
 rect_scale = Vector2( 0.6, 0.6 )
 theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 31 )
 custom_colors/font_color = Color( 0.207843, 0.2, 0.239216, 1 )
 custom_colors/font_color_shadow = Color( 0.552941, 0.713726, 0.780392, 0.478431 )
 align = 1
