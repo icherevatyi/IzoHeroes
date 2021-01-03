@@ -38,11 +38,6 @@ func load_perk_grid() -> void:
 func _on_perk_id_received(perk_id: int) -> void:
 	description_title.set_text(perks[perk_id].title)
 	description_box.set_text(perks[perk_id].description)
-	
-	
-func _on_param_id_received(param_id: int) -> void:
-	description_title.set_text(params[param_id].title)
-	description_box.set_text(params[param_id].description)
 
 
 func _on_item_id_cleared() -> void:

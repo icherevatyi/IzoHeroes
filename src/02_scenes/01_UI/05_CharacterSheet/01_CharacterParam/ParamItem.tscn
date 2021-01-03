@@ -45,5 +45,3 @@ theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 4 )
 align = 2
 valign = 1
-[connection signal="mouse_entered" from="." to="." method="_on_ParamItem_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_ParamItem_mouse_exited"]

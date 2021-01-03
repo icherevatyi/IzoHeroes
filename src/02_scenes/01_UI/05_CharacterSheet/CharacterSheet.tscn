@@ -26,28 +26,28 @@ font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 size = 8
 font_data = SubResource( 5 )
 
-[sub_resource type="DynamicFontData" id=11]
-font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
-
-[sub_resource type="DynamicFont" id=12]
-size = 8
-use_mipmaps = true
-font_data = SubResource( 11 )
-
 [sub_resource type="DynamicFontData" id=7]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
 [sub_resource type="DynamicFont" id=8]
+size = 8
+use_mipmaps = true
+font_data = SubResource( 7 )
+
+[sub_resource type="DynamicFontData" id=9]
+font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
+
+[sub_resource type="DynamicFont" id=10]
 size = 6
 use_mipmaps = true
 extra_spacing_char = 1
-font_data = SubResource( 7 )
+font_data = SubResource( 9 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 9, 9 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 10, 9, 9 )
 
@@ -184,10 +184,10 @@ size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="CharacterSheetBody/StatsPanel/BottomSection/Description"]
 margin_right = 94.0
-margin_bottom = 2.0
+margin_bottom = 9.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 8 )
 text = "asdasdasd"
 align = 1
 valign = 1
@@ -196,12 +196,12 @@ __meta__ = {
 }
 
 [node name="DescriptionBox" type="RichTextLabel" parent="CharacterSheetBody/StatsPanel/BottomSection/Description"]
-margin_top = 6.0
+margin_top = 13.0
 margin_right = 94.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 10 )
 custom_colors/default_color = Color( 0.890196, 0.890196, 0.890196, 1 )
 text = "asdasdasd"
 __meta__ = {
@@ -213,8 +213,8 @@ margin_left = 293.0
 margin_top = 32.0
 margin_right = 302.0
 margin_bottom = 41.0
-texture_normal = SubResource( 9 )
-texture_pressed = SubResource( 10 )
+texture_normal = SubResource( 11 )
+texture_pressed = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

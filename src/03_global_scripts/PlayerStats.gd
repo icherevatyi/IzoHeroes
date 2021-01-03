@@ -7,49 +7,42 @@ var stats_list: Dictionary = {
 	0: {
 		"type": "max_health",
 		"title": "Max. Health",
-		"description": "0",
 		"base_value": 120,
 		"value": 120
 	},
 	1: {
 		"type": "max_stamina",
 		"title": "Max. Stamina",
-		"description": "0",
 		"base_value": 100,
 		"value": 100
 	},
 	2: {
 		"type": "attack_speed",
 		"title": "Atk. Speed",
-		"description": "1",
 		"base_value": 20,
 		"value": 20,
 	},
 	3: {
 		"type": "attack_power",
 		"title": "Atk. Power",
-		"description": "2",
 		"base_value": 45.0,
 		"value": 45.0,
 	},
 	4: {
 		"type": "movement_speed",
-		"title": "Move Speed",
-		"description": "5",
+		"title": "Movement Speed",
 		"base_value": 120.0,
 		"value": 120.0,
 	},
 	5: {
 		"type": "dodge_chance",
 		"title": "Dodge Chance",
-		"description": "3",
 		"base_value": 5.0,
 		"value": 5.0,
 	},
 	6: {
 		"type": "crit_chance",
-		"title": "Vicious Strikes",
-		"description": "4",
+		"title": "Crit. Chance",
 		"base_value":  8.0,
 		"value": 8.0,
 	},
