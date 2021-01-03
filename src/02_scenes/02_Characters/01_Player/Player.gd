@@ -135,6 +135,7 @@ func _input(event) -> void:
 					emit_signal("damage_heal", 30)
 					emit_signal("use_bottle")
 					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
+
 		if event.is_action_pressed("interract"):
 			_response = _start_event() if (Global.is_dangerous_to_interact == false) else print("it's dangerous here")
 				
