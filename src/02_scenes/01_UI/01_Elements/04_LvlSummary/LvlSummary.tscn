@@ -138,7 +138,6 @@ size_flags_vertical = 3
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "Here Goes Perk Description"
 __meta__ = {
 "_edit_use_anchors_": false
 }
