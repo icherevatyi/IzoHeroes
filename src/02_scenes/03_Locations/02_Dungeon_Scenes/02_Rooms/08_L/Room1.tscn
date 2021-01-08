@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/08_L/Room1.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/SpawnPoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/EnemySpawnPoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/01_assets/08_Items/FloorMess.png" type="Texture" id=5]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/04_Barrels/Barrel_2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/04_Barrels/Barrel_1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/010_Torture/TortureDevice.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -23,7 +26,7 @@ atlas = ExtResource( 5 )
 region = Rect2( 44, 51, 44, 30 )
 
 [node name="Room" instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -262148, 3, 0, -262147, 1, 0, -262146, 0, 0, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 0, 0, -327677, 1, 0, -327676, 2, 0, -196612, 5, 0, -196611, 4, 0, -196610, 4, 0, -196609, 4, 0, -262144, 4, 0, -262143, 4, 0, -262142, 4, 0, -262141, 4, 0, -262140, 9, 0, -131076, 5, 0, -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -196605, 4, 0, -196604, 9, 0, -65541, 0, 0, -65540, 13, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -131070, 4, 0, -131069, 4, 0, -131068, 9, 0, -5, 4, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 9, 0, 65531, 8, 0, 65532, 12, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 9, 0, 131068, 5, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 9, 0, 196604, 5, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 9, 0, 262140, 5, 0, 262141, 4, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 9, 0, 327676, 7, 0, 327677, 8, 0, 327678, 8, 0, 327679, 8, 0, 262144, 8, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 10, 0 )
+tile_data = PoolIntArray( -262148, 3, 0, -262147, 1, 0, -262146, 0, 0, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 0, 0, -327677, 1, 0, -327676, 2, 0, -196612, 5, 0, -196611, 4, 0, -196610, 4, 0, -196609, 4, 0, -262144, 4, 0, -262143, 4, 0, -262142, 4, 0, -262141, 4, 0, -262140, 9, 0, -131076, 7, 0, -131075, 8, 0, -131074, 8, 0, -131073, 12, 0, -196608, 4, 0, -196607, 11, 0, -196606, 8, 0, -196605, 8, 0, -196604, 10, 0, -65541, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 13, 0, -131072, 4, 0, -131071, 14, 0, -131070, 0, 0, -131069, 0, 0, -131068, 2, 0, -5, 4, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 9, 0, 65531, 8, 0, 65532, 12, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 9, 0, 131068, 7, 0, 131069, 8, 0, 131070, 8, 0, 131071, 12, 0, 65536, 4, 0, 65537, 11, 0, 65538, 8, 0, 65539, 8, 0, 65540, 10, 0, 196604, 3, 0, 196605, 1, 0, 196606, 0, 0, 196607, 13, 0, 131072, 4, 0, 131073, 14, 0, 131074, 0, 0, 131075, 0, 0, 131076, 2, 0, 262140, 5, 0, 262141, 4, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 9, 0, 327676, 7, 0, 327677, 8, 0, 327678, 8, 0, 327679, 8, 0, 262144, 8, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 10, 0 )
 script = ExtResource( 2 )
 
 [node name="Left" parent="Corridors" index="0" instance=ExtResource( 3 )]
@@ -57,12 +60,12 @@ rotation = 1.11983
 texture = SubResource( 1 )
 
 [node name="Sprite5" type="Sprite" parent="FloorDecorations" index="4"]
-position = Vector2( 107.546, 105.128 )
+position = Vector2( 107.546, 124.128 )
 rotation = 1.11983
 texture = SubResource( 2 )
 
 [node name="Sprite6" type="Sprite" parent="FloorDecorations" index="5"]
-position = Vector2( -82.8313, 118.852 )
+position = Vector2( -81.8313, 124.852 )
 rotation = 1.11983
 texture = SubResource( 3 )
 
@@ -70,3 +73,33 @@ texture = SubResource( 3 )
 position = Vector2( 15.7464, -54.8786 )
 rotation = 1.11983
 texture = SubResource( 4 )
+
+[node name="Barrel_1" parent="Furniture" index="0" instance=ExtResource( 7 )]
+position = Vector2( -113.693, -131.025 )
+
+[node name="Barrel_2" parent="Furniture" index="1" instance=ExtResource( 7 )]
+position = Vector2( -104.245, -129.599 )
+
+[node name="Barrel_3" parent="Furniture" index="2" instance=ExtResource( 7 )]
+position = Vector2( -104.314, -119.385 )
+
+[node name="Barrel_4" parent="Furniture" index="3" instance=ExtResource( 6 )]
+position = Vector2( -85.1697, -129.621 )
+
+[node name="Barrel_5" parent="Furniture" index="4" instance=ExtResource( 6 )]
+position = Vector2( -74.0747, -129.712 )
+
+[node name="Barrel_6" parent="Furniture" index="5" instance=ExtResource( 6 )]
+position = Vector2( -78.9643, -119.253 )
+
+[node name="Barrel_7" parent="Furniture" index="6" instance=ExtResource( 7 )]
+position = Vector2( -113.977, -121.911 )
+
+[node name="Barrel_8" parent="Furniture" index="7" instance=ExtResource( 7 )]
+position = Vector2( -101.627, -95.982 )
+
+[node name="Barrel_9" parent="Furniture" index="8" instance=ExtResource( 7 )]
+position = Vector2( -110.726, -111.968 )
+
+[node name="TortureDevice" parent="Furniture" index="9" instance=ExtResource( 8 )]
+position = Vector2( 137.723, -123.928 )
