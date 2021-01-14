@@ -1,10 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/RoomParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/02_Dungeon_Scenes/02_Rooms/06_TL/Room1.gd" type="Script" id=2]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/SpawnPoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/EnemySpawnPoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/01_assets/08_Items/FloorMess.png" type="Texture" id=5]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/013_Kitchen/CookingPlace.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/013_Kitchen/KitchenTable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/013_Kitchen/Bakery.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/013_Kitchen/Ingredients.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/02_scenes/04_Items/05_Furniture/012_Creates/Crate.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchBottom.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchRight.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchTop.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/02_scenes/04_Items/04_Torch/TorchLeft.tscn" type="PackedScene" id=14]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -21,7 +30,7 @@ region = Rect2( 1, 1, 45, 49 )
 [node name="Room" groups=[
 "has_exit",
 ] instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -262145, 5, 0, -327680, 9, 0, -196612, 3, 0, -196611, 1, 0, -196610, 0, 0, -196609, 13, 0, -262144, 14, 0, -262143, 0, 0, -262142, 0, 0, -262141, 1, 0, -262140, 2, 0, -131076, 5, 0, -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -196607, 4, 0, -196606, 4, 0, -196605, 4, 0, -196604, 9, 0, -65541, 0, 0, -65540, 13, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -131070, 4, 0, -131069, 4, 0, -131068, 9, 0, -5, 4, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 9, 0, 65531, 8, 0, 65532, 12, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 9, 0, 131068, 5, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 9, 0, 196604, 7, 0, 196605, 12, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 9, 0, 262141, 5, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 9, 0, 327677, 7, 0, 327678, 8, 0, 327679, 8, 0, 262144, 8, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 10, 0 )
+tile_data = PoolIntArray( -262145, 5, 0, -327680, 9, 0, -196612, 3, 0, -196611, 1, 0, -196610, 0, 0, -196609, 13, 0, -262144, 9, 0, -262143, 3, 0, -262142, 0, 0, -262141, 1, 0, -262140, 2, 0, -131076, 5, 0, -131075, 4, 0, -131074, 4, 0, -131073, 4, 0, -196608, 9, 0, -196607, 5, 0, -196606, 4, 0, -196605, 4, 0, -196604, 9, 0, -65541, 0, 0, -65540, 13, 0, -65539, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 14, 0, -131071, 13, 0, -131070, 4, 0, -131069, 4, 0, -131068, 9, 0, -5, 4, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 9, 0, 65531, 8, 0, 65532, 12, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 9, 0, 131068, 5, 0, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 9, 0, 196604, 5, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 9, 0, 262140, 5, 0, 262141, 4, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 9, 0, 327676, 7, 0, 327677, 8, 0, 327678, 8, 0, 327679, 8, 0, 262144, 8, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 10, 0 )
 script = ExtResource( 2 )
 
 [node name="Top" parent="Corridors" index="0" instance=ExtResource( 3 )]
@@ -92,14 +101,94 @@ rotation = 0.198662
 texture = SubResource( 2 )
 
 [node name="Sprite11" type="Sprite" parent="FloorDecorations" index="10"]
-position = Vector2( 28.3419, -55.6795 )
+position = Vector2( -24, -24 )
 rotation = -0.866972
 texture = SubResource( 2 )
 
-[node name="Sprite12" type="Sprite" parent="FloorDecorations" index="11"]
+[node name="Sprite15" type="Sprite" parent="FloorDecorations" index="11"]
+position = Vector2( 96, 8 )
+rotation = -0.866972
+texture = SubResource( 2 )
+
+[node name="Sprite12" type="Sprite" parent="FloorDecorations" index="12"]
 position = Vector2( 123.696, 121.35 )
 rotation = 0.584799
 texture = SubResource( 3 )
 
+[node name="Sprite13" type="Sprite" parent="FloorDecorations" index="13"]
+position = Vector2( -72, 72 )
+rotation = 0.584799
+texture = SubResource( 3 )
+
+[node name="Sprite14" type="Sprite" parent="FloorDecorations" index="14"]
+position = Vector2( 12.2663, 76.5767 )
+rotation = 2.87979
+scale = Vector2( 1.1305, 1.22551 )
+texture = SubResource( 3 )
+
+[node name="KitchenTable" parent="Furniture" index="0" instance=ExtResource( 7 )]
+position = Vector2( 88, 104 )
+
+[node name="KitchenTable2" parent="Furniture" index="1" instance=ExtResource( 7 )]
+position = Vector2( 88, 42 )
+
+[node name="KitchenTable3" parent="Furniture" index="2" instance=ExtResource( 7 )]
+position = Vector2( -24, 42 )
+
+[node name="KitchenTable4" parent="Furniture" index="3" instance=ExtResource( 7 )]
+position = Vector2( -24, 104 )
+
+[node name="Bakery" parent="Furniture" index="4" instance=ExtResource( 8 )]
+position = Vector2( 112, -102 )
+
+[node name="CookingPlace" parent="Furniture" index="5" instance=ExtResource( 6 )]
+position = Vector2( -79.5, -96 )
+
+[node name="Ingredients" parent="Furniture" index="6" instance=ExtResource( 9 )]
+position = Vector2( 118, -32 )
+
+[node name="Crate" parent="Furniture" index="7" instance=ExtResource( 10 )]
+position = Vector2( 66.5, -95 )
+
+[node name="Crate2" parent="Furniture" index="8" instance=ExtResource( 10 )]
+position = Vector2( 46.5, -96 )
+
+[node name="Crate3" parent="Furniture" index="9" instance=ExtResource( 10 )]
+position = Vector2( 56, -88 )
+
+[node name="Crate4" parent="Furniture" index="10" instance=ExtResource( 10 )]
+position = Vector2( 52, -105 )
+
+[node name="Crate5" parent="Furniture" index="11" instance=ExtResource( 10 )]
+position = Vector2( 63, -107 )
+
+[node name="Torch" parent="Torches" index="0" instance=ExtResource( 11 )]
+position = Vector2( -24, 148.5 )
+
+[node name="Torch6" parent="Torches" index="1" instance=ExtResource( 11 )]
+position = Vector2( -144, 20.5 )
+
+[node name="Torch2" parent="Torches" index="2" instance=ExtResource( 11 )]
+position = Vector2( 88, 148.5 )
+
+[node name="Torch3" parent="Torches" index="3" instance=ExtResource( 12 )]
+position = Vector2( 149, 68.5 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Torch4" parent="Torches" index="4" instance=ExtResource( 12 )]
+position = Vector2( 149, -67 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Torch5" parent="Torches" index="5" instance=ExtResource( 13 )]
+position = Vector2( 32, -46 )
+
+[node name="Torch8" parent="Torches" index="6" instance=ExtResource( 13 )]
+position = Vector2( -32, -109 )
+
+[node name="Torch7" parent="Torches" index="7" instance=ExtResource( 14 )]
+position = Vector2( -117, 68.5 )
+
 [node name="ExitSpawner" parent="." index="5"]
-position = Vector2( -80, -112 )
+position = Vector2( -144, -48 )
