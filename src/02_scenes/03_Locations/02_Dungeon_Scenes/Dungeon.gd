@@ -2,12 +2,15 @@ extends Node2D
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var exit_door: PackedScene = preload("res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.tscn")
+var sleeping_bag: PackedScene = preload("res://src/02_scenes/04_Items/06_SleepingBag/SleepingBag.tscn")
 
 onready var room_container: Node2D = $Rooms
 onready var characters_container: YSort = $YSort
 
 signal _create_exit
+signal _create_sleeping_bag
 signal _add_miniboss
+
 
 func _ready() -> void:
 	Backdrop.fade_out()
@@ -28,10 +31,31 @@ func _select_random_room() -> void:
 	_connect_signal("_create_exit", _rooms[selected_child], "_on_create_exit_command_received")
 
 
+func _select_room_for_bag_spawn() -> void:
+	var _rooms: Array
+	var selected_child
+	for room in room_container.get_children():
+		if room.is_in_group("can_sleep"):
+			_rooms.append(room)
+	if _rooms.size() > 4:
+		rng.randomize()
+		selected_child = rng.randi_range(3, _rooms.size() - 1)
+	else:
+		rng.randomize()
+		selected_child = rng.randi_range(0, _rooms.size() - 1)
+	_connect_signal("_create_sleeping_bag", _rooms[selected_child], "_on_create_sleeping_bag_command_received")
+
+
 func _on_exit_position_received(position_coords: Vector2) -> void:
 	var exit_instance: Node2D = exit_door.instance()
 	exit_instance.set_global_position(position_coords)
 	room_container.add_child(exit_instance)
+
+
+func _on_sleeping_bag_position_received(position_coords: Vector2) -> void:
+	var bag_instance: Node2D = sleeping_bag.instance()
+	bag_instance.set_global_position(position_coords)
+	room_container.add_child(bag_instance)
 
 
 func _select_random_enemy() -> int:
@@ -52,8 +76,10 @@ func _evolve_to_miniboss() -> void:
 
 func _on_CreateExitTimer_timeout():
 	_select_random_room()
+	_select_room_for_bag_spawn()
 	_evolve_to_miniboss()
 	emit_signal("_create_exit")
+	emit_signal("_create_sleeping_bag")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

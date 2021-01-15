@@ -21,7 +21,7 @@ script = ExtResource( 2 )
 material = SubResource( 1 )
 z_index = 1
 z_as_relative = false
-color = Color( 0.235294, 0.266667, 0.388235, 1 )
+color = Color( 0.0901961, 0.12549, 0.27451, 1 )
 
 [node name="YSort" type="YSort" parent="."]
 
