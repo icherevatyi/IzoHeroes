@@ -11,8 +11,8 @@ var _function_val_storage
 
 func _on_healthbar_initiated(healthpool) -> void:
 	if is_main_boss == true:
-		healthbar_under = $BossHealth/HealthBottom
-		healthbar_upper = $BossHealth/HealthTop
+		healthbar_under = $BossHealth/BossHPContainer/HealthBottom
+		healthbar_upper = $BossHealth/BossHPContainer/HealthTop
 
 	healthbar_under.max_value = healthpool
 	healthbar_upper.max_value = healthpool

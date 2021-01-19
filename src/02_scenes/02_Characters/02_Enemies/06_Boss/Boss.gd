@@ -7,8 +7,9 @@ onready var rage_timer: Timer = $Timers/RageTimer
 onready var rage_enable_timer: Timer = $Timers/RageEnableTimer
 onready var enrage_tween: Tween = $EnrageColorTween
 onready var hp_enable_tween: Tween = $HPEnableTween
-onready var health_top: TextureProgress = $HealthBars/BossHealth/HealthTop
-onready var health_bottom: TextureProgress = $HealthBars/BossHealth/HealthBottom
+onready var hp_container: Container = $HealthBars/BossHealth/BossHPContainer
+onready var health_top: TextureProgress = $HealthBars/BossHealth/BossHPContainer/HealthTop
+onready var health_bottom: TextureProgress = $HealthBars/BossHealth/BossHPContainer/HealthBottom
 
 
 func _ready():
@@ -20,7 +21,7 @@ func _ready():
 
 	health_bars.is_main_boss = true
 	emit_signal("initiate_healthpool", health_max)
-
+	hp_container.modulate = Color(1, 1, 1, 0)
 
 
 func _enrage() -> void:
@@ -49,14 +50,10 @@ func _on_DetectionRange_body_entered(body) -> void:
 		rage_enable_timer.start()
 		is_chasing = true
 		if is_hp_shown == false:
-			_response = hp_enable_tween.interpolate_property(health_top, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			_response = hp_enable_tween.start()
-			_response = hp_enable_tween.interpolate_property(health_bottom, "self_modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			_response = hp_enable_tween.interpolate_property(hp_container, "modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			_response = hp_enable_tween.start()
 
 
 func _hide_healthbar() -> void:
-	_response = hp_enable_tween.interpolate_property(health_top, "self_modulate", Color(1, 1, 1, 1),  Color(1, 1, 1, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	_response = hp_enable_tween.start()
-	_response = hp_enable_tween.interpolate_property(health_bottom, "self_modulate", Color(1, 1, 1, 1),  Color(1, 1, 1, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_response = hp_enable_tween.interpolate_property(hp_container, "modulate", Color(1, 1, 1, 1),  Color(1, 1, 1, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_response = hp_enable_tween.start()
