@@ -40,6 +40,7 @@ onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 onready var activator_coords: Position2D = $ActivatorCoords
 onready var animated_sprite: AnimatedSprite = $Sprite
 onready var btn_animation_player: AnimationPlayer = $ButtonAnimationPlayer
+onready var particles: Particles2D = $Sparks
 
 signal send_data(data_obj)
 signal show_label
@@ -52,7 +53,12 @@ signal open_secret_door
 func _ready() -> void:	
 	_response = connect("open_secret_door", get_parent(), "_on_secret_door_opened")
 	btn_animation_player.play("idle")
+	particles.set_emitting(false)
 
+
+func show_sparkles() -> void:
+	particles.set_emitting(true)
+	
 
 func _connect_activation_signals(target_node: Node2D) -> void:
 	for signal_item in signals_dictionary:
@@ -98,6 +104,7 @@ func _on_SecretPassageButton_body_exited(body) -> void:
 
 
 func start_activation() -> void:
+	particles.set_emitting(false)
 	emit_signal("start_activation")
 
 
@@ -119,5 +126,4 @@ func activate() -> void:
 func activated() -> void:
 	player_obj = get_parent().get_node("YSort/Player")
 	emit_signal("open_secret_door")
-	yield(get_tree().create_timer(1), "timeout")
-	player_obj.camera.start_shaking(3, 30, 1.5)
+	player_obj.camera.react_on_door_opening()

@@ -55,3 +55,8 @@ func blink_start() -> void:
 
 func _on_BlinkTimer_timeout() -> void:
 	blink_color.visible = false
+
+
+func react_on_door_opening() -> void:
+	yield(get_tree().create_timer(1), "timeout")
+	start_shaking(2, 30, 1.5)

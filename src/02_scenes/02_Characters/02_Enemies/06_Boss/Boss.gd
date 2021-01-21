@@ -14,7 +14,7 @@ onready var health_bottom: TextureProgress = $HealthBars/BossHealth/BossHPContai
 
 func _ready():
 	is_main_boss = true
-	health_max = 450
+	health_max = 30
 	health_current = health_max
 	damage = 15
 	drops_key = true
@@ -49,7 +49,7 @@ func _on_DetectionRange_body_entered(body) -> void:
 		player_position_update_timer.start()
 		rage_enable_timer.start()
 		is_chasing = true
-		if is_hp_shown == false:
+		if is_hp_shown == false and is_dead == false:
 			_response = hp_enable_tween.interpolate_property(hp_container, "modulate", Color(1, 1, 1, 0),  Color(1, 1, 1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			_response = hp_enable_tween.start()
 
@@ -57,3 +57,8 @@ func _on_DetectionRange_body_entered(body) -> void:
 func _hide_healthbar() -> void:
 	_response = hp_enable_tween.interpolate_property(hp_container, "modulate", Color(1, 1, 1, 1),  Color(1, 1, 1, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_response = hp_enable_tween.start()
+	_on_mainboss_death()
+
+
+func _on_mainboss_death() -> void:
+	get_owner()._on_boss_died()

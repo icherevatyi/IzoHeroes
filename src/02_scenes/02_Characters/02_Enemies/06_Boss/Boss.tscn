@@ -289,18 +289,18 @@ region = Rect2( 0, 0, 96, 11 )
 atlas = ExtResource( 3 )
 region = Rect2( 0, 11, 96, 11 )
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=19]
 size = 6
 use_filter = true
 font_data = ExtResource( 7 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 360, 224 )
 
-[sub_resource type="CircleShape2D" id=20]
+[sub_resource type="CircleShape2D" id=21]
 radius = 70.0
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 31, 10 )
 
 [node name="Boss" instance=ExtResource( 1 )]
@@ -397,7 +397,7 @@ margin_left = -20.5
 margin_top = 2.5
 margin_right = 20.5
 margin_bottom = 9.5
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.345098, 0.882353, 0.831373, 1 )
 text = "Father Bernard"
 align = 1
@@ -415,14 +415,14 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
-shape = SubResource( 20 )
+shape = SubResource( 21 )
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 38, 0 )
-shape = SubResource( 21 )
+shape = SubResource( 22 )
 disabled = true
 
 [node name="Light2D" type="Light2D" parent="." index="14"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/DungeonAuto.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=2]
@@ -101,13 +101,6 @@ region = Rect2( 1, 94, 20, 7 )
 atlas = ExtResource( 21 )
 region = Rect2( 1, 86, 20, 7 )
 
-[sub_resource type="RectangleShape2D" id=20]
-extents = Vector2( 14, 13 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 30, 28, 18 )
-
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 36, 37 )
@@ -124,9 +117,12 @@ region = Rect2( 26, 48, 10, 20 )
 radius = 6.09592
 height = 8.44348
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 28, 30 )
+region = Rect2( 0, 0, 28, 48 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 14, 13 )
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource( 10 )
@@ -381,7 +377,7 @@ rotation = 2.87979
 texture = SubResource( 19 )
 
 [node name="ExitDoor" parent="." instance=ExtResource( 3 )]
-position = Vector2( 224, -736 )
+position = Vector2( 224, -720 )
 
 [node name="Entrance" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 560 )
@@ -578,24 +574,6 @@ position = Vector2( -40, 309 )
 position = Vector2( 0, -55 )
 texture = ExtResource( 13 )
 
-[node name="Throne" type="StaticBody2D" parent="." groups=[
-"throne",
-]]
-position = Vector2( 0, -77 )
-collision_layer = 256
-collision_mask = 78
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Throne"]
-position = Vector2( 0, -4 )
-shape = SubResource( 20 )
-
-[node name="BottomPart" type="Sprite" parent="Throne"]
-position = Vector2( 0, -1 )
-texture = SubResource( 21 )
-
 [node name="SecretPassageButton" parent="." instance=ExtResource( 14 )]
 
 [node name="Barricades" type="Node2D" parent="."]
@@ -676,14 +654,26 @@ scale = Vector2( -1, 1 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Boss" parent="YSort" instance=ExtResource( 23 )]
-position = Vector2( 0, -46.5 )
-
-[node name="TopPart" type="Sprite" parent="." groups=[
+[node name="Throne" type="StaticBody2D" parent="YSort" groups=[
 "throne",
 ]]
-position = Vector2( 0, -102 )
-texture = SubResource( 26 )
+position = Vector2( 0, -92 )
+collision_layer = 256
+collision_mask = 78
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BottomPart" type="Sprite" parent="YSort/Throne"]
+position = Vector2( 0, -1 )
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Throne"]
+position = Vector2( 0, 8 )
+shape = SubResource( 20 )
+
+[node name="Boss" parent="YSort" instance=ExtResource( 23 )]
+position = Vector2( 0, -46.5 )
 
 [node name="SecretCorridorDarkness" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0.94902 )
@@ -699,6 +689,4 @@ __meta__ = {
 
 [node name="DarknessRemoval" type="Tween" parent="."]
 
-[node name="ThroneTopMover" type="Tween" parent="."]
-
-[node name="ThroneBottomMover" type="Tween" parent="."]
+[node name="ThroneMover" type="Tween" parent="."]
