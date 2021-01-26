@@ -14,7 +14,7 @@ onready var health_bottom: TextureProgress = $HealthBars/BossHealth/BossHPContai
 
 func _ready():
 	is_main_boss = true
-	health_max = 30
+	health_max = 30  #return to 450 after testing
 	health_current = health_max
 	damage = 15
 	drops_key = true

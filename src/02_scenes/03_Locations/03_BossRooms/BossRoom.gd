@@ -24,6 +24,8 @@ onready var darkness_removal_tween: Tween = $DarknessRemoval
 onready var throne_moving_tween: Tween = $ThroneMover
 onready var boss: KinematicBody2D = $YSort/Boss
 
+onready var nav_2d: Navigation2D = $Navigation2D
+onready var cutscene_end_point: Position2D = $EndPointCoords
 
 
 func _ready() -> void:
@@ -44,3 +46,9 @@ func _on_secret_door_opened() -> void:
 	yield(get_tree().create_timer(1), "timeout")
 	_response = secret_door_tween.start()
 	_response = darkness_removal_tween.start()
+
+
+func _on_SceneStartArea_body_entered(body) -> void:
+		if body.name == "Player":
+			var new_path = nav_2d.get_simple_path(body.get_global_position(), cutscene_end_point.get_global_position(), false)
+			body.automove_path = new_path

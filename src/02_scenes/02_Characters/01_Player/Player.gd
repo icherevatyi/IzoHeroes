@@ -19,6 +19,9 @@ var is_interactive: bool = false
 
 var interactive_obj: Object
 
+var is_in_cutscene: bool = false
+var automove_path: PoolVector2Array = PoolVector2Array() setget set_path
+
 onready var dungeon: Node2D = get_parent().get_owner()
 onready var state_scripts: Node2D = $AdditionalScripts/StateManagement
 onready var health_scripts: Node2D = $AdditionalScripts/HealthManagement
@@ -41,6 +44,7 @@ signal hide_message
 signal use_key
 signal open_gate
 signal pickup_screen_blink
+
 
 func _ready() -> void:
 	set_active_weapon()
@@ -93,11 +97,15 @@ func _get_stat_value(param: String) -> int:
 	return 0
 
 
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	if is_dead == false:
-		_move_player()
-		_check_mouse_position()
-		weapon_container.look_at(get_global_mouse_position())
+		match is_in_cutscene:
+			false:
+				_move_player()
+				_check_mouse_position()
+				weapon_container.look_at(get_global_mouse_position())
+			true:
+				automove(delta)
 
 	state_scripts.monitor_states()
 
@@ -109,8 +117,26 @@ func _move_player() ->  void:
 	movement = move_and_slide(movement, Vector2(0, 0))
 
 
+
+func set_path(new_path: PoolVector2Array) -> void:
+	automove_path = new_path
+	if new_path.size() == 0:
+		return
+	is_in_cutscene = true
+
+
+func automove(delta) ->  void:
+	if automove_path.size() > 1:
+		var d = get_global_position().distance_to(automove_path[0])
+		if d > 2:
+			set_global_position(get_global_position().linear_interpolate(automove_path[0], (speed * delta)/d))
+		else:
+			automove_path.remove(0)
+	else:
+		is_in_cutscene = false
+
 func _input(event) -> void:		
-	if is_dead == false:
+	if is_dead == false and is_in_cutscene == false:
 		if event.is_action_pressed("attack") and is_charsheet_opened == false and can_attack == true:
 			if has_stamina == true:
 				emit_signal("weapon_swing")
