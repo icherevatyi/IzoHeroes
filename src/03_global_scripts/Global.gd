@@ -51,9 +51,6 @@ func toggle_console() -> void:
 		root_node.add_child(console.instance())
 
 
-func call_main_menu() -> void:
-	_scene_change_value = get_tree().change_scene_to(menu)
-
 
 func toggle_pause_menu() -> void:
 	if is_game_started == true:
@@ -68,7 +65,6 @@ func toggle_pause_menu() -> void:
 		
 		if is_console_enabled == false:
 			get_tree().paused = !get_tree().paused
-
 
 
 func start_game() -> void:

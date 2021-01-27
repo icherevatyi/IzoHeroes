@@ -40,7 +40,6 @@ onready var activation_label: Node2D
 onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 onready var activator_coords: Position2D = $ActivatorCoords
 
-signal endgame_message_sent(msg)
 signal floor_cleared
 signal _message_sent(msg, type)
 signal _message_removed
@@ -80,18 +79,10 @@ func _on_gate_opened() -> void:
 
 
 func _load_next_lvl() -> void:
-	var next_lvl = Global.current_lvl + 1
 	get_tree().paused = true
-	if next_lvl == 11:
-		_message = Lists.level_messages["demo_end"]
-		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
-		Backdrop.fade_in()
-		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
-		emit_signal("endgame_message_sent", _message)
-	else:
-		Backdrop.fade_in()
-		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
-		emit_signal("floor_cleared")
+	Backdrop.fade_in()
+	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
+	emit_signal("floor_cleared")
 
 
 func _on_MessageTrigger_body_entered(body) -> void:

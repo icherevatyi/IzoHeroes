@@ -3,12 +3,14 @@ extends CanvasLayer
 var param_item: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
 var perk_item: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/02_PerkButton/PerkButton.tscn")
 
+var is_demo_ended: bool = false
 var params: Dictionary = PlayerStats.stats_list
 var available_perks: Dictionary
 var perk_index_list: Array = []
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 onready var lvl_end_screen: VBoxContainer = $LvlEndScreen
+onready var endgame_text: VBoxContainer = $EndGameText
 onready var texture_bg: NinePatchRect = $BgTexture
 onready var perk_container: HBoxContainer = $LvlEndScreen/PerkParent/PerkContainer
 onready var perk_title: Label = $LvlEndScreen/PerkParent/DescriptionContainer/PekrDescription/PerkTitle
@@ -19,13 +21,24 @@ func _ready() -> void:
 	lvl_end_screen.visible = false
 	texture_bg.visible = false
 	available_perks =  PlayerStats.perk_list
+	endgame_text.visible = false
 	_get_perks_index()
 	_assign_perks()
 	load_param_sheet()
 
 
-func _end_demo_reached(message: String) -> void:
-	var _formatted_text = "[color=white][center]" + message + "[/center][/color]"
+func _end_demo_reached() -> void:
+	is_demo_ended = true
+	endgame_text.visible = true
+	lvl_end_screen.visible = false
+
+
+func _input(event):
+	if is_demo_ended == true:
+		if event.is_pressed() == true:
+			endgame_text.visible = false
+			is_demo_ended = false
+			Global.exit_to_menu()
 
 
 func _get_perks_index() -> void:
@@ -37,8 +50,10 @@ func _get_perks_index() -> void:
 		else:
 			perk_index_list.append(perk_index)
 
+
 func _on_param_id_received() -> void:
 	pass
+
 
 func _on_item_id_cleared() -> void:
 	pass
@@ -83,7 +98,7 @@ func _get_random_perk() -> int:
 func _on_lvl_proceed() -> void:
 	var _lvl_change_msg
 	_toggle_screen_msg()
-	if Global.current_lvl == 10:
+	if Global.current_lvl == 5:
 		_lvl_change_msg = get_tree().change_scene("res://src/02_scenes/03_Locations/03_BossRooms/BossRoom.tscn")
 	else:
 		_lvl_change_msg = get_tree().reload_current_scene()

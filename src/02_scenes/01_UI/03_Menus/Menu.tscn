@@ -5,6 +5,7 @@
 [ext_resource path="res://src/01_assets/01_UI/main_menu.png" type="Texture" id=3]
 
 [node name="Menu" type="CanvasLayer"]
+pause_mode = 2
 layer = 5
 script = ExtResource( 1 )
 

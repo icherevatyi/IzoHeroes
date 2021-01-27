@@ -129,7 +129,8 @@ func automove(delta) ->  void:
 	if automove_path.size() > 1:
 		var d = get_global_position().distance_to(automove_path[0])
 		if d > 2:
-			set_global_position(get_global_position().linear_interpolate(automove_path[0], (speed * delta)/d))
+			movement = Vector2(1, 0)
+			set_global_position(get_global_position().linear_interpolate(automove_path[0], (speed / 2 * delta)/d))
 		else:
 			automove_path.remove(0)
 	else:

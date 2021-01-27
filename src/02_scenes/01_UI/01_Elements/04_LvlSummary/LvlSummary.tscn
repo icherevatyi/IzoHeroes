@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/04_LvlSummary/LvlSummary.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
@@ -22,6 +22,10 @@ font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 [sub_resource type="DynamicFont" id=5]
 size = 6
 font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+font_data = ExtResource( 4 )
 
 [node name="LvlSummary" type="CanvasLayer"]
 pause_mode = 2
@@ -141,3 +145,32 @@ custom_colors/default_color = Color( 1, 1, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EndGameText" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -41.0
+theme = ExtResource( 2 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainText" type="Label" parent="EndGameText"]
+margin_top = 56.0
+margin_right = 320.0
+margin_bottom = 71.0
+text = "You reached end of this demo, thank you for playing"
+
+[node name="SubText" type="Label" parent="EndGameText"]
+margin_top = 75.0
+margin_right = 320.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 6 )
+text = "(press any button to return to menu)"
+align = 1
+valign = 1

@@ -9,7 +9,6 @@ onready var items_container: VBoxContainer = $MenuBg/ItemsContainer
 func _ready() -> void:
 	set_pause_mode(2)
 	if Global.is_game_started == false:
-		background.color = Color(0, 0, 0, 1)
 		_start_main_menu()
 	if Global.is_game_started == true:
 		match Global.is_player_dead:
@@ -22,6 +21,7 @@ func _ready() -> void:
 
 
 func _start_main_menu() -> void:
+	background.color = Color(0, 0, 0, 1)
 	for item_index in Lists.main_menu_list:
 		var item_instance: TextureButton = menu_item.instance()
 		var item_title: String = Lists.main_menu_list[item_index].title
