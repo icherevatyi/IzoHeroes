@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/DungeonAuto.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=2]
@@ -26,116 +26,165 @@
 [ext_resource path="res://src/02_scenes/04_Items/02_Loot/04_Amulet/Amulet.tscn" type="PackedScene" id=24]
 [ext_resource path="res://src/01_assets/08_Items/Furniture.png" type="Texture" id=25]
 
-[sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( -336, 88, -336, -64, -96, -64, -96, 0, -16, -104, -48, -104, -48, -160, -16, -160, -16, -232, -48, -232, -48, -288, -16, -288, -16, -352, 32, -352, 32, -288, 32, -232, 64, -288, 64, -232, 32, -160, 32, -104, 64, -160, 64, -104, -16, 0, 32, 24, -96, 24, -96, 88 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 11, 12, 13, 14 ), PoolIntArray( 8, 11, 14, 15 ), PoolIntArray( 14, 16, 17, 15 ), PoolIntArray( 7, 8, 15, 18 ), PoolIntArray( 4, 7, 18, 19 ), PoolIntArray( 18, 20, 21, 19 ), PoolIntArray( 22, 4, 19, 23 ), PoolIntArray( 22, 23, 24, 3 ), PoolIntArray( 0, 3, 24 ), PoolIntArray( 0, 24, 25 ) ]
-outlines = [ PoolVector2Array( -336, 88, -96, 88, -96, 24, 32, 24, 32, -104, 64, -104, 64, -160, 32, -160, 32, -232, 64, -232, 64, -288, 32, -288, 32, -352, -16, -352, -16, -288, -48, -288, -48, -232, -16, -232, -16, -160, -48, -160, -48, -104, -16, -104, -16, 0, -96, 0, -96, -64, -336, -64 ) ]
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
 
-[sub_resource type="RectangleShape2D" id=2]
+uniform vec2 center;
+uniform float force;
+uniform float size;
+uniform float thickness;
+
+void fragment() {
+	float ratio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
+	vec2 scaledUV = (SCREEN_UV -  vec2(0.5, 0.0)) / vec2(ratio, 1.0) + vec2(0.5, 0.0);
+	float mask = (1.0 - smoothstep(size - 0.1, size, length(scaledUV - center))) * smoothstep(size - thickness - 0.1, size - thickness, length(scaledUV - center));
+	vec2 disp = normalize(scaledUV - center) * force * mask;
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV - disp);
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/force = 0.03
+shader_param/size = 0.0
+shader_param/thickness = 0.03
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( -96, 24, -233, 24.1935, -232, -7.80652, -96, 0, -16, 0, 32, 24, 32, -104, -16, -104, -48, -104, -48, -160, -16, -160, 32, -160, -16, -232, -48, -232, -48, -288, -16, -288, -16, -352, 32, -352, 32, -288, 32, -232, 64, -288, 64, -232, 64, -160, 64, -104 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4, 5 ), PoolIntArray( 6, 5, 4, 7 ), PoolIntArray( 7, 8, 9, 10 ), PoolIntArray( 6, 7, 10, 11 ), PoolIntArray( 12, 13, 14, 15 ), PoolIntArray( 15, 16, 17, 18 ), PoolIntArray( 12, 15, 18, 19 ), PoolIntArray( 18, 20, 21, 19 ), PoolIntArray( 10, 12, 19, 11 ), PoolIntArray( 6, 11, 22, 23 ) ]
+outlines = [ PoolVector2Array( -233, 24.1935, -96, 24, 32, 24, 32, -104, 64, -104, 64, -160, 32, -160, 32, -232, 64, -232, 64, -288, 32, -288, 32, -352, -16, -352, -16, -288, -48, -288, -48, -232, -16, -232, -16, -160, -48, -160, -48, -104, -16, -104, -16, 0, -96, 0, -232, -7.80652 ) ]
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 24, 16 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 15 )
 region = Rect2( 50, 0, 50, 32 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 16 )
 region = Rect2( 29, 0, 30, 329 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 26, 19 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 43, 26, 8 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 20, 26, 22 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 25 )
 region = Rect2( 131, 85, 56, 56 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 11 )
 region = Rect2( 97, 2, 38, 36 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 11 )
 region = Rect2( 25, 2, 17, 24 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 11 )
 region = Rect2( 137, 1, 15, 26 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 11 )
 region = Rect2( 180, 1, 32, 33 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 11 )
 region = Rect2( 137, 28, 42, 25 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 11 )
 region = Rect2( 153, 1, 26, 26 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 11 )
 region = Rect2( 180, 35, 25, 23 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 21 )
 region = Rect2( 1, 55, 28, 13 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 21 )
 region = Rect2( 1, 69, 28, 16 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 21 )
 region = Rect2( 1, 39, 41, 5 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 21 )
 region = Rect2( 1, 94, 20, 7 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 21 )
 region = Rect2( 1, 86, 20, 7 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 36, 37 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 22 )
 region = Rect2( 52, 6, 40, 33 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 22 )
 region = Rect2( 26, 48, 10, 20 )
 
-[sub_resource type="CapsuleShape2D" id=24]
+[sub_resource type="CapsuleShape2D" id=26]
 radius = 6.09592
 height = 8.44348
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 28, 48 )
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 14, 13 )
 
-[sub_resource type="RectangleShape2D" id=27]
+[sub_resource type="RectangleShape2D" id=29]
 extents = Vector2( 23, 10 )
+
+[sub_resource type="Animation" id=30]
+resource_name = "launch_wave"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShockwaveLayer/ShockwaveNode:material:shader_param/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.3 ]
+}
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="ShockwaveLayer" type="CanvasLayer" parent="."]
+
+[node name="ShockwaveNode" type="ColorRect" parent="ShockwaveLayer"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -148,8 +197,8 @@ tile_data = PoolIntArray( -1507322, 0, 1, -1507321, 0, 4, -1441786, 0, 65537, -1
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
-position = Vector2( 216, -352 )
-navpoly = SubResource( 1 )
+position = Vector2( 217, -352.193 )
+navpoly = SubResource( 3 )
 
 [node name="SecretDoor" type="StaticBody2D" parent="."]
 position = Vector2( 4, -112 )
@@ -160,78 +209,78 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecretDoor"]
 position = Vector2( -4, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="SecretDoor"]
 position = Vector2( -4, 0 )
-texture = SubResource( 3 )
+texture = SubResource( 5 )
 
 [node name="Decorations" type="Node2D" parent="."]
 
 [node name="Carpet" type="Sprite" parent="Decorations"]
 position = Vector2( -0.5, 151 )
-texture = SubResource( 4 )
+texture = SubResource( 6 )
 
 [node name="WallFlag" type="Sprite" parent="Decorations"]
 position = Vector2( -143.5, 53 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 
 [node name="WallFlag2" type="Sprite" parent="Decorations"]
 position = Vector2( -79.5, 208 )
-texture = SubResource( 6 )
+texture = SubResource( 8 )
 
 [node name="WallFlag3" type="Sprite" parent="Decorations"]
 position = Vector2( 144.5, 53.25 )
 scale = Vector2( 1, 0.840909 )
-texture = SubResource( 7 )
+texture = SubResource( 9 )
 
 [node name="WallFlag4" type="Sprite" parent="Decorations"]
 position = Vector2( 80.5, 212.748 )
 scale = Vector2( 1, 0.86824 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 
 [node name="WallFlag5" type="Sprite" parent="Decorations"]
 position = Vector2( 108.5, -107.75 )
 scale = Vector2( 1, 0.921053 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 
 [node name="WallFlag6" type="Sprite" parent="Decorations"]
 position = Vector2( -108.5, -107 )
 scale = Vector2( 1, 0.818182 )
-texture = SubResource( 7 )
+texture = SubResource( 9 )
 
 [node name="WallFlag10" type="Sprite" parent="Decorations"]
 position = Vector2( 164.5, -107 )
 scale = Vector2( 1, 0.818182 )
-texture = SubResource( 7 )
+texture = SubResource( 9 )
 
 [node name="WallFlag7" type="Sprite" parent="Decorations"]
 position = Vector2( -42.5, -112 )
-texture = SubResource( 6 )
+texture = SubResource( 8 )
 
 [node name="WallFlag8" type="Sprite" parent="Decorations"]
 position = Vector2( 43.5, -107.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 
 [node name="WallFlag11" type="Sprite" parent="Decorations"]
 position = Vector2( 219.5, -75.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 
 [node name="WallFlag12" type="Sprite" parent="Decorations"]
 position = Vector2( -218.5, -75.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 
 [node name="WallFlag9" type="Sprite" parent="Decorations"]
 position = Vector2( -164.5, -107.25 )
 scale = Vector2( 1, 0.973684 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Decorations"]
 position = Vector2( 5, -352 )
-texture = SubResource( 8 )
+texture = SubResource( 10 )
 
 [node name="Mess" type="Node2D" parent="."]
 __meta__ = {
@@ -240,157 +289,157 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Mess"]
 position = Vector2( -80, 80 )
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite2" type="Sprite" parent="Mess"]
 position = Vector2( 48, 80 )
 rotation = 1.57079
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite3" type="Sprite" parent="Mess"]
 position = Vector2( 17, 57 )
 rotation = -0.785397
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite4" type="Sprite" parent="Mess"]
 position = Vector2( 224, 40 )
 rotation = -1.57079
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite5" type="Sprite" parent="Mess"]
 position = Vector2( 140, 112 )
 rotation = -1.309
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite6" type="Sprite" parent="Mess"]
 position = Vector2( -172, 98 )
 rotation = -3.14159
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite7" type="Sprite" parent="Mess"]
 position = Vector2( 2, 232 )
 rotation = -2.87979
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite8" type="Sprite" parent="Mess"]
 position = Vector2( 35, 403 )
 rotation = -4.18878
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite9" type="Sprite" parent="Mess"]
 position = Vector2( -38, 531 )
 rotation = -4.71238
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite10" type="Sprite" parent="Mess"]
 position = Vector2( 64, -56 )
 rotation = -4.71238
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite11" type="Sprite" parent="Mess"]
 position = Vector2( -7, 16 )
 rotation = -3.40339
-texture = SubResource( 9 )
+texture = SubResource( 11 )
 
 [node name="Sprite12" type="Sprite" parent="Mess"]
 position = Vector2( -114, -56 )
 rotation = -2.09439
-texture = SubResource( 10 )
+texture = SubResource( 12 )
 
 [node name="Sprite13" type="Sprite" parent="Mess"]
 position = Vector2( -25, 24 )
 rotation = -0.785397
-texture = SubResource( 10 )
+texture = SubResource( 12 )
 
 [node name="Sprite14" type="Sprite" parent="Mess"]
 position = Vector2( 72, -12 )
 rotation = -0.785397
-texture = SubResource( 10 )
+texture = SubResource( 12 )
 
 [node name="Sprite15" type="Sprite" parent="Mess"]
 position = Vector2( 224, 32 )
 rotation = -0.785397
-texture = SubResource( 10 )
+texture = SubResource( 12 )
 
 [node name="Blood" type="Sprite" parent="Mess"]
 position = Vector2( -136, 200 )
-texture = SubResource( 11 )
+texture = SubResource( 13 )
 
 [node name="Blood2" type="Sprite" parent="Mess"]
 position = Vector2( -8, 312 )
-texture = SubResource( 11 )
+texture = SubResource( 13 )
 
 [node name="Blood3" type="Sprite" parent="Mess"]
 position = Vector2( 40, 104 )
-texture = SubResource( 12 )
+texture = SubResource( 14 )
 
 [node name="Blood4" type="Sprite" parent="Mess"]
 position = Vector2( 70, 240 )
-texture = SubResource( 12 )
+texture = SubResource( 14 )
 
 [node name="Blood5" type="Sprite" parent="Mess"]
 position = Vector2( -73, 215 )
-texture = SubResource( 13 )
+texture = SubResource( 15 )
 
 [node name="Blood6" type="Sprite" parent="Mess"]
 position = Vector2( 7, 415 )
 rotation = 1.0472
-texture = SubResource( 13 )
+texture = SubResource( 15 )
 
 [node name="Blood7" type="Sprite" parent="Mess"]
 position = Vector2( 127, 87 )
 rotation = 0.261799
-texture = SubResource( 14 )
+texture = SubResource( 16 )
 
 [node name="Blood8" type="Sprite" parent="Mess"]
 position = Vector2( -17, 247 )
 rotation = 0.261799
-texture = SubResource( 15 )
+texture = SubResource( 17 )
 
 [node name="Blood9" type="Sprite" parent="Mess"]
 position = Vector2( -8.99999, 63 )
 rotation = -1.0472
-texture = SubResource( 15 )
+texture = SubResource( 17 )
 
 [node name="Blood10" type="Sprite" parent="Mess"]
 position = Vector2( 34, 27 )
 rotation = -2.09439
 scale = Vector2( 0.956561, 0.451103 )
-texture = SubResource( 15 )
+texture = SubResource( 17 )
 
 [node name="Blood11" type="Sprite" parent="Mess"]
 position = Vector2( -46.0215, 118.906 )
 scale = Vector2( 1.35828, 0.790769 )
-texture = SubResource( 15 )
+texture = SubResource( 17 )
 
 [node name="BrokenWeapon1" type="Sprite" parent="Mess"]
 position = Vector2( 187, 80 )
-texture = SubResource( 16 )
+texture = SubResource( 18 )
 
 [node name="BrokenWeapon2" type="Sprite" parent="Mess"]
 position = Vector2( -106, 232 )
 rotation = 2.35619
-texture = SubResource( 17 )
+texture = SubResource( 19 )
 
 [node name="BrokenWeapon3" type="Sprite" parent="Mess"]
 position = Vector2( 17, 72 )
 rotation = 0.785397
-texture = SubResource( 17 )
+texture = SubResource( 19 )
 
 [node name="BrokenWeapon4" type="Sprite" parent="Mess"]
 position = Vector2( -41.5, 97 )
 rotation = 1.49924
-texture = SubResource( 18 )
+texture = SubResource( 20 )
 
 [node name="BrokenWeapon5" type="Sprite" parent="Mess"]
 position = Vector2( -21, 245 )
 rotation = 0.523598
-texture = SubResource( 19 )
+texture = SubResource( 21 )
 
 [node name="BrokenWeapon6" type="Sprite" parent="Mess"]
 position = Vector2( -68, 219 )
 rotation = 2.87979
-texture = SubResource( 20 )
+texture = SubResource( 22 )
 
 [node name="ExitDoor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 224, -720 )
@@ -603,7 +652,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Barricades/Barricade1"]
-texture = SubResource( 21 )
+texture = SubResource( 23 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barricades/Barricade1"]
 polygon = PoolVector2Array( -15.0422, 18.5657, -15.0199, 7.4505, 4.72034, -8.55661, 10.2634, -8.72629, 12.1865, -4.2579, 14.7318, 4.8486, 14.2228, 10.3351, 4.38096, 18.8195 )
@@ -617,7 +666,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Barricades/Barricade2"]
-texture = SubResource( 22 )
+texture = SubResource( 24 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barricades/Barricade2"]
 polygon = PoolVector2Array( 19.6338, 14.856, 18.9548, 9.13373, 14.0568, -10.3612, -11.209, -15.8411, -16.398, -16.0836, -21.005, -2.74756, -17.0769, 2.87787, 2.90299, 6.02997, 10.6137, 15.0985 )
@@ -631,10 +680,10 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Barricades/Barricade3"]
-texture = SubResource( 23 )
+texture = SubResource( 25 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Barricades/Barricade3"]
-shape = SubResource( 24 )
+shape = SubResource( 26 )
 
 [node name="Casualties" type="Node2D" parent="."]
 
@@ -682,11 +731,11 @@ __meta__ = {
 
 [node name="BottomPart" type="Sprite" parent="YSort/Throne"]
 position = Vector2( 0, -1 )
-texture = SubResource( 25 )
+texture = SubResource( 27 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Throne"]
 position = Vector2( 0, 8 )
-shape = SubResource( 26 )
+shape = SubResource( 28 )
 
 [node name="Boss" parent="YSort" instance=ExtResource( 23 )]
 position = Vector2( 0, -46.5 )
@@ -710,6 +759,9 @@ __meta__ = {
 [node name="EndPointCoords" type="Position2D" parent="."]
 position = Vector2( 224, -696 )
 
+[node name="ReturnForAmuletPoint" type="Position2D" parent="."]
+position = Vector2( 112, -336 )
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 225, -362 )
 __meta__ = {
@@ -717,5 +769,8 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 27 )
+shape = SubResource( 29 )
+
+[node name="ShockwavePlayer" type="AnimationPlayer" parent="."]
+anims/launch_wave = SubResource( 30 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,6 +1,8 @@
 extends Node2D
 
 var _response: int
+var _amulet_taken: bool = false
+
 
 var tween_time: float = 2.0
 var tween_ease := Tween.EASE_IN_OUT
@@ -25,6 +27,7 @@ onready var throne_moving_tween: Tween = $ThroneMover
 onready var boss: KinematicBody2D = $YSort/Boss
 
 onready var nav_2d: Navigation2D = $Navigation2D
+onready var return_for_amulet_point: Position2D = $ReturnForAmuletPoint
 onready var cutscene_end_point: Position2D = $EndPointCoords
 
 signal endgame_message_sent
@@ -37,6 +40,7 @@ func _ready() -> void:
 
 func _on_boss_died() -> void:
 	secret_passage_button.show_sparkles()
+
 
 func _on_secret_door_opened() -> void:
 	_response = secret_door_tween.interpolate_property(secret_door, "position", secret_door_start_position, secret_door_end_position, tween_time, tween_trans, tween_ease)
@@ -51,15 +55,28 @@ func _on_secret_door_opened() -> void:
 
 
 func _on_amulet_pickup() -> void:
+	_amulet_taken = true
 	var player: KinematicBody2D = $YSort/Player
-	yield(get_tree().create_timer(3), "timeout")
+	$ShockwavePlayer.play("launch_wave")
+	yield(get_tree().create_timer(1), "timeout")
 	var new_path = nav_2d.get_simple_path(player.get_global_position(), cutscene_end_point.get_global_position(), false)
 	player.automove_path = new_path
 
 
+func _return_for_amulet() -> void:
+	var player: KinematicBody2D = $YSort/Player
+	var new_path = nav_2d.get_simple_path(player.get_global_position(), return_for_amulet_point.get_global_position(), false)
+	player.automove_path = new_path
+	
+
+
 func _on_Area2D_body_entered(body) -> void:
 	if body.name == "Player":
-		_end_demo()
+		match _amulet_taken:
+			false:
+				_return_for_amulet()
+			true:
+				_end_demo()
 
 
 func _end_demo() -> void:

@@ -130,9 +130,13 @@ func automove(delta) ->  void:
 		var d = get_global_position().distance_to(automove_path[0])
 		if d > 2:
 			movement = Vector2(1, 0)
-			set_global_position(get_global_position().linear_interpolate(automove_path[0], (speed / 2 * delta)/d))
+			set_global_position(get_global_position().linear_interpolate(automove_path[0], ((speed / 2) * delta)/d))
 		else:
 			automove_path.remove(0)
+		if (get_global_position().x - automove_path[0].x < 0):
+			$Sprite.flip_h = false
+		else:
+			$Sprite.flip_h = true
 	else:
 		is_in_cutscene = false
 
