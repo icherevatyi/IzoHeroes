@@ -22,6 +22,7 @@ onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
 onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
 onready var coin_icon: TextureRect = $Control/Coins/CoinIcons
 onready var bottle_icon: TextureRect = $Control/PlayerStoredPotions/PotionsIcon
+onready var hud_change_tween: Tween = $HUDTween
 onready var hp_change_tween: Tween = $HPChangeTween
 onready var stamina_change_tween: Tween = $StaminaChangeTween
 onready var bottle_shake_tween: Tween = $BottleShakeTween
@@ -227,6 +228,15 @@ func on_exhaustion_message_trigger() -> void:
 	player_message_popup.text = get_tired_phrase()
 	_response = popup_fade_tween.interpolate_property(player_message_popup, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1),  1, popup_fade_tween.TRANS_LINEAR, popup_fade_tween.EASE_IN_OUT)
 	_response = popup_fade_tween.start()
+	popup_timer.set_wait_time(1)
+	popup_timer.start()
+
+
+func on_player_msg_triggered(msg, time) -> void:
+	player_message_popup.text = msg
+	_response = popup_fade_tween.interpolate_property(player_message_popup, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1),  time, popup_fade_tween.TRANS_QUINT, popup_fade_tween.EASE_OUT)
+	_response = popup_fade_tween.start()
+	popup_timer.set_wait_time(time)
 	popup_timer.start()
 
 
@@ -239,3 +249,8 @@ func get_tired_phrase() ->  String:
 func _on_PopupTimer_timeout() -> void:
 	_response = popup_fade_tween.interpolate_property(player_message_popup, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0),  1, popup_fade_tween.TRANS_LINEAR, popup_fade_tween.EASE_IN_OUT)
 	_response = popup_fade_tween.start()
+
+
+func hide_HUD() -> void:
+	_response = hud_change_tween.interpolate_property(ui_parent, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5, Tween.EASE_IN_OUT, Tween.TRANS_LINEAR)
+	_response = hud_change_tween.start()

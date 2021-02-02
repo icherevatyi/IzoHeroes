@@ -7,6 +7,7 @@ var player_original_data: Dictionary = {
 	"stam_current": 60,
 	"coins_count": 0,
 	"healing_pots_count": 0,
+	"saw_sleeping_bag": false
 }
 
 var player_data: Dictionary = {
@@ -14,4 +15,5 @@ var player_data: Dictionary = {
 	"stam_current": 60,
 	"coins_count": 0,
 	"healing_pots_count": 0,
+	"saw_sleeping_bag": false
 }

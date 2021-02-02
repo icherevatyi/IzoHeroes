@@ -40,6 +40,9 @@ func _ready() -> void:
 
 func _on_boss_died() -> void:
 	secret_passage_button.show_sparkles()
+	
+	var player: KinematicBody2D = $YSort/Player
+	player.show_message("A key? I don't see any door. Perhaps there should be some secret passage...should take a look near the throne!", 5)
 
 
 func _on_secret_door_opened() -> void:
@@ -58,16 +61,10 @@ func _on_amulet_pickup() -> void:
 	_amulet_taken = true
 	var player: KinematicBody2D = $YSort/Player
 	$ShockwavePlayer.play("launch_wave")
+	player.hide_HUD()
 	yield(get_tree().create_timer(1), "timeout")
 	var new_path = nav_2d.get_simple_path(player.get_global_position(), cutscene_end_point.get_global_position(), false)
 	player.automove_path = new_path
-
-
-func _return_for_amulet() -> void:
-	var player: KinematicBody2D = $YSort/Player
-	var new_path = nav_2d.get_simple_path(player.get_global_position(), return_for_amulet_point.get_global_position(), false)
-	player.automove_path = new_path
-	
 
 
 func _on_Area2D_body_entered(body) -> void:
@@ -79,13 +76,20 @@ func _on_Area2D_body_entered(body) -> void:
 				_end_demo()
 
 
+func _return_for_amulet() -> void:
+	var player: KinematicBody2D = $YSort/Player
+	var new_path = nav_2d.get_simple_path(player.get_global_position(), return_for_amulet_point.get_global_position(), false)
+	player.automove_path = new_path
+	player.show_message("The amulet, it calls me. I NEED IT.")
+
+
 func _end_demo() -> void:
-		var _message = Lists.level_messages["demo_end"]
-		_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
-		Backdrop.fade_in()
-		yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
-		get_tree().paused = true
-		emit_signal("endgame_message_sent")
+	var _message = Lists.level_messages["demo_end"]
+	_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
+	Backdrop.fade_in()
+	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
+	get_tree().paused = true
+	emit_signal("endgame_message_sent")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

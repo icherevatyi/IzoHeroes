@@ -117,7 +117,6 @@ func _move_player() ->  void:
 	movement = move_and_slide(movement, Vector2(0, 0))
 
 
-
 func set_path(new_path: PoolVector2Array) -> void:
 	automove_path = new_path
 	if new_path.size() == 0:
@@ -275,6 +274,14 @@ func _on_item_data_received(data) -> void:
 func _on_DoorOpener_area_entered(area) -> void:
 	if area.get_parent().name == "ExitDoor":
 		_connect_signal("open_gate", area.get_parent(), "_on_gate_opened")
+
+
+func hide_HUD() -> void:
+	HUD.hide_HUD()
+
+
+func show_message(message, time = 2) -> void:
+	HUD.on_player_msg_triggered(message, time)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

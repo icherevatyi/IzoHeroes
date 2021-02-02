@@ -119,5 +119,14 @@ func activate() -> void:
 				Backdrop.fade_out()
 				_disconnect_activation_signals(activation_label)
 
+
 func show_inactive_message() -> void:
 	print("There's no time to rest!")
+
+
+func _on_Area2D_body_entered(body) -> void:
+	if body.name == "Player":
+		if ResourceStorage.player_data.saw_sleeping_bag == false:
+			body.show_message("Wait, is that a sleeping bag? That's...weird.", 3)
+			ResourceStorage.player_data.saw_sleeping_bag = true
+		return
