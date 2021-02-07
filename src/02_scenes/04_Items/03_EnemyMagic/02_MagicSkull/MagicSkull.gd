@@ -29,9 +29,9 @@ func _on_MagicSkull_body_entered(body) -> void:
 
 
 func _explode() ->  void:
+	$Sprite.play("explosion")
 	speed = 0
 	$Trail.emitting = false
-	$Sprite.play("explosion")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
