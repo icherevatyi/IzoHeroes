@@ -1,18 +1,21 @@
-extends RigidBody2D
+extends Area2D
 
 var is_flipped: bool = false
 var damage: int
+var speed: int = 250
 
 signal do_damage(damage)
 
 func _ready() -> void:
-	apply_impulse(Vector2(), Vector2(250, 0).rotated(rotation))
 	match is_flipped:
 		false:
 			$Sprite.flip_v = false
 		true:
 			$Sprite.flip_v = true
-	
+
+
+func _physics_process(delta):
+	position += transform.x * speed * delta
 
 
 func _on_MagicSkull_body_entered(body) -> void:
@@ -20,9 +23,15 @@ func _on_MagicSkull_body_entered(body) -> void:
 		_connect_signal("do_damage", body, "_damage_taken")
 		emit_signal("do_damage", damage)
 		disconnect("do_damage", body, "_damage_taken")
-		queue_free()
+		_explode()
 	if body.is_in_group("rooms"):
-		queue_free()
+		_explode()
+
+
+func _explode() ->  void:
+	speed = 0
+	$Trail.emitting = false
+	$Sprite.play("explosion")
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
@@ -34,3 +43,11 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 			else:
 				print("Signal connection error: ", connection_msg)
 
+
+
+func _on_Sprite_animation_finished():
+	$Sprite.playing = false
+	if $Sprite.animation == "explosion":
+		queue_free()
+	else:
+		pass

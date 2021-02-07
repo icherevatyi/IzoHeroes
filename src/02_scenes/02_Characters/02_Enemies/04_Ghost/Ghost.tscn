@@ -42,7 +42,7 @@ func _get_coords() -> void:
 
 
 func _create_skull() -> void:
-	var skull_instance: RigidBody2D = skull_scene.instance()
+	var skull_instance: Area2D = skull_scene.instance()
 	var world_node: Node2D = get_node(\"/root/Dungeon/YSort\")
 	if skull_spawn.position.x > 0:
 		skull_instance.is_flipped = false
@@ -268,7 +268,6 @@ radius = 88.0
 
 [node name="Ghost" instance=ExtResource( 1 )]
 script = SubResource( 1 )
-is_taking_damage = true
 
 [node name="Sprite" parent="." index="0"]
 material = ExtResource( 3 )
