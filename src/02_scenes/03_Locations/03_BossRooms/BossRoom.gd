@@ -16,6 +16,7 @@ var darkness_disabled: Color = Color(0, 0, 0, 0)
 
 var throne_start_position: Vector2 = Vector2(0, -92)
 var throne_end_position: Vector2 = Vector2(0, -82)
+var voice_played: bool = false
 
 onready var secret_passage_button: Area2D = $SecretPassageButton
 onready var throne: StaticBody2D = $YSort/Throne
@@ -55,6 +56,7 @@ func _on_secret_door_opened() -> void:
 	yield(get_tree().create_timer(1), "timeout")
 	_response = secret_door_tween.start()
 	_response = darkness_removal_tween.start()
+	$BGMumble.play()
 
 
 func _on_amulet_pickup() -> void:
@@ -74,6 +76,12 @@ func _on_Area2D_body_entered(body) -> void:
 				_return_for_amulet()
 			true:
 				_end_demo()
+
+
+func _on_Area2D2_body_entered(body) -> void:
+	if voice_played == false:
+		$DemonicVoice.play()
+		voice_played = true
 
 
 func _return_for_amulet() -> void:

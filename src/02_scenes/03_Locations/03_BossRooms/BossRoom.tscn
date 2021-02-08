@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/DungeonAuto.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/06_Boss/Boss.tscn" type="PackedScene" id=23]
 [ext_resource path="res://src/02_scenes/04_Items/02_Loot/04_Amulet/Amulet.tscn" type="PackedScene" id=24]
 [ext_resource path="res://src/01_assets/08_Items/Furniture.png" type="Texture" id=25]
+[ext_resource path="res://src/01_assets/09_Audio/v_amulet/amulet_speach_edited.wav" type="AudioStream" id=26]
+[ext_resource path="res://src/01_assets/09_Audio/v_amulet/bg_mumble.wav" type="AudioStream" id=27]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -182,6 +184,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 0.117647, 0.101961, 0.176471, 1 ), Color( 0.352941, 0, 0, 1 ) ]
 }
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 40, 10 )
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource( 10 )
@@ -785,4 +790,23 @@ shape = SubResource( 29 )
 
 [node name="ShockwavePlayer" type="AnimationPlayer" parent="."]
 anims/launch_wave = SubResource( 30 )
+
+[node name="DemonicVoice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+bus = "Voice"
+
+[node name="BGMumble" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+bus = "BG_music"
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 0, -138 )
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource( 31 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
