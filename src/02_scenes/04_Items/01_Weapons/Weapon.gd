@@ -12,6 +12,7 @@ onready var weapon_sprite: Sprite = $Sprite
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var player_sprite: Sprite = get_node("../../Sprite")
 onready var camera: Camera2D = get_node("../../Camera2D")
+onready var audio_player: AudioStreamPlayer =  $SFX
 
 signal do_damage(damage)
 signal use_stamina(stam_value)
@@ -65,7 +66,18 @@ func _get_crit_multiplier() -> float:
 		return Lists.weapon_list[weapon_type].crit_mult
 	else:
 		return 1.4
-	
+
+
+func _play_swing() -> void:
+	var sound_lib: Dictionary = Lists.weapon_swing_sounds
+	var selected_sound: int = _get_random_sound(sound_lib)
+	audio_player.set_stream(sound_lib[selected_sound])
+	audio_player._set_playing(true)
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
 
 
 func _on_Weapon_area_entered(area) -> void:

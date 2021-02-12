@@ -124,6 +124,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0.0, 1.0, 0.0 ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_hurt"
+} ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.6
@@ -139,6 +153,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 9, 10, 11, 12, 13, 14 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_footstep"
+}, {
+"args": [  ],
+"method": "_play_footstep"
+} ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=9]
@@ -212,12 +243,12 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 2
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 5 )
 shape = SubResource( 2 )
 
@@ -236,6 +267,7 @@ monitoring = true
 rotation = -1.74533
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -288,6 +320,7 @@ script = ExtResource( 8 )
 [node name="StaminaRegenTween" type="Tween" parent="."]
 
 [node name="PickupDetectionRange" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 8
 
@@ -295,6 +328,7 @@ collision_mask = 8
 shape = SubResource( 24 )
 
 [node name="DoorOpener" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpener"]
@@ -307,6 +341,12 @@ texture = ExtResource( 11 )
 texture_scale = 0.6
 color = Color( 1, 1, 1, 0.54902 )
 energy = 1.2
+
+[node name="AudioStepsPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
+[node name="AudioHurtPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Combat"
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="Timers/StaminaRegenTimer" to="AdditionalScripts/HealthManagement" method="_on_StaminaRegenTimer_timeout"]
 [connection signal="timeout" from="Timers/StaminaDelayTimer" to="AdditionalScripts/HealthManagement" method="_on_StaminaDelayTimer_timeout"]

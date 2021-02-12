@@ -79,7 +79,7 @@ func _on_Area2D_body_entered(body) -> void:
 
 
 func _on_Area2D2_body_entered(body) -> void:
-	if voice_played == false:
+	if body.name == "Player" and voice_played == false:
 		$DemonicVoice.play()
 		voice_played = true
 

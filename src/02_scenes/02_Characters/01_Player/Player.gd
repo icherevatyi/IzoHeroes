@@ -32,7 +32,8 @@ onready var weapon_container: Node2D = $Weapon
 onready var current_weapon: Area2D
 onready var pickup_detection_range: Area2D = $PickupDetectionRange
 onready var camera: Camera2D = $Camera2D
-
+onready var audio_step_player: AudioStreamPlayer =  $AudioStepsPlayer
+onready var audio_hurt_player: AudioStreamPlayer = $AudioHurtPlayer
 
 signal weapon_swing
 signal use_stamina(value)
@@ -86,6 +87,7 @@ func _ready_weapon() -> void:
 			if is_connected("weapon_swing", weapon, "_on_weapon_swing"):
 				disconnect("weapon_swing", weapon, "_on_weapon_swing")
 
+
 func _on_weapon_picked(weapon_id: String) -> void:
 	PlayerStats._on_weapon_stats_received(weapon_id)
 
@@ -116,6 +118,25 @@ func _move_player() ->  void:
 	movement = movement * speed
 	movement = move_and_slide(movement, Vector2(0, 0))
 
+
+func _play_footstep() -> void:
+	var sound_lib: Dictionary = Lists.player_footsteps_sounds
+	var selected_sound: int = _get_random_sound(sound_lib)
+	audio_step_player.set_stream(sound_lib[selected_sound])
+	audio_step_player._set_playing(true)
+
+
+func _play_hurt() -> void:
+	var sound_lib: Dictionary = Lists.player_hurt_sounds
+	var selected_sound: int = _get_random_sound(sound_lib)
+	audio_hurt_player.set_stream(sound_lib[selected_sound])
+	audio_hurt_player._set_playing(true)
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
+	
 
 func set_path(new_path: PoolVector2Array) -> void:
 	automove_path = new_path

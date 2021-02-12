@@ -16,6 +16,34 @@ var exhaustion_messages: Dictionary = {
 	4: "Give me some time."
 }
 
+var player_footsteps_sounds: Dictionary = {
+	0: load("res://src/01_assets/09_Audio/s_character/steps/player_step-01.ogg"),
+	1: load("res://src/01_assets/09_Audio/s_character/steps/player_step-02.ogg"),
+	2: load("res://src/01_assets/09_Audio/s_character/steps/player_step-03.ogg"),
+	3: load("res://src/01_assets/09_Audio/s_character/steps/player_step-04.ogg"),
+	4: load("res://src/01_assets/09_Audio/s_character/steps/player_step-05.ogg"),
+	5: load("res://src/01_assets/09_Audio/s_character/steps/player_step-06.ogg"),
+	6: load("res://src/01_assets/09_Audio/s_character/steps/player_step-07.ogg"),
+	7: load("res://src/01_assets/09_Audio/s_character/steps/player_step-08.ogg"),
+	8: load("res://src/01_assets/09_Audio/s_character/steps/player_step-08.ogg"),
+}
+
+var player_hurt_sounds: Dictionary = {
+	0: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-01.ogg"),
+	1: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-02.ogg"),
+	2: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-03.ogg"),
+	3: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-04.ogg"),
+	4: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-05.ogg"),
+	5: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-06.ogg"),
+}
+
+var weapon_swing_sounds: Dictionary = {
+	0: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-01.wav"),
+	1: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-02.wav"),
+	2: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-03.wav"),
+	3: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-04.wav"),
+	4: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-05.wav"),
+}
 
 var main_menu_list: Dictionary = {
 	1: {
