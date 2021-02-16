@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/02_scenes/04_Items/03_EnemyMagic/02_MagicSkull/MagicSkull.gd" type="Script" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/02_Enemies/projectile.png" type="Texture" id=2]
+[ext_resource path="res://src/01_assets/09_Audio/s_enemies/expulosion.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -131,7 +132,12 @@ process_material = SubResource( 6 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -5, -0.27739 )
 frames = SubResource( 23 )
-frame = 1
+frame = 3
 playing = true
+
+[node name="ExpulosionAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 300.0
+bus = "Voice"
 [connection signal="body_entered" from="." to="." method="_on_MagicSkull_body_entered"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

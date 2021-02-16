@@ -4,6 +4,8 @@ var is_flipped: bool = false
 var damage: int
 var speed: int = 250
 
+onready var expulosion_player: AudioStreamPlayer2D = $ExpulosionAudio
+
 signal do_damage(damage)
 
 func _ready() -> void:
@@ -30,6 +32,7 @@ func _on_MagicSkull_body_entered(body) -> void:
 
 func _explode() ->  void:
 	$Sprite.play("explosion")
+	expulosion_player.playing = true
 	speed = 0
 	$Trail.emitting = false
 
