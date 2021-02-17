@@ -1,14 +1,20 @@
 extends Area2D
 
+var projectile_noize_sound: Resource = load("res://src/01_assets/09_Audio/s_enemies/projectileNoize.ogg")
+var expulosion_sound: Resource = load("res://src/01_assets/09_Audio/s_enemies/expulosion.ogg")
+
 var is_flipped: bool = false
 var damage: int
 var speed: int = 250
 
-onready var expulosion_player: AudioStreamPlayer2D = $ExpulosionAudio
+onready var audio_player: AudioStreamPlayer2D = $ProjectileAudio
 
 signal do_damage(damage)
 
 func _ready() -> void:
+	audio_player.set_stream(projectile_noize_sound)
+	audio_player._set_playing(true)
+	
 	match is_flipped:
 		false:
 			$Sprite.flip_v = false
@@ -32,7 +38,8 @@ func _on_MagicSkull_body_entered(body) -> void:
 
 func _explode() ->  void:
 	$Sprite.play("explosion")
-	expulosion_player.playing = true
+	audio_player.set_stream(expulosion_sound)
+	audio_player._set_playing(true)
 	speed = 0
 	$Trail.emitting = false
 
@@ -51,6 +58,10 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 func _on_Sprite_animation_finished():
 	$Sprite.playing = false
 	if $Sprite.animation == "explosion":
-		queue_free()
+		visible = false
 	else:
 		pass
+
+
+func _on_ProjectileAudio_finished():
+	queue_free()

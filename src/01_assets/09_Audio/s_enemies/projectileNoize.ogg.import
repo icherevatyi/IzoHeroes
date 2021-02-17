@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/projectileNoize.ogg-e7093d4965f08734b7692cb2db6d4bdc.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/projectileNoize.ogg"
+dest_files=[ "res://.import/projectileNoize.ogg-e7093d4965f08734b7692cb2db6d4bdc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
