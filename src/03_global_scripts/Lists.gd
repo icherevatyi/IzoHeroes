@@ -37,6 +37,8 @@ var player_hurt_sounds: Dictionary = {
 	5: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-06.ogg"),
 }
 
+var player_death_sound: Resource = load("res://src/01_assets/09_Audio/s_character/death/player_death.ogg")
+
 var weapon_swing_sounds: Dictionary = {
 	0: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-01.wav"),
 	1: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-02.wav"),
@@ -44,6 +46,24 @@ var weapon_swing_sounds: Dictionary = {
 	3: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-04.wav"),
 	4: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-05.wav"),
 }
+
+var sound_enemy_walk: Dictionary =  {
+	"skeleton": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-07.ogg"),
+		7: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-08.ogg"),
+	}
+}
+
+var sound_skeleton_attack: Dictionary
+var sound_skeleton_take_damage: Dictionary
+var sound_skeleton_dies: Resource
+
 
 var main_menu_list: Dictionary = {
 	1: {

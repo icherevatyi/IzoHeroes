@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bones_walk-02.ogg-a3d16038b55e6d0127794d1201bd1cd8.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-02.ogg"
+dest_files=[ "res://.import/bones_walk-02.ogg-a3d16038b55e6d0127794d1201bd1cd8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -7,7 +7,6 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends \"res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd\"
 
-
 func _ready():
 	movement_scripts.initial_speed = 35
 	type = \"skeleton\"
@@ -15,7 +14,6 @@ func _ready():
 	
 	emit_signal(\"initiate_healthpool\", health_max)
 	loot_scripts.get_loot_table(type)
-
 "
 
 [sub_resource type="AtlasTexture" id=2]
@@ -223,11 +221,11 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_create_dust"
+"method": "_sound_walk"
 } ]
 }
 
@@ -241,7 +239,7 @@ material = ExtResource( 2 )
 texture = SubResource( 2 )
 vframes = 6
 hframes = 6
-frame = 7
+frame = 3
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 3 )

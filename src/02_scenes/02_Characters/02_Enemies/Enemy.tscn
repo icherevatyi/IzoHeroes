@@ -152,6 +152,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_walk"
+} ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "attack"
@@ -371,6 +385,13 @@ shape = SubResource( 42 )
 
 [node name="PlayerPositionUpdate" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
+max_distance = 350.0
+bus = "Stepps"
+
+[node name="CombatSFX" type="AudioStreamPlayer2D" parent="."]
+bus = "Combat"
 [connection signal="timeout" from="Timers/MovementChangeTimer" to="AdditionalScripts/MovementManagement" method="_on_MovementChangeTimer_timeout"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_DetectionRange_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_DetectionRange_body_exited"]

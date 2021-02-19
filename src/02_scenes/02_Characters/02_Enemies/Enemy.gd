@@ -17,6 +17,11 @@ var drops_key: bool = false
 var player_coords: Vector2
 var player_visible: bool = false
 
+var walk_lib: Dictionary
+var attack_lib: Dictionary
+var hurt_lib: Dictionary
+var death_sound: Resource
+
 onready var detection_range: Area2D = $DetectionRange
 onready var attack_range: Area2D = $AttackRange
 onready var attack_scripts: Node2D = $AdditionalScripts/AttackManagement
@@ -28,6 +33,9 @@ onready var health_bars: Node2D = $HealthBars
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var hurtbox_collision: CollisionShape2D = $HurtBox/CollisionShape2D
 onready var player_position_update_timer: Timer = $PlayerPositionUpdate
+
+onready var combat_sfx: AudioStreamPlayer2D = $CombatSFX
+onready var walk_sfx: AudioStreamPlayer2D = $WalkSFX
 
 var rng = RandomNumberGenerator.new()
 var movement
@@ -142,6 +150,18 @@ func _on_AttackRange_body_entered(body) -> void:
 func _on_AttackRange_body_exited(body) -> void:
 	if body.name == "Player":
 		is_in_attack_range = false
+
+
+func _sound_walk() -> void:
+	walk_lib = Lists.sound_enemy_walk[type]
+	var selected_sound: int = _get_random_sound(walk_lib)
+	walk_sfx.set_stream(walk_lib[selected_sound])
+	walk_sfx._set_playing(true)
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

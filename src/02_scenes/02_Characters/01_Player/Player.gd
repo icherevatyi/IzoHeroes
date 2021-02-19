@@ -133,6 +133,12 @@ func _play_hurt() -> void:
 	audio_hurt_player._set_playing(true)
 
 
+func _play_death() -> void:
+	audio_hurt_player.set_stream(Lists.player_death_sound)
+	audio_hurt_player._set_playing(true)
+	
+
+
 func _get_random_sound(sound_type: Dictionary) -> int:
 	rng.randomize()
 	return rng.randi_range(0, sound_type.size() - 1)
