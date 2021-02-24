@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/weapon_swing-05.ogg-36bf3609e40d3c21600d9fbcfdda79e6.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_character/weapon/weapon_swing-05.ogg"
+dest_files=[ "res://.import/weapon_swing-05.ogg-36bf3609e40d3c21600d9fbcfdda79e6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

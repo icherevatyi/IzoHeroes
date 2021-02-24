@@ -40,11 +40,11 @@ var player_hurt_sounds: Dictionary = {
 var player_death_sound: Resource = load("res://src/01_assets/09_Audio/s_character/death/player_death.ogg")
 
 var weapon_swing_sounds: Dictionary = {
-	0: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-01.wav"),
-	1: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-02.wav"),
-	2: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-03.wav"),
-	3: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-04.wav"),
-	4: load("res://src/01_assets/09_Audio/s_character/weapon/player_weapon_-05.wav"),
+	0: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_swing-01.ogg"),
+	1: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_swing-02.ogg"),
+	2: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_swing-03.ogg"),
+	3: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_swing-04.ogg"),
+	4: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_swing-05.ogg"),
 }
 
 var sound_enemy_walk: Dictionary =  {
@@ -57,6 +57,16 @@ var sound_enemy_walk: Dictionary =  {
 		5: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-06.ogg"),
 		6: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-07.ogg"),
 		7: load("res://src/01_assets/09_Audio/s_enemies/skeleton/bones_walk-08.ogg"),
+	},
+	"ghost": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-06.ogg"),
+		7: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-06.ogg"),
 	}
 }
 

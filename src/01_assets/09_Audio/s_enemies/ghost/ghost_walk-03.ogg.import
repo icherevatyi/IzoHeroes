@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ghost_walk-03.ogg-f5d3d56d10a919dc2b59a692cfe1d1be.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-03.ogg"
+dest_files=[ "res://.import/ghost_walk-03.ogg-f5d3d56d10a919dc2b59a692cfe1d1be.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
