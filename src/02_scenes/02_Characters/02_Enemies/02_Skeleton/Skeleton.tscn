@@ -253,7 +253,6 @@ material = ExtResource( 2 )
 texture = SubResource( 2 )
 vframes = 6
 hframes = 6
-frame = 4
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 3 )
