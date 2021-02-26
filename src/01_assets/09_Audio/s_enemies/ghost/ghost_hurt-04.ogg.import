@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ghost_hurt-04.ogg-27554e3802f752a92939f92249145160.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-04.ogg"
+dest_files=[ "res://.import/ghost_hurt-04.ogg-27554e3802f752a92939f92249145160.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

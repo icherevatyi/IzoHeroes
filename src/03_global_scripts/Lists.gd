@@ -70,6 +70,35 @@ var sound_enemy_walk: Dictionary =  {
 	}
 }
 
+var sound_enemy_attack: Dictionary = {
+#	"skeleton": {},
+	"ghost": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-05.ogg"),
+	}
+}
+
+var sound_enemy_hurt: Dictionary = {
+#	"skeleton": {},
+	"ghost": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-05.ogg"),
+	}
+}
+
+var sound_enemy_death: Dictionary = {
+#	"skeleton": {},
+	"ghost": load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_death.ogg")
+}
+
+
+
 var sound_skeleton_attack: Dictionary
 var sound_skeleton_take_damage: Dictionary
 var sound_skeleton_dies: Resource

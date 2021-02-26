@@ -41,6 +41,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [  ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.23 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_attack"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack_2"
@@ -63,6 +77,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.07 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_walk"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -92,6 +120,20 @@ tracks/1/keys = {
 "values": [ {
 "args": [  ],
 "method": "generate_loot"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_death"
 } ]
 }
 
@@ -136,6 +178,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_hurt"
+} ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -392,6 +448,9 @@ bus = "Stepps"
 
 [node name="CombatSFX" type="AudioStreamPlayer2D" parent="."]
 bus = "Combat"
+
+[node name="EnemyVoiceSFX" type="AudioStreamPlayer2D" parent="."]
+bus = "EnemyVoice"
 [connection signal="timeout" from="Timers/MovementChangeTimer" to="AdditionalScripts/MovementManagement" method="_on_MovementChangeTimer_timeout"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_DetectionRange_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_DetectionRange_body_exited"]

@@ -36,7 +36,7 @@ onready var player_position_update_timer: Timer = $PlayerPositionUpdate
 
 onready var combat_sfx: AudioStreamPlayer2D = $CombatSFX
 onready var walk_sfx: AudioStreamPlayer2D = $WalkSFX
-
+onready var e_voice_sfx: AudioStreamPlayer2D = $EnemyVoiceSFX
 var rng = RandomNumberGenerator.new()
 var movement
 var is_in_attack_range: bool = false
@@ -157,6 +157,25 @@ func _sound_walk() -> void:
 	var selected_sound: int = _get_random_sound(walk_lib)
 	walk_sfx.set_stream(walk_lib[selected_sound])
 	walk_sfx._set_playing(true)
+
+
+func _sound_attack() -> void:
+	attack_lib = Lists.sound_enemy_attack[type]
+	var selected_sound: int = _get_random_sound(attack_lib)
+	combat_sfx.set_stream(attack_lib[selected_sound])
+	combat_sfx._set_playing(true)
+
+
+func _sound_hurt() -> void:
+	hurt_lib = Lists.sound_enemy_hurt[type]
+	var selected_sound: int = _get_random_sound(hurt_lib)
+	e_voice_sfx.set_stream(hurt_lib[selected_sound])
+	e_voice_sfx._set_playing(true)
+
+
+func _sound_death() -> void:
+	e_voice_sfx.set_stream(Lists.sound_enemy_death[type])
+	e_voice_sfx._set_playing(true)
 
 
 func _get_random_sound(sound_type: Dictionary) -> int:
