@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/skeleton death.ogg-14a318ad031ef04fe0e28679e92b2a51.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton death.ogg"
+dest_files=[ "res://.import/skeleton death.ogg-14a318ad031ef04fe0e28679e92b2a51.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

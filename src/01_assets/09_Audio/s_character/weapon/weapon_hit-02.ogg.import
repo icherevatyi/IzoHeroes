@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/weapon_hit-02.ogg-571b8531da4d7276aee4d16240a29be7.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_character/weapon/weapon_hit-02.ogg"
+dest_files=[ "res://.import/weapon_hit-02.ogg-571b8531da4d7276aee4d16240a29be7.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

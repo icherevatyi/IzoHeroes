@@ -75,6 +75,13 @@ func _play_swing() -> void:
 	audio_player._set_playing(true)
 
 
+func _play_hit() -> void:
+	var sound_lib: Dictionary = Lists.player_hit_enemy
+	var selected_sound: int = _get_random_sound(sound_lib)
+	audio_player.set_stream(sound_lib[selected_sound])
+	audio_player._set_playing(true)
+
+
 func _get_random_sound(sound_type: Dictionary) -> int:
 	rng.randomize()
 	return rng.randi_range(0, sound_type.size() - 1)
@@ -84,6 +91,7 @@ func _on_Weapon_area_entered(area) -> void:
 	if is_monitored:
 		if area.name == "HurtBox":
 			_connect_signal("do_damage", area, "_on_damage_received")
+			_play_hit()
 			if _calculate_crit_strike() == true:
 				emit_signal("do_damage", int(damage * _get_crit_multiplier()))
 				camera.start_shaking(0.3, 60, 3)

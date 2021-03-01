@@ -75,5 +75,5 @@ disabled = true
 anims/swing = SubResource( 1 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
-bus = "SFX"
+bus = "Combat"
 [connection signal="area_entered" from="." to="." method="_on_Weapon_area_entered"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/skeleton_attack-06.ogg-296d98226c4ab9c60588c827784249ca.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_attack-06.ogg"
+dest_files=[ "res://.import/skeleton_attack-06.ogg-296d98226c4ab9c60588c827784249ca.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/skeleton_hurt-03.ogg-37f4a3d96a91c6476e49a646ee30fc79.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-03.ogg"
+dest_files=[ "res://.import/skeleton_hurt-03.ogg-37f4a3d96a91c6476e49a646ee30fc79.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

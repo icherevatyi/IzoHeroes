@@ -37,6 +37,13 @@ var player_hurt_sounds: Dictionary = {
 	5: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-06.ogg"),
 }
 
+var player_hit_enemy: Dictionary = {
+	0: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_hit-01.ogg"),
+	1: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_hit-02.ogg"),
+	2: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_hit-03.ogg"),
+	3: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_hit-04.ogg"),
+}
+
 var player_death_sound: Resource = load("res://src/01_assets/09_Audio/s_character/death/player_death.ogg")
 
 var weapon_swing_sounds: Dictionary = {
@@ -71,7 +78,14 @@ var sound_enemy_walk: Dictionary =  {
 }
 
 var sound_enemy_attack: Dictionary = {
-#	"skeleton": {},
+	"skeleton": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_attack-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_attack-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_attack-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_attack-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_attack-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_attack-06.ogg"),
+	},
 	"ghost": {
 		0: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-01.ogg"),
 		1: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-02.ogg"),
@@ -82,7 +96,16 @@ var sound_enemy_attack: Dictionary = {
 }
 
 var sound_enemy_hurt: Dictionary = {
-#	"skeleton": {},
+	"skeleton": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-07.ogg"),
+		7: load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton_hurt-08.ogg"),
+	},
 	"ghost": {
 		0: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-01.ogg"),
 		1: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-02.ogg"),
@@ -93,7 +116,7 @@ var sound_enemy_hurt: Dictionary = {
 }
 
 var sound_enemy_death: Dictionary = {
-#	"skeleton": {},
+	"skeleton": load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton death.ogg"),
 	"ghost": load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_death.ogg")
 }
 
