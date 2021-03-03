@@ -53,6 +53,7 @@ func _ready() -> void:
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
 	manage_buff_icon()
 
+
 func toggle_char_sheet() -> void:
 	if ui_parent.has_node("CharacterSheet"):
 		ui_parent.get_node("CharacterSheet").queue_free()

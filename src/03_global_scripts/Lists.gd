@@ -120,11 +120,34 @@ var sound_enemy_death: Dictionary = {
 	"ghost": load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_death.ogg")
 }
 
+var sound_item_drop: Dictionary = {
+	"healing_bottle": {
+		0: load("res://src/01_assets/09_Audio/s_items/bottle_drop-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_items/bottle_drop-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_items/bottle_drop-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_items/bottle_drop-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_items/bottle_drop-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_items/bottle_drop-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_items/bottle_drop-07.ogg"),
+	},
+	"gold_coins": {
+		0: load("res://src/01_assets/09_Audio/s_items/bottle_drop-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_items/bottle_drop-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_items/bottle_drop-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_items/bottle_drop-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_items/bottle_drop-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_items/bottle_drop-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_items/bottle_drop-07.ogg"),
+	}
+}
+
+var healing_used: Resource = load("res://src/01_assets/09_Audio/s_ui/bottle_drink-01.ogg")
+var key_used: Resource
+var door_closed: Resource
+var door_opened: Resource
 
 
-var sound_skeleton_attack: Dictionary
-var sound_skeleton_take_damage: Dictionary
-var sound_skeleton_dies: Resource
+ 
 
 
 var main_menu_list: Dictionary = {

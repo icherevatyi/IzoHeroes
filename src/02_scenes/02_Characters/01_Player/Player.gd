@@ -34,6 +34,7 @@ onready var pickup_detection_range: Area2D = $PickupDetectionRange
 onready var camera: Camera2D = $Camera2D
 onready var audio_step_player: AudioStreamPlayer =  $AudioStepsPlayer
 onready var audio_hurt_player: AudioStreamPlayer = $AudioHurtPlayer
+onready var audio_sfx_player: AudioStreamPlayer = $SFXPlayer
 
 signal weapon_swing
 signal use_stamina(value)
@@ -119,6 +120,12 @@ func _move_player() ->  void:
 	movement = move_and_slide(movement, Vector2(0, 0))
 
 
+func _play_healing() -> void:
+	audio_sfx_player.set_stream(Lists.healing_used)
+	audio_sfx_player._set_playing(true)
+	
+
+
 func _play_footstep() -> void:
 	var sound_lib: Dictionary = Lists.player_footsteps_sounds
 	var selected_sound: int = _get_random_sound(sound_lib)
@@ -136,7 +143,6 @@ func _play_hurt() -> void:
 func _play_death() -> void:
 	audio_hurt_player.set_stream(Lists.player_death_sound)
 	audio_hurt_player._set_playing(true)
-	
 
 
 func _get_random_sound(sound_type: Dictionary) -> int:
@@ -166,6 +172,7 @@ func automove(delta) ->  void:
 	else:
 		is_in_cutscene = false
 
+
 func _input(event) -> void:		
 	if is_dead == false and is_in_cutscene == false:
 		if event.is_action_pressed("attack") and is_charsheet_opened == false and can_attack == true:
@@ -186,12 +193,12 @@ func _input(event) -> void:
 			idle_timer.stop()
 			is_bored = false
 
-		if health_scripts.health_current < health_scripts.health_max:
-			if event.is_action_pressed("use_item"):
-				if loot_management.healing_bottle > 0:
-					emit_signal("damage_heal", 30)
-					emit_signal("use_bottle")
-					loot_management.healing_bottle = max(0, loot_management.healing_bottle)
+		if event.is_action_pressed("use_item"):
+			if loot_management.healing_bottle > 0 and health_scripts.health_current < health_scripts.health_max:
+				emit_signal("damage_heal", 30)
+				_play_healing()
+				emit_signal("use_bottle")
+				loot_management.healing_bottle = max(0, loot_management.healing_bottle)
 
 		if event.is_action_pressed("interract"):
 			_response = _start_event() if (Global.is_dangerous_to_interact == false) else print("it's dangerous here")
@@ -199,7 +206,6 @@ func _input(event) -> void:
 		if event.is_action_released("interract"):
 			if is_interactive == true and interactive_obj != null:
 				interactive_obj.abort_activation()
-
 
 
 func _on_weapon_swing_made(stam_value: int) -> void:

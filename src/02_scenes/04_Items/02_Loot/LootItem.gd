@@ -17,6 +17,7 @@ var direction_list: Dictionary = {
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 onready var info_trigger_area: Area2D = $InfoTriggerArea
+onready var item_drop_sound_player: AudioStreamPlayer2D = $ItemDropAudio
 
 signal transfer_item_data(data)
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	item_local_data.item_type = item_info.type
 	_generate_item_amount()
 	apply_central_impulse(_select_direction())
+	_sound_item_drop()
 
 
 func _on_Timer_timeout():
@@ -49,6 +51,18 @@ func _select_direction() -> Vector2:
 
 func _on_item_picked_up() -> void:
 	queue_free()
+
+
+func _sound_item_drop() -> void:
+	var sound_lib = Lists.sound_item_drop[item_info.type]
+	var selected_sound: int = _get_random_sound(sound_lib)
+	item_drop_sound_player.set_stream(sound_lib[selected_sound])
+	item_drop_sound_player._set_playing(true)
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
 
 
 func _on_InfoTriggerArea_area_entered(area):
