@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wall_slide.ogg-7eca7a5df6406e2768c0b0b4a7bbc37f.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_items/wall_slide.ogg"
+dest_files=[ "res://.import/wall_slide.ogg-7eca7a5df6406e2768c0b0b4a7bbc37f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
