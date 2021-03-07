@@ -41,7 +41,6 @@ func _start_music() -> void:
 	_funcion_response = audio_tween.start()
 
 
-
 func _start_deathscreen_menu() -> void:
 	for item_index in Lists.deathscreen_game_list:
 		var item_instance: TextureButton = menu_item.instance()
@@ -50,7 +49,6 @@ func _start_deathscreen_menu() -> void:
 		
 		items_container.add_child(item_instance)
 		item_instance.item_init(item_title, item_action)
-	
 
 
 func _start_pause_menu() ->  void:

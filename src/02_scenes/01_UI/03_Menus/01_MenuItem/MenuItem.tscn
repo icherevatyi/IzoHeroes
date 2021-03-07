@@ -44,6 +44,11 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 [connection signal="button_down" from="." to="." method="_on_MenuItem_button_down"]
 [connection signal="button_up" from="." to="." method="_on_MenuItem_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_MenuItem_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_MenuItem_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
