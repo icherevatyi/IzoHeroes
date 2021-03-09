@@ -123,7 +123,13 @@ func _move_player() ->  void:
 func _play_healing() -> void:
 	audio_sfx_player.set_stream(Lists.healing_used)
 	audio_sfx_player._set_playing(true)
-	
+
+
+func _play_item_pickup() -> void:
+	var sound_lib: Dictionary = Lists.player_pickup_sounds
+	var selected_sound: int = _get_random_sound(sound_lib)
+	audio_sfx_player.set_stream(sound_lib[selected_sound])
+	audio_sfx_player._set_playing(true)
 
 
 func _play_footstep() -> void:
@@ -148,7 +154,7 @@ func _play_death() -> void:
 func _get_random_sound(sound_type: Dictionary) -> int:
 	rng.randomize()
 	return rng.randi_range(0, sound_type.size() - 1)
-	
+
 
 func set_path(new_path: PoolVector2Array) -> void:
 	automove_path = new_path
@@ -300,6 +306,7 @@ func _weapon_drop(weapon_type, weapon_position: Vector2) ->  void:
 
 
 func _on_item_data_received(data) -> void:
+	_play_item_pickup()
 	emit_signal("pickup_screen_blink")
 	loot_management.process_received_loot_data(data)
 

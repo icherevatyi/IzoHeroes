@@ -16,6 +16,15 @@ var exhaustion_messages: Dictionary = {
 	4: "Give me some time."
 }
 
+var player_pickup_sounds: Dictionary = {
+	0: load("res://src/01_assets/09_Audio/s_items/item_pick-01.ogg"),
+	1: load("res://src/01_assets/09_Audio/s_items/item_pick-02.ogg"),
+	2: load("res://src/01_assets/09_Audio/s_items/item_pick-03.ogg"),
+	3: load("res://src/01_assets/09_Audio/s_items/item_pick-04.ogg"),
+	4: load("res://src/01_assets/09_Audio/s_items/item_pick-05.ogg"),
+	5: load("res://src/01_assets/09_Audio/s_items/item_pick-06.ogg"),
+}
+
 var player_footsteps_sounds: Dictionary = {
 	0: load("res://src/01_assets/09_Audio/s_character/steps/player_step-01.ogg"),
 	1: load("res://src/01_assets/09_Audio/s_character/steps/player_step-02.ogg"),
