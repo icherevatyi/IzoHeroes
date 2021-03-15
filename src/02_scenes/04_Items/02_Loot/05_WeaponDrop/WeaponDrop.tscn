@@ -32,6 +32,9 @@ autostart = true
 
 [node name="ActivatorCoords" type="Position2D" parent="."]
 position = Vector2( 16, -8 )
+
+[node name="DropSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = "Items"
 [connection signal="body_entered" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_body_entered"]
 [connection signal="body_exited" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

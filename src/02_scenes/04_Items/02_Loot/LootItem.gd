@@ -55,14 +55,18 @@ func _on_item_picked_up() -> void:
 
 func _sound_item_drop() -> void:
 	var sound_lib = Lists.sound_item_drop[item_info.type]
-	var selected_sound: int = _get_random_sound(sound_lib)
+	var selected_sound: int
+	selected_sound = _get_random_sound(sound_lib)
 	item_drop_sound_player.set_stream(sound_lib[selected_sound])
 	item_drop_sound_player._set_playing(true)
 
 
 func _get_random_sound(sound_type: Dictionary) -> int:
 	rng.randomize()
-	return rng.randi_range(0, sound_type.size() - 1)
+	if sound_type.size() > 1:
+		return rng.randi_range(0, sound_type.size() - 1)
+	else: 
+		return 0
 
 
 func _on_InfoTriggerArea_area_entered(area):

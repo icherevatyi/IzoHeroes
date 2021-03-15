@@ -42,7 +42,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 onready var activator_coords: Position2D = $ActivatorCoords
 onready var activation_label: Node2D
 onready var canvas_activation_node: CanvasLayer = $CanvasLayer
-
+onready var drop_sound_player: AudioStreamPlayer2D = $DropSoundPlayer
 
 signal send_data(data_obj, current_wep_obj)
 signal show_label
@@ -54,6 +54,7 @@ signal take_weapon(weapon_type, weapon_position)
 
 func _ready() -> void:
 	apply_central_impulse(_select_direction())
+	_play_drop_sound()
 
 
 func _connect_activation_signals(target_node: Node2D) -> void:
@@ -103,7 +104,18 @@ func _on_PlayerCollisionDetector_body_exited(body) -> void:
 		emit_signal("stop_activation")
 		_disconnect_activation_signals(activation_label)
 		activation_label.queue_free()
-		
+
+
+func _play_drop_sound() -> void:
+	var sound_lib: Dictionary = Lists.sound_item_drop["weapon"]
+	var selected_sound: int = _get_random_sound(sound_lib)
+	drop_sound_player.set_stream(sound_lib[selected_sound])
+	drop_sound_player._set_playing(true)
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
 
 
 func start_activation() -> void:

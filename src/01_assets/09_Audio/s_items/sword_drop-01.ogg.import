@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sword_drop-01.ogg-1195416eb10f4af4d4804aa2157bf33b.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_items/sword_drop-01.ogg"
+dest_files=[ "res://.import/sword_drop-01.ogg-1195416eb10f4af4d4804aa2157bf33b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

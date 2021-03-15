@@ -39,7 +39,7 @@ func generate_loot() -> void:
 				rng.randomize()
 				var drop_chance_value: int = rng.randi_range(0, 100)
 				
-				if parent.type == Lists.weapon_list[weapon_holder].dropped and drop_chance_value < 30:
+				if parent.type == Lists.weapon_list[weapon_holder].dropped and drop_chance_value < 35:
 					var weapon_instance = Lists.weapon_list[weapon_holder].loot_scene.instance()
 					weapon_instance.set_global_position(parent.get_global_position())
 					dungeon.add_child(weapon_instance)

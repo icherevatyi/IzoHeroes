@@ -147,6 +147,15 @@ var sound_item_drop: Dictionary = {
 		4: load("res://src/01_assets/09_Audio/s_items/bottle_drop-05.ogg"),
 		5: load("res://src/01_assets/09_Audio/s_items/bottle_drop-06.ogg"),
 		6: load("res://src/01_assets/09_Audio/s_items/bottle_drop-07.ogg"),
+	},
+	"weapon": {
+		0: load("res://src/01_assets/09_Audio/s_items/sword_drop-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_items/sword_drop-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_items/sword_drop-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_items/sword_drop-04.ogg"),
+	},
+	"key": {
+		0: load("res://src/01_assets/09_Audio/s_items/key_drop.ogg")
 	}
 }
 
