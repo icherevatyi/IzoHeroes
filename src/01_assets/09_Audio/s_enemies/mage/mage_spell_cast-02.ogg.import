@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mage_spell_cast-02.ogg-8e0ce4dbdb2eb2b62f28f70b19396ce4.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_cast-02.ogg"
+dest_files=[ "res://.import/mage_spell_cast-02.ogg-8e0ce4dbdb2eb2b62f28f70b19396ce4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

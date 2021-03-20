@@ -257,7 +257,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 6
-frame = 3
+frame = 2
 __meta__ = {
 "_editor_description_": ""
 }
@@ -358,7 +358,7 @@ color = Color( 1, 1, 1, 0.54902 )
 energy = 1.2
 
 [node name="AudioStepsPlayer" type="AudioStreamPlayer" parent="."]
-bus = "Stepps"
+bus = "Steps"
 
 [node name="AudioHurtPlayer" type="AudioStreamPlayer" parent="."]
 bus = "Voice"

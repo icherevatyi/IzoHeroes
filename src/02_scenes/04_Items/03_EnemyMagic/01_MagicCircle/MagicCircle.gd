@@ -1,12 +1,27 @@
 extends Area2D
 
 var damage: int
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
+onready var spell_audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 signal attack(dmg)
 signal stagger
 
 func _ready():
 	$AnimationPlayer.play("create")
+
+
+func _sound_spell() -> void:
+	var sound_lib = Lists.mage_spell_sound
+	var selected_sound: int = _get_random_sound(sound_lib)
+	spell_audio.set_stream(sound_lib[selected_sound])
+	spell_audio._set_playing(true)
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
 
 
 func _destroy_circle() ->  void:

@@ -83,6 +83,16 @@ var sound_enemy_walk: Dictionary =  {
 		5: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-06.ogg"),
 		6: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-06.ogg"),
 		7: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_walk-06.ogg"),
+	},
+	"mage": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-07.ogg"),
+		7: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-08.ogg"),
 	}
 }
 
@@ -101,6 +111,10 @@ var sound_enemy_attack: Dictionary = {
 		2: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-03.ogg"),
 		3: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-04.ogg"),
 		4: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_attack-05.ogg"),
+	},
+	"mage": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_cast-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_cast-02.ogg"),
 	}
 }
 
@@ -124,9 +138,17 @@ var sound_enemy_hurt: Dictionary = {
 	}
 }
 
+var mage_spell_sound: Dictionary = {
+	0: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_eff-01.ogg"),
+	1: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_eff-02.ogg"),
+	2: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_eff-03.ogg"),
+	3: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_eff-04.ogg"),
+}
+
 var sound_enemy_death: Dictionary = {
 	"skeleton": load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton death.ogg"),
-	"ghost": load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_death.ogg")
+	"ghost": load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_death.ogg"),
+	"mage": load("res://src/01_assets/09_Audio/s_enemies/mage/mage_death.ogg")
 }
 
 var sound_item_drop: Dictionary = {

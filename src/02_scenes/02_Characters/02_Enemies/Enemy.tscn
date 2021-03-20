@@ -445,7 +445,7 @@ wait_time = 0.1
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 3.0
 max_distance = 350.0
-bus = "Stepps"
+bus = "Steps"
 
 [node name="CombatSFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 8.0

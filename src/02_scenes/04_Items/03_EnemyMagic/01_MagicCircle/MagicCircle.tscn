@@ -46,6 +46,20 @@ tracks/2/keys = {
 "method": "_destroy_circle"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.06 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_spell"
+} ]
+}
 
 [node name="MagicCircle" type="Area2D"]
 collision_layer = 64
@@ -56,10 +70,17 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 vframes = 6
 hframes = 5
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/create = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -21.238, 5.57373, -10.7513, 13.6732, -0.946693, 14.8668, 24.119, 7.27888, 26.762, -10.881, 6.89701, -19.0657, -13.6975, -20.6174, -19.9389, -1.37329 )
+disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 10.0
+max_distance = 200.0
+bus = "Combat"
 [connection signal="area_entered" from="." to="." method="_on_MagicCircle_area_entered"]
