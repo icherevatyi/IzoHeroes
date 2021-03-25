@@ -93,6 +93,15 @@ var sound_enemy_walk: Dictionary =  {
 		5: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-06.ogg"),
 		6: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-07.ogg"),
 		7: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_step-08.ogg"),
+	},
+	"minotaur": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-07.ogg"),
 	}
 }
 
@@ -115,6 +124,13 @@ var sound_enemy_attack: Dictionary = {
 	"mage": {
 		0: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_cast-01.ogg"),
 		1: load("res://src/01_assets/09_Audio/s_enemies/mage/mage_spell_cast-02.ogg"),
+	},
+	"minotaur": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-05.ogg"),
 	}
 }
 
@@ -135,6 +151,16 @@ var sound_enemy_hurt: Dictionary = {
 		2: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-03.ogg"),
 		3: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-04.ogg"),
 		4: load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_hurt-05.ogg"),
+	},
+	"minotaur": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-04.ogg"),
+		4: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-05.ogg"),
+		5: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-06.ogg"),
+		6: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-07.ogg"),
+		7: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-08.ogg"),
 	}
 }
 
@@ -148,7 +174,8 @@ var mage_spell_sound: Dictionary = {
 var sound_enemy_death: Dictionary = {
 	"skeleton": load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton death.ogg"),
 	"ghost": load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_death.ogg"),
-	"mage": load("res://src/01_assets/09_Audio/s_enemies/mage/mage_death.ogg")
+	"mage": load("res://src/01_assets/09_Audio/s_enemies/mage/mage_death.ogg"),
+	"minotaur": load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_death.ogg")
 }
 
 var sound_item_drop: Dictionary = {
@@ -200,10 +227,6 @@ var main_menu_list: Dictionary = {
 		"action": "LOAD_GAME"
 	},
 	3: {
-		"title": "Options",
-		"action": "SHOW_OPTIONS"
-	},
-	4: {
 		"title": "Exit to Desktop",
 		"action": "QTD"
 	}
@@ -220,14 +243,10 @@ var pause_game_list: Dictionary = {
 		"action": "LOAD_GAME"
 	},
 	3: {
-		"title": "Options",
-		"action": "SHOW_OPTIONS"
-	},
-	4: {
 		"title": "Exit to Menu",
 		"action": "QTM"
 	},
-	5: {
+	4: {
 		"title": "Exit to Desktop",
 		"action": "QTD"
 	},
@@ -240,14 +259,10 @@ var deathscreen_game_list: Dictionary = {
 		"action": "LOAD_GAME"
 	},
 	2: {
-		"title": "Options",
-		"action": "SHOW_OPTIONS"
-	},
-	3: {
 		"title": "Exit to Menu",
 		"action": "QTM"
 	},
-	4: {
+	3: {
 		"title": "Exit to Desktop",
 		"action": "QTD"
 	},
@@ -319,10 +334,10 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-			2: {
-				"chance": 85,
-				"type": "gold_coins"
-			}
+#			2: {
+#				"chance": 85,
+#				"type": "gold_coins"
+#			}
 		}
 	},
 	2: {
@@ -335,10 +350,10 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-			2: {
-				"chance": 85,
-				"type": "gold_coins"
-			}
+#			2: {
+#				"chance": 85,
+#				"type": "gold_coins"
+#			}
 		}
 	},
 	3: {
@@ -351,10 +366,10 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-			2: {
-				"chance": 85,
-				"type": "gold_coins"
-			}
+#			2: {
+#				"chance": 85,
+#				"type": "gold_coins"
+#			}
 		}
 	},
 	4: {
@@ -367,10 +382,10 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-			2: {
-				"chance": 85,
-				"type": "gold_coins"
-			}
+#			2: {
+#				"chance": 85,
+#				"type": "gold_coins"
+#			}
 		}
 	}
 }

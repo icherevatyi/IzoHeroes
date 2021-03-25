@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mino_weapon_swing-04.ogg-aed11257c1149988336f83b7ad700b0e.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-04.ogg"
+dest_files=[ "res://.import/mino_weapon_swing-04.ogg-aed11257c1149988336f83b7ad700b0e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

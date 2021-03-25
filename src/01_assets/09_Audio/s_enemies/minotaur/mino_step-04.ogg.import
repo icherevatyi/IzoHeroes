@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mino_step-04.ogg-a6e5d7342338ddf2aca1186bf728492c.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-04.ogg"
+dest_files=[ "res://.import/mino_step-04.ogg-a6e5d7342338ddf2aca1186bf728492c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

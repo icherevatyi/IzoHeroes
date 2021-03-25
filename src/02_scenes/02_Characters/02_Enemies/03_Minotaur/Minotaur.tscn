@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/01_assets/02_Characters/02_Enemies/minotaur.png" type="Texture" id=2]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/03_Minotaur/Minotaur.gd" type="Script" id=3]
-[ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/01_AdditionalScripts/DamageBlinkShader.tres" type="Material" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -46,6 +45,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.77 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_attack"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "chase"
@@ -63,6 +76,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.21, 0.56 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_walk"
+}, {
+"args": [  ],
+"method": "_sound_walk"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -120,6 +150,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_death"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.9
@@ -175,17 +219,19 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:material:shader_param/hit_opacity")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ), 1.0, ExtResource( 4 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_hurt"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -201,6 +247,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_sound_walk"
+}, {
+"args": [  ],
+"method": "_sound_walk"
+} ]
 }
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
@@ -218,11 +281,10 @@ extents = Vector2( 15, 10 )
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
-material = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 30
+frame = 35
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -244,3 +306,6 @@ shape = SubResource( 9 )
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource( 10 )
 disabled = true
+
+[node name="WalkSFX" parent="." index="13"]
+volume_db = 8.0

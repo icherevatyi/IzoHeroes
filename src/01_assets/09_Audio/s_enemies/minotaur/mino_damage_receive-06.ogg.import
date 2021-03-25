@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mino_damage_receive-06.ogg-5b592c7c58db6dc17e21e716a06e15b9.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/minotaur/mino_damage_receive-06.ogg"
+dest_files=[ "res://.import/mino_damage_receive-06.ogg-5b592c7c58db6dc17e21e716a06e15b9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
