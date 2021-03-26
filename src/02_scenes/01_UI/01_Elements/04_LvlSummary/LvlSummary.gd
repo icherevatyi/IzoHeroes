@@ -65,9 +65,9 @@ func _assign_perks() -> void:
 	for i in perk_index_list.size():
 		perk_index = perk_index_list[i]
 		perk = available_perks[perk_index]
-		var perk_instance: HBoxContainer = perk_item.instance()
+		var perk_instance: TextureButton = perk_item.instance()
 		perk_container.add_child(perk_instance)
-		perk_instance.item_init(perk.title, perk.icon, perk_index)
+		perk_instance.item_init(perk.icon, perk_index)
 
 
 func load_param_sheet() -> void:

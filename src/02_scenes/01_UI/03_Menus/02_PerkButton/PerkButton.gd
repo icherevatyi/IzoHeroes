@@ -1,32 +1,47 @@
-extends HBoxContainer
+extends TextureButton
 
 var index: int
 
-onready var btn_text: Label = $BtnText
-onready var btn_texture: TextureButton = $Texture
+var perk_hover: Resource = load("res://src/01_assets/09_Audio/s_ui/menu_hover.ogg")
+var perk_m_pressed: Resource = load("res://src/01_assets/09_Audio/s_ui/menu_m_pressed.ogg")
+var perk_m_released: Resource = load("res://src/01_assets/09_Audio/s_ui/menu_m_released.ogg")
+
+onready var perk_audio: AudioStreamPlayer = $AudioStreamPlayer
 
 signal return_type(index)
 signal clear_type
 
-func item_init(perk_title, perk_icon, perk_index) -> void:
+func item_init(perk_icon, perk_index) -> void:
 	_connect_signal("return_type", LvlSummary, "_on_perk_type_received")
 	_connect_signal("clear_type", LvlSummary, "_on_perk_type_cleared")
-	get_node("Texture/Glyph").set_texture(perk_icon)
-	btn_text.set_text(perk_title)
+	get_node("Glyph").set_texture(perk_icon)
 	index = perk_index
 
 
-func _on_Button_mouse_entered():
+func _on_Texture_mouse_entered() -> void:
+	perk_audio.set_stream(perk_hover)
+	perk_audio._set_playing(true)
 	emit_signal("return_type", index)
 
 
-func _on_Button_mouse_exited():
+func _on_Texture_mouse_exited() -> void:
 	emit_signal("clear_type")
 
 
-func _on_Texture_pressed():
-	PlayerStats.update_stat(index)
-	LvlSummary._on_lvl_proceed()
+func _on_Texture_button_down() -> void:
+	perk_audio.set_stream(perk_m_pressed)
+	perk_audio._set_playing(true)
+
+
+func _on_Texture_button_up() -> void:
+	perk_audio.set_stream(perk_m_released)
+	perk_audio._set_playing(true)
+
+
+func _on_AudioStreamPlayer_finished() -> void:
+	if perk_audio.get_stream() == perk_m_released:
+		PlayerStats.update_stat(index)
+		LvlSummary._on_lvl_proceed()
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
