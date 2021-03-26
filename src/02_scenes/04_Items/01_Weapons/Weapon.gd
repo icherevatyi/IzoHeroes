@@ -94,14 +94,17 @@ func _on_Weapon_area_entered(area) -> void:
 			_play_hit()
 			if _calculate_crit_strike() == true:
 				emit_signal("do_damage", int(damage * _get_crit_multiplier()))
-				camera.start_shaking(0.3, 60, 3)
+				camera.start_shaking(0.25, 30, 2)
 				get_tree().paused = true
 				yield(get_tree().create_timer(0.05), "timeout")
 				get_tree().paused = false
 				
 			else:  
 				emit_signal("do_damage", damage)
-				camera.start_shaking(0.15, 50, 3)
+				camera.start_shaking(0.15, 40, 1.5)
+				get_tree().paused = true
+				yield(get_tree().create_timer(0.02), "timeout")
+				get_tree().paused = false
 			disconnect("do_damage", area, "_on_damage_received")
 			if has_effect == true:
 				apply_effect()

@@ -292,3 +292,9 @@ anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 9 )
+
+[node name="HitBox" parent="." index="11"]
+visible = true
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+disabled = true
