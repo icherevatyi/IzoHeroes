@@ -6,6 +6,7 @@ var perk_hover: Resource = load("res://src/01_assets/09_Audio/s_ui/menu_hover.og
 var perk_m_pressed: Resource = load("res://src/01_assets/09_Audio/s_ui/menu_m_pressed.ogg")
 var perk_m_released: Resource = load("res://src/01_assets/09_Audio/s_ui/menu_m_released.ogg")
 
+onready var glyph: TextureRect = $Glyph
 onready var perk_audio: AudioStreamPlayer = $AudioStreamPlayer
 
 signal return_type(index)
@@ -29,11 +30,13 @@ func _on_Texture_mouse_exited() -> void:
 
 
 func _on_Texture_button_down() -> void:
+	glyph._set_position(Vector2(27.5, 3.5))
 	perk_audio.set_stream(perk_m_pressed)
 	perk_audio._set_playing(true)
 
 
 func _on_Texture_button_up() -> void:
+	glyph._set_position(Vector2(27.5, 1.5))
 	perk_audio.set_stream(perk_m_released)
 	perk_audio._set_playing(true)
 

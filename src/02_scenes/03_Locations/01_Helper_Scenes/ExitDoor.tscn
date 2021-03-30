@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
+[ext_resource path="res://src/01_assets/09_Audio/s_items/metal_bar_opening.ogg" type="AudioStream" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.gd" type="Script" id=2]
 [ext_resource path="res://src/01_assets/03_Tiles/dungeon_tile_1.png" type="Texture" id=3]
 
@@ -37,7 +38,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "opening",
-"speed": 15.0
+"speed": 7.0
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
@@ -54,7 +55,8 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
-animation = "closed"
+animation = "opening"
+frame = 3
 playing = true
 
 [node name="MessageTrigger" type="Area2D" parent="."]
@@ -69,5 +71,9 @@ position = Vector2( 27, 10 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 follow_viewport_enable = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "SFX"
 [connection signal="body_entered" from="MessageTrigger" to="." method="_on_MessageTrigger_body_entered"]
 [connection signal="body_exited" from="MessageTrigger" to="." method="_on_MessageTrigger_body_exited"]

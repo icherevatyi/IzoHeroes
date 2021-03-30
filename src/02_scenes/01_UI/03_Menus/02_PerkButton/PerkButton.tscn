@@ -19,7 +19,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-keep_pressed_outside = true
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
 expand = true

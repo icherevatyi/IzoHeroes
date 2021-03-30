@@ -39,6 +39,7 @@ onready var sprite: AnimatedSprite = $Sprite
 onready var activation_label: Node2D
 onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 onready var activator_coords: Position2D = $ActivatorCoords
+onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 signal floor_cleared
 signal _message_sent(msg, type)
@@ -73,6 +74,7 @@ func _disconnect_activation_signals(target_node: Node2D) -> void:
 
 func _on_gate_opened() -> void:
 	sprite.play("opening")
+	audio_player._set_playing(true)
 	gate_opened = true
 	yield(get_tree().create_timer(0.6), "timeout")
 	_load_next_lvl()

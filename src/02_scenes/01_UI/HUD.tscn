@@ -125,6 +125,7 @@ texture_under = SubResource( 7 )
 texture_progress = SubResource( 8 )
 
 [node name="Coins" type="HBoxContainer" parent="Control"]
+visible = false
 margin_top = 30.0
 margin_right = 40.0
 margin_bottom = 46.0
@@ -146,9 +147,9 @@ margin_bottom = 15.0
 text = "x 0"
 
 [node name="PlayerStoredPotions" type="HBoxContainer" parent="Control"]
-margin_top = 46.0
+margin_top = 30.0
 margin_right = 40.0
-margin_bottom = 62.0
+margin_bottom = 46.0
 rect_scale = Vector2( 0.6, 0.6 )
 theme = ExtResource( 4 )
 __meta__ = {
@@ -169,9 +170,9 @@ text = "x 0"
 [node name="KeyItem" type="TextureRect" parent="Control"]
 visible = false
 margin_left = 2.0
-margin_top = 62.0
+margin_top = 46.0
 margin_right = 13.0
-margin_bottom = 84.0
+margin_bottom = 68.0
 rect_scale = Vector2( 0.6, 0.6 )
 texture = SubResource( 11 )
 __meta__ = {

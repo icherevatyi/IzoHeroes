@@ -39,6 +39,7 @@ onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 onready var activator_coords: Position2D = $ActivatorCoords
 onready var bag_not_used: Node2D = $NotUsed
 onready var bag_used: Node2D = $Used
+onready var audio_player := $AudioStreamPlayer
 
 signal send_data(data_obj)
 signal show_label
@@ -107,6 +108,7 @@ func activate() -> void:
 	for body in $PlayerCollisionDetector.get_overlapping_bodies():
 		if body.name == "Player":
 			if is_usable == true:
+				audio_player._set_playing(true)
 				activation_label.visible = false
 				Backdrop.fade_in(2.5)
 				yield(Backdrop.animation_player, "animation_finished")
