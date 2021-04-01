@@ -284,7 +284,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 5
-frame = 35
+frame = 17
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -309,3 +309,9 @@ disabled = true
 
 [node name="WalkSFX" parent="." index="13"]
 volume_db = 8.0
+max_distance = 450.0
+attenuation = 0.574349
+
+[node name="CombatSFX" parent="." index="14"]
+volume_db = 12.0
+max_distance = 350.0
