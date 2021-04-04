@@ -14,7 +14,7 @@ onready var music_player: AudioStreamPlayer = $MusicAudio
 signal _create_exit
 signal _create_sleeping_bag
 signal _add_miniboss
-signal _on_music_started(author)
+signal _on_music_selected(author)
 
 
 func _ready() -> void:
@@ -84,7 +84,7 @@ func _on_CreateExitTimer_timeout():
 	_select_room_for_bag_spawn()
 	_evolve_to_miniboss()
 	
-	_connect_signal("_on_music_started", get_node("YSort/Player/HUD"), "_on_author_name_received")
+	_connect_signal("_on_music_selected", get_node("YSort/Player/HUD"), "_on_music_started")
 	play_music()
 	
 	emit_signal("_create_exit")
@@ -103,7 +103,7 @@ func play_music() -> void:
 	music_player.set_stream(Lists.ingame_music[curr_track].track)
 	music_player._set_playing(true)
 	
-	emit_signal("_on_music_started", Lists.ingame_music[curr_track].author + " - " + Lists.ingame_music[curr_track].title)
+	emit_signal("_on_music_selected", Lists.ingame_music[curr_track].author + " - " + Lists.ingame_music[curr_track].title)
 
 
 func _on_MusicAudio_finished() -> void:

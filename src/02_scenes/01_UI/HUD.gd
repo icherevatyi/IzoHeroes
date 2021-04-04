@@ -257,5 +257,5 @@ func hide_HUD() -> void:
 	_response = hud_change_tween.start()
 
 
-func _on_author_name_received(author) -> void:
-	print(author)
+func _on_music_started(author) -> void:
+	$MusicAuthorNotifier._on_author_name_received(author)
