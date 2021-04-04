@@ -8,8 +8,11 @@ onready var items_container: VBoxContainer = $MenuBg/ItemsContainer
 onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var audio_tween: Tween = $AudioTween
 
+signal _on_music_started(author)
+
 
 func _ready() -> void:
+	var _signal_responce := connect("_on_music_started", $MusicAuthorNotifier, "_on_author_name_received")
 	set_pause_mode(2)
 	if Global.is_game_started == false:
 		_start_main_menu()
@@ -26,6 +29,7 @@ func _ready() -> void:
 func _start_main_menu() -> void:
 	background.color = Color(0, 0, 0, 1)
 	_start_music()
+	emit_signal("_on_music_started", 'plasterbrain - "(Fantasy Loop) Mystical Journey"')
 	for item_index in Lists.main_menu_list:
 		var item_instance: TextureButton = menu_item.instance()
 		var item_title: String = Lists.main_menu_list[item_index].title
@@ -39,6 +43,7 @@ func _start_music() -> void:
 	audio_player.playing = true
 	_funcion_response = audio_tween.interpolate_property(audio_player, "volume_db", -80, 0, 0.5, Tween.EASE_IN, Tween.TRANS_LINEAR)
 	_funcion_response = audio_tween.start()
+	
 
 
 func _start_deathscreen_menu() -> void:

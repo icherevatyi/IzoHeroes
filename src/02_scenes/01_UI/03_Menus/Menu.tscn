@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/03_Menus/Menu.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 [ext_resource path="res://src/01_assets/01_UI/main_menu.png" type="Texture" id=3]
 [ext_resource path="res://src/01_assets/09_Audio/music/main_menu.ogg" type="AudioStream" id=4]
+[ext_resource path="res://src/02_scenes/01_UI/01_Elements/Notification/MusicAuthorNotifier.tscn" type="PackedScene" id=5]
 
 [node name="Menu" type="CanvasLayer"]
 pause_mode = 2
@@ -82,3 +83,5 @@ volume_db = -80.0
 bus = "BG_music"
 
 [node name="AudioTween" type="Tween" parent="."]
+
+[node name="MusicAuthorNotifier" parent="." instance=ExtResource( 5 )]
