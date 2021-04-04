@@ -4,12 +4,17 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var exit_door: PackedScene = preload("res://src/02_scenes/03_Locations/01_Helper_Scenes/ExitDoor.tscn")
 var sleeping_bag: PackedScene = preload("res://src/02_scenes/04_Items/06_SleepingBag/SleepingBag.tscn")
 
+var curr_track: int
+var old_track: int
+
 onready var room_container: Node2D = $Rooms
 onready var characters_container: YSort = $YSort
+onready var music_player: AudioStreamPlayer = $MusicAudio
 
 signal _create_exit
 signal _create_sleeping_bag
 signal _add_miniboss
+signal _on_music_started(author)
 
 
 func _ready() -> void:
@@ -78,8 +83,36 @@ func _on_CreateExitTimer_timeout():
 	_select_random_room()
 	_select_room_for_bag_spawn()
 	_evolve_to_miniboss()
+	
+	_connect_signal("_on_music_started", get_node("YSort/Player/HUD"), "_on_author_name_received")
+	play_music()
+	
 	emit_signal("_create_exit")
 	emit_signal("_create_sleeping_bag")
+
+
+func play_music() -> void:
+	old_track = curr_track
+	var returned_value = _get_random_sound(Lists.ingame_music)
+	curr_track = returned_value
+	
+	if old_track == returned_value:
+		play_music()
+		return
+	
+	music_player.set_stream(Lists.ingame_music[curr_track].track)
+	music_player._set_playing(true)
+	
+	emit_signal("_on_music_started", Lists.ingame_music[curr_track].author + " - " + Lists.ingame_music[curr_track].title)
+
+
+func _on_MusicAudio_finished() -> void:
+	play_music()
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:

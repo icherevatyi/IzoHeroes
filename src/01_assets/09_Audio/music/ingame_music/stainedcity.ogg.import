@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stainedcity.ogg-a503e06760a8ca86099a07bf7f05ffee.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/music/ingame_music/stainedcity.ogg"
+dest_files=[ "res://.import/stainedcity.ogg-a503e06760a8ca86099a07bf7f05ffee.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

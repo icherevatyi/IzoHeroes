@@ -255,3 +255,7 @@ func _on_PopupTimer_timeout() -> void:
 func hide_HUD() -> void:
 	_response = hud_change_tween.interpolate_property(ui_parent, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5, Tween.EASE_IN_OUT, Tween.TRANS_LINEAR)
 	_response = hud_change_tween.start()
+
+
+func _on_author_name_received(author) -> void:
+	print(author)

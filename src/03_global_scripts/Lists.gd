@@ -8,6 +8,61 @@ var level_messages: Dictionary = {
 	"demo_end": "You reached end of this demo, thank you for playing!"
 }
 
+
+var ingame_music: Dictionary = {
+	0: {
+		"author": "PlusleRin",
+		"title": "Barren Land",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/Barren Land.ogg")
+	},
+	1: {
+		"author": "PlusleRin",
+		"title": "CityOfProgress",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/CityofProgress.ogg")
+	},
+	2: {
+		"author": "PlusleRin",
+		"title": "Crystal Cavern",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/Crystal Cavern.ogg")
+	},
+	3: {
+		"author": "PlusleRin",
+		"title": "Crowpeak",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/crowpeak.ogg")
+	},
+	4: {
+		"author": "PlusleRin",
+		"title": "FairFlags",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/fairflags.ogg")
+	},
+	5: {
+		"author": "PlusleRin",
+		"title": "LessonOfScience",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/lessonofscience.ogg")
+	},
+	6: {
+		"author": "PlusleRin",
+		"title": "Magmastove",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/magmastove.ogg")
+	},
+	7: {
+		"author": "PlusleRin",
+		"title": "MountainOfTrials",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/mountainoftrials.ogg")
+	},
+	8: {
+		"author": "PlusleRin",
+		"title": "StainedCity",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/stainedcity.ogg")
+	},
+	9: {
+		"author": "PlusleRin",
+		"title": "SugarflakeDreams",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/sugarflakedreams.ogg")
+	},
+}
+
+
 var exhaustion_messages: Dictionary = {
 	0: "I'm tired.",
 	1: "I am exhausted.",

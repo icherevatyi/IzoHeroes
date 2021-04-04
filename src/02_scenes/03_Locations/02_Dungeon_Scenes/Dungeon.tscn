@@ -33,6 +33,11 @@ autostart = true
 [node name="AmbientAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+bus = "Ambient"
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+volume_db = 4.0
+bus = "BG_music"
 [connection signal="timeout" from="CreateExitTimer" to="." method="_on_CreateExitTimer_timeout"]
+[connection signal="finished" from="MusicAudio" to="." method="_on_MusicAudio_finished"]

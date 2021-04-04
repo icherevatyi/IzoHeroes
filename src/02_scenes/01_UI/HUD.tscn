@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/02_DialogBox/DialogBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/01_assets/01_UI/icons.png" type="Texture" id=3]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=4]
 [ext_resource path="res://src/01_assets/01_UI/player_bar.png" type="Texture" id=5]
+[ext_resource path="res://src/02_scenes/01_UI/01_Elements/Notification/MusicAuthorNotifier.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -252,6 +253,8 @@ one_shot = true
 
 [node name="PopupTimer" type="Timer" parent="Timers"]
 one_shot = true
+
+[node name="MusicAuthorNotifier" parent="." instance=ExtResource( 6 )]
 [connection signal="timeout" from="Timers/BottleDurationTimer" to="." method="_on_BottleDurationTimer_timeout"]
 [connection signal="timeout" from="Timers/BottleFrequencyTimer" to="." method="_on_BottleFrequencyTimer_timeout"]
 [connection signal="timeout" from="Timers/CoinDurationTimer" to="." method="_on_CoinDurationTimer_timeout"]

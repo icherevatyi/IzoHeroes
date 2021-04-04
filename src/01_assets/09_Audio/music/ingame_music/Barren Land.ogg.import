@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Barren Land.ogg-51a144ffba15456b782d7b9d05c7254e.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/music/ingame_music/Barren Land.ogg"
+dest_files=[ "res://.import/Barren Land.ogg-51a144ffba15456b782d7b9d05c7254e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
