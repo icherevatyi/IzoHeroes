@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/DungeonAuto.tres" type="TileSet" id=1]
 [ext_resource path="res://src/02_scenes/03_Locations/01_Helper_Scenes/Entrance.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://src/01_assets/08_Items/Furniture.png" type="Texture" id=25]
 [ext_resource path="res://src/01_assets/09_Audio/v_amulet/amulet_speach_edited.wav" type="AudioStream" id=26]
 [ext_resource path="res://src/01_assets/09_Audio/v_amulet/bg_mumble.wav" type="AudioStream" id=27]
+[ext_resource path="res://src/01_assets/09_Audio/music/amb_dungeon.ogg" type="AudioStream" id=28]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -808,5 +809,16 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 31 )
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+autoplay = true
+bus = "Ambient"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
+autoplay = true
+bus = "BG_music"
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="finished" from="Music" to="." method="_on_Music_finished"]

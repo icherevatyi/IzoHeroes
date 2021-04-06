@@ -27,38 +27,42 @@ var ingame_music: Dictionary = {
 	},
 	3: {
 		"author": "PlusleRin",
-		"title": "Crowpeak",
-		"track": load("res://src/01_assets/09_Audio/music/ingame_music/crowpeak.ogg")
-	},
-	4: {
-		"author": "PlusleRin",
 		"title": "FairFlags",
 		"track": load("res://src/01_assets/09_Audio/music/ingame_music/fairflags.ogg")
 	},
-	5: {
-		"author": "PlusleRin",
-		"title": "LessonOfScience",
-		"track": load("res://src/01_assets/09_Audio/music/ingame_music/lessonofscience.ogg")
-	},
-	6: {
+	4: {
 		"author": "PlusleRin",
 		"title": "Magmastove",
 		"track": load("res://src/01_assets/09_Audio/music/ingame_music/magmastove.ogg")
 	},
-	7: {
+	5: {
 		"author": "PlusleRin",
 		"title": "MountainOfTrials",
 		"track": load("res://src/01_assets/09_Audio/music/ingame_music/mountainoftrials.ogg")
 	},
-	8: {
+	6: {
 		"author": "PlusleRin",
 		"title": "StainedCity",
 		"track": load("res://src/01_assets/09_Audio/music/ingame_music/stainedcity.ogg")
 	},
-	9: {
+	7: {
 		"author": "PlusleRin",
 		"title": "SugarflakeDreams",
 		"track": load("res://src/01_assets/09_Audio/music/ingame_music/sugarflakedreams.ogg")
+	},
+}
+
+
+var bossroom_music: Dictionary = {
+	0: {
+		"author": "PlusleRin",
+		"title": "Crowpeak",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/crowpeak.ogg")
+	},
+	1: {
+		"author": "PlusleRin",
+		"title": "LessonOfScience",
+		"track": load("res://src/01_assets/09_Audio/music/ingame_music/lessonofscience.ogg")
 	},
 }
 

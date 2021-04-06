@@ -46,6 +46,7 @@ func _on_RageEnableTimer_timeout() -> void:
 
 func _on_DetectionRange_body_entered(body) -> void:
 	if body.name == "Player":
+		get_owner().bossfight_music_start()
 		player_position_update_timer.start()
 		rage_enable_timer.start()
 		is_chasing = true

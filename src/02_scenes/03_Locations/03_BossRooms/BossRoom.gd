@@ -3,6 +3,8 @@ extends Node2D
 var _response: int
 var _amulet_taken: bool = false
 
+var curr_track: int
+var old_track: int
 
 var tween_time: float = 2.0
 var tween_ease := Tween.EASE_IN_OUT
@@ -18,6 +20,8 @@ var throne_start_position: Vector2 = Vector2(0, -92)
 var throne_end_position: Vector2 = Vector2(0, -82)
 var voice_played: bool = false
 
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 onready var secret_passage_button: Area2D = $SecretPassageButton
 onready var throne: StaticBody2D = $YSort/Throne
 onready var secret_door: StaticBody2D = $SecretDoor
@@ -31,7 +35,10 @@ onready var nav_2d: Navigation2D = $Navigation2D
 onready var return_for_amulet_point: Position2D = $ReturnForAmuletPoint
 onready var cutscene_end_point: Position2D = $EndPointCoords
 
+onready var music_player: AudioStreamPlayer = $Music
+
 signal endgame_message_sent
+signal _on_music_selected(author)
 
 
 func _ready() -> void:
@@ -98,6 +105,34 @@ func _end_demo() -> void:
 	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 	get_tree().paused = true
 	emit_signal("endgame_message_sent")
+
+
+func bossfight_music_start() -> void:
+	_connect_signal("_on_music_selected", get_node("YSort/Player/HUD"), "_on_music_started")
+	play_music()
+
+func play_music() -> void:
+	old_track = curr_track
+	var returned_value = _get_random_sound(Lists.bossroom_music)
+	curr_track = returned_value
+	
+	if old_track == returned_value:
+		play_music()
+		return
+	
+	music_player.set_stream(Lists.bossroom_music[curr_track].track)
+	music_player._set_playing(true)
+	
+	emit_signal("_on_music_selected", Lists.bossroom_music[curr_track].author + " - " + Lists.bossroom_music[curr_track].title)
+
+
+func _get_random_sound(sound_type: Dictionary) -> int:
+	rng.randomize()
+	return rng.randi_range(0, sound_type.size() - 1)
+
+
+func _on_Music_finished() -> void:
+	play_music()
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
