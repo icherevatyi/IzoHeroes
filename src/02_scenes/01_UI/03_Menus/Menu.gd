@@ -41,7 +41,7 @@ func _start_main_menu() -> void:
 
 func _start_music() -> void:
 	audio_player.playing = true
-	_funcion_response = audio_tween.interpolate_property(audio_player, "volume_db", -80, 0, 0.5, Tween.EASE_IN, Tween.TRANS_LINEAR)
+	_funcion_response = audio_tween.interpolate_property(audio_player, "volume_db", -80, 0, 1, Tween.EASE_IN, Tween.TRANS_LINEAR)
 	_funcion_response = audio_tween.start()
 	
 

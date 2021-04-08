@@ -101,7 +101,6 @@ func _on_Weapon_area_entered(area) -> void:
 				
 			else:  
 				emit_signal("do_damage", damage)
-				camera.start_shaking(0.15, 40, 1.5)
 				get_tree().paused = true
 				yield(get_tree().create_timer(0.02), "timeout")
 				get_tree().paused = false
