@@ -8,12 +8,13 @@ signal amulet_picked_up
 
 
 func _ready() -> void:
-	_connect_signal("amulet_picked_up", get_owner(), "_on_amulet_pickup")
+	_connect_signal("amulet_picked_up", get_node("/root/Dungeon"), "_on_amulet_pickup")
 	_start_floating()
 
 
 func _start_floating() -> void:
 	float_animation_handler.play("float")
+
 
 func _on_item_picked_up() -> void:
 	emit_signal("amulet_picked_up")

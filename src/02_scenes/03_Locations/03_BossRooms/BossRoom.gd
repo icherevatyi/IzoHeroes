@@ -32,7 +32,6 @@ onready var throne_moving_tween: Tween = $ThroneMover
 onready var boss: KinematicBody2D = $YSort/Boss
 
 onready var nav_2d: Navigation2D = $Navigation2D
-onready var return_for_amulet_point: Position2D = $ReturnForAmuletPoint
 onready var cutscene_end_point: Position2D = $EndPointCoords
 
 onready var music_player: AudioStreamPlayer = $Music
@@ -63,39 +62,23 @@ func _on_secret_door_opened() -> void:
 	yield(get_tree().create_timer(1), "timeout")
 	_response = secret_door_tween.start()
 	_response = darkness_removal_tween.start()
-	$BGMumble.play()
-
-
-func _on_amulet_pickup() -> void:
-	_amulet_taken = true
+#	$BGMumble.play()
+	
+	yield(get_tree().create_timer(2.3), "timeout")
 	var player: KinematicBody2D = $YSort/Player
-	$ShockwavePlayer.play("launch_wave")
 	player.hide_HUD()
-	yield(get_tree().create_timer(1), "timeout")
 	var new_path = nav_2d.get_simple_path(player.get_global_position(), cutscene_end_point.get_global_position(), false)
 	player.automove_path = new_path
 
 
-func _on_Area2D_body_entered(body) -> void:
-	if body.name == "Player":
-		match _amulet_taken:
-			false:
-				_return_for_amulet()
-			true:
-				_end_demo()
+func _on_amulet_pickup() -> void:
+	_amulet_taken = true
+	$ShockwavePlayer.play("launch_wave")
 
 
 func _on_Area2D2_body_entered(body) -> void:
-	if body.name == "Player" and voice_played == false:
-		$DemonicVoice.play()
-		voice_played = true
-
-
-func _return_for_amulet() -> void:
-	var player: KinematicBody2D = $YSort/Player
-	var new_path = nav_2d.get_simple_path(player.get_global_position(), return_for_amulet_point.get_global_position(), false)
-	player.automove_path = new_path
-	player.show_message("The amulet, it calls me. I NEED IT.")
+	if body.name == "Player":
+		_end_demo()
 
 
 func _end_demo() -> void:
@@ -110,6 +93,7 @@ func _end_demo() -> void:
 func bossfight_music_start() -> void:
 	_connect_signal("_on_music_selected", get_node("YSort/Player/HUD"), "_on_music_started")
 	play_music()
+
 
 func play_music() -> void:
 	old_track = curr_track

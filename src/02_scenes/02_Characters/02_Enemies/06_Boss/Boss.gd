@@ -1,5 +1,7 @@
 extends "res://src/02_scenes/02_Characters/02_Enemies/Enemy.gd"
 
+var amulet: PackedScene = preload("res://src/02_scenes/04_Items/02_Loot/04_Amulet/Amulet.tscn")
+
 var _response: int
 var is_hp_shown: bool = false
 
@@ -10,6 +12,7 @@ onready var hp_enable_tween: Tween = $HPEnableTween
 onready var hp_container: Container = $HealthBars/BossHealth/BossHPContainer
 onready var health_top: TextureProgress = $HealthBars/BossHealth/BossHPContainer/HealthTop
 onready var health_bottom: TextureProgress = $HealthBars/BossHealth/BossHPContainer/HealthBottom
+
 
 
 func _ready():
@@ -62,4 +65,7 @@ func _hide_healthbar() -> void:
 
 
 func _on_mainboss_death() -> void:
+	var amulet_instance = amulet.instance()
+	amulet_instance.set_global_position(get_global_position())
+	get_owner().get_node("Loot").add_child(amulet_instance)
 	get_owner()._on_boss_died()

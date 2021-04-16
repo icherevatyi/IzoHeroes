@@ -79,8 +79,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -0.030825 )
-scale = Vector2( 0.300617, 0.300617 )
+scale = Vector2( 0.3, 0.3 )
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -94,10 +93,9 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0, -0.030825 )
 texture = ExtResource( 3 )
 texture_scale = 0.1
-energy = 0.703083
+energy = 0.7
 
 [node name="FloatAnimator" type="AnimationPlayer" parent="."]
 anims/float = SubResource( 4 )
