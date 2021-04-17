@@ -49,7 +49,7 @@ func _on_boss_died() -> void:
 	secret_passage_button.show_sparkles()
 	
 	var player: KinematicBody2D = $YSort/Player
-	player.show_message("A key? I don't see any door. Perhaps there should be some secret passage...should take a look near the throne!", 5)
+	player.show_message("Ah! Here it is! now I need to find a way out. There should be some secret tonnel or something, may take a look near the throne.", 8)
 
 
 func _on_secret_door_opened() -> void:

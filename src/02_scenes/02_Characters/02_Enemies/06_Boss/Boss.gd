@@ -20,7 +20,7 @@ func _ready():
 	health_max = 30  #return to 450 after testing
 	health_current = health_max
 	damage = 15
-	drops_key = true
+	drops_key = false
 
 	health_bars.is_main_boss = true
 	emit_signal("initiate_healthpool", health_max)
@@ -64,8 +64,11 @@ func _hide_healthbar() -> void:
 	_on_mainboss_death()
 
 
-func _on_mainboss_death() -> void:
+func _drop_amulet() -> void:
 	var amulet_instance = amulet.instance()
 	amulet_instance.set_global_position(get_global_position())
 	get_owner().get_node("Loot").add_child(amulet_instance)
+
+
+func _on_mainboss_death() -> void:
 	get_owner()._on_boss_died()
