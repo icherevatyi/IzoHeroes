@@ -207,7 +207,7 @@ func _input(event) -> void:
 				loot_management.healing_bottle = max(0, loot_management.healing_bottle)
 
 		if event.is_action_pressed("interract"):
-			_response = _start_event() if (Global.is_dangerous_to_interact == false) else print("it's dangerous here")
+			_response = _start_event() if (Global.is_dangerous_to_interact == false) else show_message("I'm in the middle of combat! Cannot do it right now!", 3)
 				
 		if event.is_action_released("interract"):
 			if is_interactive == true and interactive_obj != null:
