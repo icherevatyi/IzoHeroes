@@ -335,6 +335,9 @@ parameters/playback = SubResource( 8 )
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource( 9 )
 
+[node name="AttackRange" parent="." index="10"]
+visible = true
+
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 10 )
 

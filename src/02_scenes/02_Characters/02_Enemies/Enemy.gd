@@ -118,7 +118,7 @@ func _on_miniboss_created() -> void:
 	drops_key = true
 	health_max = health_max * 1.8
 	health_current = health_max
-	damage *= 2
+	damage *= 1.4
 	
 	set_scale(Vector2(1.3, 1.3))
 	emit_signal("initiate_healthpool", health_max)
