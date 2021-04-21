@@ -47,9 +47,6 @@ func _ready() -> void:
 
 func _on_boss_died() -> void:
 	secret_passage_button.show_sparkles()
-	
-	var player: KinematicBody2D = $YSort/Player
-	player.show_message("Ah! Here it is! now I need to find a way out. There should be some secret tonnel or something, may take a look near the throne.", 8)
 
 
 func _on_secret_door_opened() -> void:
@@ -74,6 +71,10 @@ func _on_secret_door_opened() -> void:
 func _on_amulet_pickup() -> void:
 	_amulet_taken = true
 	$ShockwavePlayer.play("launch_wave")
+	
+	var player: KinematicBody2D = $YSort/Player
+	player.show_message("Ah! Here it is! now I need to find a way out. There should be some secret tonnel or something, may take a look near the throne.", 8)
+
 
 
 func _on_Area2D2_body_entered(body) -> void:
@@ -96,13 +97,8 @@ func bossfight_music_start() -> void:
 
 
 func play_music() -> void:
-	old_track = curr_track
 	var returned_value = _get_random_sound(Lists.bossroom_music)
 	curr_track = returned_value
-	
-	if old_track == returned_value:
-		play_music()
-		return
 	
 	music_player.set_stream(Lists.bossroom_music[curr_track].track)
 	music_player._set_playing(true)

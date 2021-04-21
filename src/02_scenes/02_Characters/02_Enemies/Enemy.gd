@@ -10,7 +10,7 @@ var is_enraged: bool = false
 var type: String
 var health_current: float
 var health_max: float
-var damage: int
+var damage: float
 var _damage_multiplier: int = 1
 var is_dead: bool = false
 var drops_key: bool = false
