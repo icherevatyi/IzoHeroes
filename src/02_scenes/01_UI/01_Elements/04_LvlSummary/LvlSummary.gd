@@ -22,8 +22,6 @@ func _ready() -> void:
 	texture_bg.visible = false
 	available_perks =  PlayerStats.perk_list
 	endgame_text.visible = false
-	_get_perks_index()
-	_assign_perks()
 	load_param_sheet()
 
 
@@ -41,7 +39,19 @@ func _input(event):
 			Global.exit_to_menu()
 
 
-func _get_perks_index() -> void:
+func _create_new_perk_set() -> void:
+	_remove_old_perks()
+	_generate_new_perk_list()
+	_assign_perks()
+
+
+func _remove_old_perks() -> void:
+	perk_index_list.clear()
+	for perk_child in perk_container.get_children():
+		perk_child.queue_free()
+
+
+func _generate_new_perk_list() -> void:
 	var perk_index: int
 	while perk_index_list.size() != 3:
 		perk_index = _get_random_perk()
@@ -51,12 +61,10 @@ func _get_perks_index() -> void:
 			perk_index_list.append(perk_index)
 
 
-func _on_param_id_received() -> void:
-	pass
-
-
-func _on_item_id_cleared() -> void:
-	pass
+func _get_random_perk() -> int:
+	rng.randomize()
+	var result: int = rng.randi_range(0, available_perks.size() - 1)
+	return result
 
 
 func _assign_perks() -> void:
@@ -81,18 +89,13 @@ func load_param_sheet() -> void:
 func _on_lvl_ended() -> void:
 	get_tree().paused = true
 	_toggle_screen_msg()
+	_create_new_perk_set()
 	Global.current_lvl += 1
 
 
 func _toggle_screen_msg() -> void:
 	lvl_end_screen.visible = !lvl_end_screen.visible
 	texture_bg.visible = !texture_bg.visible
-
-
-func _get_random_perk() -> int:
-	rng.randomize()
-	var result: int = rng.randi_range(0, available_perks.size() - 1)
-	return result
 
 
 func _on_lvl_proceed() -> void:

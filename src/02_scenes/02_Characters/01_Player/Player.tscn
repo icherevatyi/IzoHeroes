@@ -255,8 +255,8 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 7 )
 texture = SubResource( 1 )
-vframes = 4
 hframes = 6
+vframes = 4
 frame = 2
 __meta__ = {
 "_editor_description_": ""
@@ -365,6 +365,7 @@ bus = "Voice"
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 bus = "Items"
+
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="Timers/StaminaRegenTimer" to="AdditionalScripts/HealthManagement" method="_on_StaminaRegenTimer_timeout"]
 [connection signal="timeout" from="Timers/StaminaDelayTimer" to="AdditionalScripts/HealthManagement" method="_on_StaminaDelayTimer_timeout"]
