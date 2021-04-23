@@ -14,11 +14,9 @@ region = Rect2( 111, 66, 66, 66 )
 [node name="Texture" type="TextureButton"]
 margin_right = 56.0
 margin_bottom = 56.0
-focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
-enabled_focus_mode = 0
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
 expand = true
@@ -46,6 +44,7 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="button_down" from="." to="." method="_on_Texture_button_down"]
 [connection signal="button_up" from="." to="." method="_on_Texture_button_up"]
 [connection signal="mouse_entered" from="." to="." method="_on_Texture_mouse_entered"]

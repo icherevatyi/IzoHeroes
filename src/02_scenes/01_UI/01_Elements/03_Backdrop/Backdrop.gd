@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 
-onready var parent: Node2D = get_parent()
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var color_box: ColorRect = $ColorRect
 

@@ -6,8 +6,8 @@ var dialog_type: int = 1
 # 2 - CONFIRMATION
 
 onready var parent: KinematicBody2D = get_node("../../../")
-onready var btn_accept: Button = $VBoxContainer/Buttons/BtnAccept
-onready var btn_decline: Button = $VBoxContainer/Buttons/BtnDecline
+onready var btn_accept: LinkButton = $VBoxContainer/Buttons/BtnAccept
+onready var btn_decline: LinkButton = $VBoxContainer/Buttons/BtnDecline
 
 
 func _ready() -> void:

@@ -188,7 +188,6 @@ margin_bottom = 9.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 8 )
-text = "asdasdasd"
 align = 1
 valign = 1
 __meta__ = {
@@ -203,7 +202,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 10 )
 custom_colors/default_color = Color( 0.890196, 0.890196, 0.890196, 1 )
-text = "asdasdasd"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -218,4 +216,5 @@ texture_pressed = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="CloseBtn" to="." method="_on_CloseBtn_pressed"]

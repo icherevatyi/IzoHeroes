@@ -2,7 +2,7 @@ extends Control
 
 var perk_id: int
 
-onready var sheet: Control = get_parent().get_owner()
+onready var sheet: Node2D = get_parent().get_owner()
 
 signal send_item_id(id)
 signal clear_item_id

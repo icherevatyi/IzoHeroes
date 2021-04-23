@@ -18,8 +18,8 @@ func _get_coords() -> Vector2:
 	for body in attack_range.get_overlapping_bodies():
 		if body.name == "Player":
 			return body.get_global_position()
-		else:
-			return player_coords
+		return player_coords
+	return Vector2(0, 0)
 
 
 func _create_circle() -> void:

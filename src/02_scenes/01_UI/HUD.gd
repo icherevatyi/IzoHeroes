@@ -18,8 +18,7 @@ onready var health_bottom:  = $Control/Health/HealthBarBottom
 onready var stamina_top: = $Control/Stamina/StaminaBarTop
 onready var stamina_bottom: = $Control/Stamina/StaminaBarBottom 
 onready var dialog_box: Control = $Control/DialogBox
-onready var gold_coins_counter: HBoxContainer = $Control/Coins/Count
-onready var healing_bottle_counter: HBoxContainer = $Control/PlayerStoredPotions/Count
+onready var healing_bottle_counter: Label = $Control/PlayerStoredPotions/Count
 onready var coin_icon: TextureRect = $Control/Coins/CoinIcons
 onready var bottle_icon: TextureRect = $Control/PlayerStoredPotions/PotionsIcon
 onready var hud_change_tween: Tween = $HUDTween
@@ -120,19 +119,12 @@ func _on_stam_regenerated(regen_amount) -> void:
 
 
 func _display_starting_amount(type, value) -> void:
-	if type == "gold_coins":
-		coins_amount += value
-		gold_coins_counter.set_text("x " + str(coins_amount))
 	if type == "healing_bottle":
 		bottle_amount += value
 		healing_bottle_counter.text = "x " + str(bottle_amount)
 
 
 func _on_item_picked_up(type, value) -> void:
-	if type == "gold_coins":
-		_start_coins_shake()
-		coins_amount += value
-		gold_coins_counter.set_text("x " + str(coins_amount))
 	if type == "healing_bottle":
 		_start_bottle_shake()
 		bottle_amount += value
