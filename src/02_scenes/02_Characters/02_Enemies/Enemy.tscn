@@ -444,18 +444,21 @@ wait_time = 0.1
 
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 3.0
-max_distance = 350.0
+max_distance = 150.0
 bus = "Steps"
 
 [node name="CombatSFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 8.0
-max_distance = 150.0
+max_distance = 250.0
+attenuation = 0.435275
 bus = "Combat"
 
 [node name="EnemyVoiceSFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 3.0
-max_distance = 150.0
+max_distance = 250.0
+attenuation = 0.287175
 bus = "EnemyVoice"
+
 [connection signal="timeout" from="Timers/MovementChangeTimer" to="AdditionalScripts/MovementManagement" method="_on_MovementChangeTimer_timeout"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_DetectionRange_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_DetectionRange_body_exited"]

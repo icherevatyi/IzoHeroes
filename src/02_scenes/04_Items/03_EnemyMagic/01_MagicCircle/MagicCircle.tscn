@@ -68,9 +68,8 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 6
 hframes = 5
-frame = 1
+vframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/create = SubResource( 1 )
@@ -83,4 +82,5 @@ disabled = true
 volume_db = 10.0
 max_distance = 200.0
 bus = "Combat"
+
 [connection signal="area_entered" from="." to="." method="_on_MagicCircle_area_entered"]

@@ -1,7 +1,7 @@
 [gd_resource type="AudioBusLayout" format=2]
 
 [resource]
-bus/0/volume_db = -5.93075
+bus/0/volume_db = 0.267241
 bus/1/name = "BG_music"
 bus/1/solo = false
 bus/1/mute = false
@@ -24,13 +24,13 @@ bus/4/name = "SFX"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -6.57885
+bus/4/volume_db = -1.31927
 bus/4/send = "Master"
 bus/5/name = "Combat"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = -1.32149
+bus/5/volume_db = -0.130497
 bus/5/send = "SFX"
 bus/6/name = "Steps"
 bus/6/solo = false
@@ -42,7 +42,7 @@ bus/7/name = "EnemyVoice"
 bus/7/solo = false
 bus/7/mute = false
 bus/7/bypass_fx = false
-bus/7/volume_db = -3.76831
+bus/7/volume_db = -1.12151
 bus/7/send = "Voice"
 bus/8/name = "Items"
 bus/8/solo = false

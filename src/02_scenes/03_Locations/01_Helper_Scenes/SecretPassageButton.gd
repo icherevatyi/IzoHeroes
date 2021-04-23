@@ -38,7 +38,7 @@ var signals_dictionary = {
 onready var activation_label: Node2D
 onready var canvas_activation_node: CanvasLayer = $CanvasLayer
 onready var activator_coords: Position2D = $ActivatorCoords
-onready var animated_sprite: AnimatedSprite = $Sprite
+onready var animated_sprite: Sprite = $Sprite
 onready var btn_animation_player: AnimationPlayer = $ButtonAnimationPlayer
 onready var particles: Particles2D = $Sparks
 
