@@ -9,13 +9,14 @@ onready var rage_timer: Timer = $Timers/RageTimer
 onready var rage_enable_timer: Timer = $Timers/RageEnableTimer
 onready var enrage_tween: Tween = $EnrageColorTween
 onready var hp_enable_tween: Tween = $HPEnableTween
-onready var hp_container: Container = $HealthBars/BossHealth/BossHPContainer
+onready var hp_container: Control = $HealthBars/BossHealth/BossHPContainer
 onready var health_top: TextureProgress = $HealthBars/BossHealth/BossHPContainer/HealthTop
 onready var health_bottom: TextureProgress = $HealthBars/BossHealth/BossHPContainer/HealthBottom
 
 
 
 func _ready():
+	type = "boss"
 	is_main_boss = true
 	health_max = 30  #return to 450 after testing
 	health_current = health_max
@@ -34,6 +35,11 @@ func _enrage() -> void:
 	_response = enrage_tween.interpolate_property($Sprite, "self_modulate", Color(1, 1, 1, 1), Color(0.8, 0.2, 0.2, 1), 0.35, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	_response = enrage_tween.start()
 
+
+func _play_enraged_sound() -> void:
+	var sound = Lists.boss_enrage_sound
+	e_voice_sfx.set_stream(sound)
+	e_voice_sfx._set_playing(true)
 
 
 func _on_RageTimer_timeout() -> void:

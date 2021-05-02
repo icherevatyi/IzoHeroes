@@ -773,5 +773,6 @@ bus = "Ambient"
 volume_db = 5.0
 autoplay = true
 bus = "BG_music"
+
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
 [connection signal="finished" from="Music" to="." method="_on_Music_finished"]

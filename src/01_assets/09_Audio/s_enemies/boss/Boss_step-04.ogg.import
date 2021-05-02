@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Boss_step-04.ogg-780f8bc72e5fe6b0c6f8ed4ce28cdb83.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/boss/Boss_step-04.ogg"
+dest_files=[ "res://.import/Boss_step-04.ogg-780f8bc72e5fe6b0c6f8ed4ce28cdb83.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

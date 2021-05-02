@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Boss_enraged.ogg-abe4bc409a9e6fb60324db5f2e84c57d.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/boss/Boss_enraged.ogg"
+dest_files=[ "res://.import/Boss_enraged.ogg-abe4bc409a9e6fb60324db5f2e84c57d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -161,6 +161,12 @@ var sound_enemy_walk: Dictionary =  {
 		4: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-05.ogg"),
 		5: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-06.ogg"),
 		6: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_step-07.ogg"),
+	},
+	"boss": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_step-01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_step-02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_step-03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_step-04.ogg"),
 	}
 }
 
@@ -190,6 +196,12 @@ var sound_enemy_attack: Dictionary = {
 		2: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-03.ogg"),
 		3: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-04.ogg"),
 		4: load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_weapon_swing-05.ogg"),
+	},
+	"boss": {
+		0: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_attack_01.ogg"),
+		1: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_attack_02.ogg"),
+		2: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_attack_03.ogg"),
+		3: load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_attack_04.ogg"),
 	}
 }
 
@@ -234,8 +246,11 @@ var sound_enemy_death: Dictionary = {
 	"skeleton": load("res://src/01_assets/09_Audio/s_enemies/skeleton/skeleton death.ogg"),
 	"ghost": load("res://src/01_assets/09_Audio/s_enemies/ghost/ghost_death.ogg"),
 	"mage": load("res://src/01_assets/09_Audio/s_enemies/mage/mage_death.ogg"),
-	"minotaur": load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_death.ogg")
+	"minotaur": load("res://src/01_assets/09_Audio/s_enemies/minotaur/mino_death.ogg"),
+	"boss": load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_death.ogg"),
 }
+
+var boss_enrage_sound: Resource = load("res://src/01_assets/09_Audio/s_enemies/boss/Boss_enraged.ogg")
 
 var sound_item_drop: Dictionary = {
 	"healing_bottle": {

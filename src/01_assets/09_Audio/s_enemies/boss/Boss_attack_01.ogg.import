@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Boss_attack_01.ogg-ad835be93883233445ce061e698b9838.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_enemies/boss/Boss_attack_01.ogg"
+dest_files=[ "res://.import/Boss_attack_01.ogg-ad835be93883233445ce061e698b9838.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
