@@ -1,5 +1,8 @@
 extends Node2D
 
+var phrase_item_package: PackedScene = load("res://src/02_scenes/01_UI/01_Elements/Notification/AmuletPhraseItem.tscn")
+var boss_alive: bool = true
+
 var _response: int
 var _amulet_taken: bool = false
 
@@ -18,7 +21,7 @@ var darkness_disabled: Color = Color(0, 0, 0, 0)
 
 var throne_start_position: Vector2 = Vector2(0, -92)
 var throne_end_position: Vector2 = Vector2(0, -82)
-var voice_played: bool = false
+var phrase_generator_enabled: bool = false
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -34,22 +37,34 @@ onready var boss: KinematicBody2D = $YSort/Boss
 onready var nav_2d: Navigation2D = $Navigation2D
 onready var cutscene_end_point: Position2D = $EndPointCoords
 
+onready var phrases_container: Control = $ShockwaveLayer/AmuletPhrasesContainer
+onready var phrase_timer: Timer = $ShockwaveLayer/AmuletPhrasesContainer/Timer
+
+
 onready var music_player: AudioStreamPlayer = $Music
+onready var music_volume_tween: Tween = $MusicSoundTweakTween
 
 signal endgame_message_sent
 signal _on_music_selected(author)
+signal _init_phrase(phrase)
 
 
 func _ready() -> void:
 	secret_corridor_darkness.modulate = darkness_enabled
 	Backdrop.fade_out()
+	phrase_generator_enabled = true
 
 
 func _on_boss_died() -> void:
+	boss_alive = false
 	secret_passage_button.show_sparkles()
+	music_volume_tween.interpolate_property(music_player, "volume_db", 5, -200, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	music_volume_tween.start()
 
 
 func _on_secret_door_opened() -> void:
+	var player: KinematicBody2D = $YSort/Player
+	
 	_response = secret_door_tween.interpolate_property(secret_door, "position", secret_door_start_position, secret_door_end_position, tween_time, tween_trans, tween_ease)
 	_response = darkness_removal_tween.interpolate_property(secret_corridor_darkness, "modulate", darkness_enabled, darkness_disabled, tween_time, tween_trans, tween_ease)
 	_response = throne_moving_tween.interpolate_property(throne, "position", throne_start_position, throne_end_position, tween_time, tween_trans, tween_ease)
@@ -59,21 +74,23 @@ func _on_secret_door_opened() -> void:
 	yield(get_tree().create_timer(1), "timeout")
 	_response = secret_door_tween.start()
 	_response = darkness_removal_tween.start()
-#	$BGMumble.play()
+	$ShockwavePlayer.play("launch_wave")
+	player.show_message("What...what's happening?", 2.3)
 	
 	yield(get_tree().create_timer(2.3), "timeout")
-	var player: KinematicBody2D = $YSort/Player
 	player.hide_HUD()
+	_start_phrases_spawn()
+	$BGMumble.play()
+	yield(get_tree().create_timer(2), "timeout")
 	var new_path = nav_2d.get_simple_path(player.get_global_position(), cutscene_end_point.get_global_position(), false)
 	player.automove_path = new_path
 
 
 func _on_amulet_pickup() -> void:
 	_amulet_taken = true
-	$ShockwavePlayer.play("launch_wave")
 	
 	var player: KinematicBody2D = $YSort/Player
-	player.show_message("Ah! Here it is! now I need to find a way out. There should be some secret tonnel or something, may take a look near the throne.", 8)
+	player.show_message("Ah! Here it is! Now I need to find a way out. There should be some secret tunnel or something, may take a look near the throne.", 8)
 
 
 
@@ -112,7 +129,52 @@ func _get_random_sound(sound_type: Dictionary) -> int:
 
 
 func _on_Music_finished() -> void:
-	play_music()
+	if boss_alive == true:
+		play_music()
+
+
+func _start_phrases_spawn() -> void:
+	if phrase_generator_enabled == true:
+		var phrase_id = _get_ranom_phrase()
+		var phrase_text
+		var phrase_position
+		phrase_position = _get_phrase_location()
+		_generate_phrase(phrase_position, Lists.amulet_phrases[phrase_id])
+		phrase_timer.start()
+
+
+func _get_ranom_phrase() -> int:
+	rng.randomize()
+	return rng.randi_range(0, Lists.amulet_phrases.size() - 1)
+
+
+func _get_phrase_location() -> Vector2:
+	var x_position_limit = phrases_container.get_size().x
+	var y_position_limit = phrases_container.get_size().y
+
+	rng.randomize()
+
+	var x_coord: int = rng.randi_range(0, x_position_limit - 80)
+	var y_coord: int = rng.randi_range(0, y_position_limit - 20)
+
+	var location: Vector2 = Vector2(x_coord, y_coord)
+	return location
+
+
+func _on_Timer_timeout() -> void:
+	if phrase_generator_enabled == true:
+		_start_phrases_spawn()
+
+
+func _generate_phrase(phrase_position: Vector2, phrase_text: String):
+	var phrase_item_instance = phrase_item_package.instance()
+	
+	_connect_signal("_init_phrase", phrase_item_instance, "_on_phrase_initiated")
+	emit_signal("_init_phrase", phrase_text)
+	disconnect("_init_phrase", phrase_item_instance, "_on_phrase_initiated")
+	
+	phrase_item_instance.set_global_position(phrase_position)
+	phrases_container.add_child(phrase_item_instance)
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
@@ -123,3 +185,8 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 				return
 			else:
 				print("Signal connection error: ", connection_msg)
+
+
+func _on_MusicSoundTweakTween_tween_all_completed():
+	music_player.autoplay = false
+	music_player.playing = false

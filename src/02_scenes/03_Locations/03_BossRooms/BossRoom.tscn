@@ -195,6 +195,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AmuletPhrasesContainer" type="Control" parent="ShockwaveLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -64.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="ShockwaveLayer/AmuletPhrasesContainer"]
+wait_time = 2.5
+one_shot = true
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -740,6 +755,8 @@ __meta__ = {
 
 [node name="ThroneMover" type="Tween" parent="."]
 
+[node name="MusicSoundTweakTween" type="Tween" parent="."]
+
 [node name="EndPointCoords" type="Position2D" parent="."]
 position = Vector2( -0.5, -560 )
 
@@ -752,10 +769,11 @@ bus = "Voice"
 
 [node name="BGMumble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 27 )
+volume_db = 5.0
 bus = "BG_music"
 
 [node name="Area2D2" type="Area2D" parent="."]
-position = Vector2( 0.5, -280 )
+position = Vector2( -0.5, -392 )
 collision_mask = 2
 __meta__ = {
 "_edit_group_": true
@@ -774,5 +792,7 @@ volume_db = 5.0
 autoplay = true
 bus = "BG_music"
 
+[connection signal="timeout" from="ShockwaveLayer/AmuletPhrasesContainer/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="MusicSoundTweakTween" to="." method="_on_MusicSoundTweakTween_tween_all_completed"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
 [connection signal="finished" from="Music" to="." method="_on_Music_finished"]

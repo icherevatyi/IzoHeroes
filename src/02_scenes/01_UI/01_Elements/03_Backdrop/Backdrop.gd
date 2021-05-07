@@ -5,7 +5,7 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var color_box: ColorRect = $ColorRect
 
 
-func fade_in(speed = 1) -> void:
+func fade_in(speed: int = 1) -> void:
 	animation_player.playback_speed = speed
 	animation_player.play("fade_in")
 

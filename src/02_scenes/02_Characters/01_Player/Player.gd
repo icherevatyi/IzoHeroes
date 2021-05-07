@@ -318,6 +318,7 @@ func _on_DoorOpener_area_entered(area) -> void:
 
 func hide_HUD() -> void:
 	HUD.hide_HUD()
+	speed = _get_stat_value("movement_speed") / 1.5
 
 
 func show_message(message, time = 2) -> void:

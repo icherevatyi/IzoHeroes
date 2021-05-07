@@ -75,6 +75,19 @@ var exhaustion_messages: Dictionary = {
 	4: "Give me some time."
 }
 
+var amulet_phrases: Dictionary = {
+	0: "I am sick of this place",
+	1: "Together, we will raise.",
+	2: "They are underestimating you!",
+	3: "They are afraid of us.",
+	4: "Don't trust anyone.",
+	5: "I am your only ally!",
+	6: "They will take the amulet!",
+	7: "Only you are worthy.",
+}
+
+var final_phrase: String = "THEY WILL BOW TO YOUR WILL"
+
 var player_pickup_sounds: Dictionary = {
 	0: load("res://src/01_assets/09_Audio/s_items/item_pick-01.ogg"),
 	1: load("res://src/01_assets/09_Audio/s_items/item_pick-02.ogg"),
