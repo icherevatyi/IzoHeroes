@@ -227,7 +227,6 @@ __meta__ = {
 }
 
 [node name="FinalMsgImg" type="Sprite" parent="FinalImgContainer"]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 5 )
 vframes = 9

@@ -23,7 +23,7 @@ onready var final_img_animation_player: AnimationPlayer = $FinalImgContainer/Ani
 
 
 func _ready() -> void:
-	_end_game_reached()
+	final_msg_image.visible = false
 	lvl_end_screen.visible = false
 	texture_bg.visible = false
 	available_perks =  PlayerStats.perk_list
@@ -110,7 +110,8 @@ func _on_perk_type_cleared() -> void:
 
 
 func _end_game_reached() -> void:
-#	is_game_ended = true
+	is_game_ended = true
+	final_msg_image.visible = true
 	center_endgame_img()
 	trigger_endgame_img()
 
@@ -122,7 +123,6 @@ func center_endgame_img() -> void:
 
 
 func trigger_endgame_img() -> void:
-	final_msg_image.visible = true
 	final_img_animation_player.play("Start_message")
 
 
