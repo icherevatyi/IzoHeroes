@@ -101,7 +101,7 @@ func _on_Area2D2_body_entered(body) -> void:
 
 func _end_demo() -> void:
 	var _message = Lists.level_messages["demo_end"]
-	_connect_signal("endgame_message_sent", LvlSummary, "_end_demo_reached")
+	_connect_signal("endgame_message_sent", LvlSummary, "_end_game_reached")
 	Backdrop.fade_in()
 	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 	get_tree().paused = true

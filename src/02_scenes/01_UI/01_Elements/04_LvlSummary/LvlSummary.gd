@@ -3,7 +3,7 @@ extends CanvasLayer
 var param_item: PackedScene = preload("res://src/02_scenes/01_UI/05_CharacterSheet/01_CharacterParam/ParamItem.tscn")
 var perk_item: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/02_PerkButton/PerkButton.tscn")
 
-var is_demo_ended: bool = false
+var is_game_ended: bool = false
 var params: Dictionary = PlayerStats.stats_list
 var available_perks: Dictionary
 var perk_index_list: Array = []
@@ -17,26 +17,18 @@ onready var perk_title: Label = $LvlEndScreen/PerkParent/DescriptionContainer/Pe
 onready var perk_description: RichTextLabel = $LvlEndScreen/PerkParent/DescriptionContainer/PekrDescription/DescriptionBody
 onready var params_container: GridContainer = $LvlEndScreen/PerkParent/DescriptionContainer/Params
 
+onready var final_img_container: Control = $FinalImgContainer
+onready var final_msg_image: AnimatedSprite = $FinalImgContainer/FinalMsgImg
+onready var final_img_animation_tween: Tween = $FinalImgContainer/Tween
+
+
 func _ready() -> void:
+	_end_game_reached()
 	lvl_end_screen.visible = false
 	texture_bg.visible = false
 	available_perks =  PlayerStats.perk_list
 	endgame_text.visible = false
 	load_param_sheet()
-
-
-func _end_demo_reached() -> void:
-	is_demo_ended = true
-	endgame_text.visible = true
-	lvl_end_screen.visible = false
-
-
-func _input(event):
-	if is_demo_ended == true:
-		if event.is_pressed() == true:
-			endgame_text.visible = false
-			is_demo_ended = false
-			Global.exit_to_menu()
 
 
 func _create_new_perk_set() -> void:
@@ -115,6 +107,43 @@ func _on_perk_type_received(index: int) -> void:
 func _on_perk_type_cleared() -> void:
 	perk_title.set_text("")
 	perk_description.clear()
+
+
+func _end_game_reached() -> void:
+#	is_game_ended = true
+	center_endgame_img()
+	trigger_endgame_img()
+
+
+func center_endgame_img() -> void:
+	var x_coords: float = final_img_container.get_size().x / 2
+	var y_coords: float = final_img_container.get_size().y / 2
+	final_msg_image.set_global_position(Vector2(x_coords, y_coords))
+
+
+func trigger_endgame_img() -> void:
+	final_msg_image.visible = true
+	final_img_animation_tween.interpolate_property(final_msg_image, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 5, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	final_img_animation_tween.start()
+
+
+func _on_Tween_tween_all_completed() -> void:
+	yield(get_tree().create_timer(5), "timeout")
+	launch_ty_message()
+
+
+func launch_ty_message() -> void:
+	final_msg_image.visible = false
+	lvl_end_screen.visible = false
+	endgame_text.visible = true
+
+
+func _input(event):
+	if is_game_ended == true:
+		if event.is_pressed() == true:
+			endgame_text.visible = false
+			is_game_ended = false
+			Global.exit_to_menu()
 
 
 func _connect_signal(signal_title: String, target_node, target_function_title: String) -> void:
