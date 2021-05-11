@@ -4,7 +4,7 @@
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 [ext_resource path="res://src/01_assets/01_UI/dialog_frame.png" type="Texture" id=3]
 [ext_resource path="res://src/01_assets/04_Fonts/Mister Pixel Regular.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://src/01_assets/01_UI/final_msg_image.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -28,13 +28,47 @@ font_data = SubResource( 4 )
 size = 12
 font_data = ExtResource( 4 )
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
+[sub_resource type="Animation" id=7]
+resource_name = "Start_message"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("FinalMsgImg:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.1, 3.2, 3.6, 3.7, 4, 4.1, 4.3, 4.7, 4.8, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FinalMsgImg:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "launch_ty_message"
 } ]
+}
 
 [node name="LvlSummary" type="CanvasLayer"]
 pause_mode = 2
@@ -158,7 +192,6 @@ __meta__ = {
 }
 
 [node name="EndGameText" type="VBoxContainer" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
@@ -193,11 +226,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FinalMsgImg" type="AnimatedSprite" parent="FinalImgContainer"]
+[node name="FinalMsgImg" type="Sprite" parent="FinalImgContainer"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-frames = SubResource( 7 )
+texture = ExtResource( 5 )
+vframes = 9
+region_rect = Rect2( 0, 0, 157, 143 )
 
-[node name="Tween" type="Tween" parent="FinalImgContainer"]
-
-[connection signal="tween_all_completed" from="FinalImgContainer/Tween" to="." method="_on_Tween_tween_all_completed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FinalImgContainer"]
+anims/Start_message = SubResource( 7 )

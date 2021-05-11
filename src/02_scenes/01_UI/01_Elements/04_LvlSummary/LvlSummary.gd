@@ -18,8 +18,8 @@ onready var perk_description: RichTextLabel = $LvlEndScreen/PerkParent/Descripti
 onready var params_container: GridContainer = $LvlEndScreen/PerkParent/DescriptionContainer/Params
 
 onready var final_img_container: Control = $FinalImgContainer
-onready var final_msg_image: AnimatedSprite = $FinalImgContainer/FinalMsgImg
-onready var final_img_animation_tween: Tween = $FinalImgContainer/Tween
+onready var final_msg_image: Sprite = $FinalImgContainer/FinalMsgImg
+onready var final_img_animation_player: AnimationPlayer = $FinalImgContainer/AnimationPlayer
 
 
 func _ready() -> void:
@@ -123,13 +123,8 @@ func center_endgame_img() -> void:
 
 func trigger_endgame_img() -> void:
 	final_msg_image.visible = true
-	final_img_animation_tween.interpolate_property(final_msg_image, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 5, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	final_img_animation_tween.start()
+	final_img_animation_player.play("Start_message")
 
-
-func _on_Tween_tween_all_completed() -> void:
-	yield(get_tree().create_timer(5), "timeout")
-	launch_ty_message()
 
 
 func launch_ty_message() -> void:
