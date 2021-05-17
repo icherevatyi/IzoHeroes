@@ -5,7 +5,6 @@ var level_messages: Dictionary = {
 	"entrance_closed": "Rusty gate closed behind you. It is tightly sealed and the only way to leave this place is to move forward.",
 	"no_key": "You need a key, it should be carried by someone here.",
 	"have_key": "Old key is laying in your pocket, picked from and ugly abomination of foul magic. Are you sure you want to open the gate lock?",
-	"demo_end": "You reached end of this demo, thank you for playing!"
 }
 
 
@@ -53,6 +52,10 @@ var ingame_music: Dictionary = {
 }
 
 
+var slide_wall_snd: Resource = load("res://src/01_assets/09_Audio/boss_room/wall_slide.ogg")
+var shockwave_snd: Resource = load("res://src/01_assets/09_Audio/s_ui/wave_pewww.ogg")
+
+
 var bossroom_music: Dictionary = {
 	0: {
 		"author": "PlusleRin",
@@ -78,8 +81,8 @@ var exhaustion_messages: Dictionary = {
 var amulet_phrases: Dictionary = {
 	0: "I am sick of this place",
 	1: "Together, we will raise.",
-	2: "They are underestimating you!",
-	3: "They are afraid of us.",
+	2: "The Order is underestimating you!",
+	3: "Those fools are afraid of us.",
 	4: "Don't trust anyone.",
 	5: "I am your only ally!",
 	6: "They will take the amulet!",

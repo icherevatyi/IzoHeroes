@@ -47,11 +47,11 @@ signal show_label
 signal hide_label
 signal start_activation
 signal stop_activation
-signal open_secret_door
+signal secret_button_pressed
 
 
 func _ready() -> void:	
-	_response = connect("open_secret_door", get_parent(), "_on_secret_door_opened")
+	_response = connect("secret_button_pressed", get_parent(), "_on_secret_button_pressed")
 	btn_animation_player.play("idle")
 	particles.set_emitting(false)
 
@@ -113,6 +113,7 @@ func abort_activation() -> void:
 
 
 func activate() -> void:
+	$AudioStreamPlayer._set_playing(true)
 	for body in get_overlapping_bodies():
 		if body.name == "Player":
 			if is_usable == true:
@@ -125,5 +126,6 @@ func activate() -> void:
 
 func activated() -> void:
 	player_obj = get_parent().get_node("YSort/Player")
-	emit_signal("open_secret_door")
+	
+	emit_signal("secret_button_pressed")
 	player_obj.camera.react_on_door_opening()

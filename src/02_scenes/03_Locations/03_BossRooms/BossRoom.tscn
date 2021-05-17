@@ -23,7 +23,7 @@
 [ext_resource path="res://src/01_assets/06_Weapons/weapons.png" type="Texture" id=21]
 [ext_resource path="res://src/01_assets/08_Items/Barricade.png" type="Texture" id=22]
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/06_Boss/Boss.tscn" type="PackedScene" id=23]
-[ext_resource path="res://src/01_assets/09_Audio/v_amulet/amulet_speach_edited.wav" type="AudioStream" id=26]
+[ext_resource path="res://src/01_assets/09_Audio/s_ui/wave_pewww.ogg" type="AudioStream" id=24]
 [ext_resource path="res://src/01_assets/09_Audio/v_amulet/bg_mumble.wav" type="AudioStream" id=27]
 [ext_resource path="res://src/01_assets/09_Audio/music/amb_dungeon.ogg" type="AudioStream" id=28]
 
@@ -175,6 +175,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.117647, 0.101961, 0.176471, 1 ), Color( 0.352941, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Env_Sounds:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.001, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
 }
 
 [sub_resource type="RectangleShape2D" id=29]
@@ -763,9 +775,11 @@ position = Vector2( -0.5, -560 )
 [node name="ShockwavePlayer" type="AnimationPlayer" parent="."]
 anims/launch_wave = SubResource( 28 )
 
-[node name="DemonicVoice" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 26 )
-bus = "Voice"
+[node name="Env_Sounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+bus = "SFX"
+
+[node name="Wave_Sound" type="AudioStreamPlayer" parent="."]
 
 [node name="BGMumble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 27 )

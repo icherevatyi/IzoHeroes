@@ -40,11 +40,12 @@ onready var cutscene_end_point: Position2D = $EndPointCoords
 onready var phrases_container: Control = $ShockwaveLayer/AmuletPhrasesContainer
 onready var phrase_timer: Timer = $ShockwaveLayer/AmuletPhrasesContainer/Timer
 
+onready var environment_sound_player: AudioStreamPlayer = $Env_Sounds
 
 onready var music_player: AudioStreamPlayer = $Music
 onready var music_volume_tween: Tween = $MusicSoundTweakTween
 
-signal endgame_message_sent
+signal game_ended
 signal _on_music_selected(author)
 signal _init_phrase(phrase)
 
@@ -63,27 +64,40 @@ func _on_boss_died() -> void:
 
 
 func _on_secret_door_opened() -> void:
-	var player: KinematicBody2D = $YSort/Player
 	
 	_response = secret_door_tween.interpolate_property(secret_door, "position", secret_door_start_position, secret_door_end_position, tween_time, tween_trans, tween_ease)
 	_response = darkness_removal_tween.interpolate_property(secret_corridor_darkness, "modulate", darkness_enabled, darkness_disabled, tween_time, tween_trans, tween_ease)
 	_response = throne_moving_tween.interpolate_property(throne, "position", throne_start_position, throne_end_position, tween_time, tween_trans, tween_ease)
 	
 	_response = throne_moving_tween.start()
-	_response = throne_moving_tween.start()
-	yield(get_tree().create_timer(1), "timeout")
+	
+	
 	_response = secret_door_tween.start()
 	_response = darkness_removal_tween.start()
+	
+	environment_sound_player.set_stream(Lists.slide_wall_snd)
+	environment_sound_player._set_playing(true)
+	
+
+
+func _on_secret_button_pressed() -> void:
+	var player: KinematicBody2D = $YSort/Player
 	$ShockwavePlayer.play("launch_wave")
 	player.show_message("What...what's happening?", 2.3)
 	
-	yield(get_tree().create_timer(2.3), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	player.hide_HUD()
 	_start_phrases_spawn()
 	$BGMumble.play()
-	yield(get_tree().create_timer(2), "timeout")
+	
+	yield(get_tree().create_timer(1), "timeout")
+	_on_secret_door_opened()
+	
+	
+	yield(get_tree().create_timer(2.3), "timeout")
 	var new_path = nav_2d.get_simple_path(player.get_global_position(), cutscene_end_point.get_global_position(), false)
 	player.automove_path = new_path
+	
 
 
 func _on_amulet_pickup() -> void:
@@ -100,12 +114,11 @@ func _on_Area2D2_body_entered(body) -> void:
 
 
 func _end_demo() -> void:
-	var _message = Lists.level_messages["demo_end"]
-	_connect_signal("endgame_message_sent", LvlSummary, "_end_game_reached")
+	_connect_signal("game_ended", LvlSummary, "_end_game_reached")
 	Backdrop.fade_in()
 	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 	get_tree().paused = true
-	emit_signal("endgame_message_sent")
+	emit_signal("game_ended")
 
 
 func bossfight_music_start() -> void:
