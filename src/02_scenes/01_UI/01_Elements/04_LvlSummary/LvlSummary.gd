@@ -20,7 +20,7 @@ onready var params_container: GridContainer = $LvlEndScreen/PerkParent/Descripti
 onready var final_img_container: Control = $FinalImgContainer
 onready var final_msg_image: Sprite = $FinalImgContainer/FinalMsgImg
 onready var final_img_animation_player: AnimationPlayer = $FinalImgContainer/AnimationPlayer
-
+onready var final_audio: AudioStreamPlayer = $FinalImgContainer/AudioStreamPlayer
 
 func _ready() -> void:
 	final_msg_image.visible = false
@@ -114,6 +114,18 @@ func _end_game_reached() -> void:
 	final_msg_image.visible = true
 	center_endgame_img()
 	trigger_endgame_img()
+
+
+func _play_bang() -> void:
+	final_audio._set_playing(false)
+	final_audio.set_stream(load("res://src/01_assets/09_Audio/s_ui/final_bang.ogg"))
+	final_audio._set_playing(true)
+
+
+func _play_laugh() -> void:
+	final_audio._set_playing(false)
+	final_audio.set_stream(load("res://src/01_assets/09_Audio/s_enemies/demon_laugh.ogg"))
+	final_audio._set_playing(true)
 
 
 func center_endgame_img() -> void:

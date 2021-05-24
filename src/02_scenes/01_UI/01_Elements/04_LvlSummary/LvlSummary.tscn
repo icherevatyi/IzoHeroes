@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/04_LvlSummary/LvlSummary.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 [ext_resource path="res://src/01_assets/01_UI/dialog_frame.png" type="Texture" id=3]
 [ext_resource path="res://src/01_assets/04_Fonts/Mister Pixel Regular.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/01_assets/01_UI/final_msg_image.png" type="Texture" id=5]
-[ext_resource path="res://src/01_assets/09_Audio/s_enemies/demon_laugh.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -51,10 +50,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("..")
@@ -70,17 +69,22 @@ tracks/2/keys = {
 "method": "launch_ty_message"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 5.5 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"values": [ {
+"args": [  ],
+"method": "_play_bang"
+}, {
+"args": [  ],
+"method": "_play_laugh"
+} ]
 }
 
 [node name="LvlSummary" type="CanvasLayer"]
@@ -250,4 +254,3 @@ region_rect = Rect2( 0, 0, 157, 143 )
 anims/Start_message = SubResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FinalImgContainer"]
-stream = ExtResource( 6 )

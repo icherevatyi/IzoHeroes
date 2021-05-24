@@ -89,7 +89,8 @@ func _on_secret_button_pressed() -> void:
 	player.hide_HUD()
 	_start_phrases_spawn()
 	$BGMumble.play()
-	
+	music_volume_tween.interpolate_property($BGMumble, "volume_db", 5, 15, 3.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	music_volume_tween.start()
 	yield(get_tree().create_timer(1), "timeout")
 	_on_secret_door_opened()
 	
@@ -102,10 +103,8 @@ func _on_secret_button_pressed() -> void:
 
 func _on_amulet_pickup() -> void:
 	_amulet_taken = true
-	
 	var player: KinematicBody2D = $YSort/Player
 	player.show_message("Ah! Here it is! Now I need to find a way out. There should be some secret tunnel or something, may take a look near the throne.", 8)
-
 
 
 func _on_Area2D2_body_entered(body) -> void:
@@ -119,6 +118,7 @@ func _end_demo() -> void:
 	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 	get_tree().paused = true
 	emit_signal("game_ended")
+	$BGMumble.stop()
 
 
 func bossfight_music_start() -> void:

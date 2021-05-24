@@ -777,9 +777,9 @@ anims/launch_wave = SubResource( 28 )
 
 [node name="Env_Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
+volume_db = -5.0
+pitch_scale = 0.8
 bus = "SFX"
-
-[node name="Wave_Sound" type="AudioStreamPlayer" parent="."]
 
 [node name="BGMumble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 27 )
