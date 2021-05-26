@@ -125,7 +125,4 @@ func activate() -> void:
 
 
 func activated() -> void:
-	player_obj = get_parent().get_node("YSort/Player")
-	
 	emit_signal("secret_button_pressed")
-	player_obj.camera.react_on_door_opening()

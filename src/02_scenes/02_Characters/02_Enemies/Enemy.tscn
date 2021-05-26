@@ -431,13 +431,13 @@ visible = false
 shape = SubResource( 41 )
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 15, 0 )
 shape = SubResource( 42 )
+disabled = true
 
 [node name="PlayerPositionUpdate" type="Timer" parent="."]
 wait_time = 0.1

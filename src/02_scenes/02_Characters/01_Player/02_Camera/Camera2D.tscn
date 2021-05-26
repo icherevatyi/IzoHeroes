@@ -31,6 +31,7 @@ color = Color( 1, 1, 0.576471, 0.117647 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="timeout" from="FrequencyTimer" to="." method="_on_FrequencyTimer_timeout"]
 [connection signal="timeout" from="DurationTimer" to="." method="_on_DurationTimer_timeout"]
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_BlinkTimer_timeout"]
