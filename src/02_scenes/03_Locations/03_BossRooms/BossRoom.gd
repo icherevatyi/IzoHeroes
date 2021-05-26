@@ -104,6 +104,7 @@ func _on_secret_button_pressed() -> void:
 func _on_amulet_pickup() -> void:
 	_amulet_taken = true
 	var player: KinematicBody2D = $YSort/Player
+	player._play_item_pickup()
 	player.show_message("Ah! Here it is! Now I need to find a way out. There should be some secret tunnel or something, may take a look near the throne.", 8)
 
 

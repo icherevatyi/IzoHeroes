@@ -3,13 +3,19 @@ extends StaticBody2D
 
 onready var float_animation_handler: AnimationPlayer = $FloatAnimator
 onready var sprite: Sprite = $Sprite
+onready var item_drop_sound_player: AudioStreamPlayer = $ItemDropAudio
 
 signal amulet_picked_up
 
 
 func _ready() -> void:
 	_connect_signal("amulet_picked_up", get_node("/root/Dungeon"), "_on_amulet_pickup")
+	_sound_item_drop()
 	_start_floating()
+
+
+func _sound_item_drop() -> void:
+	item_drop_sound_player._set_playing(true)
 
 
 func _start_floating() -> void:

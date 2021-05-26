@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/amulet_drop.ogg-702eec72a2584656528bdf6f650fa9bc.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_ui/amulet_drop.ogg"
+dest_files=[ "res://.import/amulet_drop.ogg-702eec72a2584656528bdf6f650fa9bc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

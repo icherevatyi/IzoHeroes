@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/01_assets/08_Items/LootItems.png" type="Texture" id=1]
 [ext_resource path="res://src/02_scenes/04_Items/02_Loot/04_Amulet/Amulet.gd" type="Script" id=2]
 [ext_resource path="res://src/01_assets/08_Items/Light.png" type="Texture" id=3]
+[ext_resource path="res://src/01_assets/09_Audio/s_ui/amulet_drop.ogg" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -99,3 +100,7 @@ energy = 0.7
 
 [node name="FloatAnimator" type="AnimationPlayer" parent="."]
 anims/float = SubResource( 4 )
+
+[node name="ItemDropAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Items"
