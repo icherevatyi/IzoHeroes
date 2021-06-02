@@ -119,6 +119,8 @@ var player_hurt_sounds: Dictionary = {
 	3: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-04.ogg"),
 	4: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-05.ogg"),
 	5: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-06.ogg"),
+	6: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-07.ogg"),
+	7: load("res://src/01_assets/09_Audio/s_character/hurt/player_hurt-08.ogg"),
 }
 
 var player_hit_enemy: Dictionary = {
