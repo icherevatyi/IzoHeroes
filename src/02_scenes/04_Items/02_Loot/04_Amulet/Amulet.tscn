@@ -103,4 +103,5 @@ anims/float = SubResource( 4 )
 
 [node name="ItemDropAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -10.0
 bus = "Items"

@@ -37,7 +37,7 @@ bus = "Ambient"
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-volume_db = 5.0
+volume_db = 10.0
 bus = "BG_music"
 
 [connection signal="timeout" from="CreateExitTimer" to="." method="_on_CreateExitTimer_timeout"]

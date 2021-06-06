@@ -317,8 +317,8 @@ script = SubResource( 1 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
-vframes = 8
 hframes = 5
+vframes = 8
 frame = 14
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -342,3 +342,6 @@ visible = true
 shape = SubResource( 10 )
 
 [node name="SkullSpawn" type="Position2D" parent="." index="12"]
+
+[node name="CombatSFX" parent="." index="15"]
+volume_db = 5.0

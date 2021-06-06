@@ -282,8 +282,8 @@ script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
-vframes = 9
 hframes = 5
+vframes = 9
 frame = 17
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -305,7 +305,6 @@ shape = SubResource( 9 )
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource( 10 )
-disabled = true
 
 [node name="WalkSFX" parent="." index="13"]
 volume_db = 8.0
@@ -313,5 +312,5 @@ max_distance = 450.0
 attenuation = 0.574349
 
 [node name="CombatSFX" parent="." index="14"]
-volume_db = 12.0
+volume_db = 9.0
 max_distance = 350.0

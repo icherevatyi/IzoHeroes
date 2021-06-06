@@ -267,7 +267,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 8
-frame = 18
+frame = 3
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -290,6 +290,9 @@ shape = SubResource( 9 )
 volume_db = -15.0
 max_distance = 200.0
 bus = "Master"
+
+[node name="CombatSFX" parent="." index="14"]
+volume_db = 5.0
 
 [node name="EnemyVoiceSFX" parent="." index="15"]
 volume_db = 15.0

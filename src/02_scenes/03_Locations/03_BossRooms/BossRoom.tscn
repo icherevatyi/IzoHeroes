@@ -803,7 +803,7 @@ autoplay = true
 bus = "Ambient"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-volume_db = 5.0
+volume_db = 10.0
 autoplay = true
 bus = "BG_music"
 

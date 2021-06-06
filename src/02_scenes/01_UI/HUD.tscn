@@ -255,6 +255,7 @@ one_shot = true
 one_shot = true
 
 [node name="MusicAuthorNotifier" parent="." instance=ExtResource( 6 )]
+
 [connection signal="timeout" from="Timers/BottleDurationTimer" to="." method="_on_BottleDurationTimer_timeout"]
 [connection signal="timeout" from="Timers/BottleFrequencyTimer" to="." method="_on_BottleFrequencyTimer_timeout"]
 [connection signal="timeout" from="Timers/CoinDurationTimer" to="." method="_on_CoinDurationTimer_timeout"]

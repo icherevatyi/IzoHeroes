@@ -279,8 +279,8 @@ script = SubResource( 1 )
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 2 )
-vframes = 6
 hframes = 6
+vframes = 6
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 3 )
@@ -292,9 +292,3 @@ anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 9 )
-
-[node name="HitBox" parent="." index="11"]
-visible = true
-
-[node name="CollisionShape2D" parent="HitBox" index="0"]
-disabled = true

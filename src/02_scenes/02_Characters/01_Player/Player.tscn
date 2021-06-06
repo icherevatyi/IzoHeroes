@@ -257,7 +257,6 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 hframes = 6
 vframes = 4
-frame = 1
 __meta__ = {
 "_editor_description_": ""
 }
@@ -364,6 +363,7 @@ bus = "Steps"
 bus = "Voice"
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
 bus = "Items"
 
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_IdleTimer_timeout"]

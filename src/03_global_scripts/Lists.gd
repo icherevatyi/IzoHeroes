@@ -130,7 +130,7 @@ var player_hit_enemy: Dictionary = {
 	3: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_hit-04.ogg"),
 }
 
-var player_death_sound: Resource = load("res://src/01_assets/09_Audio/s_character/death/player_death.ogg")
+var player_death_sound: Resource = load("res://src/01_assets/09_Audio/s_character/death/player_death_alt.ogg")
 
 var weapon_swing_sounds: Dictionary = {
 	0: load("res://src/01_assets/09_Audio/s_character/weapon/weapon_swing-01.ogg"),
