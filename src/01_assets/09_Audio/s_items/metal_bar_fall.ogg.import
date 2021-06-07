@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/metal_bar_fall.ogg-c7fd8df7fe2d761c3e3f387cd7ad3575.oggstr"
+
+[deps]
+
+source_file="res://src/01_assets/09_Audio/s_items/metal_bar_fall.ogg"
+dest_files=[ "res://.import/metal_bar_fall.ogg-c7fd8df7fe2d761c3e3f387cd7ad3575.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
