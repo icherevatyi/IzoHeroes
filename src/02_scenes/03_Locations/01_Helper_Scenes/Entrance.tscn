@@ -10,21 +10,21 @@ atlas = ExtResource( 1 )
 region = Rect2( 0, 96, 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
+extents = Vector2( 16, 11.7738 )
 
 [node name="Entrance" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="SpawnPoint" type="Position2D" parent="."]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -22 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )
 
 [node name="MessageTrigger" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MessageTrigger"]
+position = Vector2( 0, 4 )
 shape = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
