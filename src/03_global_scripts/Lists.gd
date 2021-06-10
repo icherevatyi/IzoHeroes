@@ -87,6 +87,9 @@ var amulet_phrases: Dictionary = {
 	5: "I am your only ally!",
 	6: "They will take the amulet!",
 	7: "Only you are worthy.",
+	8: "Your power is unmached!",
+	9: "For so many years i was waiting!",
+	10: "At last! A true warrior!",
 }
 
 var final_phrase: String = "THEY WILL BOW TO YOUR WILL"

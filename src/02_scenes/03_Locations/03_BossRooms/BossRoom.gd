@@ -23,6 +23,11 @@ var throne_start_position: Vector2 = Vector2(0, -92)
 var throne_end_position: Vector2 = Vector2(0, -82)
 var phrase_generator_enabled: bool = false
 
+
+var phrase_id: int
+var prev_phrase_id: int = 0
+var Prev_prev_phrase_id: int = 0
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 onready var secret_passage_button: Area2D = $SecretPassageButton
@@ -152,12 +157,21 @@ func _on_Music_finished() -> void:
 
 func _start_phrases_spawn() -> void:
 	if phrase_generator_enabled == true:
-		var phrase_id = _get_ranom_phrase()
+		phrase_id = _get_ranom_phrase()
+		if phrase_id == prev_phrase_id or phrase_id == Prev_prev_phrase_id:
+			_start_phrases_spawn()
+			return
+
+		prev_phrase_id = phrase_id
+		Prev_prev_phrase_id = prev_phrase_id
+
 		var phrase_text
 		var phrase_position
 		phrase_position = _get_phrase_location()
 		_generate_phrase(phrase_position, Lists.amulet_phrases[phrase_id])
 		phrase_timer.start()
+
+
 
 
 func _get_ranom_phrase() -> int:
