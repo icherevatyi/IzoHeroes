@@ -7,15 +7,17 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready() -> void:
 	spawn_enemy(get_enemy_type())
 
+func get_current_lvl() -> int:
+	return Global.current_lvl
 
 func get_enemy_type() -> String:
 	rng.randomize()
-	var rng_number: int = rng.randi_range(0, 10)
-	if rng_number >= 4 and rng_number < 8:
+	var rng_number: int = rng.randi_range(0, 100)
+	if rng_number >= 25 and rng_number < 50:
 		return "ghost"
-	if rng_number >= 8 and rng_number <= 9:
+	if rng_number >= 51 and rng_number <= 75 and get_current_lvl() >= 2:
 		return "minotaur"
-	if rng_number > 9:
+	if rng_number > 76 and get_current_lvl() >= 3:
 		return "mage"
 	return "skeleton"
 

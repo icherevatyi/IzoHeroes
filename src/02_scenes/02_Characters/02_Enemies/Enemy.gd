@@ -47,7 +47,6 @@ signal manage_healthbar_change(hp_before_damage, hp_after_damage)
 
 
 func _ready() -> void:
-	print(type)
 	add_to_group("Enemies")
 	_connect_signal("manage_healthbar_change", health_bars, "_on_healthbar_updated")
 	_connect_signal("initiate_healthpool", health_bars, "_on_healthbar_initiated")

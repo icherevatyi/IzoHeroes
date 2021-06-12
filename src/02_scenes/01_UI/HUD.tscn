@@ -227,6 +227,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Floor" type="Label" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 15.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HUDTween" type="Tween" parent="."]
 
 [node name="HPChangeTween" type="Tween" parent="."]

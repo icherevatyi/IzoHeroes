@@ -420,6 +420,7 @@ var rooms: Dictionary = {
 
 var enemy_list: Dictionary = {
 	1: {
+		"level_spawn": 1,
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/02_Skeleton/Skeleton.tscn"),
 		"type": "skeleton",
 		"health_max": 100,
@@ -429,13 +430,10 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-#			2: {
-#				"chance": 85,
-#				"type": "gold_coins"
-#			}
 		}
 	},
 	2: {
+		"level_spawn": 2,
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/03_Minotaur/Minotaur.tscn"),
 		"type": "minotaur",
 		"health_max": 200,
@@ -445,13 +443,10 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-#			2: {
-#				"chance": 85,
-#				"type": "gold_coins"
-#			}
 		}
 	},
 	3: {
+		"level_spawn": 1,
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/04_Ghost/Ghost.tscn"),
 		"type": "ghost",
 		"health_max": 150,
@@ -461,13 +456,10 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-#			2: {
-#				"chance": 85,
-#				"type": "gold_coins"
-#			}
 		}
 	},
 	4: {
+		"level_spawn": 3,
 		"scene": preload("res://src/02_scenes/02_Characters/02_Enemies/05_Mage/Mage.tscn"),
 		"type": "mage",
 		"health_max": 150,
@@ -477,10 +469,6 @@ var enemy_list: Dictionary = {
 				"chance": 50,
 				"type": "healing_bottle"
 			},
-#			2: {
-#				"chance": 85,
-#				"type": "gold_coins"
-#			}
 		}
 	}
 }

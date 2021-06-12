@@ -82,7 +82,8 @@ func _on_lvl_ended() -> void:
 	get_tree().paused = true
 	_toggle_screen_msg()
 	_create_new_perk_set()
-	Global.current_lvl += 1
+	ResourceStorage.player_data.current_lvl += 1
+	Global.current_lvl = ResourceStorage.player_data.current_lvl
 
 
 func _toggle_screen_msg() -> void:

@@ -35,7 +35,7 @@ onready var player_message_popup: Label = $Control/PlayerMessagePopup
 onready var popup_fade_tween: Tween = $PopupFadeTween
 onready var popup_timer: Timer = $Timers/PopupTimer
 onready var vamp_icon: TextureRect = $Control/VampiricIcon
-
+onready var floor_number: Label = $Control/Floor
 
 func _ready() -> void:
 	health_top.max_value = ResourceStorage.player_data.health_current
@@ -51,6 +51,7 @@ func _ready() -> void:
 	_display_starting_amount("gold_coins", ResourceStorage.player_data.coins_count)
 	_display_starting_amount("healing_bottle", ResourceStorage.player_data.healing_pots_count)
 	manage_buff_icon()
+	floor_number.set_text("Floor " + str(Global.current_lvl))
 
 
 func toggle_char_sheet() -> void:

@@ -4,7 +4,7 @@ var menu: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/Menu.tscn")
 var console: PackedScene = preload("res://src/02_scenes/01_UI/04_Console/Console.tscn")
 
 var cursor = load("res://src/01_assets/01_UI/cursor.png")
-var current_lvl: int = 1
+var current_lvl: int 
 var hp_modifier: float
 
 var _scene_change_value
@@ -68,7 +68,8 @@ func toggle_pause_menu() -> void:
 
 
 func start_game() -> void:
-	ResourceStorage.player_data =  ResourceStorage.player_original_data
+	current_lvl = ResourceStorage.player_original_data.current_lvl
+	ResourceStorage.player_data = ResourceStorage.player_original_data
 	PlayerStats.weapon_id = PlayerStats.weapon_default
 	PlayerStats.reset_params()
 	is_game_started = true
@@ -82,6 +83,7 @@ func load_game() -> void:
 	is_paused = false
 	get_tree().paused = false
 	SaveLoad.load_game()
+	current_lvl = ResourceStorage.player_data.current_lvl
 	_scene_change_value = get_tree().change_scene("res://src/02_scenes/03_Locations/02_Dungeon_Scenes/Dungeon.tscn")
 
 
