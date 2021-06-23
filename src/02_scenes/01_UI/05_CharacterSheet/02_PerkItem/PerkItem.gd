@@ -1,8 +1,10 @@
 extends Control
 
 var perk_id: int
+var perk_hover: Resource = load("res://src/01_assets/09_Audio/s_ui/menu_hover.ogg")
 
 onready var sheet: Node2D = get_parent().get_owner()
+onready var perk_audio: AudioStreamPlayer = $AudioStreamPlayer
 
 signal send_item_id(id)
 signal clear_item_id
@@ -20,6 +22,8 @@ func init(perk_lvl: int, perk_icon: Object, id: int) -> void:
 
 
 func _on_PerkItem_mouse_entered() -> void:
+	perk_audio.set_stream(perk_hover)
+	perk_audio._set_playing(true)
 	emit_signal("send_item_id", perk_id)
 
 
@@ -36,3 +40,7 @@ func _connect_signal(signal_title: String, target_node, target_function_title: S
 			else:
 				print("Signal connection error: ", connection_msg)
 
+
+
+func _on_AudioStreamPlayer_finished():
+	pass # Replace with function body.

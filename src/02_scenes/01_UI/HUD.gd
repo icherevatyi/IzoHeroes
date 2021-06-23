@@ -56,7 +56,7 @@ func _ready() -> void:
 
 func toggle_char_sheet() -> void:
 	if ui_parent.has_node("CharacterSheet"):
-		ui_parent.get_node("CharacterSheet").queue_free()
+		ui_parent.get_node("CharacterSheet").close_sheet()
 	else:
 		ui_parent.add_child(char_sheet.instance())
 

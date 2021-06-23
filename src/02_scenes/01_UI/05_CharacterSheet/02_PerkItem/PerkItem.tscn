@@ -71,5 +71,9 @@ valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="mouse_entered" from="." to="." method="_on_PerkItem_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_PerkItem_mouse_exited"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

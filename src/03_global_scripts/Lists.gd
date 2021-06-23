@@ -304,10 +304,10 @@ var sound_item_drop: Dictionary = {
 }
 
 var healing_used: Resource = load("res://src/01_assets/09_Audio/s_ui/bottle_drink-01.ogg")
-var key_used: Resource
-var door_closed: Resource
-var door_opened: Resource
-
+var char_sheet: Dictionary = {
+	"open": load("res://src/01_assets/09_Audio/s_ui/char_screen_open.ogg"),
+	"close": load("res://src/01_assets/09_Audio/s_ui/char_screen_close.ogg")
+}
 
  
 

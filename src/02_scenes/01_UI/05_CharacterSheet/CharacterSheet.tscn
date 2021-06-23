@@ -217,4 +217,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
+[connection signal="mouse_entered" from="CloseBtn" to="." method="_on_CloseBtn_mouse_entered"]
 [connection signal="pressed" from="CloseBtn" to="." method="_on_CloseBtn_pressed"]
