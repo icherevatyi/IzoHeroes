@@ -4,6 +4,8 @@ var _funcion_response: int
 var menu_item: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/01_MenuItem/MenuItem.tscn")
 
 onready var background: ColorRect = $Background
+onready var main_menu_bg: Control = $MainMenuBG
+onready var main_plot: RichTextLabel = $Plot
 onready var items_container: VBoxContainer = $MenuBg/ItemsContainer
 onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var audio_tween: Tween = $AudioTween
@@ -28,6 +30,8 @@ func _ready() -> void:
 
 func _start_main_menu() -> void:
 	background.color = Color(0, 0, 0, 1)
+	main_menu_bg.visible = true
+	main_plot.visible = true
 	_start_music()
 	emit_signal("_on_music_started", 'plasterbrain - "(Fantasy Loop) Mystical Journey"')
 	for item_index in Lists.main_menu_list:
@@ -57,6 +61,7 @@ func _start_deathscreen_menu() -> void:
 
 
 func _start_pause_menu() ->  void:
+	main_menu_bg.visible = false
 	for item_index in Lists.pause_game_list:
 		var item_instance: TextureButton = menu_item.instance()
 		var item_title: String = Lists.pause_game_list[item_index].title

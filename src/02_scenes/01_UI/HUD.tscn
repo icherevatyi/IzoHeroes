@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/02_DialogBox/DialogBox.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=4]
 [ext_resource path="res://src/01_assets/01_UI/player_bar.png" type="Texture" id=5]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/Notification/MusicAuthorNotifier.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/01_assets/04_Fonts/Mister Pixel Regular.otf" type="DynamicFontData" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -54,6 +55,10 @@ region = Rect2( 18, 0, 11, 22 )
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 3 )
 region = Rect2( 31, 0, 35, 32 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 8
+font_data = ExtResource( 7 )
 
 [node name="HUD" type="CanvasLayer"]
 layer = 2
@@ -230,8 +235,10 @@ __meta__ = {
 [node name="Floor" type="Label" parent="Control"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 15.0
+margin_left = -27.0
+margin_right = 2.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,11 +1,23 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/03_Menus/Menu.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 [ext_resource path="res://src/01_assets/01_UI/main_menu.png" type="Texture" id=3]
 [ext_resource path="res://src/01_assets/09_Audio/music/main_menu.ogg" type="AudioStream" id=4]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/Notification/MusicAuthorNotifier.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/01_assets/01_UI/menu_sword.png" type="Texture" id=6]
+[ext_resource path="res://src/01_assets/04_Fonts/Mister Pixel Regular.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://src/01_assets/01_UI/main_menu_bg.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+use_filter = true
+extra_spacing_char = 1
+extra_spacing_space = 1
+font_data = ExtResource( 7 )
 
 [node name="Menu" type="CanvasLayer"]
 pause_mode = 2
@@ -20,13 +32,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 0, 12 )
+[node name="MainMenuBG" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprite" type="Sprite" parent="Node2D"]
-position = Vector2( 289, 143 )
-rotation = 0.0433574
-texture = ExtResource( 6 )
+[node name="TextureRect" type="TextureRect" parent="MainMenuBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MainMenuBG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.52549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MenuBg" type="TextureRect" parent="."]
 margin_left = 5.0
@@ -54,45 +83,70 @@ __meta__ = {
 [node name="Hints" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -117.0
-margin_top = 9.0
-margin_right = 54.0
-margin_bottom = 62.0
+margin_left = -78.0
+margin_top = 8.0
+margin_right = 41.0
+margin_bottom = 64.0
 rect_scale = Vector2( 0.6, 0.6 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Hints"]
-margin_right = 171.0
-margin_bottom = 15.0
+margin_right = 119.0
+margin_bottom = 11.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "W, A, S, D - Move"
 
 [node name="Label2" type="Label" parent="Hints"]
-margin_top = 19.0
-margin_right = 171.0
-margin_bottom = 34.0
+margin_top = 15.0
+margin_right = 119.0
+margin_bottom = 26.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Q - Heal"
 
 [node name="Label3" type="Label" parent="Hints"]
-margin_top = 38.0
-margin_right = 171.0
-margin_bottom = 53.0
+margin_top = 30.0
+margin_right = 119.0
+margin_bottom = 41.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Left Mouse Button - Attack"
 
 [node name="Label4" type="Label" parent="Hints"]
-margin_top = 57.0
-margin_right = 171.0
-margin_bottom = 72.0
+margin_top = 45.0
+margin_right = 119.0
+margin_bottom = 56.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "C - Character Sheet"
+
+[node name="Plot" type="RichTextLabel" parent="."]
+margin_left = 212.0
+margin_top = 88.0
+margin_right = 394.0
+margin_bottom = 276.0
+theme = ExtResource( 2 )
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "By the order of Grandmaster Gottrik you are henceforth reduced to the rank of neophyte and assigned to the group of Father Bertram. You will be stripped from all your titles and honors and your only task from this point is search and retreiwal of stolen and desecrated artifacts. Untill Father Bertram commands otherwise, with your blood and life will you beg for attonement and returning to the ranks of paladins. Bertram's group has already gone to the Lurqua estate, so I advise you not to waste time and catch up with them.
+
+  - Wilok, Captain of Rosamund's Enlighteners.
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

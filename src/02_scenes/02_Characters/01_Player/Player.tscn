@@ -257,7 +257,7 @@ material = ExtResource( 7 )
 texture = SubResource( 1 )
 hframes = 6
 vframes = 4
-frame = 4
+frame = 2
 __meta__ = {
 "_editor_description_": ""
 }
