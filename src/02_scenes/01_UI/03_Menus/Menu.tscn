@@ -124,16 +124,27 @@ custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "C - Character Sheet"
 
-[node name="Plot" type="RichTextLabel" parent="."]
+[node name="ProtScreen" type="VBoxContainer" parent="."]
 visible = false
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -63.0
-margin_top = -37.5
-margin_right = 72.0
-margin_bottom = 150.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = 64.0
+margin_right = 112.0
+margin_bottom = -25.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Plot" type="RichTextLabel" parent="ProtScreen"]
+margin_right = 224.0
+margin_bottom = 113.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.647059, 0.701961, 0.717647, 1 )
@@ -142,6 +153,25 @@ text = "By the order of Grandmaster Gottrik you are henceforth reduced to the ra
 
   - Wilok, Captain of Rosamund's Enlighteners.
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressToContinue" type="Button" parent="ProtScreen"]
+margin_top = 117.0
+margin_right = 224.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+keep_pressed_outside = true
+text = "Press Spacebar to Continue"
+flat = true
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -155,23 +185,4 @@ bus = "BG_music"
 
 [node name="MusicAuthorNotifier" parent="." instance=ExtResource( 5 )]
 
-[node name="PressToContinue" type="Button" parent="."]
-visible = false
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -46.0
-margin_bottom = -32.0
-focus_mode = 0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-text = "Press Spacebar to Continue"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="PressToContinue" to="." method="_on_PressToContinue_pressed"]
+[connection signal="pressed" from="ProtScreen/PressToContinue" to="." method="_on_PressToContinue_pressed"]

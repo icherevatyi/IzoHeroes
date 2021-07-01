@@ -7,11 +7,10 @@ var is_press_action_enabled: bool = false
 onready var menu_container: TextureRect = $MenuBg 
 onready var background: ColorRect = $Background
 onready var main_menu_bg: Control = $MainMenuImageBG
-onready var main_plot: RichTextLabel = $Plot
 onready var items_container: VBoxContainer = $MenuBg/ItemsContainer
 onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var audio_tween: Tween = $AudioTween
-onready var pressToContinue: Button = $PressToContinue
+onready var plot_screen: VBoxContainer = $ProtScreen
 
 signal _on_music_started(author)
 
@@ -55,10 +54,9 @@ func _start_main_menu() -> void:
 
 
 func _show_plot() -> void:
-	main_plot.visible = true
-	pressToContinue.visible = true
-	menu_container.visible = false
+	plot_screen.visible = true
 	is_press_action_enabled = true
+	menu_container.visible = false
 
 
 func _on_PressToContinue_pressed() ->  void:
