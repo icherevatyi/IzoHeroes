@@ -42,7 +42,7 @@ func _on_AudioStreamPlayer_finished():
 	if menu_audio.get_stream() == menu_m_released:
 		match button_action:
 			"START_GAME":
-				Global.start_game()
+				get_parent().get_owner()._show_plot()
 			"LOAD_GAME":
 				Global.load_game()
 			"RETURN_TO_GAME":

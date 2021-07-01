@@ -1,22 +1,28 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/03_Menus/Menu.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
 [ext_resource path="res://src/01_assets/01_UI/main_menu.png" type="Texture" id=3]
 [ext_resource path="res://src/01_assets/09_Audio/music/main_menu.ogg" type="AudioStream" id=4]
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/Notification/MusicAuthorNotifier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/02_scenes/01_UI/03_Menus/MainMenuImageBG.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/01_assets/04_Fonts/Mister Pixel Regular.otf" type="DynamicFontData" id=7]
-[ext_resource path="res://src/01_assets/01_UI/main_menu_bg.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 8
+size = 6
 use_filter = true
 extra_spacing_char = 1
 extra_spacing_space = 1
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 6
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 7 )
 
 [node name="Menu" type="CanvasLayer"]
@@ -32,51 +38,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainMenuBG" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="MainMenuBG"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 8 )
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="MainMenuBG"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.52549 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MainMenuImageBG" parent="." instance=ExtResource( 6 )]
 
 [node name="MenuBg" type="TextureRect" parent="."]
-margin_left = 5.0
-margin_top = 8.0
-margin_right = 161.0
-margin_bottom = 216.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -42.0
+margin_top = -40.5
+margin_right = 97.0
+margin_bottom = 95.5
+rect_scale = Vector2( 0.6, 0.6 )
+size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="ItemsContainer" type="VBoxContainer" parent="MenuBg"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 27.0
-margin_top = 22.0
-margin_right = -25.0
-margin_bottom = -16.0
+margin_left = 19.0
+margin_top = 17.0
+margin_right = -19.0
+margin_bottom = -19.0
+size_flags_vertical = 6
 theme = ExtResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -133,12 +125,18 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "C - Character Sheet"
 
 [node name="Plot" type="RichTextLabel" parent="."]
-margin_left = 212.0
-margin_top = 88.0
-margin_right = 394.0
-margin_bottom = 276.0
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -63.0
+margin_top = -37.5
+margin_right = 72.0
+margin_bottom = 150.5
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0.647059, 0.701961, 0.717647, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "By the order of Grandmaster Gottrik you are henceforth reduced to the rank of neophyte and assigned to the group of Father Bertram. You will be stripped from all your titles and honors and your only task from this point is search and retreiwal of stolen and desecrated artifacts. Untill Father Bertram commands otherwise, with your blood and life will you beg for attonement and returning to the ranks of paladins. Bertram's group has already gone to the Lurqua estate, so I advise you not to waste time and catch up with them.
 
@@ -156,3 +154,24 @@ bus = "BG_music"
 [node name="AudioTween" type="Tween" parent="."]
 
 [node name="MusicAuthorNotifier" parent="." instance=ExtResource( 5 )]
+
+[node name="PressToContinue" type="Button" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -46.0
+margin_bottom = -32.0
+focus_mode = 0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Press Spacebar to Continue"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="PressToContinue" to="." method="_on_PressToContinue_pressed"]

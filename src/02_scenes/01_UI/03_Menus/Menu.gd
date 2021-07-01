@@ -2,13 +2,16 @@ extends CanvasLayer
 
 var _funcion_response: int
 var menu_item: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/01_MenuItem/MenuItem.tscn")
+var is_press_action_enabled: bool = false
 
+onready var menu_container: TextureRect = $MenuBg 
 onready var background: ColorRect = $Background
-onready var main_menu_bg: Control = $MainMenuBG
+onready var main_menu_bg: Control = $MainMenuImageBG
 onready var main_plot: RichTextLabel = $Plot
 onready var items_container: VBoxContainer = $MenuBg/ItemsContainer
 onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var audio_tween: Tween = $AudioTween
+onready var pressToContinue: Button = $PressToContinue
 
 signal _on_music_started(author)
 
@@ -28,10 +31,18 @@ func _ready() -> void:
 				_start_deathscreen_menu()
 
 
+func _input(event):
+	if event.is_action_pressed("spacebar"):
+		match is_press_action_enabled:
+			true:
+				_on_PressToContinue_pressed()
+			false:
+				return
+
+
 func _start_main_menu() -> void:
 	background.color = Color(0, 0, 0, 1)
 	main_menu_bg.visible = true
-	main_plot.visible = true
 	_start_music()
 	emit_signal("_on_music_started", 'plasterbrain - "(Fantasy Loop) Mystical Journey"')
 	for item_index in Lists.main_menu_list:
@@ -41,6 +52,17 @@ func _start_main_menu() -> void:
 		
 		items_container.add_child(item_instance)
 		item_instance.item_init(item_title, item_action)
+
+
+func _show_plot() -> void:
+	main_plot.visible = true
+	pressToContinue.visible = true
+	menu_container.visible = false
+	is_press_action_enabled = true
+
+
+func _on_PressToContinue_pressed() ->  void:
+	Global.start_game()
 
 
 func _start_music() -> void:
