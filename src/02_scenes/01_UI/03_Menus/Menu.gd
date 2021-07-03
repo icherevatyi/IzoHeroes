@@ -10,7 +10,8 @@ onready var main_menu_bg: Control = $MainMenuImageBG
 onready var items_container: VBoxContainer = $MenuBg/ItemsContainer
 onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 onready var audio_tween: Tween = $AudioTween
-onready var plot_screen: VBoxContainer = $ProtScreen
+onready var plot_screen: VBoxContainer = $PlotScreen
+onready var game_title: TextureRect = $GameTitle
 
 signal _on_music_started(author)
 
@@ -57,6 +58,7 @@ func _show_plot() -> void:
 	plot_screen.visible = true
 	is_press_action_enabled = true
 	menu_container.visible = false
+	game_title.visible = false
 
 
 func _on_PressToContinue_pressed() ->  void:

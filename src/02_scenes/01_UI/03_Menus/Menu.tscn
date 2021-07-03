@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/02_scenes/01_UI/03_Menus/Menu.gd" type="Script" id=1]
 [ext_resource path="res://src/02_scenes/01_UI/02_Themes/CustomTheme.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/02_scenes/01_UI/01_Elements/Notification/MusicAuthorNotifier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/02_scenes/01_UI/03_Menus/MainMenuImageBG.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/01_assets/04_Fonts/Mister Pixel Regular.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://src/01_assets/01_UI/NotSoPaladin.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -72,6 +73,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GameTitle" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -63.0
+margin_top = 38.0
+margin_right = 539.0
+margin_bottom = 223.0
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Hints" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -124,7 +138,7 @@ custom_colors/font_color = Color( 0.647059, 0.701961, 0.717647, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "C - Character Sheet"
 
-[node name="ProtScreen" type="VBoxContainer" parent="."]
+[node name="PlotScreen" type="VBoxContainer" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
@@ -138,7 +152,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Plot" type="RichTextLabel" parent="ProtScreen"]
+[node name="Plot" type="RichTextLabel" parent="PlotScreen"]
 margin_right = 224.0
 margin_bottom = 113.0
 mouse_filter = 2
@@ -149,7 +163,7 @@ theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.647059, 0.701961, 0.717647, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "By the order of Grandmaster Gottrik you are henceforth reduced to the rank of neophyte and assigned to the group of Father Bertram. You will be stripped from all your titles and honors and your only task from this point is search and retreiwal of stolen and desecrated artifacts. Untill Father Bertram commands otherwise, with your blood and life will you beg for attonement and returning to the ranks of paladins. Bertram's group has already gone to the Lurqua estate, so I advise you not to waste time and catch up with them.
+text = "By the order of Grandmaster Gottrik you are henceforth reduced to the rank of neophyte and assigned to the group of Father Bernard. You will be stripped from all your titles and honors and your only task from this point is retreiwal of desecrated artifacts. Untill Father Bernard commands otherwise, with your blood and life will you beg for forgiveness  and the right of returning to the ranks of paladins. Bernard's group has already gone to the Lurqua estate, so there is no time to waste! Go on and catch up with your new team, neophyte!
 
   - Wilok, Captain of Rosamund's Enlighteners.
 "
@@ -157,10 +171,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PressToContinue" type="Button" parent="ProtScreen"]
+[node name="PressToContinue" type="Button" parent="PlotScreen"]
 margin_top = 117.0
 margin_right = 224.0
 margin_bottom = 136.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -185,4 +200,4 @@ bus = "BG_music"
 
 [node name="MusicAuthorNotifier" parent="." instance=ExtResource( 5 )]
 
-[connection signal="pressed" from="ProtScreen/PressToContinue" to="." method="_on_PressToContinue_pressed"]
+[connection signal="pressed" from="PlotScreen/PressToContinue" to="." method="_on_PressToContinue_pressed"]
