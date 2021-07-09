@@ -2,9 +2,9 @@ extends Node
 
 
 var level_messages: Dictionary = {
-	"entrance_closed": "Rusty gate closed behind you. It is tightly sealed and the only way to leave this place is to move forward.",
+	"entrance_closed": "Rusty gate closed behind you. The passage is tightly sealed and the only way to leave this place is to move forward.",
 	"no_key": "You need a key, it should be carried by someone here.",
-	"have_key": "Old key is laying in your pocket, picked from and ugly abomination of foul magic. Are you sure you want to open the gate lock?",
+	"have_key": "Old key is laying in your pocket, taken from an ugly abomination of foul magic. Are you sure you want to open the gate lock?",
 }
 
 
@@ -73,15 +73,15 @@ var bossroom_music: Dictionary = {
 var exhaustion_messages: Dictionary = {
 	0: "I'm tired.",
 	1: "I am exhausted.",
-	2: "My arms are so heavy.",
+	2: "My hands are so heavy.",
 	3: "I need time to rest.",
 	4: "Give me some time."
 }
 
 var amulet_phrases: Dictionary = {
 	0: "I am sick of this place",
-	1: "Together, we will raise.",
-	2: "The Order is underestimating you!",
+	1: "Together we will raise.",
+	2: "They send you here to die!",
 	3: "Those fools are afraid of us.",
 	4: "Don't trust anyone.",
 	5: "I am your only ally!",
@@ -91,8 +91,6 @@ var amulet_phrases: Dictionary = {
 	9: "For so many years i was waiting!",
 	10: "At last! A true warrior!",
 }
-
-var final_phrase: String = "THEY WILL BOW TO YOUR WILL"
 
 var player_pickup_sounds: Dictionary = {
 	0: load("res://src/01_assets/09_Audio/s_items/item_pick-01.ogg"),

@@ -47,9 +47,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -42.0
-margin_top = -40.5
+margin_top = -24.5
 margin_right = 97.0
-margin_bottom = 95.5
+margin_bottom = 111.5
 rect_scale = Vector2( 0.6, 0.6 )
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -165,7 +165,7 @@ custom_colors/default_color = Color( 0.647059, 0.701961, 0.717647, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "By the order of Grandmaster Gottrik you are henceforth reduced to the rank of neophyte and assigned to the group of Father Bernard. You will be stripped from all your titles and honors and your only task from this point is retreiwal of desecrated artifacts. Untill Father Bernard commands otherwise, with your blood and life will you beg for forgiveness  and the right of returning to the ranks of paladins. Bernard's group has already gone to the Lurqua estate, so there is no time to waste! Go on and catch up with your new team, neophyte!
 
-  - Wilok, Captain of Rosamund's Enlighteners.
+  - Wilok, Captain of Rosamunda's Enlighteners.
 "
 __meta__ = {
 "_edit_use_anchors_": false
