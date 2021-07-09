@@ -91,9 +91,9 @@ func _on_secret_button_pressed() -> void:
 	
 	yield(get_tree().create_timer(1), "timeout")
 	player.hide_HUD()
+	yield(get_tree().create_timer(1), "timeout")
 	_start_phrases_spawn()
 	intensify_mumble()
-	yield(get_tree().create_timer(1), "timeout")
 	_open_passage()
 	
 	
@@ -127,6 +127,7 @@ func _end_demo() -> void:
 	yield(Backdrop.get_node("AnimationPlayer"), "animation_finished")
 	get_tree().paused = true
 	emit_signal("game_ended")
+	LvlSummary.input_enabled = false
 	$BGMumble.stop()
 
 

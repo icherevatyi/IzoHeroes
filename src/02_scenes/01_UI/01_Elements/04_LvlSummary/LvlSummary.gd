@@ -8,6 +8,7 @@ var params: Dictionary = PlayerStats.stats_list
 var available_perks: Dictionary
 var perk_index_list: Array = []
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+export var input_enabled: bool = true
 
 onready var lvl_end_screen: VBoxContainer = $LvlEndScreen
 onready var endgame_text: VBoxContainer = $EndGameText
@@ -147,7 +148,7 @@ func launch_ty_message() -> void:
 
 
 func _input(event):
-	if is_game_ended == true:
+	if is_game_ended == true and input_enabled == true:
 		if event.is_pressed() == true:
 			endgame_text.visible = false
 			is_game_ended = false
