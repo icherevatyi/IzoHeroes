@@ -342,6 +342,3 @@ visible = true
 shape = SubResource( 10 )
 
 [node name="SkullSpawn" type="Position2D" parent="." index="12"]
-
-[node name="CombatSFX" parent="." index="15"]
-volume_db = 5.0

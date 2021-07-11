@@ -10,7 +10,7 @@
 [ext_resource path="res://src/02_scenes/02_Characters/02_Enemies/LootGenerator.gd" type="Script" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 8.0
+radius = 10.8276
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
