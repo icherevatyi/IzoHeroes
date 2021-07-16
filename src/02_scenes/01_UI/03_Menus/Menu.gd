@@ -2,7 +2,8 @@ extends CanvasLayer
 
 var _funcion_response: int
 var menu_item: PackedScene = preload("res://src/02_scenes/01_UI/03_Menus/01_MenuItem/MenuItem.tscn")
-var is_press_action_enabled: bool = false
+var is_press_to_cont_enabled: bool = false
+var is_press_to_credits_enabled: bool = false
 
 onready var menu_container: TextureRect = $MenuBg 
 onready var background: ColorRect = $Background
@@ -33,11 +34,11 @@ func _ready() -> void:
 
 func _input(event):
 	if event.is_action_pressed("spacebar"):
-		match is_press_action_enabled:
-			true:
-				_on_PressToContinue_pressed()
-			false:
-				return
+		if is_press_to_cont_enabled:
+			_on_PressToContinue_pressed()
+		elif is_press_to_credits_enabled:
+			_on_PressToReturn_pressed()
+		return
 
 
 func _start_main_menu() -> void:
@@ -56,13 +57,24 @@ func _start_main_menu() -> void:
 
 func _show_plot() -> void:
 	plot_screen.visible = true
-	is_press_action_enabled = true
+	is_press_to_cont_enabled = true
 	menu_container.visible = false
 	game_title.visible = false
 
 
+func _show_credits() -> void:
+	is_press_to_credits_enabled = true
+	$Credits.visible = true
+	menu_container.visible = false
+
+
 func _on_PressToContinue_pressed() ->  void:
 	Global.start_game()
+
+
+func _on_PressToReturn_pressed() -> void:
+	$Credits.visible = false
+	menu_container.visible = true
 
 
 func _start_music() -> void:

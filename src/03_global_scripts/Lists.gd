@@ -320,6 +320,10 @@ var main_menu_list: Dictionary = {
 		"action": "LOAD_GAME"
 	},
 	3: {
+		"title": "Credits",
+		"action": "SHOW_CREDITS"
+	},
+	4: {
 		"title": "Exit to Desktop",
 		"action": "QTD"
 	}

@@ -47,8 +47,8 @@ func _on_AudioStreamPlayer_finished():
 				Global.load_game()
 			"RETURN_TO_GAME":
 				Global.toggle_pause_menu()
-			"SHOW_OPTIONS":
-				Global.call_main_menu()
+			"SHOW_CREDITS":
+				get_parent().get_owner()._show_credits()
 			"QTM":
 				Global.exit_to_menu()
 			"QTD":
