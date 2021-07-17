@@ -369,6 +369,7 @@ extents = Vector2( 31, 10 )
 
 [node name="Boss" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
+is_taking_damage = true
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 1 )
