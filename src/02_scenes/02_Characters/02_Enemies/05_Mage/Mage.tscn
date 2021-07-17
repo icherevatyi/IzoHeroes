@@ -38,30 +38,24 @@ tracks/1/keys = {
 "method": "_create_circle"
 } ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:is_attacking")
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 2.51 ),
+"times": PoolRealArray( 0, 0.21, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.21 ),
-"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
+"method": "_initiate_attack"
+}, {
+"args": [  ],
 "method": "_sound_attack"
+}, {
+"args": [  ],
+"method": "_stop_attack"
 } ]
 }
 
@@ -140,25 +134,13 @@ tracks/2/keys = {
 "method": "_disable_collision_box"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:material:shader_param/hit_opacity")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -197,29 +179,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 19, 20, 21, 22, 23, 19 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:is_taking_damage")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:is_attacking")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"values": [ {
+"args": [  ],
+"method": "_stagger_on_damage_start"
+}, {
+"args": [  ],
+"method": "_stagger_on_damage_stop"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -267,7 +242,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 8
-frame = 3
+frame = 18
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -290,9 +265,6 @@ shape = SubResource( 9 )
 volume_db = -15.0
 max_distance = 200.0
 bus = "Master"
-
-[node name="CombatSFX" parent="." index="14"]
-volume_db = 5.0
 
 [node name="EnemyVoiceSFX" parent="." index="15"]
 volume_db = 15.0

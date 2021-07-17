@@ -67,7 +67,7 @@ func _physics_process(_delta) -> void:
 							movement_scripts._face_player(player_coords)
 							attack_scripts._aim_at_player(player_coords)
 						else:
-							match is_attacking:
+							match is_attacking and is_taking_damage:
 								false:
 									movement_scripts.chase_player(player_coords)
 								true:
@@ -99,6 +99,22 @@ func _get_stats(enemy_type: String) -> void:
 			damage = Lists.enemy_list[enemy].damage
 
 
+func _initiate_attack() -> void:
+	is_attacking = true
+
+
+func _stop_attack() -> void:
+	is_attacking = false
+
+
+func _stagger_on_damage_start() -> void:
+	is_taking_damage = true
+
+
+func _stagger_on_damage_stop() -> void:
+	is_taking_damage = false
+
+
 func receive_damage(damage_received) -> void:
 	if (health_current - damage_received) <= 0:
 		OS.delay_msec(80)
@@ -111,7 +127,7 @@ func receive_damage(damage_received) -> void:
 	if health_current <= 0:
 		Global.is_dangerous_to_interact = false
 		_death()
-	
+
 
 func _on_miniboss_created() -> void:
 	is_boss = true

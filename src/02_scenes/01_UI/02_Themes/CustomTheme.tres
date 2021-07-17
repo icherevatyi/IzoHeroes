@@ -4,12 +4,12 @@
 [ext_resource path="res://src/01_assets/01_UI/dialog_frame.png" type="Texture" id=2]
 [ext_resource path="res://src/01_assets/01_UI/tip_frame.png" type="Texture" id=3]
 
-[sub_resource type="DynamicFontData" id=22]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 14
-font_data = SubResource( 22 )
+font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://src/01_assets/04_Fonts/Mister Pixel Regular.otf"
