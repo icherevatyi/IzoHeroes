@@ -140,25 +140,13 @@ tracks/2/keys = {
 "method": "_disable_collision_box"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:material:shader_param/hit_opacity")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -267,7 +255,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 8
-frame = 3
+frame = 10
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/attack = SubResource( 1 )
@@ -290,9 +278,6 @@ shape = SubResource( 9 )
 volume_db = -15.0
 max_distance = 200.0
 bus = "Master"
-
-[node name="CombatSFX" parent="." index="14"]
-volume_db = 5.0
 
 [node name="EnemyVoiceSFX" parent="." index="15"]
 volume_db = 15.0

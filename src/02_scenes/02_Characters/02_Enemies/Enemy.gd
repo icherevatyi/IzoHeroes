@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var is_taking_damage: bool = false
-var is_attacking: bool = false
+export var is_taking_damage: bool = false
+export var is_attacking: bool = false
 
 var is_boss: bool = false
 var is_main_boss: bool = false

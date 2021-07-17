@@ -247,9 +247,6 @@ animation = "receive_damage"
 [sub_resource type="AnimationNodeAnimation" id=17]
 animation = "walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
-auto_advance = true
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
@@ -284,6 +281,8 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
 [sub_resource type="AnimationNodeStateMachine" id=34]
 states/attack/node = SubResource( 10 )
 states/attack/position = Vector2( 278, 247 )
@@ -301,7 +300,7 @@ states/receive_damage/node = SubResource( 16 )
 states/receive_damage/position = Vector2( 548, 224 )
 states/walk/node = SubResource( 17 )
 states/walk/position = Vector2( 548, 56 )
-transitions = [ "receive_damage", "death", SubResource( 18 ), "idle", "walk", SubResource( 19 ), "walk", "idle", SubResource( 20 ), "idle", "receive_damage", SubResource( 21 ), "idle", "chase", SubResource( 22 ), "chase", "idle", SubResource( 23 ), "receive_damage", "chase", SubResource( 24 ), "idle", "attack_3", SubResource( 25 ), "attack_3", "idle", SubResource( 26 ), "attack_2", "receive_damage", SubResource( 27 ), "attack_3", "receive_damage", SubResource( 28 ), "chase", "attack", SubResource( 29 ), "attack", "chase", SubResource( 30 ), "chase", "attack_2", SubResource( 31 ), "attack_2", "chase", SubResource( 32 ), "attack", "receive_damage", SubResource( 33 ) ]
+transitions = [ "idle", "walk", SubResource( 19 ), "walk", "idle", SubResource( 20 ), "idle", "receive_damage", SubResource( 21 ), "idle", "chase", SubResource( 22 ), "chase", "idle", SubResource( 23 ), "receive_damage", "chase", SubResource( 24 ), "idle", "attack_3", SubResource( 25 ), "attack_3", "idle", SubResource( 26 ), "attack_2", "receive_damage", SubResource( 27 ), "attack_3", "receive_damage", SubResource( 28 ), "chase", "attack", SubResource( 29 ), "attack", "chase", SubResource( 30 ), "chase", "attack_2", SubResource( 31 ), "attack_2", "chase", SubResource( 32 ), "attack", "receive_damage", SubResource( 33 ), "idle", "death", SubResource( 43 ) ]
 start_node = "idle"
 end_node = "death"
 graph_offset = Vector2( -125, -72 )
